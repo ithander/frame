@@ -16,8 +16,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.HttpStatus;
 
 @SpringBootApplication
-@ComponentScan("com.zbsg.**")
-@MapperScan(basePackages={"com.zbsg.**.mapper"})
+@ComponentScan("org.ithang.**")
+@MapperScan(basePackages={"org.ithang.**.mapper"})
 public class BootstrapApplication extends SpringBootServletInitializer{
 
 	private final Logger logger=Logger.getLogger(BootstrapApplication.class);
