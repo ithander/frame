@@ -5,12 +5,12 @@
 <configuration>
     
     <typeAliases>
-        <typeAlias alias="ActionValues" type="com.zbsg.common.model.ActionValues"/>
-        <typeAlias alias="ResultValues" type="com.zbsg.common.model.ResultValues"/>
+        <typeAlias alias="ActionValues" type="org.ithang.model.ActionValues"/>
+        <typeAlias alias="ResultValues" type="org.ithang.model.ResultValues"/>
     </typeAliases>
     
     <plugins>
-        <plugin interceptor="com.zbsg.common.model.PaginationInterceptor"></plugin>
+        <plugin interceptor="org.ithang.model.PaginationInterceptor"></plugin>
     </plugins>
     
 </configuration>
