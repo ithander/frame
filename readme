@@ -1,0 +1,12 @@
+springboot+mybatis
+eclipse+maven
+最初项目原型
+
+目录结构
+总目录com.zbsg
+二级目录finance 金融部业务
+三级目录 金融部业务子业务
+bean 业务实体
+rest 移动端接口
+web  pc端接口
+service 业务核心逻辑
