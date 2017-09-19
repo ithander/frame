@@ -5,12 +5,12 @@
 <configuration>
     
     <typeAliases>
-        <typeAlias alias="ActionValues" type="org.ithang.model.ActionValues"/>
-        <typeAlias alias="ResultValues" type="org.ithang.model.ResultValues"/>
+        <typeAlias alias="ActionValues" type="org.ithang.tools.model.ActionValues"/>
+        <typeAlias alias="ResultValues" type="org.ithang.tools.model.ResultValues"/>
     </typeAliases>
     
     <plugins>
-        <plugin interceptor="org.ithang.model.PaginationInterceptor"></plugin>
+        <plugin interceptor="org.ithang.tools.model.PagePlugin"></plugin>
     </plugins>
     
 </configuration>
