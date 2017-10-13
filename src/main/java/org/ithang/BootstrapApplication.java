@@ -51,6 +51,7 @@ public class BootstrapApplication extends SpringBootServletInitializer{
 	
 	
 	public static void main(String[] args) {
+		System.setProperty("spring.profiles.active", "dev");
 		SpringApplication.run(BootstrapApplication.class, args);
 	}
 	
