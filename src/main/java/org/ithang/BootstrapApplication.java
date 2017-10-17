@@ -24,7 +24,7 @@ public class BootstrapApplication extends SpringBootServletInitializer{
 	
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
-		logger.info("system to start...");
+		logger.info("系统启动中...");
 	}
 	
 	//初始化模拟数据
