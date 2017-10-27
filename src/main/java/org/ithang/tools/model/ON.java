@@ -1,4 +1,4 @@
-package org.ithang;
+package org.ithang.tools.model;
 
 @Deprecated
 public class ON<T> {

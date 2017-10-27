@@ -4,7 +4,7 @@ import java.lang.reflect.ParameterizedType;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
-import org.ithang.ModelSQL;
+import org.ithang.tools.model.ModelSQL;
 
 public class ModelDao<T> extends BaseDao {
 	

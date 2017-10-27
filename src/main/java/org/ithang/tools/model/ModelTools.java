@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Random;
 
 import org.apache.log4j.Logger;
-import org.ithang.Model;
 import org.ithang.tools.lang.StrUtils;
 import org.ithang.tools.mate.Column;
 import org.ithang.tools.mate.Ignore;

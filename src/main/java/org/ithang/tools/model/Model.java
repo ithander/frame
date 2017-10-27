@@ -1,4 +1,4 @@
-package org.ithang;
+package org.ithang.tools.model;
 
 import java.lang.reflect.Method;
 import java.util.Map;

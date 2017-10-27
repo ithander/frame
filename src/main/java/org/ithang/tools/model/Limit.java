@@ -1,4 +1,4 @@
-package org.ithang;
+package org.ithang.tools.model;
 
 public class Limit {
 

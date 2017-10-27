@@ -1,4 +1,4 @@
-package org.ithang;
+package org.ithang.tools.model;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.ithang.tools.lang.StrUtils;
-import org.ithang.tools.model.ModelTools;
 
 /**
  * 用于生成SQL的唯一可用类
