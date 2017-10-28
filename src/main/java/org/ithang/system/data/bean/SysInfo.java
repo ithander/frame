@@ -1,4 +1,4 @@
-package org.ithang.data.bean;
+package org.ithang.system.data.bean;
 
 public class SysInfo {
 
