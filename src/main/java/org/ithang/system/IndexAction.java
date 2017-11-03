@@ -1,20 +1,20 @@
-package org.ithang.system.index;
+package org.ithang.system;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("system/index")
-public class IndexController {
+@RequestMapping("system")
+public class IndexAction {
 
 	@RequestMapping
 	public String index(){
-		return "index";
+		return "system/index";
 	}
 	
 	@RequestMapping("home")
 	public String home(){
-		return "home";
+		return "system/home";
 	}
 	
 }
