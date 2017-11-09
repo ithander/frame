@@ -2,6 +2,7 @@ eclipse.preferences.version=1
 encoding//src/main/java=UTF-8
 encoding//src/main/java/org/ithang/application/readme=UTF-8
 encoding//src/main/java/org/ithang/system/readme=UTF-8
+encoding//src/main/java/org/ithang/tools/filter/LogInterceptor.java=UTF-8
 encoding//src/main/resources=UTF-8
 encoding//src/main/resources/application-dev.properties=UTF-8
 encoding//src/main/resources/application.properties=UTF-8
