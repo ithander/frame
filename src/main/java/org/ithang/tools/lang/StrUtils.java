@@ -1,5 +1,12 @@
 package org.ithang.tools.lang;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.LineNumberReader;
+import java.io.StringReader;
+
 public final class StrUtils {
 
 	/**
@@ -150,6 +157,51 @@ public final class StrUtils {
 			}
 		}
 		return sber.toString();
+	}
+	
+	/**
+	 * 把文件内容转成java字符串内容
+	 * @param file
+	 * @return
+	 * @throws FileNotFoundException 
+	 */
+	public static String fromFileToStr(File file) {
+	    FileInputStream fis=null;
+	    try{
+	    	fis=new FileInputStream(file);
+	    	StringBuilder sber=new StringBuilder();
+	    	byte[] bs=new byte[1024*5];
+	    	int k=fis.read(bs);
+	    	while(-1!=k){
+	    		sber.append(new String(bs,0,k));
+	    		k=fis.read(bs);
+	    	}
+	    	
+	    	StringReader sr=new StringReader(sber.toString());
+	    	LineNumberReader LNReader=new LineNumberReader(sr);
+	    	StringBuilder r=new StringBuilder();
+	    	String s=LNReader.readLine();
+	    	
+	    	while(null!=s&&s.trim().length()>0){
+	    		r.append("\"").append(s.replaceAll("\\\"","\\\\\"")).append("\"+\n");	
+	    		s=LNReader.readLine();
+	    	}
+	    	
+	    	sr.close();
+	    	LNReader.close();
+	    	return r.toString();
+	    }catch(Exception e){
+	    	e.printStackTrace();
+	    }finally{
+	    	if(null!=fis){
+	    		try{
+	    			fis.close();
+	    		}catch(Exception e){
+	    			e.printStackTrace();
+	    		}
+	    	}
+	    }
+	    return null;
 	}
     
 }
