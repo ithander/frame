@@ -35,19 +35,27 @@ public class PagePlugin implements Interceptor{
 	@Override
 	public Object intercept(Invocation invocation) throws Throwable {
 		 StatementHandler statementHandler = (StatementHandler) invocation.getTarget();
-		 Object obj=statementHandler.getParameterHandler().getParameterObject();
+		 Object obj=statementHandler.getParameterHandler().getParameterObject();//参数对象
+		 
 		 MapperMethod.ParamMap<Object> paramObj=null;
+		 
 		 ActionValues values=null;
+		 Page<Object> page=null;
 		 boolean updateData=false;//如果obj是map则需要在分页执行后同步一下分页数据
+		 
 		 if(obj instanceof MapperMethod.ParamMap){
 			 paramObj=(MapperMethod.ParamMap<Object>)obj;
 		 }
 		 if(obj instanceof ActionValues){
 			 values=(ActionValues)obj;
 		 }
-		 if(obj instanceof Map&&!(obj instanceof ActionValues)){
+		 if(obj instanceof Map&&!(obj instanceof ActionValues)){//参数为map类型,所以需在分页后同步一下数据
 			 updateData=true;
 			 values=new ActionValues(((Map<String, Object>)obj));
+		 }
+		 
+		 if(obj instanceof Page){
+			 page=(Page<Object>)obj;
 		 }
 		 
 		 MetaObject metaStatementHandler = SystemMetaObject.forObject(statementHandler); 
@@ -56,8 +64,7 @@ public class PagePlugin implements Interceptor{
 	     metaStatementHandler.getValue("delegate.mappedStatement");
 	     
 	     // 只要参数对象里有名称为pageNow的参数则进行分页。 
-	    	 
-	    	 if(null!=paramObj&&paramObj.keySet().contains("pageNow")){//判断参数里是否有名称为pageNow的参数
+	    if(null!=paramObj&&paramObj.keySet().contains("pageNow")){//判断参数里是否有名称为pageNow的参数
 	    		 ActionValues pageValues=new ActionValues();
 	    		 int pageNow=-1;
 	    		 int pageSize=-1;
@@ -104,9 +111,9 @@ public class PagePlugin implements Interceptor{
 		        // 重设分页参数里的总页数等  
 		             
 		        setPageParameter(sql, connection, mappedStatement, boundSql,pageValues); 
-	    	 }
+	    	}
 	    	 
-	    	 if(null!=values&&values.isNotEmpty("pageNow")){
+	    	if(null!=values&&values.isNotEmpty("pageNow")){
 	    		 BoundSql boundSql = (BoundSql) metaStatementHandler.getValue("delegate.boundSql");  
 		          
 	             String sql = boundSql.getSql();
@@ -126,7 +133,25 @@ public class PagePlugin implements Interceptor{
 	             if(updateData){
 	            	 ((Map<String,Object>)obj).putAll(values);
 	             }
-	    	 }
+	    	}
+	    	
+	    	if(null!=page){
+	    		BoundSql boundSql = (BoundSql) metaStatementHandler.getValue("delegate.boundSql");  
+	    		String sql = boundSql.getSql();
+	            String pageSql=null;
+	            if ("mysql".equals(dialect)) {  
+	                pageSql = buildPageSqlForMysql(sql, page);  
+	            } else if ("oracle".equals(dialect)) {
+	                pageSql = buildPageSqlForOracle(sql, page);  
+	            }
+	            metaStatementHandler.setValue("delegate.boundSql.sql", pageSql==null?sql:pageSql);  
+	            // 采用物理分页后，就不需要mybatis的内存分页了，所以重置下面的两个参数  
+	            metaStatementHandler.setValue("delegate.rowBounds.offset",RowBounds.NO_ROW_OFFSET);  
+	            metaStatementHandler.setValue("delegate.rowBounds.limit", RowBounds.NO_ROW_LIMIT);  
+	            Connection connection = (Connection) invocation.getArgs()[0];  
+	            // 重设分页参数里的总页数等  
+	            setPageParameter(sql, connection, mappedStatement, boundSql,page); 
+	    	}
 	    	 
 	    
 	     logger.info(statementHandler.getBoundSql().getSql());
@@ -187,6 +212,39 @@ public class PagePlugin implements Interceptor{
         return pageSql.toString();  
     }  
     
+    private String buildPageSqlForMysql(String sql, Page<Object> page) {  
+        StringBuilder pageSql = new StringBuilder(100);  
+        long pageSize=page.getPageSize();
+        long fromRow=page.getFrom();
+        
+        pageSql.append(sql);
+        if(null!=page.getOrder()&&page.getOrder().trim().length()>0){
+        	pageSql.append(" order by ");
+            pageSql.append(page.getOrder());
+            pageSql.append("  ");
+            pageSql.append(page.getSort());
+        }
+        
+        pageSql.append(" limit " + fromRow + "," +pageSize);  
+        return pageSql.toString();  
+    }
+    
+    private String buildPageSqlForOracle(String sql, Page<Object> page) {  
+        StringBuilder pageSql = new StringBuilder(100);  
+        long pageNow=page.getPageNow();
+        long pageSize=page.getPageSize();
+        long fromRow=page.getFrom();
+        long endrow=pageNow*pageSize;  
+        pageSql.append("select * from ( select temp.*, rownum row_id from ( ");  
+        pageSql.append(sql);
+        if(null!=page.getOrder()&&page.getOrder().trim().length()>0){
+            pageSql.append(" order by "+page.getOrder()+" "+page.getSort());
+        }
+        pageSql.append(" ) temp where rownum <= ").append(endrow);  
+        pageSql.append(") where row_id > ").append(fromRow);  
+        return pageSql.toString();  
+    }
+    
     private String buildPageSqlForOracle(String sql, ActionValues values) {  
         StringBuilder pageSql = new StringBuilder(100);  
         int pageNow=values.getInt(ActionValues.PAGE_NOW)<1?1:values.getInt(ActionValues.PAGE_NOW);
@@ -201,6 +259,47 @@ public class PagePlugin implements Interceptor{
         pageSql.append(" ) temp where rownum <= ").append(endrow);  
         pageSql.append(") where row_id > ").append(fromRow);  
         return pageSql.toString();  
+    }
+    
+    /** 
+     * 从数据库里查询总的记录数并计算总页数，回写进分页参数<code>PageParameter</code>,这样调用  
+     * 者就可用通过 分页参数<code>PageParameter</code>获得相关信息。 
+     *  
+     * @param sql 
+     * @param connection 
+     * @param mappedStatement 
+     * @param boundSql 
+     * @param page 
+     */  
+    private void setPageParameter(String sql, Connection connection, MappedStatement mappedStatement,BoundSql boundSql, Page<Object> page) {  
+        // 记录总记录数  
+        String countSql = "select count(0) from (" + sql + ") as total";  
+        PreparedStatement countStmt = null;  
+        ResultSet rs = null;  
+        try {  
+            countStmt = connection.prepareStatement(countSql);  
+            BoundSql countBS = new BoundSql(mappedStatement.getConfiguration(),countSql,boundSql.getParameterMappings(),boundSql.getParameterObject());  
+            setParameters(countStmt, mappedStatement, countBS, boundSql.getParameterObject());  
+            rs = countStmt.executeQuery();  
+            int totalCount = 0;  
+            if (rs.next()) {  
+                totalCount = rs.getInt(1);  
+            }  
+            page.setTotal(totalCount);
+        } catch (SQLException e) {  
+            logger.error("Ignore this exception", e);  
+        } finally {  
+            try {  
+                rs.close();  
+            } catch (SQLException e) {  
+                logger.error("Ignore this exception", e);  
+            }  
+            try {  
+                countStmt.close();  
+            } catch (SQLException e) {  
+                logger.error("Ignore this exception", e);  
+            }  
+        }  
     }  
 	
     /** 

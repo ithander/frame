@@ -1,26 +1,22 @@
 package org.ithang.system.data.mapper;
 
+import java.util.List;
+
 import org.ithang.system.data.bean.SysInfo;
+import org.ithang.system.data.bean.SysTable;
+import org.ithang.tools.model.Page;
 
 public interface DataMapper {
 
 	/**
-	 * 判断是否己安装
-	 * @return
-	 */
-	public int isInstall();
-	
-	/**
-	 * 判断数据库是否存在
-	 * @return
-	 */
-	public int isDatabaseExist();
-	
-	/**
 	 * 最新系统信息
 	 * @return
 	 */
-	public SysInfo lastInfo();
+	public SysInfo info();
 	
-	
+	/**
+	 * 分页得到系统表结构
+	 * @return
+	 */
+	public List<SysTable> tables(Page<SysTable> page);
 }

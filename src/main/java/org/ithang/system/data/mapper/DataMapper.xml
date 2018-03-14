@@ -2,20 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.ithang.system.data.mapper.DataMapper">
 
-    <!--  判断是否己安装 -->
-    <select id="isInstall" resultType="Integer">
-        select count(0) from sys_info
+    <!-- 得到系统概要信息 -->
+    <select id="info" resultType="SysInfo">
+        select id,author,version,mobile,create_time from sys_info limit 0,1
     </select>
     
-    <!--  判断数据库是否存在 -->
-    <select id="isDatabaseExist" resultType="String">
-        show databases like 'ithang'
+    <!-- 系统表结构数据 -->
+    <select id="tables" resultType="SysTable">
+        select id,table_name,content,version from sys_table
     </select>
-    
-    <select id="lastInfo" resultType="SysInfo">
-        select * from sys_info limit 0,1
-    </select>
-    
-    
 
 </mapper>

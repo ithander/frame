@@ -5,11 +5,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 public class ActionResult extends ModelAndView {
 
-	private int code;
-	private String desc;
-	private Object result;
+	private int code;//响应码
+	private String desc;//描述
+	private Object result;//结果数据
 	
-	private String page;
+	private String page;//响应页面
 	
 	public ActionResult(){
 		setCode(0);
