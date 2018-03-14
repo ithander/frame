@@ -29,7 +29,7 @@ public class LogInterceptor implements HandlerInterceptor{
 		logger.info("┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳");
 		logger.info("请求："+request.getRequestURI());
 		logger.info("参数："+JsonUtils.toJsonStr(request.getParameterMap()));
-		logger.info("耗时："+(System.currentTimeMillis()-Long.parseLong(String.valueOf(request.getAttribute("startTime")))));
+		logger.info("耗时："+(System.currentTimeMillis()-Long.parseLong(String.valueOf(request.getAttribute("startTime"))))+" ms");
 		logger.info("┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻");
 	}
 	

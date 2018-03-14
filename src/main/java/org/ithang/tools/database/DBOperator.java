@@ -5,11 +5,16 @@ import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
+/**
+ * 数据源操作者
+ * @author ithang
+ *
+ */
 public class DBOperator {
 
 	private String title;
 	
-	private String dbType;
+	private String dbType;//mysql,oracle
 	
 	private DataSource dataSource;
 	

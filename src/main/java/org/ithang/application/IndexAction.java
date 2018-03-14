@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author zyt
  *
  */
-@Controller
+@Controller("applicationIndex")
 public class IndexAction {
 
 	@RequestMapping(value="/",method=RequestMethod.GET)
