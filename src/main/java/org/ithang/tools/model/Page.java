@@ -41,6 +41,9 @@ public class Page<T> {
 	}
 	public void setTotal(long total) {
 		this.total = total;
+		if(total>0){
+			setPageNum(total%pageSize==0?(total/pageSize):(total/pageSize+1));	
+		}
 	}
 	public long getFrom() {
 		return from;
@@ -52,13 +55,13 @@ public class Page<T> {
 		this.order = order;
 	}
 	public String getSort() {
-		return sort;
+		return sort==null?"desc":sort;
 	}
 	public void setSort(String sort) {
 		this.sort = sort;
 	}
-	public void setFrom(long from) {
-		this.from = from;
+	public long getFrom(long from) {
+		return (pageNow>0?pageNow-1:0)*pageSize;
 	}
 	public List<T> getData() {
 		return data;
