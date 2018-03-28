@@ -90,24 +90,24 @@ public class ModelSQL<T> {
 					sber_noid.append("?");
 				}
 			}
-			fieldNameStr=StrUtils.pkg(fieldNames, ":", ",");
+			fieldNameStr=StrUtils.pkg(fieldNames, ":", ",","");
 			fieldNameStr=fieldNameStr.substring(0,fieldNameStr.length()-1);
 			
-			fieldNameStr_noid=StrUtils.pkg(fieldNames_noid, ":", ",");
+			fieldNameStr_noid=StrUtils.pkg(fieldNames_noid, ":", ",","");
 			fieldNameStr_noid=fieldNameStr_noid.substring(0,fieldNameStr_noid.length()-1);
 			
-			columnNameStr=StrUtils.pkg(columnNames, "", ",");
+			columnNameStr=StrUtils.pkg(columnNames, "", ",","");
 			columnNameStr=columnNameStr.substring(0,columnNameStr.length()-1);
 			
-			columnNameStr_noid=StrUtils.pkg(columnNames_noid, "", ",");
+			columnNameStr_noid=StrUtils.pkg(columnNames_noid, "", ",","");
 			columnNameStr_noid=columnNameStr_noid.substring(0,columnNameStr_noid.length()-1);
 			
 			fieldHodler=sber.toString();
-			fieldNameHolder=StrUtils.pkg(fieldNames, ":", ",");
+			fieldNameHolder=StrUtils.pkg(fieldNames, ":", ",","");
 			fieldNameHolder=fieldNameHolder.substring(0,fieldNameHolder.length()-1);
 			
 			fieldHodler_noid=sber.toString();
-			fieldNameHolder_noid=StrUtils.pkg(fieldNames_noid, ":", ",");
+			fieldNameHolder_noid=StrUtils.pkg(fieldNames_noid, ":", ",","");
 			fieldNameHolder_noid=fieldNameHolder_noid.substring(0,fieldNameHolder_noid.length()-1);
 			
 			queryColumns=sfer.toString();
@@ -408,9 +408,9 @@ public class ModelSQL<T> {
 					}
 					sber.append(m.getColumnName()).append(" in (");
 					if("String".equals(m.getFieldType())){
-						sber.append(StrUtils.pkg(ids,"'","',"));
+						sber.append(StrUtils.pkg(ids,"'","',",""));
 					}else{
-						sber.append(StrUtils.pkg(ids,"",","));
+						sber.append(StrUtils.pkg(ids,"",",",""));
 					}
 					sber.delete(sber.length()-1, sber.length());
 					sber.append(")");

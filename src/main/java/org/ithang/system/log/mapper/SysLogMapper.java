@@ -1,5 +1,7 @@
 package org.ithang.system.log.mapper;
 
+import java.util.List;
+
 import org.ithang.system.log.bean.SysLog;
 import org.ithang.tools.model.Page;
 
@@ -17,6 +19,21 @@ public interface SysLogMapper {
 	 * @param page
 	 * @return
 	 */
-	public Page<SysLog> list(Page<SysLog> page);
+	public List<SysLog> list(Page<SysLog> page);
+	
+	/**
+	 * 新增系统日志
+	 * @param sysLog
+	 * @return
+	 */
+	public int insert(SysLog sysLog);
+	
+	
+	/**
+	 * 按条件修改系统日志
+	 * @param syslog
+	 * @return
+	 */
+	public int delete(SysLog syslog);
 	
 }

@@ -3,7 +3,6 @@ package org.ithang.tools.lang;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.LineNumberReader;
 import java.io.StringReader;
 
@@ -149,11 +148,31 @@ public final class StrUtils {
 	 * @param suffix
 	 * @return
 	 */
-	public static String pkg(String[] values,String prefix,String suffix){
+	public static String pkg(String[] values,String prefix,String suffix,String liner){
 		StringBuilder sber=new StringBuilder();
+		int i=0;
 		for(String value:values){
 			if(isNotBlank(value)){
-				sber.append(prefix).append(value).append(suffix);	
+				if(i>0){
+					sber.append(liner);
+				}
+				sber.append(prefix).append(value).append(suffix);
+				i++;
+			}
+		}
+		return sber.toString();
+	}
+	
+	public static String join(String[] values,String liner){
+		StringBuilder sber=new StringBuilder();
+		int i=0;
+		for(String value:values){
+			if(isNotBlank(value)){
+				if(i>0){
+					sber.append(liner);
+				}
+				sber.append(value);	
+				i++;
 			}
 		}
 		return sber.toString();

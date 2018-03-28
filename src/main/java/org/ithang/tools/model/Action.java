@@ -2,8 +2,11 @@ package org.ithang.tools.model;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class Action {
+public class Action<T> {
 
+	protected Page<T> getPage(HttpServletRequest request){
+		return new Page<T>(request);
+	}
 	
 	protected ActionValues getValues(HttpServletRequest request){
 		return new ActionValues(request);

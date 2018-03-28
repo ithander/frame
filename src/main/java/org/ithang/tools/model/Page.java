@@ -1,9 +1,12 @@
 package org.ithang.tools.model;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+
+import org.ithang.tools.lang.StrUtils;
 
 public class Page<T> {
 
@@ -21,6 +24,17 @@ public class Page<T> {
 	public Page(HttpServletRequest request){
 		setPageNow(Integer.parseInt(request.getParameter("pageNow")==null?"0":request.getParameter("pageNow")));
 		setPageSize(Integer.parseInt(request.getParameter("pageSize")==null?""+pageSize:request.getParameter("pageSize")));
+		Map<String,String[]> mps=request.getParameterMap();
+		if(!mps.isEmpty()){
+			params=new HashMap<String,Object>(mps.size());
+			mps.forEach((k,v)->{
+				if(1==v.length){
+					params.put(k, v[0]);
+				}else{
+					params.put(k, null!=v?StrUtils.pkg(v, "'", "'",","):"");
+				}
+			});
+		}
 	}
 	
 	public Page(long pageNow,long pageSize){
@@ -87,5 +101,5 @@ public class Page<T> {
 	public void setParams(Map<String, Object> params) {
 		this.params = params;
 	}
-	
+
 }
