@@ -1,6 +1,9 @@
 package org.ithang.tools.model;
 
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 public class Page<T> {
 
@@ -12,6 +15,13 @@ public class Page<T> {
 	private String order;//排序字段
 	private String sort;//排序算法asc|desc
 	private List<T> data;
+	
+	private Map<String,Object> params;//请求参数
+	
+	public Page(HttpServletRequest request){
+		setPageNow(Integer.parseInt(request.getParameter("pageNow")==null?"0":request.getParameter("pageNow")));
+		setPageSize(Integer.parseInt(request.getParameter("pageSize")==null?""+pageSize:request.getParameter("pageSize")));
+	}
 	
 	public Page(long pageNow,long pageSize){
 		setPageNow(pageNow);
@@ -68,6 +78,14 @@ public class Page<T> {
 	}
 	public void setData(List<T> data) {
 		this.data = data;
+	}
+
+	public Map<String, Object> getParams() {
+		return params;
+	}
+
+	public void setParams(Map<String, Object> params) {
+		this.params = params;
 	}
 	
 }

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("system/auth")
+@RequestMapping("sys/auth")
 public class AuthController {
 
 	@RequestMapping(value="login",method=RequestMethod.GET)

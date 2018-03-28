@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller("systemIndex")
 @Alias("systemIndex")
-@RequestMapping("system")
-public class IndexAction {
+@RequestMapping("sys")
+public class SystemIndexAction {
 
 	@RequestMapping
 	public String index(){
