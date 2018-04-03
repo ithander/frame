@@ -100,9 +100,9 @@
 				<env>conf/dev</env>
 				<profileActive>dev</profileActive>
 			</properties>
-			<activation>
+			<!-- <activation>
 				<activeByDefault>true</activeByDefault>
-			</activation>
+			</activation> -->
 		</profile>
 		<profile>
 			<id>prod</id>
@@ -116,7 +116,7 @@
 	<build>
 	    <finalName>frame</finalName>
 	    <resources>
-	        <resource>
+	        <resource><!-- 资源根目录排除各环境的配置，使用单独的资源目录来指定 --> 
 	            <directory>src/main/resources</directory>
 	            <excludes>
 	                <exclude>application.properties</exclude>
@@ -133,11 +133,7 @@
                </excludes>
            </resource>  
            <resource>
-               <filtering>true</filtering>
-               <directory>src/main/resources/conf</directory>
-               <includes>
-                   <include>conf/${profileActive}/**</include>
-               </includes>
+               <directory>src/main/resources/conf/${profileActive}</directory>
            </resource>
 	    </resources>
 		<plugins>
