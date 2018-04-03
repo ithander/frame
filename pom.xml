@@ -19,7 +19,7 @@
 	</parent>
 
 	<properties>
-	    <project></project>
+	    <maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
@@ -74,7 +74,6 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
@@ -89,24 +88,27 @@
 
      <profiles>
 		<profile>
-			<id>local</id>
+			<id>test</id>
 			<properties>
-				<env>conf/local</env>
+				<env>conf/test</env>
+				<profileActive>test</profileActive>
 			</properties>
-<!-- 			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation> -->
 		</profile>
 		<profile>
 			<id>dev</id>
 			<properties>
 				<env>conf/dev</env>
+				<profileActive>dev</profileActive>
 			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
 		</profile>
 		<profile>
 			<id>prod</id>
 			<properties>
 				<env>conf/prod</env>
+				<profileActive>prod</profileActive>
 			</properties>
 		</profile>
 	</profiles>
@@ -115,10 +117,11 @@
 	    <finalName>frame</finalName>
 	    <resources>
 	        <resource>
-	            <directory>${basedir}/src/main/resources</directory>
-	            <includes>
-	                <include>**/*.*</include>
-	            </includes>
+	            <directory>src/main/resources</directory>
+	            <excludes>
+	                <exclude>application.properties</exclude>
+	                <exclude>conf/**</exclude>
+	            </excludes>
 	        </resource>
 	        <resource>
                <directory>${basedir}/src/main/java</directory>  
@@ -129,9 +132,16 @@
                    <exclude>**/*.java</exclude>
                </excludes>
            </resource>  
+           <resource>
+               <filtering>true</filtering>
+               <directory>src/main/resources/conf</directory>
+               <includes>
+                   <include>conf/${profileActive}/**</include>
+               </includes>
+           </resource>
 	    </resources>
 		<plugins>
-			<!-- <plugin>
+			 <plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				
@@ -145,8 +155,7 @@
                         </goals>  
                     </execution>  
                 </executions>  
-               
-			</plugin> -->
+			</plugin> 
 			<plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
