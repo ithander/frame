@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sample Login App | Ext JS 5.1.4 </title>
+    <!--  Generated on March, 24 2018 at 1:45 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta property="og:image" content="../../../../assets/images/sencha-200.png" />
+    <meta property="og:title" content="Sample Login App | Ext JS 5.1.4 " />
+    <meta property="og:description" content="Ext JS Api - API documentation from Sencha" />
+    <meta property="og:site_name" content="Sencha Documentation" />
+    <meta property="og:url" content="" />
+    <meta name="description" content="Ext JS Api - API documentation from Sencha">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/prism.css">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/create-app-html-app.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../../../../assets/css/../../../node_modules/tachyons/css/tachyons.css"> -->
+
+
+</head>
+<body class="new-docs  is-guide  has-guides   has-api tree-shown ">
+
+    <!-- SVG Sprite -->
+    <div style="height: 0; width: 0; position: absolute; visibility: hidden;" aria-hidden="true">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" focusable="false">
+            <symbol id="ripply-scott" viewBox="0 0 100 100">
+                <circle id="ripple-shape" cx="1" cy="1" r="1" />
+            </symbol>
+        </svg>
+    </div>
+    <!-- /end sprite -->
+
+    <script type="text/javascript">
+        function getOS() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            if(/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                return 'ios';
+            } else if(userAgent.match(/Android/i)) {
+                return 'android';
+            }
+        }
+
+        var isIE8 = false;
+
+        document.body.className += ' ' + getOS();
+
+        window.DocsApp = window.DocsApp || {};
+        DocsApp.meta   = {"majorVer":"5","prodObj":{"3":{"link":"http://docs.sencha.com/{prod}/{ver}/#!/api/{page}"},"4":{"link":"http://docs.sencha.com/{prod}/{ver}/#!/api/{page}"},"title":"Ext JS","currentVersion":"6.5.3","toolkit":{"6":{"toolkits":["modern","classic"],"defaultToolkit":"modern"}},"productMenu":["6.5.3","6.5.2","6.5.1","6.5.0","6.2.1","6.2.0","6.0.2","6.0.1","6.0.0","5.1.4","5.1.3","5.1.2","5.1.1","5.1.0","5.0.1","5.0.0","4.2.6","4.1.3","4.0.7","3.4.0"],"guideSearchPartners":["cmd"],"hasVersions":true,"hasApi":true,"theme":{"5.0.0":"crisp","5.0.1":"crisp","5.1.0":"crisp","5.1.1":"crisp","5.1.2":"crisp","5.1.3":"crisp","5.1.4":"crisp","6.0.0":{"classic":"triton","modern":"triton"},"6.0.1":{"classic":"triton","modern":"triton"},"6.0.2":{"classic":"triton","modern":"triton"},"6.2.0":{"classic":"triton","modern":"triton"},"6.2.1":{"classic":"triton","modern":"triton"},"6.2.2":{"classic":"triton","modern":"triton"},"6.5.0":{"classic":"triton","modern":"material"},"6.5.1":{"classic":"triton","modern":"material"},"6.5.2":{"classic":"triton","modern":"material"},"6.5.3":{"classic":"triton","modern":"material"},"6.6.0":{"classic":"triton","modern":"material"}},"repo":"SDK","remoteUrl":"git@github.com:extjs/{repo}.git","addlRepos":["package-loader"],"addlRemoteUrls":"git@github.com:sencha/{repo}.git","remotes":{"7.0.0":{"branch":"ext-7.0.x"},"6.5.3":{"branch":"ext-6.5.x"},"6.5.2":{"branch":"ext-6.5.x"},"6.5.1":{"branch":"ext-6.5.1-docs"},"6.5.0":{"branch":"ext-6.5.0-docs"},"6.2.2":{"branch":"ext-6.2.x"},"6.2.1":{"branch":"ext-6.2.1-docs"},"6.2.0":{"branch":"ext-6.2.0-docs"},"6.0.2":{"branch":"ext-6.0.x"},"6.0.1":{"branch":"ext-6.0.1-docs"},"6.0.0":{"branch":"ext-6.0.0-docs"},"5.1.4":{"branch":"ext-5.1.x"},"5.1.3":{"branch":"ext-5.1.3-docs"},"5.1.2":{"branch":"ext-5.1.2-docs"},"5.1.1":{"branch":"ext-5.1.1-docs"},"5.1.0":{"branch":"ext-5.1.0-docs"},"5.0.1":{"branch":"ext-5.0.1-docs"},"5.0.0":{"branch":"ext-5.0.0-docs"}}},"hasApi":true,"hasVersions":true,"hasToolkits":false,"toolkits":false,"toolkit":false,"hasGuides":true,"title":"Ext JS","version":"5.1.4","pageType":"guide","product":"extjs","apiProduct":"extjs","apiVersion":"5.1.4","exceptions":{"touch":["2.3.1","2.2.1","2.1.1","2.0.1"],"extjs":["3.4.0","4.0.7","4.1.3","4.2.6"]},"searchPartnerVersions":{"cmd":{"6.5.3":"6.5.3","6.5.2":"6.5.3","6.5.1":"6.5.3","6.5.0":"6.5.0","6.2.1":"6.5.0","6.2.0":"6.5.0","6.0.2":"6.5.0","6.0.1":"6.5.0","6.0.0":"6.5.0","5.1.4":"6.5.0","5.1.3":"6.5.0","5.1.2":"6.5.0","5.1.1":"6.5.0","5.1.0":"6.5.0","5.0.1":"6.5.0","5.0.0":"6.5.0","4.2.6":"6.5.0","4.1.3":"6.5.0","4.0.7":"6.5.0","3.4.0":"6.5.0"}},"navTreeName":"Guides","myId":"tutorials/login_app","rootPath":"../../","pageName":"Sample Login App","docsRootPath":"../../../../"};
+    </script>
+    <!--[if IE 8]>
+    <script type='text/javascript'>
+        isIE8 = true;
+    </script>
+    <![endif]-->
+    <script type="text/javascript">
+        if (!isIE8) {
+            document.write('<script type=\"text/javascript\" src=\"../../../../assets/js/prism.js\"><\/script>');
+        }
+        if (DocsApp.meta.hasGuides) {
+            document.write('<script type=\"text/javascript\" src=\"../../../../assets/js/extjs-5.1.4-guidesTree.js\"><\/script>');
+        }
+        if (DocsApp.meta.hasApi) {
+            document.write('<script type=\"text/javascript\" src=\"../../../../assets/js/extjs-5.1.4-apiTree.js\"><\/script>');
+        }
+    </script>
+    <script type="text/javascript" src="../../../../assets/js/ace.js"></script>
+    <script type="text/javascript" src="../../../../assets/js/create-app-html-app.js"></script>
+    <script type="text/javascript" src="../../../../assets/js/productMenu.js"></script>
+
+    <div id="help-wrap">
+        <div class="help-header">
+            Docs Help
+            <div id="help-close" class="icon-btn">
+                <i class="fa fa-close"></i>
+            </div>
+        </div>
+        <div class="classText">
+            <div class="toc classMeta">
+                <h2>Contents</h2>
+                <a class="toc-page-h2" href="#terms-icons-and-labels">Terms, Icons, and Labels</a>
+                <a class="toc-page-h3" href="#access-levels">Access Levels</a>
+                <a class="toc-page-h3" href="#member-types">Member Types</a>
+                <a class="toc-page-h3" href="#member-syntax">Member Syntax</a>
+                <a class="toc-page-h3" href="#member-flags">Member Flags</a>
+                <a class="toc-page-h3" href="#class-icons">Class Icons</a>
+                <a class="toc-page-h3" href="#member-icons">Member Icons</a>
+                <a class="toc-page-h2" href="#navigation-and-features">Navigation and Features</a>
+                <a class="toc-page-h3" href="#class-member-quick-nav-menu">Class Member Quick-Nav Menu</a>
+                <a class="toc-page-h3" href="#getter-and-setter-methods">Getter and Setter Methods</a>
+                <a class="toc-page-h3" href="#history-bar">History Bar</a>
+                <a class="toc-page-h3" href="#search-and-filters">Search and Filters</a>
+                <a class="toc-page-h3" href="#api-doc-class-metadata">API Doc Class Metadata</a>
+                <a class="toc-page-h3" href="#expanding-and-collapsing-examples-and-class-members">Expanding and Collapsing Examples and Class Members</a>
+                <a class="toc-page-h3" href="#desktop-vs-mobile-view">Desktop -vs- Mobile View</a>
+                <a class="toc-page-h3" href="#viewing-the-class-source">Viewing the Class Source</a>
+            </div>
+            <h2 id="terms-icons-and-labels">Terms, Icons, and Labels</h2>
+            <p>Many classes have shortcut names used when creating (instantiating) a class with a
+                configuration object.  The shortcut name is referred to as an <code>alias</code> (or <code>xtype</code> if the
+                class extends Ext.Component).  The alias/xtype is listed next to the class name of
+                applicable classes for quick reference.</p>
+            <h3 id="access-levels">Access Levels</h3>
+            <p>Framework classes or their members may be specified as <code>private</code> or <code>protected</code>.  Else,
+                the class / member is <code>public</code>.  <code>Public</code>, <code>protected</code>, and <code>private</code> are access
+                descriptors used to convey how and when the class or class member should be used.</p>
+            <ul>
+                <li><p><strong>Public</strong> classes and class members are available for use by any other class or
+                    application code and may be relied upon as a stable and persistent within major product
+                    versions.  Public classes and members may safely be extended via a subclass.</p>
+                </li>
+                <li><p><strong>Protected</strong> class members are stable <code>public</code> members intended to be used by the
+                    owning class or its subclasses.  Protected members may safely be extended via a subclass.</p>
+                </li>
+                <li><p><strong>Private</strong> classes and class members are used internally by the framework and are not
+                    intended to be used by application developers.  Private classes and members may change or
+                    be omitted from the framework at any time without notice and should not be relied upon in
+                    application logic.</p>
+                </li>
+            </ul>
+            <h3 id="member-types">Member Types</h3>
+            <ul>
+                <li><strong>Config</strong> - The configuration options for a class.</li>
+                <li><strong>Property</strong> - Set once a class is instantiated. *See Read Only below.</li>
+                <li><strong>Method</strong> - Actions that can be performed by a class.  Methods should be read as
+                    instance methods and can only be called from a instance of a given class.  Static methods
+                    that can be called directly from the class itself will have a <code>static</code> label next to the
+                    method name.  *See Static below.</li>
+                <li><strong>Event</strong> - Events are specific to the framework event system allowing for classes to
+                    programmatically raise an event to be handled by one or more event handler methods.  DOM
+                    events, while handled by the framework event system, are not specifically described
+                    within the API documentation.  *For DOM events refer to the
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/Events">event reference</a> page from MDN.</li>
+                <li><strong>Theme Variable</strong> - Variables used by the visual theme engine employed by the
+                    framework.</li>
+                <li><strong>Theme Mixin</strong> - Functions used by the visual theme engine employed by the framework
+                    and may use values set in various Theme Variables.</li>
+            </ul>
+            <h3 id="member-syntax">Member Syntax</h3>
+            <p>Below is an example class member that we can disect to show the syntax of a class member
+                (the lookupComponent method as viewed from the Ext.button.Button class in this case).</p>
+            <div style="position: relative;" class="show-inherited show-protected members">
+                <div style="border: 1px solid #E4E4E4;" class="classmembers member-protected isNotStatic isInherited member-expanded" data-member-name="lookupComponent">
+                    <div class="collapse-toggle">
+                        <i class="fa fa-caret-right"></i>
+                        <i class="fa fa-caret-down"></i>
+                    </div>
+                    <div class="source-class"><a href="javascript:void(0);">Ext.container.Container</a><div class="viewSource"><a href="javascript:void(0);"></a><a target="_blank" href="javascript:void(0);">view source</a></div></div>
+                    <div class="member-header">
+                        <a href="javascript:void(0);" class="member-name-link"><span data-ref="method-lookupComponent" class="member-name"><strong>lookup</strong>Component</span></a>
+                        <span class="params-list"> ( item )</span> : <span class="memberType">Ext.Component</span>
+                        <div class="member-tags"><span class="protected">protected</span></div>
+                    </div>
+                    <p>Called when a raw config object is added to this container either during initialization of the <a href="javascript:void(0);">items</a> config,
+                        or when new items are <a href="javascript:void(0);">added), or {@link #insert inserted</a>.</p>
+                    <p>This method converts the passed object into an instanced child component.</p>
+                    <p>This may be overridden in subclasses when special processing needs to be applied to child creation.</p>
+                    <div class="detail-header">Parameters</div>
+                    <p><span class="params-list">item</span> :
+                        <span class="memberType">&nbsp;Object</span>
+                    </p>
+                    <div class="params-desc"><p>The config object being added.</p></div>
+                    <div class="detail-header">Returns</div>
+                    <span style="margin-left:12px;" class="memberType">Ext.Component</span>
+                    <div class="return-desc"><p>The component to be added.</p>
+                    </div>
+                </div>
+            </div>
+    
+            <p>Let's look at each part of the member row:</p>
+            <ul>
+                <li><strong>Expand/Collapse</strong> - On the left-hand size of the member row is a control used to
+                    expand and collapse each member row to show / hide member details.</li>
+                <li><strong>Member Name</strong> - The name of the class member (<code>lookupComponent</code> in this example)</li>
+                <li><strong>Method Param</strong> - Any required or optional params used by a method (or passed to an
+                    event handler method) will be listed next to the method name within parenthesis
+                    (<code>( item )</code> in this example)</li>
+                <li><strong>Return type</strong> - The class instance or javascript object returned by the method or
+                    property (<code>Ext.Component</code> in this case).  This may be omitted for methods that do not
+                    return anything other than <code>undefined</code> or may display as multiple possible values
+                    separated by a forward slash <code>/</code> signifying that what is returned may depend on the
+                    results of the method call (i.e. a method may return a Component if a get method calls is
+                    successful or <code>false</code> if unsuccessful which would be displayed as
+                    <code>Ext.Component/Boolean</code>).</li>
+                <li><strong>Flags</strong> - Any flags applicable to the member will be displayed next (<code>PROTECTED</code> in
+                    this example - see the Flags section below)</li>
+                <li><strong>Member Origin</strong> - On the right-hand side of the member row is the class where the
+                    member was initially described (<code>Ext.container.Container</code> in this example).  The source
+                    class will be displayed as a blue link if the member originates from the current class
+                    and gray if it is inherited from an ancestor or mixed-in class.</li>
+                <li><strong>Member Source</strong> - On the right-hand side below the member origin class is a link to
+                    view the member's source (<code>view source</code> in the example)</li>
+                <li><strong>Params List</strong> - Each param for a class method will be listed using the same name
+                    found above in parenthesis, the type of class or object expected, and a description of
+                    the param (<code>item : Object</code> in the example).</li>
+                <li><strong>Returns</strong> - If a class returns a value other than <code>undefined</code> a "Returns" section
+                    will note the type of class or object returned and a description (<code>Ext.Component</code> in the
+                    example)</li>
+                <li><strong>Since</strong> (<em>not shown in the example</em>) - Some members will show which version of the
+                    product the member was first introduced (i.e. <code>Available since 3.4.0</code> - <em>not pictured in
+                        the example</em>) just after the member description</li>
+                <li><strong>Default</strong> (<em>not shown in the example</em>) - Configs often show the default config value
+                    to be applied to a class instance if not overridden (i.e. <code>Defaults to: false</code>)</li>
+            </ul>
+            <h3 id="member-flags">Member Flags</h3>
+            <p>The API documentation uses a number of flags to further commnicate the class member's
+                function and intent.  The label may be represented by a text label, an abbreviation, or
+                an icon.</p>
+            <ul>
+                <li><strong>Required</strong> - Required config when instantiating a class</li>
+                <li><strong>Bindable</strong> - The config has a setter which allows this config to be set via ViewModel
+                    binding</li>
+                <li><strong>Read Only</strong> - The property may be read, but cannot be used to configure /
+                    re-configure a class instance at runtime</li>
+                <li><strong>Singleton</strong> - Singleton classes are instantiated immediately once defined and may not
+                    be instantiated manually</li>
+                <li><strong>Static</strong> - A static method or property is a method or property belonging to the class
+                    itself, not an instance of the class</li>
+                <li><strong>Chainable</strong> - Refers to methods that return the class instance back when called.<br>This enables chained method calls like: <code>classInstance.method1().method2().etc();</code></li>
+                <li><strong>Deprecated</strong> - A class or member that is scheduled for removal in a future
+                    framework version and is provided in the current version for backwards compatibility.<br>Deprecated classes and members will have a message directing you to the preferred class /
+                    method going forward.</li>
+                <li><strong>Removed</strong> - A removed class or member that exists in documentation only as a
+                    reference for users upgrading between framework versions</li>
+                <li><strong>Template</strong> - A method defined within a base class designed to be overridden by
+                    subclasses</li>
+                <li><strong>Abstract</strong> - A class or member may be be defined as abstract.  Abstract classes and
+                    members establish a class structure and provide limited, if any, code.  Class-specific
+                    code will be furnished via overrides in subclasses.</li>
+                <li><strong>Preventable</strong> - Events marked preventable will not fire if <code>false</code> is returned from
+                    an event handler</li>
+            </ul>
+            <h3 id="class-icons">Class Icons</h3>
+            <p><span class="icon-demo class-icon fa fa-cube"></span> - Indicates a framework class  </p>
+            <p><span class="icon-demo singleton-icon fa fa-cube"></span> - A singleton framework class. *See the
+                singleton flag for more information  </p>
+            <p><span class="icon-demo component-icon fa fa-gear"></span> - A component-type framework class (any
+                class within the Ext JS framework that extends Ext.Component)  </p>
+            <p><span class="icon-demo display-new"></span> - Indicates that the class, member, or guide
+                is new in the currently viewed version</p>
+            <h3 id="member-icons">Member Icons</h3>
+            <p><span class="icon-demo fa fa-cubes"></span> - Indicates a class member of type <code>config</code>  </p>
+            <p><span class="icon-demo fa fa-book"></span> - Indicates a class member of type <code>property</code>  </p>
+            <p><span class="icon-demo fa fa-object-group"></span> - Indicates a class member of type
+                <code>method</code>  </p>
+            <p><span class="icon-demo fa fa-bolt"></span> - Indicates a class member of type <code>event</code>  </p>
+            <p><span class="icon-demo fa fa-paint-brush"></span> - Indicates a class member of type
+                <code>theme variable</code>  </p>
+            <p><span class="icon-demo fa fa-tint"></span> - Indicates a class member of type
+                <code>theme mixin</code>  </p>
+            <p><span class="icon-demo display-new"></span> - Indicates that the class, member, or guide
+                is new in the currently viewed version</p>
+            <h2 id="navigation-and-features">Navigation and Features</h2>
+            <h3 id="class-member-quick-nav-menu">Class Member Quick-Nav Menu</h3>
+            <p>Just below the class name on an API doc page is a row of buttons corresponding to the
+                types of members owned by the current class.  Each button shows a count of members by
+                type (this count is updated as filters are applied).  Clicking the button will navigate
+                you to that member section.  Hovering over the member-type button will reveal a popup
+                menu of all members of that type for quick navigation.</p>
+            <h3 id="getter-and-setter-methods">Getter and Setter Methods</h3>
+            <p>Getting and setter methods that correlate to a class config option will show up in the
+                methods section as well as in the configs section of both the API doc and the member-type
+                menus just beneath the config they work with.  The getter and setter method documentation
+                will be found in the config row for easy reference.</p>
+            <h3 id="history-bar">History Bar</h3>
+            <p>Your page history is kept in localstorage and displayed (using the available real estate)
+                just below the top title bar.  By default, the only search results shown are the pages
+                matching the product / version you're currently viewing.  You can expand what is
+                displayed by clicking on the <span class="icon-demo history-config"></span> button on the
+                right-hand side of the history bar and choosing the "All" radio option.  This will show
+                all recent pages in the history bar for all products / versions.</p>
+            <p>Within the history config menu you will also see a listing of your recent page visits.
+                The results are filtered by the "Current Product / Version" and "All" radio options.
+                Clicking on the <span class="icon-demo history-clear"></span> button will clear the history bar as
+                well as the history kept in local storage.</p>
+            <p>If "All" is selected in the history config menu the checkbox option for "Show product
+                details in the history bar" will be enabled.  When checked, the product/version for each
+                historic page will show alongside the page name in the history bar.  Hovering the cursor
+                over the page names in the history bar will also show the product/version as a tooltip.</p>
+            <h3 id="search-and-filters">Search and Filters</h3>
+            <p>Both API docs and guides can be searched for using the search field at the top of the
+                page.</p>
+            <p>On API doc pages there is also a filter input field that filters the member rows
+                using the filter string.  In addition to filtering by string you can filter the class
+                members by access level, inheritance, and read only.  This is done using the checkboxes at the top of
+                the page.</p>
+            <p>The checkbox at the bottom of the API class navigation tree filters the class list to
+                include or exclude private classes.</p>
+            <p>Clicking on an empty search field will show your last 10 searches for quick navigation.</p>
+            <h3 id="api-doc-class-metadata">API Doc Class Metadata</h3>
+            <p>Each API doc page (with the exception of Javascript primitives pages) has a menu view of
+                metadata relating to that class.  This metadata view will have one or more of the
+                following:</p>
+            <ul>
+                <li><strong>Alternate Name</strong> - One or more additional class name synonymns (in Ext JS 6.0.0 the
+                    <code>Ext.button.Button</code> class has an alternate class name of <code>Ext.Button</code>).  Alternate class
+                    names are commonly maintained for backward compatibility.</li>
+                <li><strong>Hierarchy</strong> - The hierararchy view lists the inheritance chain of the current class
+                    up through its ancestor classes up to the root base class.</li>
+                <li><strong>Mixins</strong> - A list of classes that are mixed into the current class</li>
+                <li><strong>Inherited Mixins</strong> - A list of classes that are mixed into an ancestor of the current
+                    class</li>
+                <li><strong>Requires</strong> - All classes required to be defined for the class to be instantiated</li>
+                <li><strong>Uses</strong> - A list of classes potentially used by the class at some point in its
+                    lifecycle, but not necessarily requried for the class to initially be instantiated</li>
+                <li><strong>Subclasses</strong> - Classes that extend the current class</li>
+            </ul>
+            <h3 id="expanding-and-collapsing-examples-and-class-members">Expanding and Collapsing Examples and Class Members</h3>
+            <p>Runnable examples (Fiddles) are expanded on a page by default.  You can collapse and
+                expand example code blocks individually using the arrow on the top-left of the code
+                block.  You can also toggle the collapse state of all examples using the toggle button on
+                the top-right of the page.  The toggle-all state will be remembered between page loads.</p>
+            <p>Class members are collapsed on a page by default.  You can expand and collapse members
+                using the arrow icon on the left of the member row or globally using the expand /
+                collapse all toggle button top-right.</p>
+            <h3 id="desktop-vs-mobile-view">Desktop -vs- Mobile View</h3>
+            <p>Viewing the docs on narrower screens or browsers will result in a view optimized for a
+                smaller form factor.  The primary differences between the desktop and "mobile" view are:</p>
+            <ul>
+                <li>Global navigation will be located in a menu on the left-hand side accessible via the
+                    hamburger menu icon.  The menu houses the following (on most pages):<ul>
+                        <li>The name of the current product (as a link to the product landing page)</li>
+                        <li>The Sencha icon used to navigate back to the documentation home page</li>
+                        <li>The product menu drop-down button</li>
+                        <li>Tabs of navigation trees for the API docs and guides</li>
+                    </ul>
+                </li>
+                <li>Current context navigation and tools is located on the right-hand side accessible via
+                    the gear icon.  The context menu houses teh following:<ul>
+                        <li>The global search input field</li>
+                        <li>(<em>API doc</em>) A "Filters" tab with the member filter, expand / collapse all examples
+                            button, expand / collapse all member rows button, the access level filter checkboxes,
+                            and the counts of each member</li>
+                        <li>(<em>API doc</em>) A "Related Classes" tab containing the menu of metadata related to the
+                            current class</li>
+                        <li>(<em>Guides</em>) The table of contents for the guide</li>
+                    </ul>
+                </li>
+            </ul>
+            <h3 id="viewing-the-class-source">Viewing the Class Source</h3>
+            <p>The class source can be viewed by clicking on the class name at the top of an API doc
+                page.  The source for class members can be viewed by clicking on the "view source" link
+                on the right-hand side of the member row.</p>
+    
+        </div>
+    </div>
+
+    <div id="header">
+        <div class="home-link">
+            <a href="http://docs.sencha.com"><span class="fa fa-book"></span></a>
+        </div>
+        <div class="logo">
+            <a href="https://www.sencha.com"><img height="32" src="../../../../assets/images/sencha_logo_thumb.png"/></a>
+        </div>
+        <span id="mobile-main-nav-menu-btn" class="fa fa-bars"></span>
+        <span data-tip="Product / Version Menu" class="fa fa-angle-down product-menu-btn product-menu-btn-wrap tooltip-tl-bl tooltip landing-product-menu-btn">
+            <div class="callout callout-b"></div>
+        </span>
+            <div class="page-title">Sample Login App</div>
+
+        <span id="mobile-context-menu-btn" class="fa fa-cog"></span>
+    </div>
+
+    <div id="centerContent">
+        <div id="history-nav">
+            <span id="history-config" class="icon-btn history-config tooltip tooltip-tr-br" data-tip="Configure / Clear History">
+                <i class="fa fa-history"></i>
+                <div class="callout callout-b"></div>
+            </span>
+        </div>
+        <div id="class-tree-ct" class="class-tree">
+            <h2 class="product-header">
+                <div class="home-link">
+                    <a href="http://docs.sencha.com"><span class="fa fa-book"></span></a>
+                </div>
+                <div class="logo">
+                    <a href="https://www.sencha.com"><img src="../../../../assets/images/sencha_logo1x.png"/></a>
+                </div>
+                <a href="../../index.html">Ext JS 5.1.4 </a>
+                <span data-tip="Product / Version Menu" class="fa fa-angle-down product-menu-btn product-menu-btn-wrap tooltip tooltip-tl-bl"><div class="callout callout-b"></div></span>
+            </h2>
+            <div id="tree-header" class="pre-load">
+                <div id="hide-class-tree" class="icon-btn">
+                    <i class="fa fa-close"></i>
+                    <i class="fa fa-bars"></i>
+                </div>
+            </div>
+            <div id="tree-scroller">
+                <div id="tree" class="show-private show-protected is-tree ">
+                    <div id="tree-sub-header"></div>
+                </div>
+                    <div class="private-class-toggle-ct">
+                        <label for="private-class-toggle" class="pointer gray">Show private classes</label>
+                        <input id="private-class-toggle" type="checkbox" name="privateClassToggle" />
+                    </div>
+            </div>
+        </div>
+
+        <a href="#" id="back-to-top">
+            <div class="fa fa-angle-up"></div>
+            <br>
+            top
+        </a>
+
+        <div id="rightMembers">
+<div class="context-menu-ct">
+    <div class="context-header">
+        <div id="hide-context-menu" class="fa fa-caret-right"></div>
+    </div>
+
+    <div class="search">
+        <form autocomplete="off">
+    
+            <input type="text" type="search" placeholder="search" id="searchtext" tabindex="1">
+            <i id="filtersubmit" class="fa fa-search"></i>
+            <span id="help-btn" data-tip="Docs Help" class="icon-btn tooltip tooltip-tr-br"><div class="callout callout-b"></div>
+                <i class="fa fa-question fa-inverse"></i>
+            </span>
+        </form>
+    </div>
+
+    <div id="toc-context-ct">
+        <!-- context content added at runtime -->
+    </div>
+</div>
+<div class="guide-body-wrap">
+    <div class="body-wrap-inner">
+        <div id="toggleExamples" class="icon-btn tooltip tooltip-tr-br" data-collapse="Collapse All Examples" data-expand="Expand All Examples">
+            <i class="fa fa-code"></i>
+            <div class="callout callout-b"></div>
+        </div>
+        <div class="classText">
+                <div class="toc">
+                    <h2>Contents</h2>
+                        <a class="toc-page-h2 " href="#tutorials-_-login_app_-_step_1___generate_your_application">Step 1 - Generate your Application</a>
+                        <a class="toc-page-h2 " href="#tutorials-_-login_app_-_step_2___create_the_login_view_components">Step 2  - Create the Login View Components</a>
+                        <a class="toc-page-h2 " href="#tutorials-_-login_app_-_step_3___disable_mainview">Step 3 - Disable mainView</a>
+                        <a class="toc-page-h2 " href="#tutorials-_-login_app_-_step_4___create_the_login_window">Step 4 - Create the Login Window</a>
+                        <a class="toc-page-h3 " href="#tutorials-_-login_app_-_requires">requires</a>
+                        <a class="toc-page-h3 " href="#tutorials-_-login_app_-_controller">controller</a>
+                        <a class="toc-page-h3 " href="#tutorials-_-login_app_-_bodypadding">bodyPadding</a>
+                        <a class="toc-page-h3 " href="#tutorials-_-login_app_-_title">title</a>
+                        <a class="toc-page-h3 " href="#tutorials-_-login_app_-_closable">closable</a>
+                        <a class="toc-page-h3 " href="#tutorials-_-login_app_-_autoshow">autoShow</a>
+                        <a class="toc-page-h3 " href="#tutorials-_-login_app_-_window_items">Window items</a>
+                        <a class="toc-page-h3 " href="#tutorials-_-login_app_-_xtype">xtype</a>
+                        <a class="toc-page-h3 " href="#tutorials-_-login_app_-_form_items">Form Items</a>
+                        <a class="toc-page-h3 " href="#tutorials-_-login_app_-_buttons">buttons</a>
+                        <a class="toc-page-h3 " href="#tutorials-_-login_app_-_formbind">formBind</a>
+                        <a class="toc-page-h3 " href="#tutorials-_-login_app_-_listeners">listeners</a>
+                        <a class="toc-page-h2 " href="#tutorials-_-login_app_-_step_5___add_login_logic">Step 5 - Add Login Logic</a>
+                        <a class="toc-page-h3 " href="#tutorials-_-login_app_-_onloginclick_">onLoginClick()</a>
+                        <a class="toc-page-h3 " href="#tutorials-_-login_app_-_localstorage">localStorage</a>
+                        <a class="toc-page-h3 " href="#tutorials-_-login_app_-_getview_">getView()</a>
+                        <a class="toc-page-h3 " href="#tutorials-_-login_app_-_ext_widget_39_app_main_39_">Ext.widget(&#39;app-main&#39;)</a>
+                        <a class="toc-page-h2 " href="#tutorials-_-login_app_-_step_6___add_launch_logic_to_application_js">Step 6 - Add Launch Logic to Application.js</a>
+                        <a class="toc-page-h3 " href="#tutorials-_-login_app_-_requires">requires</a>
+                        <a class="toc-page-h3 " href="#tutorials-_-login_app_-_launch">launch</a>
+                        <a class="toc-page-h3 " href="#tutorials-_-login_app_-_localstorage_getitem_">localStorage.getItem()</a>
+                        <a class="toc-page-h3 " href="#tutorials-_-login_app_-_widget_ternary">Widget Ternary</a>
+                        <a class="toc-page-h2 " href="#tutorials-_-login_app_-_step_7___add_viewport_plugin">Step 7 - Add Viewport Plugin</a>
+                        <a class="toc-page-h2 " href="#tutorials-_-login_app_-_step_8___add_main_logic">Step 8 - Add Main Logic</a>
+                        <a class="toc-page-h2 " href="#tutorials-_-login_app_-_wrap_up">Wrap Up</a>
+                </div>
+            <h1 id="tutorials-_-login_app_-_building_a_login_system">Building a Login System<a class="quick-link" href="#tutorials-_-login_app_-_building_a_login_system"></a></h1>
+<p>One of the most frequently requested tutorials is how to make a login system. We&#39;re 
+going to start off this ongoing tutorial by building just that. Please note that this is 
+only <strong>one</strong> way of creating a login system. There are many other viable options. This 
+is simply meant to show you an approach to creating an application with login/logout 
+functionality.</p>
+<p><strong>Disclaimer:</strong> This tutorial is meant to show users one way in which they can design an
+application to contain a &quot;logged in&quot; and &quot;logged out&quot; view. This tutorial does not
+attempt to achieve secure data connections, session management, true authentication, 
+etc. It is for educational purposes only.</p>
+<h2 id="tutorials-_-login_app_-_step_1___generate_your_application">Step 1 - Generate your Application<a class="quick-link" href="#tutorials-_-login_app_-_step_1___generate_your_application"></a></h2>
+<p>The first thing we want to do is generate an application using
+<a href="http://www.sencha.com/products/sencha-cmd/" class="external-link" target="_blank">Sencha Cmd</a>. You can do so by issuing the
+following command from your command line interface, or CLI:</p>
+<pre><code class="language-javascript">sencha -sdk /path/to/ExtSDK generate app TutorialApp ./TutorialApp
+</code></pre><p><strong>Note:</strong> If you do not have Sencha Cmd, or are unfamiliar with using it, please read 
+the <a href="../../../cmd/5.x/intro_to_cmd.html" data-full-load="true">Cmd Introduction 
+guide</a> before proceeding.</p>
+<p>The resulting TutorialApp is a fully functional Cmd generated application that we will 
+use as a foundation for our login/logout application. You can view this application by
+navigating to the application&#39;s location on your webserver. For instance:</p>
+<pre><code class="language-javascript">http://localhost/TutorialApp
+</code></pre><p>Or by starting &quot;sencha app watch&quot; from within the newly generated TutorialApp folder.
+This will spin up a Jetty server, which removes the need for a traditional web server. 
+If you use &quot;sencha app watch&quot;, you can find the application here:</p>
+<pre><code class="language-javascript">http://localhost:1841/
+</code></pre><h2 id="tutorials-_-login_app_-_step_2___create_the_login_view_components">Step 2  - Create the Login View Components<a class="quick-link" href="#tutorials-_-login_app_-_step_2___create_the_login_view_components"></a></h2>
+<p>Next, we&#39;re going to navigate to our newly generated TutorialApp. Drill down into your
+generated application&#39;s &quot;app/view/&quot; folder. You should see the default generated &quot;main&quot;
+folder. This folder contains the <strong>Main.js</strong>, <strong>MainController.js</strong>, and 
+<strong>MainModel.js</strong> files.</p>
+<p>Let&#39;s go ahead and prepare our project for the login functionality by creating a new
+app/view folder called &quot;login&quot;. After creating the &quot;app/view/login/&quot; folder, add the 
+following files to said folder:</p>
+<pre><code class="language-javascript">- Login.js
+- LoginController.js
+</code></pre><p>The resulting file structure should look like this:</p>
+<p><img src="images/filestructure.jpeg"/></p>
+<h2 id="tutorials-_-login_app_-_step_3___disable_mainview">Step 3 - Disable mainView<a class="quick-link" href="#tutorials-_-login_app_-_step_3___disable_mainview"></a></h2>
+<p>The <a href="../../../../extjs/5.1.4/api/Ext.app.Application.html#cfg-mainView">mainView</a> config of
+<a href="../../../../extjs/5.1.4/api/Ext.html#application">application</a> is a very handy way to automatically load and instantiate
+&quot;TutorialApp.view.main.Main&quot; by utilizing the 
+<a href="../../../../extjs/5.1.4/api/Ext.plugin.Viewport.html">Viewport Plugin</a>. However, we have some evaluations to 
+perform in Ext.application&#39;s <a href="../../../../extjs/5.1.4/api/Ext.app.Application.html#method-launch">launch method</a>
+prior to picking our initial view. For instance, we do not want to create the Main view 
+if the user is not yet logged in.</p>
+<p>For the purposes of this exercise, let&#39;s remove the <code>mainView</code> config from the
+<a href="../../../../extjs/5.1.4/api/Ext.html#application">application</a> config in &quot;{appRoot}/app.js&quot;.</p>
+<p><strong>Note:</strong> Since we have removed <code>mainView</code>, refreshing your application will result in a 
+blank page as no classes are being instantiated.</p>
+<h2 id="tutorials-_-login_app_-_step_4___create_the_login_window">Step 4 - Create the Login Window<a class="quick-link" href="#tutorials-_-login_app_-_step_4___create_the_login_window"></a></h2>
+<p>Next, let&#39;s create a login view. To do this, we&#39;ll open our blank 
+&quot;{appRoot}/app/view/login/Login.js&quot; file and begin defining the Login Window.</p>
+<p>First, let&#39;s define our Class and extend the base <a href="../../../../extjs/5.1.4/api/Ext.window.Window.html">Window</a> 
+class.
+That looks like so:</p>
+<pre><code class="language-javascript">Ext.define(&#39;TutorialApp.view.login.Login&#39;, {
+    extend: &#39;Ext.window.Window&#39;,
+    xtype: &#39;login&#39;
+});
+</code></pre><p>Now, we&#39;ve defined our Login class as an extension of <a href="../../../../extjs/5.1.4/api/Ext.window.Window.html">Ext.window.Window</a>, which 
+can be instantiated using the xtype <code>login</code>. Let&#39;s start giving our class some unique 
+properties. We&#39;ll start by adding some additional configurations to the window itself.</p>
+<pre><code class="language-javascript">Ext.define(&#39;TutorialApp.view.login.Login&#39;, {
+    extend: &#39;Ext.window.Window&#39;,
+    xtype: &#39;login&#39;
+
+    requires: [
+        &#39;TutorialApp.view.login.LoginController&#39;,
+        &#39;Ext.form.Panel&#39;
+    ],
+
+    controller: &#39;login&#39;,
+    bodyPadding: 10,
+    title: &#39;Login Window&#39;,
+    closable: false,
+    autoShow: true
+});
+</code></pre><p>Let&#39;s walk through what these configurations mean.</p>
+<h3 id="tutorials-_-login_app_-_requires">requires<a class="quick-link" href="#tutorials-_-login_app_-_requires"></a></h3>
+<p>The <a href="../../../../extjs/5.1.4/api/Ext.Class.html#cfg-requires">requires</a> block makes sure that we&#39;re including any
+classes that may be relied upon before instantiating our Login window. We need to 
+include <code>LoginController.js</code> because we&#39;re about to designate it as our controller on 
+the next line. We also need to include <a href="../../../../extjs/5.1.4/api/Ext.form.Panel.html">Ext.form.Panel</a> since our view contains a 
+Form panel.</p>
+<h3 id="tutorials-_-login_app_-_controller">controller<a class="quick-link" href="#tutorials-_-login_app_-_controller"></a></h3>
+<p>The <a href="../../../../extjs/5.1.4/api/Ext.window.Window.html#cfg-controller">controller</a> config designates a
+<a href="../../../../extjs/5.1.4/api/Ext.app.ViewController.html">ViewController</a>, which will then be attached to instances 
+of the Login window. This controller provides a place to include all logic relating to
+the Login window or its child components. Here, we designate controller to be <code>login</code>,
+which will be our controller&#39;s alias.</p>
+<h3 id="tutorials-_-login_app_-_bodypadding">bodyPadding<a class="quick-link" href="#tutorials-_-login_app_-_bodypadding"></a></h3>
+<p>The <a href="../../../../extjs/5.1.4/api/Ext.window.Window.html#cfg-bodyPadding">bodyPadding</a> config is purely aesthetic. 
+This config applies &quot;10px&quot; of padding around the exterior of the window&#39;s body content.</p>
+<h3 id="tutorials-_-login_app_-_title">title<a class="quick-link" href="#tutorials-_-login_app_-_title"></a></h3>
+<p>The string passed to the <a href="../../../../extjs/5.1.4/api/Ext.window.Window.html#cfg-title">title</a> config results in the 
+creation of a <a href="../../../../extjs/5.1.4/api/Ext.panel.Header.html">header</a> and adds the string value as its title.</p>
+<h3 id="tutorials-_-login_app_-_closable">closable<a class="quick-link" href="#tutorials-_-login_app_-_closable"></a></h3>
+<p><a href="../../../../extjs/5.1.4/api/Ext.window.Window.html#cfg-closable">closable</a> determines whether or not the window can
+be closed. Windows have a closable button by default. However, since this is a login 
+window, we don&#39;t want the user closing it. If they DID close it, they would be left with 
+a blank page.</p>
+<h3 id="tutorials-_-login_app_-_autoshow">autoShow<a class="quick-link" href="#tutorials-_-login_app_-_autoshow"></a></h3>
+<p>Windows are hidden by default. Setting <a href="../../../../extjs/5.1.4/api/Ext.window.Window.html#cfg-autoShow">autoShow</a>
+to <code>true</code> will show the Window once it&#39;s created.  The alternative would be call the 
+Window&#39;s <a href="../../../../extjs/5.1.4/api/Ext.window.Window.html#method-show">show</a> method programmatically when we want 
+the Window to be visible.</p>
+<p>Now that we&#39;ve discussed the Window&#39;s configuration, let&#39;s give it some child 
+components.  Since this will be a login form, we&#39;ll create a Form panel as a child of 
+the Window. Then we&#39;ll add two <a href="../../../../extjs/5.1.4/api/Ext.form.field.Text.html">Text fields</a>, a 
+<a href="../../../../extjs/5.1.4/api/Ext.form.field.Display.html">Display field</a>, and a submit 
+<a href="../../../../extjs/5.1.4/api/Ext.button.Button.html">Button</a>.</p>
+<p>The final code for this file should appear as follows:</p>
+<pre><code class="language-javascript">Ext.define(&#39;TutorialApp.view.login.Login&#39;, {
+    extend: &#39;Ext.window.Window&#39;,
+    xtype: &#39;login&#39;,
+
+    requires: [
+        &#39;TutorialApp.view.login.LoginController&#39;,
+        &#39;Ext.form.Panel&#39;
+    ],
+
+    controller: &#39;login&#39;,
+    bodyPadding: 10,
+    title: &#39;Login Window&#39;,
+    closable: false,
+    autoShow: true,
+
+    items: {
+        xtype: &#39;form&#39;,
+        reference: &#39;form&#39;,
+        items: [{
+            xtype: &#39;textfield&#39;,
+            name: &#39;username&#39;,
+            fieldLabel: &#39;Username&#39;,
+            allowBlank: false
+        }, {
+            xtype: &#39;textfield&#39;,
+            name: &#39;password&#39;,
+            inputType: &#39;password&#39;,
+            fieldLabel: &#39;Password&#39;,
+            allowBlank: false
+        }, {
+            xtype: &#39;displayfield&#39;,
+            hideEmptyLabel: false,
+            value: &#39;Enter any non-blank password&#39;
+        }],
+        buttons: [{
+            text: &#39;Login&#39;,
+            formBind: true,
+            listeners: {
+                click: &#39;onLoginClick&#39;
+            }
+        }]
+    }
+});
+</code></pre><p>Let&#39;s discuss these additions.</p>
+<h3 id="tutorials-_-login_app_-_window_items">Window items<a class="quick-link" href="#tutorials-_-login_app_-_window_items"></a></h3>
+<p>The first configuration we&#39;ve added to the Login window is the 
+<a href="../../../../extjs/5.1.4/api/Ext.window.Window.html#cfg-items">items</a> config. In 
+<a href="../../../../extjs/5.1.4/api/Ext.container.Container.html">containers</a>, like the Form panel and the Login window 
+itself, the <code>items</code> config may hold a <a href="../../../../extjs/5.1.4/api/Ext.Component.html">Component</a> or a Component
+configuration object. The <code>items</code> config may also be an array of Components or Component 
+config objects.  These Components will be displayed in the Container&#39;s body using the
+Container&#39;s <a href="../../../../extjs/5.1.4/api/Ext.container.Container.html#cfg-layout">layout</a>.</p>
+<h3 id="tutorials-_-login_app_-_xtype">xtype<a class="quick-link" href="#tutorials-_-login_app_-_xtype"></a></h3>
+<p>Every Component class has it&#39;s own <a href="../../../../extjs/5.1.4/api/Ext.Component.html#cfg-xtype">xtype</a>. You can think 
+of an <code>xtype</code> as a shortcut to easily create an instance of a Component. In this case, 
+we have configured the Login window with a child item with an <code>xtype</code> of &quot;form&quot; (&quot;form&quot; 
+being the <code>xtype</code> of the <a href="../../../../extjs/5.1.4/api/Ext.form.Panel.html">Ext.form.Panel</a> class). Form panels are special
+types of Panels that include convenient configuration options for working with 
+input fields.</p>
+<h3 id="tutorials-_-login_app_-_form_items">Form Items<a class="quick-link" href="#tutorials-_-login_app_-_form_items"></a></h3>
+<p>Next, you&#39;ll see the familiar face of another <code>items</code> array. Here we&#39;re nesting 
+additional items by using the items array a level deeper. We&#39;re placing more Components 
+inside of the parent component, which is the Form panel. In this case, our nested 
+Components are the form fields that make up the login form.</p>
+<p>We can walk quickly through this array of components as they&#39;re pretty self explanatory.
+The first item has an <code>xtype</code> of [[ext: Ext.form.field.Text textfield]], a
+<a href="../../../../extjs/5.1.4/api/Ext.form.field.Text.html#cfg-name">name</a> of &quot;username&quot;, a
+<a href="../../../../extjs/5.1.4/api/Ext.form.field.Text.html#cfg-fieldLabel">fieldLabel</a> of &quot;username&quot;, and
+<a href="../../../../extjs/5.1.4/api/Ext.form.field.Text.html#cfg-allowBlank">allowBlank</a> of &quot;false&quot;. This boils down to a
+textfield with a name value and a field label.  The field cannot be left blank and pass 
+validation (<em>see &quot;formBind&quot; below</em>).</p>
+<p>The next field is almost identical aside from the type being set to &quot;password&quot;. This 
+turns your input into <code>*</code> for security&#39;s sake.</p>
+<p>The last member of this <code>items</code> array is a <a href="../../../../extjs/5.1.4/api/Ext.form.field.Display.html">displayfield</a>. 
+A Display field is a text field that is not submitted with your form. It&#39;s useful for 
+conveying data without the user interacting with said data. In this case, we&#39;re 
+notifying the user that any non-blank password will allow the form to be submitted.</p>
+<h3 id="tutorials-_-login_app_-_buttons">buttons<a class="quick-link" href="#tutorials-_-login_app_-_buttons"></a></h3>
+<p>The last bit that we&#39;ve added here is a <a href="../../../../extjs/5.1.4/api/Ext.form.Panel.html#cfg-buttons">buttons</a> 
+array.  This is a convenience config used for adding Buttons to a footer 
+<a href="../../../../extjs/5.1.4/api/Ext.toolbar.Toolbar.html">Toolbar</a> in your panel. This particular button will contain 
+the text &#39;Login&#39; and will be what users will click to submit the login form.</p>
+<h3 id="tutorials-_-login_app_-_formbind">formBind<a class="quick-link" href="#tutorials-_-login_app_-_formbind"></a></h3>
+<p>Our Button contains a config called <a href="../../../../extjs/5.1.4/api/Ext.Component.html#cfg-formBind">formBind</a>, which 
+is set to &quot;true&quot;. When a Component has <code>formBind</code> set to &quot;true&quot;, it will be disabled/enabled
+depending on the validity state of the Form. This means that the Button will not be
+clickable until the two input fields contain values.</p>
+<h3 id="tutorials-_-login_app_-_listeners">listeners<a class="quick-link" href="#tutorials-_-login_app_-_listeners"></a></h3>
+<p>The <a href="../../../../extjs/5.1.4/api/Ext.button.Button.html#cfg-listeners">listeners</a> object is configured with events 
+and the methods / functions that will respond to the firing of those events. In this 
+case, we&#39;re waiting for someone to click the Button. Upon a click, we &quot;forward&quot; the 
+event to a method called <code>onLoginClick</code>. The <code>onLoginClick</code> method will later be defined 
+in our Login controller.</p>
+<p><strong>Note:</strong> We have not yet instantiated the Login view in any way, so refreshing the 
+application will not show any changes.</p>
+<h2 id="tutorials-_-login_app_-_step_5___add_login_logic">Step 5 - Add Login Logic<a class="quick-link" href="#tutorials-_-login_app_-_step_5___add_login_logic"></a></h2>
+<p>Next, let&#39;s create the Login controller, which is a class that contains any logic used
+to handle user interactions with the Login view. To do this, we&#39;ll open our blank
+<code>{appRoot}/app/view/login/LoginController.js</code> file and begin defining our Login window&#39;s 
+logic.</p>
+<p>The entirety of <code>LoginController.js</code> is as follows:</p>
+<pre><code class="language-javascript">Ext.define(&#39;TutorialApp.view.login.LoginController&#39;, {
+    extend: &#39;Ext.app.ViewController&#39;,
+    alias: &#39;controller.login&#39;,
+
+    onLoginClick: function() {
+
+        // This would be the ideal location to verify the user&#39;s credentials via
+        // a server-side lookup. We&#39;ll just move forward for the sake of this example.
+
+        // Set the localStorage value to true
+        localStorage.setItem(&quot;TutorialLoggedIn&quot;, true);
+
+        // Remove Login Window
+        this.getView().destroy();
+
+        // Add the main view to the viewport
+        Ext.widget(&#39;app-main&#39;);
+
+    }
+});
+</code></pre><p>The above code may be a little out of context, but it will make more sense when we 
+discuss the <code>launch</code> method in the next section. This class contains the <code>onLoginClick</code> 
+method that is called by clicking on the login button.</p>
+<p>These bits of code have annotations to describe each statement&#39;s purpose, but let&#39;s look
+at them piece by piece for further explanation.</p>
+<h3 id="tutorials-_-login_app_-_onloginclick_">onLoginClick()<a class="quick-link" href="#tutorials-_-login_app_-_onloginclick_"></a></h3>
+<p>First of all, we&#39;re creating a method called <code>onLoginClick</code>. This is the method to
+which we directed our login button&#39;s click event in the Login view.</p>
+<p>As mentioned in the comments, this is where you&#39;d call your server to verify that the
+user&#39;s credentials are valid. This would generally come in the form of an AJAX or REST
+request. However, for this tutorial, we will accept any non-blank input. Upon success,
+you&#39;d follow through with the rest of the code. On failure, you would allow the user
+to re-enter their credentials. Of course, there&#39;s no failure possibility in this case,
+so let&#39;s move forward!</p>
+<h3 id="tutorials-_-login_app_-_localstorage">localStorage<a class="quick-link" href="#tutorials-_-login_app_-_localstorage"></a></h3>
+<p>We are utilizing 
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage" class="external-link" target="_blank">localStorage</a> in 
+this tutorial to maintain user login state. After a successful credentials check, we can 
+determine that the user has the appropriate access to the Main application view.  We can 
+then set a key/value pair in localStorage to let the application know that the user is 
+valid.  Next, we will check that the <code>TutorialLoggedIn</code> localStorage key is set to 
+&quot;true&quot; in our initial <code>launch</code> method (<em>covered in more detail in the &quot;launch&quot; section 
+below</em>).</p>
+<h3 id="tutorials-_-login_app_-_getview_">getView()<a class="quick-link" href="#tutorials-_-login_app_-_getview_"></a></h3>
+<p>ViewControllers introduce a very helpful method called
+<a href="../../../../extjs/5.1.4/api/Ext.app.Controller.html#method-getView">getView()</a>. The <code>getView()</code> method returns the
+current view associated with the ViewController from which it is called.  In this case,
+the view is the Login window. Since we&#39;re treating the login click as a successful 
+login, we no longer want to present the Login window.  So, we are using 
+<code>this.getView().destroy()</code> to get a reference to the Login window and then 
+<a href="../../../../extjs/5.1.4/api/Ext.window.Window.html#method-destroy">destroy</a> it.</p>
+<h3 id="tutorials-_-login_app_-_ext_widget_app_main_">Ext.widget(&#39;app-main&#39;)<a class="quick-link" href="#tutorials-_-login_app_-_ext_widget_app_main_"></a></h3>
+<p>Now that we&#39;ve destroyed the Login window, we want to change the view to display the 
+Main view. In this case, we use <code>Ext.widget(&#39;app-main&#39;)</code> to instantiate the 
+&quot;{appRoot}/app/view/main/Main.js&quot; view.</p>
+<p><strong>Note:</strong> <code>&#39;app-main&#39;</code> refers to the xtype that is defined on our Sencha Cmd generated 
+&quot;TutorialApp.view.main.Main&quot; class located in &quot;{appRoot}/app/view/main.Main.js&quot;.</p>
+<h2 id="tutorials-_-login_app_-_step_6___add_launch_logic_to_application_js">Step 6 - Add Launch Logic to Application.js<a class="quick-link" href="#tutorials-_-login_app_-_step_6___add_launch_logic_to_application_js"></a></h2>
+<p>Next, let&#39;s discuss &quot;{appRoot}/app/Application.js&quot; and the <code>launch</code> function.</p>
+<p>&quot;Application.js&quot; is the heart of your application. You can find &quot;Application.js&quot; at the 
+same level as your &quot;view&quot;, &quot;store&quot;, and &quot;model&quot; folders. It provides a handy method 
+called <code>launch</code>, which fires when your application has loaded all of its required 
+classes. Here is the full code for this tutorial&#39;s &quot;Application.js&quot; file.</p>
+<pre><code class="language-javascript">/**
+ * The main application class. An instance of this class is created by `app.js` when it calls
+ * Ext.application(). This is the ideal place to handle application launch and initialization
+ * details.
+ */
+Ext.define(&#39;TutorialApp.Application&#39;, {
+    extend: &#39;Ext.app.Application&#39;,
+
+    name: &#39;TutorialApp&#39;,
+
+    stores: [
+        // TODO: add global / shared stores here
+    ],
+    views: [
+        &#39;TutorialApp.view.login.Login&#39;,
+        &#39;TutorialApp.view.main.Main&#39;
+    ],
+    launch: function () {
+
+        // It&#39;s important to note that this type of application could use
+        // any type of storage, i.e., Cookies, LocalStorage, etc.
+        var loggedIn;
+
+        // Check to see the current value of the localStorage key
+        loggedIn = localStorage.getItem(&quot;TutorialLoggedIn&quot;);
+
+        // This ternary operator determines the value of the TutorialLoggedIn key.
+        // If TutorialLoggedIn isn&#39;t true, we display the login window,
+        // otherwise, we display the main view
+        Ext.widget(loggedIn ? &#39;app-main&#39; : &#39;login&#39;);
+
+    }
+});
+</code></pre><p>Let&#39;s examine what these pieces are doing.</p>
+<h3 id="tutorials-_-login_app_-_requires">requires<a class="quick-link" href="#tutorials-_-login_app_-_requires"></a></h3>
+<p>We&#39;ve already described what requires does, but let&#39;s touch on this particular array. 
+For the purposes of &quot;Application.js&quot;, we need to prepare the application to load either 
+the Login or Main view, depending on the results of the logged in evaluation to come. To
+that end, we must require both &quot;TutorialApp.view.main.Main&quot; and 
+&quot;TutorialApp.view.login.Login&quot; so that either result is available.</p>
+<h3 id="tutorials-_-login_app_-_launch">launch<a class="quick-link" href="#tutorials-_-login_app_-_launch"></a></h3>
+<p>As previously mentioned, the <code>launch</code> method is a function that executes when your 
+application has loaded everything it needs to run.  This is an ideal place to perform 
+logic regarding user state for a login/logout application.</p>
+<h3 id="tutorials-_-login_app_-_localstorage_getitem_">localStorage.getItem()<a class="quick-link" href="#tutorials-_-login_app_-_localstorage_getitem_"></a></h3>
+<p>Tthe next step is to check for a previously set localStorage key called 
+<code>TutorialLoggedIn</code>. We are simply setting the <strong>loggedIn</strong> variable to the result of 
+that key&#39;s value. If it doesn&#39;t exist, <strong>loggedIn</strong> will be null.  If it does exist, 
+we&#39;ve previously set <code>TutorialLoggedIn</code> to be <strong>true</strong> in our LoginController&#39;s logic.</p>
+<h3 id="tutorials-_-login_app_-_widget_ternary">Widget Ternary<a class="quick-link" href="#tutorials-_-login_app_-_widget_ternary"></a></h3>
+<p>Most programming languages contain a form of conditional shorthand called ternary 
+operators.  Ternary operators allow you to minimize the amount of code required for a 
+traditional if/else statement. In this case, we&#39;re using a ternary to say, &quot;if 
+<strong>loggedIn</strong> exists (<em>isn&#39;t null</em>), let&#39;s load the Main view, otherwise, load the Login 
+view&quot;. We are then using the <code>Ext.widget</code> method to instantiate the result of the 
+ternary operator.</p>
+<h2 id="tutorials-_-login_app_-_step_7___add_viewport_plugin">Step 7 - Add Viewport Plugin<a class="quick-link" href="#tutorials-_-login_app_-_step_7___add_viewport_plugin"></a></h2>
+<p>As you may remember, we removed the <code>mainView</code> config from &quot;{appRoot}/app.js&quot; early on 
+in this tutorial. Since we don&#39;t have a <a href="../../../../extjs/5.1.4/api/Ext.container.Viewport.html">Viewport</a> defined, 
+your Main view will not know where to render. We are going to change that by mixing in 
+the <a href="../../../../extjs/5.1.4/api/Ext.plugin.Viewport.html">viewport plugin</a> so that 
+&quot;{appRoot}/app/view/main/Main.js&quot; will operate as our application&#39;s viewport  This way, 
+the Main view takes up all available width and height within the browser. It&#39;s as simple 
+as adding the following line to &quot;{appRoot}/app/view/main/Main.js&quot;:</p>
+<pre><code class="language-javascript">plugins: &#39;viewport&#39;,
+</code></pre><p>Our resulting <code>{appRoot}/app/view/main/Main.js</code> file will look like this:</p>
+<pre><code class="language-javascript">/**
+ * This class is the main view for the application. It is specified in `app.js` as the
+ * &quot;mainView&quot; property. That setting automatically applies the &quot;viewport&quot;
+ * plugin to promote that instance of this class to the body element.
+ *
+ * TODO - Replace this content of this view to suite the needs of your application.
+ */
+Ext.define(&#39;TutorialApp.view.main.Main&#39;, {
+    extend: &#39;Ext.container.Container&#39;,
+
+    requires: [
+        &#39;TutorialApp.view.main.MainController&#39;,
+        &#39;TutorialApp.view.main.MainModel&#39;
+    ],
+
+    xtype: &#39;app-main&#39;,
+
+    controller: &#39;main&#39;,
+    plugins: &#39;viewport&#39;,
+    viewModel: {
+        type: &#39;main&#39;
+    },
+
+    layout: {
+        type: &#39;border&#39;
+    },
+
+    items: [{
+        xtype: &#39;panel&#39;,
+        bind: {
+            title: &#39;{name}&#39;
+        },
+        region: &#39;west&#39;,
+        html: &#39;&lt;ul&gt;&lt;li&gt;This area is commonly used for navigation, for example, using a &quot;tree&quot; component.&lt;/li&gt;&lt;/ul&gt;&#39;,
+        width: 250,
+        split: true,
+        tbar: [{
+            text: &#39;Button&#39;,
+            handler: &#39;onClickButton&#39;
+        }]
+    },{
+        region: &#39;center&#39;,
+        xtype: &#39;tabpanel&#39;,
+        items:[{
+            title: &#39;Tab 1&#39;,
+            html: &#39;&lt;h2&gt;Content appropriate for the current navigation.&lt;/h2&gt;&#39;
+        }]
+    }]
+});
+</code></pre><p>You do not need to modify any of the other pieces of &quot;{appRoot}/app/view/main/Main.js&quot; 
+since we will be using the default generated <code>onClickButton</code> method for our click 
+handler.</p>
+<h2 id="tutorials-_-login_app_-_step_8___add_main_logic">Step 8 - Add Main Logic<a class="quick-link" href="#tutorials-_-login_app_-_step_8___add_main_logic"></a></h2>
+<p>We&#39;re almost finished!  All that&#39;s left now is to give the user some way to logout of 
+the application, which will destroy the <code>TutorialLoggedIn</code> key from localStorage. This 
+logic should take place in the &quot;{appRoot}/app/view/main/MainController.js&quot; file. You can 
+remove the other generated code if you like. This is the final definition of 
+&quot;MainController.js&quot; for this tutorial:</p>
+<pre><code class="language-javascript">Ext.define(&#39;TutorialApp.view.main.MainController&#39;, {
+    extend: &#39;Ext.app.ViewController&#39;,
+    alias: &#39;controller.main&#39;,
+
+    onClickButton: function () {
+
+        // Remove the localStorage key/value
+        localStorage.removeItem(&#39;TutorialLoggedIn&#39;);
+
+        // Remove Main View
+        this.getView().destroy();
+
+        // Add the Login Window
+        Ext.widget(&#39;login&#39;);
+
+    }
+});
+</code></pre><p>We shouldn&#39;t need to go into much depth here since it is basically the inverse of our
+<code>{appRoot}/app/view/login/LoginController.js</code> code.</p>
+<p>To summarize this functionality, <code>onClickButton</code> is the function that is called by the
+button handler in our generated &quot;{appMain}/app/view/main/Main.js&quot; view. Once the <code>click</code> 
+event is detected, the following steps are taken:</p>
+<ul>
+<li><p>Remove the localStorage key that maintains the user&#39;s logged in state.</p>
+</li>
+<li><p>Destroy the current view, which is <strong>TutorialApp.view.main.Main</strong>.</p>
+</li>
+<li><p>Recreate the login view.</p>
+</li>
+</ul>
+<p>You should now be able to load your application in your browser and see a fully
+functioning login/logout application.</p>
+<h2 id="tutorials-_-login_app_-_wrap_up">Wrap Up<a class="quick-link" href="#tutorials-_-login_app_-_wrap_up"></a></h2>
+<p>We hope that you have enjoyed this tutorial. This is simply the foundation for an
+application, but hopefully we have introduced a few concepts that make your future
+projects simpler. Please feel free to suggest ideas for future tutorials via our
+<a href="http://www.sencha.com/forum/" class="external-link" target="_blank">forums</a>. Also, feel free to follow up with questions via
+the <a href="https://support.sencha.com/" class="external-link" target="_blank">support portal</a> or <a href="http://www.sencha.com/forum/" class="external-link" target="_blank">forums</a>.</p>
+
+        </div>
+    </div>
+    <div id="footer">
+        <p class="di">
+            <a href="https://www.facebook.com/senchainc/" target="_blank"><img class="social" src="../../../../assets/images/fb.png"/></a>
+            <a href="https://www.linkedin.com/company/sencha-inc" target="_blank"><img class="social" src="../../../../assets/images/in.png"/></a>
+            <a href="https://twitter.com/Sencha" target="_blank"><img class="social" src="../../../../assets/images/twt.png"/></a>
+            Ext JS   | <a href='https://www.sencha.com/legal/terms-of-use/' target='_blank'>Terms of Use</a>
+        </p>
+    </div>
+</div>        </div>
+    </div>
+
+    <h2 class="product-header">
+        <a href="../../index.html">Ext JS 5.1.4 </a>
+        <span data-tip="Product / Version Menu" class="header-product-title product-menu-btn-wrap tooltip tooltip-tl-bl">
+            <span class="fa fa-angle-down product-menu-btn"></span>
+            <div class="callout callout-b"></div>
+        </span>
+        <div id="peekaboo-input" class="peekaboo-input dn">
+            <input type="text" id="mobile-input" />
+        </div>
+    </h2>
+
+    <div id="product-tree-ct" class="hide">
+        <div id="product-version-tree-ct" class="hide"></div>
+    </div>
+
+    <div id="historyConfigPanel">
+        <div class="history-type-selector">
+            <input id="historyTypeCurrent" type="radio" name="historyType" value="current" checked="true" />
+            <label for="historyTypeCurrent">Current Product / Version</label><br>
+            <input id="historyTypeAll" type="radio" name="historyType" value="all" />
+            <label for="historyTypeAll">All</label><br>
+            <div id="history-label-toggle" class="relative ml2 o-50">
+                <input id="history-all-labels" type="checkbox" checked="true" />
+                <label for="history-all-labels">Show product details in the history bar</label>
+                <div class="mask"></div>
+            </div>
+            <span id="history-clear" class="icon-btn history-clear tooltip tooltip-tr-br" data-tip="Clear History">
+                <i class="fa fa-trash"></i>
+                <div class="callout callout-b"></div>
+            </span>
+        </div>
+        <div id="history-full-list" class="overflow-y-auto"></div>
+    </div>
+
+    <div id="search-history-panel"></div>
+
+    <div id="modal-placeholder" class="modal">
+        <span id="modal-close" >&times;</span>
+        <img id="modal-content">
+        <div id="modal-caption"></div>
+    </div>
+
+
+</body>
+    <script type="text/javascript" src="../../../../assets/js/extjs-5.1.4-apiSearch.js"></script>
+    <script type="text/javascript" src="../../../../assets/js/extjs-5.1.4-guideSearch.js"></script>
+<!--[if lt IE 9 ]>
+<script type="text/javascript" src="../../../../assets/js/media-query-poly.js"></script>
+<style>
+    span.da-inline-fiddle-nav-fiddle.x-fa.fa-play-circle {
+        display: none;
+    }
+</style>
+<![endif]-->
+<script>
+    if (navigator.userAgent.indexOf("Safari") > -1) {
+        window.onpageshow = function(event) {
+            if (event.persisted) {
+                window.location.reload()
+            }
+        };
+    }
+</script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-1396058-28', 'auto');
+    ga('send', 'pageview');
+</script>
+</html>

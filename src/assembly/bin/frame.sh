@@ -1,6 +1,14 @@
 #!/bin/bash
 
-SpringBoot=$2
+shellPath=$(cd "$(dirname "$0")"; pwd)
+
+PID_DIR="$shellPath"/../run
+PID_FILE="$shellPath"/frame.pid
+LOG_BACK="$shellPath"/../conf/logback.xml
+APPLICATION_PROPERTIES="$shellPath"/../conf/application.properties
+LIB_JARS="$shellPath"/../lib/*.jar
+JVM_MEM="-Xms1G -Xmx1G"
+SpringBoot=$shellPath/../lib/frame.jar
 
 if [ "$1" = "" ];
 then
@@ -8,11 +16,6 @@ then
     exit 1
 fi
 
-if [ "$SpringBoot" = "" ];
-then
-    echo -e "\033[0;31m 未输入应用名 \033[0m"
-    exit 1
-fi
 
 function start()
 {
@@ -20,8 +23,19 @@ function start()
     if [ $count != 0 ];then
         echo "$SpringBoot is running..."
     else
-        echo "Start $SpringBoot success..."
-        nohup java -jar $SpringBoot > /dev/null 2>&1 &
+        echo "Start $SpringBoot Success..."
+        nohup java -jar $JVM_MEM $SpringBoot -Dspring.profiles.active=prod -Dspring.config.location=file:$APPLICATION_PROPERTIES  -Dlogging.config=$LOG_BACK  > /dev/null 2>&1 &
+    fi
+}
+
+function debug()
+{
+    count=`ps -ef |grep java|grep $SpringBoot|grep -v grep|wc -l`
+    if [ $count != 0 ];then
+        echo "$SpringBoot is running..."
+    else
+        echo "Start $SpringBoot Success..."
+        nohup java -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=9500,suspend=n -jar $JVM_MEM $SpringBoot -Dspring.profiles.active=dev -Dspring.config.location=file:$APPLICATION_PROPERTIES  -Dlogging.config=$LOG_BACK  > /dev/null 2>&1 &
     fi
 }
 
@@ -60,6 +74,8 @@ function status()
 case $1 in
     start)
     start;;
+    debug)
+    debug;;
     stop)
     stop;;
     restart)

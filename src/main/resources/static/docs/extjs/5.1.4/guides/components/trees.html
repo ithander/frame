@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trees | Ext JS 5.1.4 </title>
+    <!--  Generated on March, 24 2018 at 1:45 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta property="og:image" content="../../../../assets/images/sencha-200.png" />
+    <meta property="og:title" content="Trees | Ext JS 5.1.4 " />
+    <meta property="og:description" content="Ext JS Api - API documentation from Sencha" />
+    <meta property="og:site_name" content="Sencha Documentation" />
+    <meta property="og:url" content="" />
+    <meta name="description" content="Ext JS Api - API documentation from Sencha">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/prism.css">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/create-app-html-app.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../../../../assets/css/../../../node_modules/tachyons/css/tachyons.css"> -->
+
+
+</head>
+<body class="new-docs  is-guide  has-guides   has-api tree-shown ">
+
+    <!-- SVG Sprite -->
+    <div style="height: 0; width: 0; position: absolute; visibility: hidden;" aria-hidden="true">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" focusable="false">
+            <symbol id="ripply-scott" viewBox="0 0 100 100">
+                <circle id="ripple-shape" cx="1" cy="1" r="1" />
+            </symbol>
+        </svg>
+    </div>
+    <!-- /end sprite -->
+
+    <script type="text/javascript">
+        function getOS() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            if(/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                return 'ios';
+            } else if(userAgent.match(/Android/i)) {
+                return 'android';
+            }
+        }
+
+        var isIE8 = false;
+
+        document.body.className += ' ' + getOS();
+
+        window.DocsApp = window.DocsApp || {};
+        DocsApp.meta   = {"majorVer":"5","prodObj":{"3":{"link":"http://docs.sencha.com/{prod}/{ver}/#!/api/{page}"},"4":{"link":"http://docs.sencha.com/{prod}/{ver}/#!/api/{page}"},"title":"Ext JS","currentVersion":"6.5.3","toolkit":{"6":{"toolkits":["modern","classic"],"defaultToolkit":"modern"}},"productMenu":["6.5.3","6.5.2","6.5.1","6.5.0","6.2.1","6.2.0","6.0.2","6.0.1","6.0.0","5.1.4","5.1.3","5.1.2","5.1.1","5.1.0","5.0.1","5.0.0","4.2.6","4.1.3","4.0.7","3.4.0"],"guideSearchPartners":["cmd"],"hasVersions":true,"hasApi":true,"theme":{"5.0.0":"crisp","5.0.1":"crisp","5.1.0":"crisp","5.1.1":"crisp","5.1.2":"crisp","5.1.3":"crisp","5.1.4":"crisp","6.0.0":{"classic":"triton","modern":"triton"},"6.0.1":{"classic":"triton","modern":"triton"},"6.0.2":{"classic":"triton","modern":"triton"},"6.2.0":{"classic":"triton","modern":"triton"},"6.2.1":{"classic":"triton","modern":"triton"},"6.2.2":{"classic":"triton","modern":"triton"},"6.5.0":{"classic":"triton","modern":"material"},"6.5.1":{"classic":"triton","modern":"material"},"6.5.2":{"classic":"triton","modern":"material"},"6.5.3":{"classic":"triton","modern":"material"},"6.6.0":{"classic":"triton","modern":"material"}},"repo":"SDK","remoteUrl":"git@github.com:extjs/{repo}.git","addlRepos":["package-loader"],"addlRemoteUrls":"git@github.com:sencha/{repo}.git","remotes":{"7.0.0":{"branch":"ext-7.0.x"},"6.5.3":{"branch":"ext-6.5.x"},"6.5.2":{"branch":"ext-6.5.x"},"6.5.1":{"branch":"ext-6.5.1-docs"},"6.5.0":{"branch":"ext-6.5.0-docs"},"6.2.2":{"branch":"ext-6.2.x"},"6.2.1":{"branch":"ext-6.2.1-docs"},"6.2.0":{"branch":"ext-6.2.0-docs"},"6.0.2":{"branch":"ext-6.0.x"},"6.0.1":{"branch":"ext-6.0.1-docs"},"6.0.0":{"branch":"ext-6.0.0-docs"},"5.1.4":{"branch":"ext-5.1.x"},"5.1.3":{"branch":"ext-5.1.3-docs"},"5.1.2":{"branch":"ext-5.1.2-docs"},"5.1.1":{"branch":"ext-5.1.1-docs"},"5.1.0":{"branch":"ext-5.1.0-docs"},"5.0.1":{"branch":"ext-5.0.1-docs"},"5.0.0":{"branch":"ext-5.0.0-docs"}}},"hasApi":true,"hasVersions":true,"hasToolkits":false,"toolkits":false,"toolkit":false,"hasGuides":true,"title":"Ext JS","version":"5.1.4","pageType":"guide","product":"extjs","apiProduct":"extjs","apiVersion":"5.1.4","exceptions":{"touch":["2.3.1","2.2.1","2.1.1","2.0.1"],"extjs":["3.4.0","4.0.7","4.1.3","4.2.6"]},"searchPartnerVersions":{"cmd":{"6.5.3":"6.5.3","6.5.2":"6.5.3","6.5.1":"6.5.3","6.5.0":"6.5.0","6.2.1":"6.5.0","6.2.0":"6.5.0","6.0.2":"6.5.0","6.0.1":"6.5.0","6.0.0":"6.5.0","5.1.4":"6.5.0","5.1.3":"6.5.0","5.1.2":"6.5.0","5.1.1":"6.5.0","5.1.0":"6.5.0","5.0.1":"6.5.0","5.0.0":"6.5.0","4.2.6":"6.5.0","4.1.3":"6.5.0","4.0.7":"6.5.0","3.4.0":"6.5.0"}},"navTreeName":"Guides","myId":"components/trees","rootPath":"../../","pageName":"Trees","docsRootPath":"../../../../"};
+    </script>
+    <!--[if IE 8]>
+    <script type='text/javascript'>
+        isIE8 = true;
+    </script>
+    <![endif]-->
+    <script type="text/javascript">
+        if (!isIE8) {
+            document.write('<script type=\"text/javascript\" src=\"../../../../assets/js/prism.js\"><\/script>');
+        }
+        if (DocsApp.meta.hasGuides) {
+            document.write('<script type=\"text/javascript\" src=\"../../../../assets/js/extjs-5.1.4-guidesTree.js\"><\/script>');
+        }
+        if (DocsApp.meta.hasApi) {
+            document.write('<script type=\"text/javascript\" src=\"../../../../assets/js/extjs-5.1.4-apiTree.js\"><\/script>');
+        }
+    </script>
+    <script type="text/javascript" src="../../../../assets/js/ace.js"></script>
+    <script type="text/javascript" src="../../../../assets/js/create-app-html-app.js"></script>
+    <script type="text/javascript" src="../../../../assets/js/productMenu.js"></script>
+
+    <div id="help-wrap">
+        <div class="help-header">
+            Docs Help
+            <div id="help-close" class="icon-btn">
+                <i class="fa fa-close"></i>
+            </div>
+        </div>
+        <div class="classText">
+            <div class="toc classMeta">
+                <h2>Contents</h2>
+                <a class="toc-page-h2" href="#terms-icons-and-labels">Terms, Icons, and Labels</a>
+                <a class="toc-page-h3" href="#access-levels">Access Levels</a>
+                <a class="toc-page-h3" href="#member-types">Member Types</a>
+                <a class="toc-page-h3" href="#member-syntax">Member Syntax</a>
+                <a class="toc-page-h3" href="#member-flags">Member Flags</a>
+                <a class="toc-page-h3" href="#class-icons">Class Icons</a>
+                <a class="toc-page-h3" href="#member-icons">Member Icons</a>
+                <a class="toc-page-h2" href="#navigation-and-features">Navigation and Features</a>
+                <a class="toc-page-h3" href="#class-member-quick-nav-menu">Class Member Quick-Nav Menu</a>
+                <a class="toc-page-h3" href="#getter-and-setter-methods">Getter and Setter Methods</a>
+                <a class="toc-page-h3" href="#history-bar">History Bar</a>
+                <a class="toc-page-h3" href="#search-and-filters">Search and Filters</a>
+                <a class="toc-page-h3" href="#api-doc-class-metadata">API Doc Class Metadata</a>
+                <a class="toc-page-h3" href="#expanding-and-collapsing-examples-and-class-members">Expanding and Collapsing Examples and Class Members</a>
+                <a class="toc-page-h3" href="#desktop-vs-mobile-view">Desktop -vs- Mobile View</a>
+                <a class="toc-page-h3" href="#viewing-the-class-source">Viewing the Class Source</a>
+            </div>
+            <h2 id="terms-icons-and-labels">Terms, Icons, and Labels</h2>
+            <p>Many classes have shortcut names used when creating (instantiating) a class with a
+                configuration object.  The shortcut name is referred to as an <code>alias</code> (or <code>xtype</code> if the
+                class extends Ext.Component).  The alias/xtype is listed next to the class name of
+                applicable classes for quick reference.</p>
+            <h3 id="access-levels">Access Levels</h3>
+            <p>Framework classes or their members may be specified as <code>private</code> or <code>protected</code>.  Else,
+                the class / member is <code>public</code>.  <code>Public</code>, <code>protected</code>, and <code>private</code> are access
+                descriptors used to convey how and when the class or class member should be used.</p>
+            <ul>
+                <li><p><strong>Public</strong> classes and class members are available for use by any other class or
+                    application code and may be relied upon as a stable and persistent within major product
+                    versions.  Public classes and members may safely be extended via a subclass.</p>
+                </li>
+                <li><p><strong>Protected</strong> class members are stable <code>public</code> members intended to be used by the
+                    owning class or its subclasses.  Protected members may safely be extended via a subclass.</p>
+                </li>
+                <li><p><strong>Private</strong> classes and class members are used internally by the framework and are not
+                    intended to be used by application developers.  Private classes and members may change or
+                    be omitted from the framework at any time without notice and should not be relied upon in
+                    application logic.</p>
+                </li>
+            </ul>
+            <h3 id="member-types">Member Types</h3>
+            <ul>
+                <li><strong>Config</strong> - The configuration options for a class.</li>
+                <li><strong>Property</strong> - Set once a class is instantiated. *See Read Only below.</li>
+                <li><strong>Method</strong> - Actions that can be performed by a class.  Methods should be read as
+                    instance methods and can only be called from a instance of a given class.  Static methods
+                    that can be called directly from the class itself will have a <code>static</code> label next to the
+                    method name.  *See Static below.</li>
+                <li><strong>Event</strong> - Events are specific to the framework event system allowing for classes to
+                    programmatically raise an event to be handled by one or more event handler methods.  DOM
+                    events, while handled by the framework event system, are not specifically described
+                    within the API documentation.  *For DOM events refer to the
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/Events">event reference</a> page from MDN.</li>
+                <li><strong>Theme Variable</strong> - Variables used by the visual theme engine employed by the
+                    framework.</li>
+                <li><strong>Theme Mixin</strong> - Functions used by the visual theme engine employed by the framework
+                    and may use values set in various Theme Variables.</li>
+            </ul>
+            <h3 id="member-syntax">Member Syntax</h3>
+            <p>Below is an example class member that we can disect to show the syntax of a class member
+                (the lookupComponent method as viewed from the Ext.button.Button class in this case).</p>
+            <div style="position: relative;" class="show-inherited show-protected members">
+                <div style="border: 1px solid #E4E4E4;" class="classmembers member-protected isNotStatic isInherited member-expanded" data-member-name="lookupComponent">
+                    <div class="collapse-toggle">
+                        <i class="fa fa-caret-right"></i>
+                        <i class="fa fa-caret-down"></i>
+                    </div>
+                    <div class="source-class"><a href="javascript:void(0);">Ext.container.Container</a><div class="viewSource"><a href="javascript:void(0);"></a><a target="_blank" href="javascript:void(0);">view source</a></div></div>
+                    <div class="member-header">
+                        <a href="javascript:void(0);" class="member-name-link"><span data-ref="method-lookupComponent" class="member-name"><strong>lookup</strong>Component</span></a>
+                        <span class="params-list"> ( item )</span> : <span class="memberType">Ext.Component</span>
+                        <div class="member-tags"><span class="protected">protected</span></div>
+                    </div>
+                    <p>Called when a raw config object is added to this container either during initialization of the <a href="javascript:void(0);">items</a> config,
+                        or when new items are <a href="javascript:void(0);">added), or {@link #insert inserted</a>.</p>
+                    <p>This method converts the passed object into an instanced child component.</p>
+                    <p>This may be overridden in subclasses when special processing needs to be applied to child creation.</p>
+                    <div class="detail-header">Parameters</div>
+                    <p><span class="params-list">item</span> :
+                        <span class="memberType">&nbsp;Object</span>
+                    </p>
+                    <div class="params-desc"><p>The config object being added.</p></div>
+                    <div class="detail-header">Returns</div>
+                    <span style="margin-left:12px;" class="memberType">Ext.Component</span>
+                    <div class="return-desc"><p>The component to be added.</p>
+                    </div>
+                </div>
+            </div>
+    
+            <p>Let's look at each part of the member row:</p>
+            <ul>
+                <li><strong>Expand/Collapse</strong> - On the left-hand size of the member row is a control used to
+                    expand and collapse each member row to show / hide member details.</li>
+                <li><strong>Member Name</strong> - The name of the class member (<code>lookupComponent</code> in this example)</li>
+                <li><strong>Method Param</strong> - Any required or optional params used by a method (or passed to an
+                    event handler method) will be listed next to the method name within parenthesis
+                    (<code>( item )</code> in this example)</li>
+                <li><strong>Return type</strong> - The class instance or javascript object returned by the method or
+                    property (<code>Ext.Component</code> in this case).  This may be omitted for methods that do not
+                    return anything other than <code>undefined</code> or may display as multiple possible values
+                    separated by a forward slash <code>/</code> signifying that what is returned may depend on the
+                    results of the method call (i.e. a method may return a Component if a get method calls is
+                    successful or <code>false</code> if unsuccessful which would be displayed as
+                    <code>Ext.Component/Boolean</code>).</li>
+                <li><strong>Flags</strong> - Any flags applicable to the member will be displayed next (<code>PROTECTED</code> in
+                    this example - see the Flags section below)</li>
+                <li><strong>Member Origin</strong> - On the right-hand side of the member row is the class where the
+                    member was initially described (<code>Ext.container.Container</code> in this example).  The source
+                    class will be displayed as a blue link if the member originates from the current class
+                    and gray if it is inherited from an ancestor or mixed-in class.</li>
+                <li><strong>Member Source</strong> - On the right-hand side below the member origin class is a link to
+                    view the member's source (<code>view source</code> in the example)</li>
+                <li><strong>Params List</strong> - Each param for a class method will be listed using the same name
+                    found above in parenthesis, the type of class or object expected, and a description of
+                    the param (<code>item : Object</code> in the example).</li>
+                <li><strong>Returns</strong> - If a class returns a value other than <code>undefined</code> a "Returns" section
+                    will note the type of class or object returned and a description (<code>Ext.Component</code> in the
+                    example)</li>
+                <li><strong>Since</strong> (<em>not shown in the example</em>) - Some members will show which version of the
+                    product the member was first introduced (i.e. <code>Available since 3.4.0</code> - <em>not pictured in
+                        the example</em>) just after the member description</li>
+                <li><strong>Default</strong> (<em>not shown in the example</em>) - Configs often show the default config value
+                    to be applied to a class instance if not overridden (i.e. <code>Defaults to: false</code>)</li>
+            </ul>
+            <h3 id="member-flags">Member Flags</h3>
+            <p>The API documentation uses a number of flags to further commnicate the class member's
+                function and intent.  The label may be represented by a text label, an abbreviation, or
+                an icon.</p>
+            <ul>
+                <li><strong>Required</strong> - Required config when instantiating a class</li>
+                <li><strong>Bindable</strong> - The config has a setter which allows this config to be set via ViewModel
+                    binding</li>
+                <li><strong>Read Only</strong> - The property may be read, but cannot be used to configure /
+                    re-configure a class instance at runtime</li>
+                <li><strong>Singleton</strong> - Singleton classes are instantiated immediately once defined and may not
+                    be instantiated manually</li>
+                <li><strong>Static</strong> - A static method or property is a method or property belonging to the class
+                    itself, not an instance of the class</li>
+                <li><strong>Chainable</strong> - Refers to methods that return the class instance back when called.<br>This enables chained method calls like: <code>classInstance.method1().method2().etc();</code></li>
+                <li><strong>Deprecated</strong> - A class or member that is scheduled for removal in a future
+                    framework version and is provided in the current version for backwards compatibility.<br>Deprecated classes and members will have a message directing you to the preferred class /
+                    method going forward.</li>
+                <li><strong>Removed</strong> - A removed class or member that exists in documentation only as a
+                    reference for users upgrading between framework versions</li>
+                <li><strong>Template</strong> - A method defined within a base class designed to be overridden by
+                    subclasses</li>
+                <li><strong>Abstract</strong> - A class or member may be be defined as abstract.  Abstract classes and
+                    members establish a class structure and provide limited, if any, code.  Class-specific
+                    code will be furnished via overrides in subclasses.</li>
+                <li><strong>Preventable</strong> - Events marked preventable will not fire if <code>false</code> is returned from
+                    an event handler</li>
+            </ul>
+            <h3 id="class-icons">Class Icons</h3>
+            <p><span class="icon-demo class-icon fa fa-cube"></span> - Indicates a framework class  </p>
+            <p><span class="icon-demo singleton-icon fa fa-cube"></span> - A singleton framework class. *See the
+                singleton flag for more information  </p>
+            <p><span class="icon-demo component-icon fa fa-gear"></span> - A component-type framework class (any
+                class within the Ext JS framework that extends Ext.Component)  </p>
+            <p><span class="icon-demo display-new"></span> - Indicates that the class, member, or guide
+                is new in the currently viewed version</p>
+            <h3 id="member-icons">Member Icons</h3>
+            <p><span class="icon-demo fa fa-cubes"></span> - Indicates a class member of type <code>config</code>  </p>
+            <p><span class="icon-demo fa fa-book"></span> - Indicates a class member of type <code>property</code>  </p>
+            <p><span class="icon-demo fa fa-object-group"></span> - Indicates a class member of type
+                <code>method</code>  </p>
+            <p><span class="icon-demo fa fa-bolt"></span> - Indicates a class member of type <code>event</code>  </p>
+            <p><span class="icon-demo fa fa-paint-brush"></span> - Indicates a class member of type
+                <code>theme variable</code>  </p>
+            <p><span class="icon-demo fa fa-tint"></span> - Indicates a class member of type
+                <code>theme mixin</code>  </p>
+            <p><span class="icon-demo display-new"></span> - Indicates that the class, member, or guide
+                is new in the currently viewed version</p>
+            <h2 id="navigation-and-features">Navigation and Features</h2>
+            <h3 id="class-member-quick-nav-menu">Class Member Quick-Nav Menu</h3>
+            <p>Just below the class name on an API doc page is a row of buttons corresponding to the
+                types of members owned by the current class.  Each button shows a count of members by
+                type (this count is updated as filters are applied).  Clicking the button will navigate
+                you to that member section.  Hovering over the member-type button will reveal a popup
+                menu of all members of that type for quick navigation.</p>
+            <h3 id="getter-and-setter-methods">Getter and Setter Methods</h3>
+            <p>Getting and setter methods that correlate to a class config option will show up in the
+                methods section as well as in the configs section of both the API doc and the member-type
+                menus just beneath the config they work with.  The getter and setter method documentation
+                will be found in the config row for easy reference.</p>
+            <h3 id="history-bar">History Bar</h3>
+            <p>Your page history is kept in localstorage and displayed (using the available real estate)
+                just below the top title bar.  By default, the only search results shown are the pages
+                matching the product / version you're currently viewing.  You can expand what is
+                displayed by clicking on the <span class="icon-demo history-config"></span> button on the
+                right-hand side of the history bar and choosing the "All" radio option.  This will show
+                all recent pages in the history bar for all products / versions.</p>
+            <p>Within the history config menu you will also see a listing of your recent page visits.
+                The results are filtered by the "Current Product / Version" and "All" radio options.
+                Clicking on the <span class="icon-demo history-clear"></span> button will clear the history bar as
+                well as the history kept in local storage.</p>
+            <p>If "All" is selected in the history config menu the checkbox option for "Show product
+                details in the history bar" will be enabled.  When checked, the product/version for each
+                historic page will show alongside the page name in the history bar.  Hovering the cursor
+                over the page names in the history bar will also show the product/version as a tooltip.</p>
+            <h3 id="search-and-filters">Search and Filters</h3>
+            <p>Both API docs and guides can be searched for using the search field at the top of the
+                page.</p>
+            <p>On API doc pages there is also a filter input field that filters the member rows
+                using the filter string.  In addition to filtering by string you can filter the class
+                members by access level, inheritance, and read only.  This is done using the checkboxes at the top of
+                the page.</p>
+            <p>The checkbox at the bottom of the API class navigation tree filters the class list to
+                include or exclude private classes.</p>
+            <p>Clicking on an empty search field will show your last 10 searches for quick navigation.</p>
+            <h3 id="api-doc-class-metadata">API Doc Class Metadata</h3>
+            <p>Each API doc page (with the exception of Javascript primitives pages) has a menu view of
+                metadata relating to that class.  This metadata view will have one or more of the
+                following:</p>
+            <ul>
+                <li><strong>Alternate Name</strong> - One or more additional class name synonymns (in Ext JS 6.0.0 the
+                    <code>Ext.button.Button</code> class has an alternate class name of <code>Ext.Button</code>).  Alternate class
+                    names are commonly maintained for backward compatibility.</li>
+                <li><strong>Hierarchy</strong> - The hierararchy view lists the inheritance chain of the current class
+                    up through its ancestor classes up to the root base class.</li>
+                <li><strong>Mixins</strong> - A list of classes that are mixed into the current class</li>
+                <li><strong>Inherited Mixins</strong> - A list of classes that are mixed into an ancestor of the current
+                    class</li>
+                <li><strong>Requires</strong> - All classes required to be defined for the class to be instantiated</li>
+                <li><strong>Uses</strong> - A list of classes potentially used by the class at some point in its
+                    lifecycle, but not necessarily requried for the class to initially be instantiated</li>
+                <li><strong>Subclasses</strong> - Classes that extend the current class</li>
+            </ul>
+            <h3 id="expanding-and-collapsing-examples-and-class-members">Expanding and Collapsing Examples and Class Members</h3>
+            <p>Runnable examples (Fiddles) are expanded on a page by default.  You can collapse and
+                expand example code blocks individually using the arrow on the top-left of the code
+                block.  You can also toggle the collapse state of all examples using the toggle button on
+                the top-right of the page.  The toggle-all state will be remembered between page loads.</p>
+            <p>Class members are collapsed on a page by default.  You can expand and collapse members
+                using the arrow icon on the left of the member row or globally using the expand /
+                collapse all toggle button top-right.</p>
+            <h3 id="desktop-vs-mobile-view">Desktop -vs- Mobile View</h3>
+            <p>Viewing the docs on narrower screens or browsers will result in a view optimized for a
+                smaller form factor.  The primary differences between the desktop and "mobile" view are:</p>
+            <ul>
+                <li>Global navigation will be located in a menu on the left-hand side accessible via the
+                    hamburger menu icon.  The menu houses the following (on most pages):<ul>
+                        <li>The name of the current product (as a link to the product landing page)</li>
+                        <li>The Sencha icon used to navigate back to the documentation home page</li>
+                        <li>The product menu drop-down button</li>
+                        <li>Tabs of navigation trees for the API docs and guides</li>
+                    </ul>
+                </li>
+                <li>Current context navigation and tools is located on the right-hand side accessible via
+                    the gear icon.  The context menu houses teh following:<ul>
+                        <li>The global search input field</li>
+                        <li>(<em>API doc</em>) A "Filters" tab with the member filter, expand / collapse all examples
+                            button, expand / collapse all member rows button, the access level filter checkboxes,
+                            and the counts of each member</li>
+                        <li>(<em>API doc</em>) A "Related Classes" tab containing the menu of metadata related to the
+                            current class</li>
+                        <li>(<em>Guides</em>) The table of contents for the guide</li>
+                    </ul>
+                </li>
+            </ul>
+            <h3 id="viewing-the-class-source">Viewing the Class Source</h3>
+            <p>The class source can be viewed by clicking on the class name at the top of an API doc
+                page.  The source for class members can be viewed by clicking on the "view source" link
+                on the right-hand side of the member row.</p>
+    
+        </div>
+    </div>
+
+    <div id="header">
+        <div class="home-link">
+            <a href="http://docs.sencha.com"><span class="fa fa-book"></span></a>
+        </div>
+        <div class="logo">
+            <a href="https://www.sencha.com"><img height="32" src="../../../../assets/images/sencha_logo_thumb.png"/></a>
+        </div>
+        <span id="mobile-main-nav-menu-btn" class="fa fa-bars"></span>
+        <span data-tip="Product / Version Menu" class="fa fa-angle-down product-menu-btn product-menu-btn-wrap tooltip-tl-bl tooltip landing-product-menu-btn">
+            <div class="callout callout-b"></div>
+        </span>
+            <div class="page-title">Trees</div>
+
+        <span id="mobile-context-menu-btn" class="fa fa-cog"></span>
+    </div>
+
+    <div id="centerContent">
+        <div id="history-nav">
+            <span id="history-config" class="icon-btn history-config tooltip tooltip-tr-br" data-tip="Configure / Clear History">
+                <i class="fa fa-history"></i>
+                <div class="callout callout-b"></div>
+            </span>
+        </div>
+        <div id="class-tree-ct" class="class-tree">
+            <h2 class="product-header">
+                <div class="home-link">
+                    <a href="http://docs.sencha.com"><span class="fa fa-book"></span></a>
+                </div>
+                <div class="logo">
+                    <a href="https://www.sencha.com"><img src="../../../../assets/images/sencha_logo1x.png"/></a>
+                </div>
+                <a href="../../index.html">Ext JS 5.1.4 </a>
+                <span data-tip="Product / Version Menu" class="fa fa-angle-down product-menu-btn product-menu-btn-wrap tooltip tooltip-tl-bl"><div class="callout callout-b"></div></span>
+            </h2>
+            <div id="tree-header" class="pre-load">
+                <div id="hide-class-tree" class="icon-btn">
+                    <i class="fa fa-close"></i>
+                    <i class="fa fa-bars"></i>
+                </div>
+            </div>
+            <div id="tree-scroller">
+                <div id="tree" class="show-private show-protected is-tree ">
+                    <div id="tree-sub-header"></div>
+                </div>
+                    <div class="private-class-toggle-ct">
+                        <label for="private-class-toggle" class="pointer gray">Show private classes</label>
+                        <input id="private-class-toggle" type="checkbox" name="privateClassToggle" />
+                    </div>
+            </div>
+        </div>
+
+        <a href="#" id="back-to-top">
+            <div class="fa fa-angle-up"></div>
+            <br>
+            top
+        </a>
+
+        <div id="rightMembers">
+<div class="context-menu-ct">
+    <div class="context-header">
+        <div id="hide-context-menu" class="fa fa-caret-right"></div>
+    </div>
+
+    <div class="search">
+        <form autocomplete="off">
+    
+            <input type="text" type="search" placeholder="search" id="searchtext" tabindex="1">
+            <i id="filtersubmit" class="fa fa-search"></i>
+            <span id="help-btn" data-tip="Docs Help" class="icon-btn tooltip tooltip-tr-br"><div class="callout callout-b"></div>
+                <i class="fa fa-question fa-inverse"></i>
+            </span>
+        </form>
+    </div>
+
+    <div id="toc-context-ct">
+        <!-- context content added at runtime -->
+    </div>
+</div>
+<div class="guide-body-wrap">
+    <div class="body-wrap-inner">
+        <div id="toggleExamples" class="icon-btn tooltip tooltip-tr-br" data-collapse="Collapse All Examples" data-expand="Expand All Examples">
+            <i class="fa fa-code"></i>
+            <div class="callout callout-b"></div>
+        </div>
+        <div class="classText">
+                <div class="toc">
+                    <h2>Contents</h2>
+                        <a class="toc-page-h2 " href="#components-_-trees_-_the_node_interface">The Node Interface</a>
+                        <a class="toc-page-h2 " href="#components-_-trees_-_changing_your_tree">Changing your tree</a>
+                        <a class="toc-page-h2 " href="#components-_-trees_-_multiple_columns">Multiple columns</a>
+                        <a class="toc-page-h2 " href="#components-_-trees_-_adding_nodes">Adding nodes</a>
+                        <a class="toc-page-h2 " href="#components-_-trees_-_loading_and_saving_via_proxy">Loading and Saving via Proxy</a>
+                        <a class="toc-page-h3 " href="#components-_-trees_-_nodeinterface_fields">NodeInterface Fields</a>
+                        <a class="toc-page-h4 " href="#components-_-trees_-_nodeinterface_fields_are_reserved_names">NodeInterface Fields are Reserved Names</a>
+                        <a class="toc-page-h4 " href="#components-_-trees_-_persistent_vs_non_persistent_fields">Persistent vs Non-persistent Fields</a>
+                        <a class="toc-page-h3 " href="#components-_-trees_-_loading_data">Loading Data</a>
+                        <a class="toc-page-h4 " href="#components-_-trees_-_loading_the_entire_tree">Loading the Entire Tree</a>
+                        <a class="toc-page-h4 " href="#components-_-trees_-_dynamically_loading_children">Dynamically Loading Children</a>
+                        <a class="toc-page-h3 " href="#components-_-trees_-_saving_data">Saving Data</a>
+                        <a class="toc-page-h4 " href="#components-_-trees_-_creating_a_new_node">Creating a New Node</a>
+                        <a class="toc-page-h4 " href="#components-_-trees_-_updating_an_existing_node">Updating an Existing Node</a>
+                        <a class="toc-page-h4 " href="#components-_-trees_-_removing_a_node">Removing a Node</a>
+                        <a class="toc-page-h4 " href="#components-_-trees_-_bulk_operations">Bulk Operations</a>
+                </div>
+            <h1 id="components-_-trees_-_trees">Trees<a class="quick-link" href="#components-_-trees_-_trees"></a></h1>
+<p>The <a href="../../../../extjs/5.1.4/api/Ext.tree.Panel.html">Tree Panel</a> Component is one of the most versatile Components 
+in Ext JS and is an excellent tool for displaying hierarchical data in an 
+<a href="../../../../extjs/5.1.4/api/Ext.html#application">application</a>.  Tree Panel extends from the same class as 
+<a href="../../../../extjs/5.1.4/api/Ext.grid.Panel.html">Grid Panel</a>, so, most all of the benefits of Grid Panels - 
+features, extensions, and plugins can also be used on Tree Panels. Things like columns, 
+column resizing, dragging and dropping, renderers, sorting and filtering can be 
+expected to work similarly for both components. </p>
+<p>Let&#39;s start by creating a very simple Tree.</p>
+<div class="da-inline-code-wrap da-inline-code-wrap-fiddle invisible example-collapse-target" id="s-1828" data-fiddle-meta='{"framework":"Ext JS","version":"6.2.0","toolkit":"classic","theme":"triton"}'>
+                    <div class="da-inline-fiddle-nav">
+                        <div class="code-controls">
+                            <span class="collapse-tool fa fa-caret-up"></span>
+                            <span class="expand-tool fa fa-caret-down"></span>
+                            <span class="expand-code">Expand Code</span>
+                        </div>
+                        <span class="da-inline-fiddle-nav-code da-inline-fiddle-nav-active">
+                            <span class="fa fa-code"></span>
+                            Code
+                        </span><!--
+                        --><span class="da-inline-fiddle-nav-fiddle">
+                            <span class="fiddle-icon-wrap">
+                                <span class="fa fa-play-circle">
+                                </span><span class="fa fa-refresh"></span>
+                            </span>
+                            Run
+                        </span>
+                        <span class="icon-btn fiddle-code-beautify tooltip tooltip-tr-br" data-beautify="Beautify Code">
+                            <i class="fa fa-indent"></i>
+                            <div class="callout callout-b"></div>
+                        </span>
+                        
+                        <label class="example-theme-picker-label">
+                            Editor Theme:
+                            <select class="example-theme-picker" size="1">
+                                <optgroup label="Bright">
+                                    <option value="ace/theme/chrome">Chrome</option>
+                                    <option value="ace/theme/clouds">Clouds</option>
+                                    <option value="ace/theme/crimson_editor">Crimson Editor</option>
+                                    <option value="ace/theme/dawn">Dawn</option>
+                                    <option value="ace/theme/dreamweaver">Dreamweaver</option>
+                                    <option value="ace/theme/eclipse">Eclipse</option>
+                                    <option value="ace/theme/github">GitHub</option>
+                                    <option value="ace/theme/iplastic">IPlastic</option>
+                                    <option value="ace/theme/solarized_light">Solarized Light</option>
+                                    <option value="ace/theme/textmate">TextMate</option>
+                                    <option value="ace/theme/tomorrow">Tomorrow</option>
+                                    <option value="ace/theme/xcode">XCode</option>
+                                    <option value="ace/theme/kuroir">Kuroir</option>
+                                    <option value="ace/theme/katzenmilch">KatzenMilch</option>
+                                    <option value="ace/theme/sqlserver">SQL Server</option>
+                                </optgroup>
+                                <optgroup label="Dark">
+                                    <option value="ace/theme/ambiance">Ambiance</option>
+                                    <option value="ace/theme/chaos">Chaos</option>
+                                    <option value="ace/theme/clouds_midnight">Clouds Midnight</option>
+                                    <option value="ace/theme/cobalt">Cobalt</option>
+                                    <option value="ace/theme/gruvbox">Gruvbox</option>
+                                    <option value="ace/theme/gob">Green on Black</option>
+                                    <option value="ace/theme/idle_fingers">idle Fingers</option>
+                                    <option value="ace/theme/kr_theme">krTheme</option>
+                                    <option value="ace/theme/merbivore">Merbivore</option>
+                                    <option value="ace/theme/merbivore_soft">Merbivore Soft</option>
+                                    <option value="ace/theme/mono_industrial">Mono Industrial</option>
+                                    <option value="ace/theme/monokai">Monokai</option>
+                                    <option value="ace/theme/pastel_on_dark">Pastel on dark</option>
+                                    <option value="ace/theme/solarized_dark">Solarized Dark</option>
+                                    <option value="ace/theme/terminal">Terminal</option>
+                                    <option value="ace/theme/tomorrow_night">Tomorrow Night</option>
+                                    <option value="ace/theme/tomorrow_night_blue">Tomorrow Night Blue</option>
+                                    <option value="ace/theme/tomorrow_night_bright">Tomorrow Night Bright</option>
+                                    <option value="ace/theme/tomorrow_night_eighties">Tomorrow Night 80s</option>
+                                    <option value="ace/theme/twilight">Twilight</option>
+                                    <option value="ace/theme/vibrant_ink">Vibrant Ink</option>
+                                </optgroup>
+                            </select>
+                        </label>
+                    </div>
+                    <div id="s-1829" class="ace-ct">Ext.create(&#39;Ext.tree.Panel&#39;, {
+    renderTo: document.body,
+    title: &#39;Simple Tree&#39;,
+    width: 300,
+    height: 250,
+    root: {
+        text: &#39;Root&#39;,
+        expanded: true,
+        children: [
+            {
+                text: &#39;Child 1&#39;,
+                leaf: true
+            },
+            {
+                text: &#39;Child 2&#39;,
+                leaf: true
+            },
+            {
+                text: &#39;Child 3&#39;,
+                expanded: true,
+                children: [
+                    {
+                        text: &#39;Grandchild&#39;,
+                        leaf: true
+                    }
+                ]
+            }
+        ]
+    }
+});</div></div><p>This Tree Panel renders itself to the document body.  We defined a root 
+<a href="../../../../extjs/5.1.4/api/Ext.data.NodeInterface.html">node</a> that is expanded by default. The root node has three 
+children, the first two of which are leaf nodes which means they cannot have any 
+children.  The third node is not a leaf node and has has one child leaf node.  The 
+<code>text</code> property is used as the node&#39;s text label. </p>
+<p>Internally, a Tree Panel stores its data in a <a href="../../../../extjs/5.1.4/api/Ext.data.TreeStore.html">TreeStore</a>. The
+above example uses the <a href="../../../../extjs/5.1.4/api/Ext.tree.Panel.html#cfg-root">root</a> config as a shortcut for
+configuring a Store.  If we were to configure the Store separately, the code would look
+something like this:</p>
+<pre><code class="language-javascript">var store = Ext.create(&#39;Ext.data.TreeStore&#39;, {
+    root: {
+        text: &#39;Root&#39;,
+        expanded: true,
+        children: [
+            {
+                text: &#39;Child 1&#39;,
+                leaf: true
+            },
+            {
+                text: &#39;Child 2&#39;,
+                leaf: true
+            },
+            ...
+        ]
+    }
+});
+
+Ext.create(&#39;Ext.tree.Panel&#39;, {
+    title: &#39;Simple Tree&#39;,
+    store: store,
+    ...
+});
+</code></pre><h2 id="components-_-trees_-_the_node_interface">The Node Interface<a class="quick-link" href="#components-_-trees_-_the_node_interface"></a></h2>
+<p>In the above examples, we set a couple of different properties on Tree nodes. But what 
+are nodes exactly? As mentioned before, the Tree Panel is bound to a 
+<a href="../../../../extjs/5.1.4/api/Ext.data.TreeStore.html">TreeStore</a>.  A Store in Ext JS manages a collection of 
+<a href="../../../../extjs/5.1.4/api/Ext.data.Model.html">Model</a> instances. Tree nodes are simply Model instances that are 
+decorated with a <a href="../../../../extjs/5.1.4/api/Ext.data.NodeInterface.html">NodeInterface</a>.  Decorating a Model with 
+a NodeInterface gives the Model the fields, methods, and properties that are required 
+for it to be used in a Tree.  The following is a screenshot that shows the structure of 
+a node in the developer tools.</p>
+<p><img src='images/nodeinterface.png' alt='A model instance decorated with the
+NodeInterface'/></p>
+<p>In order to see the full set of fields, methods, and properties available on nodes, see 
+the API documentation for the <a href="../../../../extjs/5.1.4/api/Ext.data.NodeInterface.html">NodeInterface</a> class.</p>
+<h2 id="components-_-trees_-_changing_your_tree">Changing your tree<a class="quick-link" href="#components-_-trees_-_changing_your_tree"></a></h2>
+<p>Let&#39;s try something simple. When you set the 
+<a href="../../../../extjs/5.1.4/api/Ext.tree.Panel.html#cfg-useArrows">useArrows</a> configuration to true, the Tree Panel 
+hides the lines and uses arrows as expand and collapse icons.</p>
+<p><img src='images/arrows.png' alt='Arrows'/></p>
+<p>Setting the <a href="../../../../extjs/5.1.4/api/Ext.tree.Panel.html#cfg-rootVisible">rootVisible</a> property to <strong>false</strong> 
+visually removes the root node. By doing this, the root node will automatically be 
+expanded. The following image shows the same tree with <code>rootVisible</code> set to <strong>false</strong> 
+and <a href="../../../../extjs/5.1.4/api/Ext.tree.Panel.html#cfg-lines">lines</a> set to false.</p>
+<p><img src='images/root-lines.png' alt='Root not visible and no lines'/></p>
+<h2 id="components-_-trees_-_multiple_columns">Multiple columns<a class="quick-link" href="#components-_-trees_-_multiple_columns"></a></h2>
+<p>Since <a href="../../../../extjs/5.1.4/api/Ext.tree.Panel.html">Tree Panel</a> extends from the same base class as
+<a href="../../../../extjs/5.1.4/api/Ext.grid.Panel.html">Grid Panel</a> adding more columns is very easy to do.</p>
+<div class="da-inline-code-wrap da-inline-code-wrap-fiddle invisible example-collapse-target" id="s-1830" data-fiddle-meta='{"framework":"Ext JS","version":"6.2.0","toolkit":"classic","theme":"triton"}'>
+                    <div class="da-inline-fiddle-nav">
+                        <div class="code-controls">
+                            <span class="collapse-tool fa fa-caret-up"></span>
+                            <span class="expand-tool fa fa-caret-down"></span>
+                            <span class="expand-code">Expand Code</span>
+                        </div>
+                        <span class="da-inline-fiddle-nav-code da-inline-fiddle-nav-active">
+                            <span class="fa fa-code"></span>
+                            Code
+                        </span><!--
+                        --><span class="da-inline-fiddle-nav-fiddle">
+                            <span class="fiddle-icon-wrap">
+                                <span class="fa fa-play-circle">
+                                </span><span class="fa fa-refresh"></span>
+                            </span>
+                            Run
+                        </span>
+                        <span class="icon-btn fiddle-code-beautify tooltip tooltip-tr-br" data-beautify="Beautify Code">
+                            <i class="fa fa-indent"></i>
+                            <div class="callout callout-b"></div>
+                        </span>
+                        
+                        <label class="example-theme-picker-label">
+                            Editor Theme:
+                            <select class="example-theme-picker" size="1">
+                                <optgroup label="Bright">
+                                    <option value="ace/theme/chrome">Chrome</option>
+                                    <option value="ace/theme/clouds">Clouds</option>
+                                    <option value="ace/theme/crimson_editor">Crimson Editor</option>
+                                    <option value="ace/theme/dawn">Dawn</option>
+                                    <option value="ace/theme/dreamweaver">Dreamweaver</option>
+                                    <option value="ace/theme/eclipse">Eclipse</option>
+                                    <option value="ace/theme/github">GitHub</option>
+                                    <option value="ace/theme/iplastic">IPlastic</option>
+                                    <option value="ace/theme/solarized_light">Solarized Light</option>
+                                    <option value="ace/theme/textmate">TextMate</option>
+                                    <option value="ace/theme/tomorrow">Tomorrow</option>
+                                    <option value="ace/theme/xcode">XCode</option>
+                                    <option value="ace/theme/kuroir">Kuroir</option>
+                                    <option value="ace/theme/katzenmilch">KatzenMilch</option>
+                                    <option value="ace/theme/sqlserver">SQL Server</option>
+                                </optgroup>
+                                <optgroup label="Dark">
+                                    <option value="ace/theme/ambiance">Ambiance</option>
+                                    <option value="ace/theme/chaos">Chaos</option>
+                                    <option value="ace/theme/clouds_midnight">Clouds Midnight</option>
+                                    <option value="ace/theme/cobalt">Cobalt</option>
+                                    <option value="ace/theme/gruvbox">Gruvbox</option>
+                                    <option value="ace/theme/gob">Green on Black</option>
+                                    <option value="ace/theme/idle_fingers">idle Fingers</option>
+                                    <option value="ace/theme/kr_theme">krTheme</option>
+                                    <option value="ace/theme/merbivore">Merbivore</option>
+                                    <option value="ace/theme/merbivore_soft">Merbivore Soft</option>
+                                    <option value="ace/theme/mono_industrial">Mono Industrial</option>
+                                    <option value="ace/theme/monokai">Monokai</option>
+                                    <option value="ace/theme/pastel_on_dark">Pastel on dark</option>
+                                    <option value="ace/theme/solarized_dark">Solarized Dark</option>
+                                    <option value="ace/theme/terminal">Terminal</option>
+                                    <option value="ace/theme/tomorrow_night">Tomorrow Night</option>
+                                    <option value="ace/theme/tomorrow_night_blue">Tomorrow Night Blue</option>
+                                    <option value="ace/theme/tomorrow_night_bright">Tomorrow Night Bright</option>
+                                    <option value="ace/theme/tomorrow_night_eighties">Tomorrow Night 80s</option>
+                                    <option value="ace/theme/twilight">Twilight</option>
+                                    <option value="ace/theme/vibrant_ink">Vibrant Ink</option>
+                                </optgroup>
+                            </select>
+                        </label>
+                    </div>
+                    <div id="s-1831" class="ace-ct">var tree = Ext.create(&#39;Ext.tree.Panel&#39;, {
+    renderTo: document.body,
+    title: &#39;TreeGrid&#39;,
+    width: 300,
+    height: 150,
+    fields: [&#39;name&#39;, &#39;description&#39;],
+    columns: [{
+        xtype: &#39;treecolumn&#39;,
+        text: &#39;Name&#39;,
+        dataIndex: &#39;name&#39;,
+        width: 150,
+        sortable: true
+    }, {
+        text: &#39;Description&#39;,
+        dataIndex: &#39;description&#39;,
+        flex: 1,
+        sortable: true
+    }],
+    root: {
+        name: &#39;Root&#39;,
+        description: &#39;Root description&#39;,
+        expanded: true,
+        children: [{
+            name: &#39;Child 1&#39;,
+            description: &#39;Description 1&#39;,
+            leaf: true
+        }, {
+            name: &#39;Child 2&#39;,
+            description: &#39;Description 2&#39;,
+            leaf: true
+        }]
+    }
+});</div></div><p>The <a href="../../../../extjs/5.1.4/api/Ext.tree.Panel.html#cfg-columns">columns</a> configuration expects an array of
+<a href="../../../../extjs/5.1.4/api/Ext.grid.column.Column.html">Ext.grid.column.Column</a> configurations just like a 
+<a href="../../../../extjs/5.1.4/api/Ext.grid.Panel.html">Grid Panel</a> would have.  The only difference is that a Tree Panel
+requires at least one Column with an <code>xtype</code> of &#39;treecolumn&#39;.  This type of column has 
+tree-specific visual effects like depth, lines, and expand and collapse icons. A typical 
+Tree Panel would have only one &#39;treecolumn&#39;.</p>
+<p>The <code>fields</code> configuration is passed on to the <a href="../../../../extjs/5.1.4/api/Ext.data.Model.html">Ext.data.Model</a> that the
+internally created Store uses. Notice how the 
+<a href="../../../../extjs/5.1.4/api/Ext.grid.column.Column.html#cfg-dataIndex">dataIndex</a> configurations on the columns map 
+to the fields we specified - <strong>name</strong> and <strong>description</strong>.</p>
+<p>It is also worth noting that when columns are not defined, the Tree will automatically
+create one single <code>treecolumn</code> with a <code>dataIndex</code> set to <strong>&#39;text&#39;</strong>. It also hides the 
+headers on the Tree. To show this header when using only a single column set the 
+<code>hideHeaders</code> configuration to <strong>false</strong>.</p>
+<h2 id="components-_-trees_-_adding_nodes">Adding nodes<a class="quick-link" href="#components-_-trees_-_adding_nodes"></a></h2>
+<p>The root node for the Tree Panel does not have to be specified in the initial
+configuration.  We can always add it later:</p>
+<pre><code class="language-javascript">var tree = Ext.create(&#39;Ext.tree.Panel&#39;);
+tree.setRootNode({
+    text: &#39;Root&#39;,
+    expanded: true,
+    children: [{
+        text: &#39;Child 1&#39;,
+        leaf: true
+    }, {
+        text: &#39;Child 2&#39;,
+        leaf: true
+    }]
+});
+</code></pre><p>Although this is useful for very small Trees with only a few static nodes, most Tree
+Panels will contain many more nodes. So let&#39;s take a look at how we can programmatically
+add new nodes to the Tree.</p>
+<pre><code class="language-javascript">var root = tree.getRootNode();
+
+var parent = root.appendChild({
+    text: &#39;Parent 1&#39;
+});
+
+parent.appendChild({
+    text: &#39;Child 3&#39;,
+    leaf: true
+});
+
+parent.expand();
+</code></pre><p>Every node that is not a leaf node has an 
+<a href="../../../../extjs/5.1.4/api/Ext.data.NodeInterface.html#method-appendChild">appendChild</a> method which accepts a 
+Node, or a config object for a Node, as its first parameter and returns the Node that 
+was appended. The above example also calls the
+<a href="../../../../extjs/5.1.4/api/Ext.data.NodeInterface.html#method-expand">expand</a> method to expand the newly created
+parent.</p>
+<p><img src='images/append-children.png' alt='Appending to the tree'/></p>
+<p>Also useful is the ability to define children inline when creating the new parent nodes.
+The following code gives us the same result.</p>
+<pre><code class="language-javascript">var parent = root.appendChild({
+    text: &#39;Parent 1&#39;,
+    expanded: true,
+    children: [{
+        text: &#39;Child 3&#39;,
+        leaf: true
+    }]
+});
+</code></pre><p>Sometimes we want to insert a node into a specific location in the Tree instead of
+appending it. Besides the <code>appendChild</code> method, <a href="../../../../extjs/5.1.4/api/Ext.data.NodeInterface.html">Ext.data.NodeInterface</a> also
+provides <a href="../../../../extjs/5.1.4/api/Ext.data.NodeInterface.html#insertBefore">insertBefore</a> and
+<a href="../../../../extjs/5.1.4/api/Ext.data.NodeInterface.html#insertChild">insertChild</a> methods.</p>
+<pre><code class="language-javascript">var child = parent.insertChild(0, {
+    text: &#39;Child 2.5&#39;,
+    leaf: true
+});
+
+parent.insertBefore({
+    text: &#39;Child 2.75&#39;,
+    leaf: true
+}, child.nextSibling);
+</code></pre><p>The <code>insertChild</code> method expects an index at which the child will be inserted. The
+<code>insertBefore</code> method expects a reference node. The new node will be inserted before the
+reference node.</p>
+<p><img src='images/insert-children.png' alt='Inserting children into the tree'/></p>
+<p>NodeInterface also provides several more properties on nodes that can be used to 
+reference other nodes.</p>
+<ul>
+<li><a href="../../../../extjs/5.1.4/api/Ext.data.NodeInterface.html#nextSibling">nextSibling</a></li>
+<li><a href="../../../../extjs/5.1.4/api/Ext.data.NodeInterface.html#previousSibling">previousSibling</a></li>
+<li><a href="../../../../extjs/5.1.4/api/Ext.data.NodeInterface.html#parentNode">parentNode</a></li>
+<li><a href="../../../../extjs/5.1.4/api/Ext.data.NodeInterface.html#lastChild">lastChild</a></li>
+<li><a href="../../../../extjs/5.1.4/api/Ext.data.NodeInterface.html#firstChild">firstChild</a></li>
+<li><a href="../../../../extjs/5.1.4/api/Ext.data.NodeInterface.html#childNodes">childNodes</a></li>
+</ul>
+<h2 id="components-_-trees_-_loading_and_saving_via_proxy">Loading and Saving via Proxy<a class="quick-link" href="#components-_-trees_-_loading_and_saving_via_proxy"></a></h2>
+<p>Loading and saving Tree data is somewhat more complex than dealing with flat data 
+because of all the fields that are required to represent the hierarchical structure of 
+the Tree.  This section will explain the intricacies of working with Tree data.</p>
+<h3 id="components-_-trees_-_nodeinterface_fields">NodeInterface Fields<a class="quick-link" href="#components-_-trees_-_nodeinterface_fields"></a></h3>
+<p>The first and most important thing to understand when working with Tree data is how the
+<a href="../../../../extjs/5.1.4/api/Ext.data.NodeInterface.html">NodeInterface</a> class&#39; fields work.  Every node in a Tree 
+is simply a <a href="../../../../extjs/5.1.4/api/Ext.data.Model.html">Model</a> instance decorated with the NodeInterface&#39;s 
+fields and methods.  Assume for a moment that an application has a Model called 
+<strong>&quot;Person&quot;</strong>.  A Person only has two fields - <strong>&quot;id&quot;</strong> and <strong>&quot;name&quot;</strong>:</p>
+<pre><code class="language-javascript">Ext.define(&#39;Person&#39;, {
+    extend: &#39;Ext.data.Model&#39;,
+    fields: [&#39;id&#39;, {
+        name: &#39;name&#39;,
+        type: &#39;string&#39;
+    }]
+});
+</code></pre><p>At this point, <strong>&quot;Person&quot;</strong> is just a plain vanilla Model.  If an instance is created, 
+it can easily be verified that it only has two fields by looking at its <code>fields</code> array:</p>
+<pre><code class="language-javascript">var rec = Ext.create(&#39;Person&#39;);
+
+console.log(rec.getFields().length); // outputs &#39;2&#39;
+</code></pre><p>When the Person model is used in a TreeStore, something interesting happens.  Notice the
+field count now:</p>
+<pre><code class="language-javascript">var store = Ext.create(&#39;Ext.data.TreeStore&#39;, {
+    model: &#39;Person&#39;,
+    root: {
+        name: &#39;Phil&#39;
+    }
+});
+
+console.log(store.getRoot().getFields().length); // outputs &#39;27&#39;
+</code></pre><p>The Person model&#39;s prototype got 25 extra fields added to it just by using it in a
+TreeStore.  All of these extra fields are defined on the 
+<a href="../../../../extjs/5.1.4/api/Ext.data.NodeInterface.html">NodeInterface</a> class and are added to the Model&#39;s 
+prototype the first time an instance of that Model is used in a TreeStore 
+(<em>by setting it as the root node</em>).</p>
+<p>So what exactly are these 25 extra fields, and what do they do?  A quick look at the
+NodeInterface source code reveals that it decorates the Model with the following fields.
+These fields are used internally to store information relating to the tree&#39;s structure 
+and state:</p>
+<pre><code class="language-javascript">{
+    name: &#39;parentId&#39;,
+    type: idType,
+    defaultValue: null,
+    useNull: idField.useNull
+}, {
+    name: &#39;index&#39;,
+    type: &#39;int&#39;,
+    defaultValue: -1,
+    persist: false,
+    convert: null
+}, {
+    name: &#39;depth&#39;,
+    type: &#39;int&#39;,
+    defaultValue: 0,
+    persist: false,
+    convert: null
+}, {
+    name: &#39;expanded&#39;,
+    type: &#39;bool&#39;,
+    defaultValue: false,
+    persist: false,
+    convert: null
+}, {
+    name: &#39;expandable&#39;,
+    type: &#39;bool&#39;,
+    defaultValue: true,
+    persist: false,
+    convert: null
+}, {
+    name: &#39;checked&#39;,
+    type: &#39;auto&#39;,
+    defaultValue: null,
+    persist: false,
+    convert: null
+}, {
+    name: &#39;leaf&#39;,
+    type: &#39;bool&#39;,
+    defaultValue: false
+}, {
+    name: &#39;cls&#39;,
+    type: &#39;string&#39;,
+    defaultValue: &#39;&#39;,
+    persist: false,
+    convert: null
+}, {
+    name: &#39;iconCls&#39;,
+    type: &#39;string&#39;,
+    defaultValue: &#39;&#39;,
+    persist: false,
+    convert: null
+}, {
+    name: &#39;icon&#39;,
+    type: &#39;string&#39;,
+    defaultValue: &#39;&#39;,
+    persist: false,
+    convert: null
+}, {
+    name: &#39;root&#39;,
+    type: &#39;boolean&#39;,
+    defaultValue: false,
+    persist: false,
+    convert: null
+}, {
+    name: &#39;isLast&#39;,
+    type: &#39;boolean&#39;,
+    defaultValue: false,
+    persist: false,
+    convert: null
+}, {
+    name: &#39;isFirst&#39;,
+    type: &#39;boolean&#39;,
+    defaultValue: false,
+    persist: false,
+    convert: null
+}, {
+    name: &#39;allowDrop&#39;,
+    type: &#39;boolean&#39;,
+    defaultValue: true,
+    persist: false,
+    convert: null
+}, {
+    name: &#39;allowDrag&#39;,
+    type: &#39;boolean&#39;,
+    defaultValue: true,
+    persist: false,
+    convert: null
+}, {
+    name: &#39;loaded&#39;,
+    type: &#39;boolean&#39;,
+    defaultValue: false,
+    persist: false,
+    convert: null
+}, {
+    name: &#39;loading&#39;,
+    type: &#39;boolean&#39;,
+    defaultValue: false,
+    persist: false,
+    convert: null
+}, {
+    name: &#39;href&#39;,
+    type: &#39;string&#39;,
+    defaultValue: &#39;&#39;,
+    persist: false,
+    convert: null
+}, {
+    name: &#39;hrefTarget&#39;,
+    type: &#39;string&#39;,
+    defaultValue: &#39;&#39;,
+    persist: false,
+    convert: null
+}, {
+    name: &#39;qtip&#39;,
+    type: &#39;string&#39;,
+    defaultValue: &#39;&#39;,
+    persist: false,
+    convert: null
+}, {
+    name: &#39;qtitle&#39;,
+    type: &#39;string&#39;,
+    defaultValue: &#39;&#39;,
+    persist: false,
+    convert: null
+}, {
+    name: &#39;qshowDelay&#39;,
+    type: &#39;int&#39;,
+    defaultValue: 0,
+    persist: false,
+    convert: null
+}, {
+    name: &#39;children&#39;,
+    type: &#39;auto&#39;,
+    defaultValue: null,
+    persist: false,
+    convert: null
+}, {
+    name: &#39;visible&#39;,
+    type: &#39;boolean&#39;,
+    defaultValue: true,
+    persist: false,
+}, {
+    name: &#39;text&#39;,
+    type: &#39;string&#39;,
+    persist: &#39;false
+}
+</code></pre><h4 id="components-_-trees_-_nodeinterface_fields_are_reserved_names">NodeInterface Fields are Reserved Names<a class="quick-link" href="#components-_-trees_-_nodeinterface_fields_are_reserved_names"></a></h4>
+<p>It is important to note that all of the above field names should be treated as 
+&quot;reserved&quot; names.  For example, it is not allowed to have a field called &quot;parentId&quot;
+in a Model if that Model is intended to be used in a Tree, since the Model&#39;s field will
+override the NodeInterface field.  The exception to this rule is when there is a 
+legitimate need to override the persistence of a field.</p>
+<h4 id="components-_-trees_-_persistent_vs_non_persistent_fields">Persistent vs Non-persistent Fields<a class="quick-link" href="#components-_-trees_-_persistent_vs_non_persistent_fields"></a></h4>
+<p>Most of NodeInterface&#39;s fields default to <code>persist: false</code>.  This means they are
+non-persistent fields by default.  Non-persistent fields will not be saved via the Proxy 
+when calling the TreeStore&#39;s <code>sync</code> method or calling <code>save()</code> on the Model.  In most 
+cases, the majority of these fields can be left at their default persistence setting, 
+but there are cases where it is necessary to override the persistence of some fields.<br>The following example demonstrates how to override the <code>persistence</code> of a 
+NodeInterface field.  When overriding a NodeInterface field it is important to only 
+change the <code>persist</code> property.  The <code>name</code>, <code>type</code>, and <code>defaultValue</code> properties 
+should never be changed.</p>
+<pre><code class="language-javascript">    // overriding the persistence of NodeInterface fields in a Model definition
+    Ext.define(&#39;Person&#39;, {
+        extend: &#39;Ext.data.Model&#39;,
+        fields: [
+            // Person fields
+            { name: &#39;id&#39;, type: &#39;int&#39; },
+            { name: &#39;name&#39;, type: &#39;string&#39; }
+
+            // override a non-persistent NodeInterface field to make it persistent
+            { name: &#39;iconCls&#39;, type: &#39;string&#39;,  defaultValue: null, persist: true },
+
+            // Make the index persistent, so that when reordering nodes, syncing to the server
+            // passes the new index as well as the parentId.
+            // (Note that if moved to the same index in a different parent, the index will
+still be sent in order to fully describe the operation)
+            { name: &#39;index&#39;, type: &#39;int&#39;, defaultValue: -1, persist: true}
+        ]
+    });
+</code></pre><p>Let&#39;s take a more in-depth look at each NodeInterface field and the scenarios in which it
+might be necessary to  override its <code>persist</code> property.  In each example below, it is 
+assumed that a <a href="../../../../extjs/5.1.4/api/Ext.data.proxy.Server.html">Server Proxy</a> is being used unless otherwise 
+noted.</p>
+<p>Persistent by default:</p>
+<ul>
+<li><code>parentId</code> - used to store the id of a node&#39;s parent node.  This field should always 
+be persistent and should not be overridden.</li>
+<li><code>leaf</code> - used to indicate that the node is a leaf node and therefore cannot have
+children appended to it.  This field should not normally need to be overridden.</li>
+</ul>
+<p>Non-persistent by default:</p>
+<ul>
+<li><p><code>index</code> - used to store the order of nodes within their parent. When a node is
+<a href="../../../../extjs/5.1.4/api/Ext.data.NodeInterface.html#insertBefore">inserted</a> or
+<a href="../../../../extjs/5.1.4/api/Ext.data.NodeInterface.html#removeChild">removed</a>, all of its sibling nodes after 
+the insertion or removal point will have their indexes updated.  If desired, the 
+application can use this field to persist the ordering of nodes.</p>
+<p>However, if the server uses a different method of storing order, it may be more 
+appropriate to leave the index field as non-persistent. When using a
+<a href="../../../../extjs/5.1.4/api/Ext.data.proxy.WebStorage.html">WebStorage Proxy</a> if storing order is required, 
+this field must be overridden to be persistent.</p>
+<p>Also if client-side <a href="../../../../extjs/5.1.4/api/Ext.data.TreeStore.html#method-sort">sorting</a> is being used it 
+is recommended for the <code>index</code> field to be left as non-persistent, since sorting 
+updates the indexes of all the sorted nodes, which would cause them to be persisted
+on next sync or save if the <code>persist</code> property is <strong>true</strong>.</p>
+</li>
+<li><p><code>depth</code> - used to store the depth of a node in the Tree hierarchy.  Override this 
+field to turn on persistence if the server needs to store the depth field.  When 
+using a <a href="../../../../extjs/5.1.4/api/Ext.data.proxy.WebStorage.html">WebStorage Proxy</a> it is recommended to not
+override the persistence of the <code>depth</code> field since it is not needed to properly 
+store the Tree structure and will just take up extra space.</p>
+</li>
+<li><code>checked</code> - this field should be overridden to be persistent if the Tree is using 
+the <a href="http://dev.sencha.com/extjs/5.1.0/examples/kitchensink/#check-tree" class="external-link" target="_blank">checkbox feature</a></li>
+<li><code>expanded</code> - used to store the expanded/collapsed state of a node.  This field 
+should not normally need to be overridden.</li>
+<li><code>expandable</code> - used internally to indicate that this node is expandable.  Do not
+override the persistence of this field.</li>
+<li><code>cls</code> - used to apply a CSS class to the node when it is rendered in a TreePanel.
+Override this field to be persistent if desired.</li>
+<li><code>iconCls</code> - used to apply a css class to the node&#39;s icon when it is rendered in a
+TreePanel.  Override this field to be persistent if desired.</li>
+<li><code>icon</code> - used to apply a custom icon to the node node when it is rendered in a
+TreePanel.  Override this field to be persistent if desired.</li>
+<li><code>root</code> - used to indicate that this node is the root node.  This field should not be 
+overridden.</li>
+<li><code>isLast</code> - used to indicate that this node is the last of its siblings. This field
+should not normally need to be overridden.</li>
+<li><code>isFirst</code> - used to indicate that this node is the first of its siblings. This field
+should not normally need to be overridden.</li>
+<li><code>allowDrop</code> - used internally to deny dropping on the node.  Do not override the
+persistence of this field.</li>
+<li><code>allowDrag</code> - used internally to deny dragging the node.  Do not override the
+persistence of this field.</li>
+<li><code>loaded</code> - used internally to indicate that the node&#39;s children have been loaded.<br>Do not override the persistence of this field.</li>
+<li><code>loading</code> - used internally to indicate that the proxy is in the process of loading 
+the node&#39;s children. Do not override the persistence of this field.</li>
+<li><code>href</code> - used to specify a url that the node should be a link to.  Override to be
+persistent if desired.</li>
+<li><code>hrefTarget</code> - used to specify the target for the <code>href</code>.  Override to be persistent 
+if desired.</li>
+<li><code>qtip</code> - used to add a <a href="../../../../extjs/5.1.4/api/Ext.tip.QuickTip.html">tooltip</a> text to the node.  Override 
+to be persistent if desired.</li>
+<li><code>qtitle</code> - used to specify the title for the <code>tooltip</code>.  Override to be persistent 
+if desired.</li>
+<li><code>children</code> - used internally when loading a node and its children all in one 
+request.  Do not override the persistence of this field.</li>
+</ul>
+<h3 id="components-_-trees_-_loading_data">Loading Data<a class="quick-link" href="#components-_-trees_-_loading_data"></a></h3>
+<p>There are two ways to load Tree data.  The first is to for the proxy to fetch the entire
+Tree all at once.  For larger Trees where loading everything at once is not ideal, it 
+may be preferable to use the second method - dynamically loading the children for each 
+node when it is expanded.</p>
+<h4 id="components-_-trees_-_loading_the_entire_tree">Loading the Entire Tree<a class="quick-link" href="#components-_-trees_-_loading_the_entire_tree"></a></h4>
+<p>Internally, the Tree only loads data in response to a node being expanded.  However the
+entire hierarchy can be loaded if the proxy retrieves a nested object containing the 
+whole Tree structure.  To accomplish this, initialize the TreeStore&#39;s root node to 
+<code>expanded</code>:</p>
+<pre><code class="language-javascript">Ext.define(&#39;Person&#39;, {
+    extend: &#39;Ext.data.Model&#39;,
+    fields: [
+        { name: &#39;id&#39;, type: &#39;int&#39; },
+        { name: &#39;name&#39;, type: &#39;string&#39; }
+    ],
+    proxy: {
+        type: &#39;ajax&#39;,
+        api: {
+            create: &#39;createPersons&#39;,
+            read: &#39;readPersons&#39;,
+            update: &#39;updatePersons&#39;,
+            destroy: &#39;destroyPersons&#39;
+        }
+    }
+
+});
+
+var store = Ext.create(&#39;Ext.data.TreeStore&#39;, {
+    model: &#39;Person&#39;,
+    root: {
+        name: &#39;People&#39;,
+        expanded: true
+    }
+});
+
+Ext.create(&#39;Ext.tree.Panel&#39;, {
+    renderTo: document.body,
+    width: 300,
+    height: 200,
+    title: &#39;People&#39;,
+    store: store,
+    columns: [{
+        xtype: &#39;treecolumn&#39;, 
+        header: &#39;Name&#39;, 
+        dataIndex: &#39;name&#39;, 
+        flex: 1
+    }]
+});
+</code></pre><p>Assume that the <code>readPersons</code> url returns the following json object</p>
+<pre><code class="language-javascript">{
+    &quot;success&quot;: true,
+    &quot;children&quot;: [
+        { &quot;id&quot;: 1, &quot;name&quot;: &quot;Phil&quot;, &quot;leaf&quot;: true },
+        { &quot;id&quot;: 2, &quot;name&quot;: &quot;Nico&quot;, &quot;expanded&quot;: true, &quot;children&quot;: [
+            { &quot;id&quot;: 3, &quot;name&quot;: &quot;Mitchell&quot;, &quot;leaf&quot;: true }
+        ]},
+        { &quot;id&quot;: 4, &quot;name&quot;: &quot;Sue&quot;, &quot;loaded&quot;: true }
+    ]
+}
+</code></pre><p>That&#39;s all that&#39;s needed to load the entire tree.</p>
+<p><img src='images/tree-bulk-load.png' alt='Tree with Bulk Loaded Data'/></p>
+<p>Important items to note:</p>
+<ul>
+<li>For all non-leaf nodes that do not have children (for example, Person with name Sue
+above), the server response MUST set the <code>loaded</code> property to <code>true</code>.  Otherwise the 
+proxy will attempt to load children for these nodes when they are expanded.</li>
+<li>The question then arises - if the server is allowed to set the <code>loaded</code> property on a
+node in the JSON response can it set any of the other non-persistent fields?
+The answer is yes - sometimes.  In the example above, the node with name &quot;Nico&quot; has its
+<code>expanded</code> field set to <code>true</code> so that it will be initially displayed as expanded in the 
+Tree Panel.  Caution should be exercised as there are cases where this is not
+appropriate and could cause serious problems, like setting the <code>root</code> property on a node 
+that is not the root node for example.  In general, <code>loaded</code> and <code>expanded</code> are the
+only cases where it is recommended for the server to set a non-persistent field in the 
+JSON response.</li>
+</ul>
+<h4 id="components-_-trees_-_dynamically_loading_children">Dynamically Loading Children<a class="quick-link" href="#components-_-trees_-_dynamically_loading_children"></a></h4>
+<p>For larger Trees it may be desirable to only load parts of the tree by loading child 
+nodes only when their parent node is expanded.  Suppose in the above example, that the 
+node with name &quot;Sue&quot; does not have its <code>loaded</code> field set to <code>true</code> by the server 
+response.  The Tree would display an expander icon next to the node.  When the node is 
+expanded, the proxy will make another request to the <code>readPersons</code> url that looks 
+something like this:</p>
+<pre><code class="language-javascript">/readPersons?node=4
+</code></pre><p>This tells the server to retrieve the child nodes for the node with an <code>id</code> of 4.  The 
+data should be returned in the same format as the data that was used to load the root 
+node:</p>
+<pre><code class="language-javascript">{
+    &quot;success&quot;: true,
+    &quot;children&quot;: [
+        { &quot;id&quot;: 5, &quot;name&quot;: &quot;Evan&quot;, &quot;leaf&quot;: true }
+    ]
+}
+</code></pre><p>Now the Tree looks something like this:</p>
+<p><img src='images/tree-dynamic-load.png' alt='Tree with Dynamically Loaded Node'/></p>
+<h3 id="components-_-trees_-_saving_data">Saving Data<a class="quick-link" href="#components-_-trees_-_saving_data"></a></h3>
+<p>Creating, updating, and deleting nodes is handled automatically and seamlessly by the
+Proxy.</p>
+<h4 id="components-_-trees_-_creating_a_new_node">Creating a New Node<a class="quick-link" href="#components-_-trees_-_creating_a_new_node"></a></h4>
+<pre><code class="language-javascript">// Create a new node and append it to the tree:
+var newPerson = Ext.create(&#39;Person&#39;, { name: &#39;Nige&#39;, leaf: true });
+store.getNodeById(2).appendChild(newPerson);
+</code></pre><p>Since the proxy is defined directly on the Model, the Model&#39;s <a href="../../../../extjs/5.1.4/api/Ext.data.Model.html#save">save()</a> method can be used to persist the data:</p>
+<pre><code class="language-javascript">newPerson.save();
+</code></pre><h4 id="components-_-trees_-_updating_an_existing_node">Updating an Existing Node<a class="quick-link" href="#components-_-trees_-_updating_an_existing_node"></a></h4>
+<pre><code class="language-javascript">store.getNodeById(1).set(&#39;name&#39;, &#39;Philip&#39;);
+</code></pre><h4 id="components-_-trees_-_removing_a_node">Removing a Node<a class="quick-link" href="#components-_-trees_-_removing_a_node"></a></h4>
+<pre><code class="language-javascript">store.getRootNode().lastChild.remove();
+</code></pre><h4 id="components-_-trees_-_bulk_operations">Bulk Operations<a class="quick-link" href="#components-_-trees_-_bulk_operations"></a></h4>
+<p>After creating, updating, and removing several nodes, they can all be persisted in one
+operation by calling the TreeStore&#39;s <a href="../../../../extjs/5.1.4/api/Ext.data.TreeStore.html#sync">sync()</a> method:</p>
+<pre><code class="language-javascript">store.sync();
+</code></pre>
+        </div>
+    </div>
+    <div id="footer">
+        <p class="di">
+            <a href="https://www.facebook.com/senchainc/" target="_blank"><img class="social" src="../../../../assets/images/fb.png"/></a>
+            <a href="https://www.linkedin.com/company/sencha-inc" target="_blank"><img class="social" src="../../../../assets/images/in.png"/></a>
+            <a href="https://twitter.com/Sencha" target="_blank"><img class="social" src="../../../../assets/images/twt.png"/></a>
+            Ext JS   | <a href='https://www.sencha.com/legal/terms-of-use/' target='_blank'>Terms of Use</a>
+        </p>
+    </div>
+</div>        </div>
+    </div>
+
+    <h2 class="product-header">
+        <a href="../../index.html">Ext JS 5.1.4 </a>
+        <span data-tip="Product / Version Menu" class="header-product-title product-menu-btn-wrap tooltip tooltip-tl-bl">
+            <span class="fa fa-angle-down product-menu-btn"></span>
+            <div class="callout callout-b"></div>
+        </span>
+        <div id="peekaboo-input" class="peekaboo-input dn">
+            <input type="text" id="mobile-input" />
+        </div>
+    </h2>
+
+    <div id="product-tree-ct" class="hide">
+        <div id="product-version-tree-ct" class="hide"></div>
+    </div>
+
+    <div id="historyConfigPanel">
+        <div class="history-type-selector">
+            <input id="historyTypeCurrent" type="radio" name="historyType" value="current" checked="true" />
+            <label for="historyTypeCurrent">Current Product / Version</label><br>
+            <input id="historyTypeAll" type="radio" name="historyType" value="all" />
+            <label for="historyTypeAll">All</label><br>
+            <div id="history-label-toggle" class="relative ml2 o-50">
+                <input id="history-all-labels" type="checkbox" checked="true" />
+                <label for="history-all-labels">Show product details in the history bar</label>
+                <div class="mask"></div>
+            </div>
+            <span id="history-clear" class="icon-btn history-clear tooltip tooltip-tr-br" data-tip="Clear History">
+                <i class="fa fa-trash"></i>
+                <div class="callout callout-b"></div>
+            </span>
+        </div>
+        <div id="history-full-list" class="overflow-y-auto"></div>
+    </div>
+
+    <div id="search-history-panel"></div>
+
+    <div id="modal-placeholder" class="modal">
+        <span id="modal-close" >&times;</span>
+        <img id="modal-content">
+        <div id="modal-caption"></div>
+    </div>
+
+
+</body>
+    <script type="text/javascript" src="../../../../assets/js/extjs-5.1.4-apiSearch.js"></script>
+    <script type="text/javascript" src="../../../../assets/js/extjs-5.1.4-guideSearch.js"></script>
+<!--[if lt IE 9 ]>
+<script type="text/javascript" src="../../../../assets/js/media-query-poly.js"></script>
+<style>
+    span.da-inline-fiddle-nav-fiddle.x-fa.fa-play-circle {
+        display: none;
+    }
+</style>
+<![endif]-->
+<script>
+    if (navigator.userAgent.indexOf("Safari") > -1) {
+        window.onpageshow = function(event) {
+            if (event.persisted) {
+                window.location.reload()
+            }
+        };
+    }
+</script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-1396058-28', 'auto');
+    ga('send', 'pageview');
+</script>
+</html>

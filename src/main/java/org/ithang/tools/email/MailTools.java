@@ -1,17 +1,10 @@
 package org.ithang.tools.email;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import java.security.GeneralSecurityException;
 import java.security.Security;
-import java.util.Date;
 import java.util.Properties;
 
-import javax.mail.Message.RecipientType;
 import javax.mail.Session;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeUtility;
 
 import org.ithang.tools.email.EmailAuthenticator;
 import org.ithang.tools.email.MailMessage;
@@ -65,6 +58,7 @@ public class MailTools {
 	 * @param ssl
 	 * @return
 	 */
+	@SuppressWarnings("all")
 	public static javax.mail.Session getSession(String host,int port,final String username,final String password,boolean ssl){
 		try{
 	         Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());

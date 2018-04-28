@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Drag and Drop | Ext JS 5.1.4 </title>
+    <!--  Generated on March, 24 2018 at 1:45 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta property="og:image" content="../../../../assets/images/sencha-200.png" />
+    <meta property="og:title" content="Drag and Drop | Ext JS 5.1.4 " />
+    <meta property="og:description" content="Ext JS Api - API documentation from Sencha" />
+    <meta property="og:site_name" content="Sencha Documentation" />
+    <meta property="og:url" content="" />
+    <meta name="description" content="Ext JS Api - API documentation from Sencha">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/prism.css">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/create-app-html-app.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../../../../assets/css/../../../node_modules/tachyons/css/tachyons.css"> -->
+
+
+</head>
+<body class="new-docs  is-guide  has-guides   has-api tree-shown ">
+
+    <!-- SVG Sprite -->
+    <div style="height: 0; width: 0; position: absolute; visibility: hidden;" aria-hidden="true">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" focusable="false">
+            <symbol id="ripply-scott" viewBox="0 0 100 100">
+                <circle id="ripple-shape" cx="1" cy="1" r="1" />
+            </symbol>
+        </svg>
+    </div>
+    <!-- /end sprite -->
+
+    <script type="text/javascript">
+        function getOS() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            if(/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                return 'ios';
+            } else if(userAgent.match(/Android/i)) {
+                return 'android';
+            }
+        }
+
+        var isIE8 = false;
+
+        document.body.className += ' ' + getOS();
+
+        window.DocsApp = window.DocsApp || {};
+        DocsApp.meta   = {"majorVer":"5","prodObj":{"3":{"link":"http://docs.sencha.com/{prod}/{ver}/#!/api/{page}"},"4":{"link":"http://docs.sencha.com/{prod}/{ver}/#!/api/{page}"},"title":"Ext JS","currentVersion":"6.5.3","toolkit":{"6":{"toolkits":["modern","classic"],"defaultToolkit":"modern"}},"productMenu":["6.5.3","6.5.2","6.5.1","6.5.0","6.2.1","6.2.0","6.0.2","6.0.1","6.0.0","5.1.4","5.1.3","5.1.2","5.1.1","5.1.0","5.0.1","5.0.0","4.2.6","4.1.3","4.0.7","3.4.0"],"guideSearchPartners":["cmd"],"hasVersions":true,"hasApi":true,"theme":{"5.0.0":"crisp","5.0.1":"crisp","5.1.0":"crisp","5.1.1":"crisp","5.1.2":"crisp","5.1.3":"crisp","5.1.4":"crisp","6.0.0":{"classic":"triton","modern":"triton"},"6.0.1":{"classic":"triton","modern":"triton"},"6.0.2":{"classic":"triton","modern":"triton"},"6.2.0":{"classic":"triton","modern":"triton"},"6.2.1":{"classic":"triton","modern":"triton"},"6.2.2":{"classic":"triton","modern":"triton"},"6.5.0":{"classic":"triton","modern":"material"},"6.5.1":{"classic":"triton","modern":"material"},"6.5.2":{"classic":"triton","modern":"material"},"6.5.3":{"classic":"triton","modern":"material"},"6.6.0":{"classic":"triton","modern":"material"}},"repo":"SDK","remoteUrl":"git@github.com:extjs/{repo}.git","addlRepos":["package-loader"],"addlRemoteUrls":"git@github.com:sencha/{repo}.git","remotes":{"7.0.0":{"branch":"ext-7.0.x"},"6.5.3":{"branch":"ext-6.5.x"},"6.5.2":{"branch":"ext-6.5.x"},"6.5.1":{"branch":"ext-6.5.1-docs"},"6.5.0":{"branch":"ext-6.5.0-docs"},"6.2.2":{"branch":"ext-6.2.x"},"6.2.1":{"branch":"ext-6.2.1-docs"},"6.2.0":{"branch":"ext-6.2.0-docs"},"6.0.2":{"branch":"ext-6.0.x"},"6.0.1":{"branch":"ext-6.0.1-docs"},"6.0.0":{"branch":"ext-6.0.0-docs"},"5.1.4":{"branch":"ext-5.1.x"},"5.1.3":{"branch":"ext-5.1.3-docs"},"5.1.2":{"branch":"ext-5.1.2-docs"},"5.1.1":{"branch":"ext-5.1.1-docs"},"5.1.0":{"branch":"ext-5.1.0-docs"},"5.0.1":{"branch":"ext-5.0.1-docs"},"5.0.0":{"branch":"ext-5.0.0-docs"}}},"hasApi":true,"hasVersions":true,"hasToolkits":false,"toolkits":false,"toolkit":false,"hasGuides":true,"title":"Ext JS","version":"5.1.4","pageType":"guide","product":"extjs","apiProduct":"extjs","apiVersion":"5.1.4","exceptions":{"touch":["2.3.1","2.2.1","2.1.1","2.0.1"],"extjs":["3.4.0","4.0.7","4.1.3","4.2.6"]},"searchPartnerVersions":{"cmd":{"6.5.3":"6.5.3","6.5.2":"6.5.3","6.5.1":"6.5.3","6.5.0":"6.5.0","6.2.1":"6.5.0","6.2.0":"6.5.0","6.0.2":"6.5.0","6.0.1":"6.5.0","6.0.0":"6.5.0","5.1.4":"6.5.0","5.1.3":"6.5.0","5.1.2":"6.5.0","5.1.1":"6.5.0","5.1.0":"6.5.0","5.0.1":"6.5.0","5.0.0":"6.5.0","4.2.6":"6.5.0","4.1.3":"6.5.0","4.0.7":"6.5.0","3.4.0":"6.5.0"}},"navTreeName":"Guides","myId":"core_concepts/drag_drop","rootPath":"../../","pageName":"Drag and Drop","docsRootPath":"../../../../"};
+    </script>
+    <!--[if IE 8]>
+    <script type='text/javascript'>
+        isIE8 = true;
+    </script>
+    <![endif]-->
+    <script type="text/javascript">
+        if (!isIE8) {
+            document.write('<script type=\"text/javascript\" src=\"../../../../assets/js/prism.js\"><\/script>');
+        }
+        if (DocsApp.meta.hasGuides) {
+            document.write('<script type=\"text/javascript\" src=\"../../../../assets/js/extjs-5.1.4-guidesTree.js\"><\/script>');
+        }
+        if (DocsApp.meta.hasApi) {
+            document.write('<script type=\"text/javascript\" src=\"../../../../assets/js/extjs-5.1.4-apiTree.js\"><\/script>');
+        }
+    </script>
+    <script type="text/javascript" src="../../../../assets/js/ace.js"></script>
+    <script type="text/javascript" src="../../../../assets/js/create-app-html-app.js"></script>
+    <script type="text/javascript" src="../../../../assets/js/productMenu.js"></script>
+
+    <div id="help-wrap">
+        <div class="help-header">
+            Docs Help
+            <div id="help-close" class="icon-btn">
+                <i class="fa fa-close"></i>
+            </div>
+        </div>
+        <div class="classText">
+            <div class="toc classMeta">
+                <h2>Contents</h2>
+                <a class="toc-page-h2" href="#terms-icons-and-labels">Terms, Icons, and Labels</a>
+                <a class="toc-page-h3" href="#access-levels">Access Levels</a>
+                <a class="toc-page-h3" href="#member-types">Member Types</a>
+                <a class="toc-page-h3" href="#member-syntax">Member Syntax</a>
+                <a class="toc-page-h3" href="#member-flags">Member Flags</a>
+                <a class="toc-page-h3" href="#class-icons">Class Icons</a>
+                <a class="toc-page-h3" href="#member-icons">Member Icons</a>
+                <a class="toc-page-h2" href="#navigation-and-features">Navigation and Features</a>
+                <a class="toc-page-h3" href="#class-member-quick-nav-menu">Class Member Quick-Nav Menu</a>
+                <a class="toc-page-h3" href="#getter-and-setter-methods">Getter and Setter Methods</a>
+                <a class="toc-page-h3" href="#history-bar">History Bar</a>
+                <a class="toc-page-h3" href="#search-and-filters">Search and Filters</a>
+                <a class="toc-page-h3" href="#api-doc-class-metadata">API Doc Class Metadata</a>
+                <a class="toc-page-h3" href="#expanding-and-collapsing-examples-and-class-members">Expanding and Collapsing Examples and Class Members</a>
+                <a class="toc-page-h3" href="#desktop-vs-mobile-view">Desktop -vs- Mobile View</a>
+                <a class="toc-page-h3" href="#viewing-the-class-source">Viewing the Class Source</a>
+            </div>
+            <h2 id="terms-icons-and-labels">Terms, Icons, and Labels</h2>
+            <p>Many classes have shortcut names used when creating (instantiating) a class with a
+                configuration object.  The shortcut name is referred to as an <code>alias</code> (or <code>xtype</code> if the
+                class extends Ext.Component).  The alias/xtype is listed next to the class name of
+                applicable classes for quick reference.</p>
+            <h3 id="access-levels">Access Levels</h3>
+            <p>Framework classes or their members may be specified as <code>private</code> or <code>protected</code>.  Else,
+                the class / member is <code>public</code>.  <code>Public</code>, <code>protected</code>, and <code>private</code> are access
+                descriptors used to convey how and when the class or class member should be used.</p>
+            <ul>
+                <li><p><strong>Public</strong> classes and class members are available for use by any other class or
+                    application code and may be relied upon as a stable and persistent within major product
+                    versions.  Public classes and members may safely be extended via a subclass.</p>
+                </li>
+                <li><p><strong>Protected</strong> class members are stable <code>public</code> members intended to be used by the
+                    owning class or its subclasses.  Protected members may safely be extended via a subclass.</p>
+                </li>
+                <li><p><strong>Private</strong> classes and class members are used internally by the framework and are not
+                    intended to be used by application developers.  Private classes and members may change or
+                    be omitted from the framework at any time without notice and should not be relied upon in
+                    application logic.</p>
+                </li>
+            </ul>
+            <h3 id="member-types">Member Types</h3>
+            <ul>
+                <li><strong>Config</strong> - The configuration options for a class.</li>
+                <li><strong>Property</strong> - Set once a class is instantiated. *See Read Only below.</li>
+                <li><strong>Method</strong> - Actions that can be performed by a class.  Methods should be read as
+                    instance methods and can only be called from a instance of a given class.  Static methods
+                    that can be called directly from the class itself will have a <code>static</code> label next to the
+                    method name.  *See Static below.</li>
+                <li><strong>Event</strong> - Events are specific to the framework event system allowing for classes to
+                    programmatically raise an event to be handled by one or more event handler methods.  DOM
+                    events, while handled by the framework event system, are not specifically described
+                    within the API documentation.  *For DOM events refer to the
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/Events">event reference</a> page from MDN.</li>
+                <li><strong>Theme Variable</strong> - Variables used by the visual theme engine employed by the
+                    framework.</li>
+                <li><strong>Theme Mixin</strong> - Functions used by the visual theme engine employed by the framework
+                    and may use values set in various Theme Variables.</li>
+            </ul>
+            <h3 id="member-syntax">Member Syntax</h3>
+            <p>Below is an example class member that we can disect to show the syntax of a class member
+                (the lookupComponent method as viewed from the Ext.button.Button class in this case).</p>
+            <div style="position: relative;" class="show-inherited show-protected members">
+                <div style="border: 1px solid #E4E4E4;" class="classmembers member-protected isNotStatic isInherited member-expanded" data-member-name="lookupComponent">
+                    <div class="collapse-toggle">
+                        <i class="fa fa-caret-right"></i>
+                        <i class="fa fa-caret-down"></i>
+                    </div>
+                    <div class="source-class"><a href="javascript:void(0);">Ext.container.Container</a><div class="viewSource"><a href="javascript:void(0);"></a><a target="_blank" href="javascript:void(0);">view source</a></div></div>
+                    <div class="member-header">
+                        <a href="javascript:void(0);" class="member-name-link"><span data-ref="method-lookupComponent" class="member-name"><strong>lookup</strong>Component</span></a>
+                        <span class="params-list"> ( item )</span> : <span class="memberType">Ext.Component</span>
+                        <div class="member-tags"><span class="protected">protected</span></div>
+                    </div>
+                    <p>Called when a raw config object is added to this container either during initialization of the <a href="javascript:void(0);">items</a> config,
+                        or when new items are <a href="javascript:void(0);">added), or {@link #insert inserted</a>.</p>
+                    <p>This method converts the passed object into an instanced child component.</p>
+                    <p>This may be overridden in subclasses when special processing needs to be applied to child creation.</p>
+                    <div class="detail-header">Parameters</div>
+                    <p><span class="params-list">item</span> :
+                        <span class="memberType">&nbsp;Object</span>
+                    </p>
+                    <div class="params-desc"><p>The config object being added.</p></div>
+                    <div class="detail-header">Returns</div>
+                    <span style="margin-left:12px;" class="memberType">Ext.Component</span>
+                    <div class="return-desc"><p>The component to be added.</p>
+                    </div>
+                </div>
+            </div>
+    
+            <p>Let's look at each part of the member row:</p>
+            <ul>
+                <li><strong>Expand/Collapse</strong> - On the left-hand size of the member row is a control used to
+                    expand and collapse each member row to show / hide member details.</li>
+                <li><strong>Member Name</strong> - The name of the class member (<code>lookupComponent</code> in this example)</li>
+                <li><strong>Method Param</strong> - Any required or optional params used by a method (or passed to an
+                    event handler method) will be listed next to the method name within parenthesis
+                    (<code>( item )</code> in this example)</li>
+                <li><strong>Return type</strong> - The class instance or javascript object returned by the method or
+                    property (<code>Ext.Component</code> in this case).  This may be omitted for methods that do not
+                    return anything other than <code>undefined</code> or may display as multiple possible values
+                    separated by a forward slash <code>/</code> signifying that what is returned may depend on the
+                    results of the method call (i.e. a method may return a Component if a get method calls is
+                    successful or <code>false</code> if unsuccessful which would be displayed as
+                    <code>Ext.Component/Boolean</code>).</li>
+                <li><strong>Flags</strong> - Any flags applicable to the member will be displayed next (<code>PROTECTED</code> in
+                    this example - see the Flags section below)</li>
+                <li><strong>Member Origin</strong> - On the right-hand side of the member row is the class where the
+                    member was initially described (<code>Ext.container.Container</code> in this example).  The source
+                    class will be displayed as a blue link if the member originates from the current class
+                    and gray if it is inherited from an ancestor or mixed-in class.</li>
+                <li><strong>Member Source</strong> - On the right-hand side below the member origin class is a link to
+                    view the member's source (<code>view source</code> in the example)</li>
+                <li><strong>Params List</strong> - Each param for a class method will be listed using the same name
+                    found above in parenthesis, the type of class or object expected, and a description of
+                    the param (<code>item : Object</code> in the example).</li>
+                <li><strong>Returns</strong> - If a class returns a value other than <code>undefined</code> a "Returns" section
+                    will note the type of class or object returned and a description (<code>Ext.Component</code> in the
+                    example)</li>
+                <li><strong>Since</strong> (<em>not shown in the example</em>) - Some members will show which version of the
+                    product the member was first introduced (i.e. <code>Available since 3.4.0</code> - <em>not pictured in
+                        the example</em>) just after the member description</li>
+                <li><strong>Default</strong> (<em>not shown in the example</em>) - Configs often show the default config value
+                    to be applied to a class instance if not overridden (i.e. <code>Defaults to: false</code>)</li>
+            </ul>
+            <h3 id="member-flags">Member Flags</h3>
+            <p>The API documentation uses a number of flags to further commnicate the class member's
+                function and intent.  The label may be represented by a text label, an abbreviation, or
+                an icon.</p>
+            <ul>
+                <li><strong>Required</strong> - Required config when instantiating a class</li>
+                <li><strong>Bindable</strong> - The config has a setter which allows this config to be set via ViewModel
+                    binding</li>
+                <li><strong>Read Only</strong> - The property may be read, but cannot be used to configure /
+                    re-configure a class instance at runtime</li>
+                <li><strong>Singleton</strong> - Singleton classes are instantiated immediately once defined and may not
+                    be instantiated manually</li>
+                <li><strong>Static</strong> - A static method or property is a method or property belonging to the class
+                    itself, not an instance of the class</li>
+                <li><strong>Chainable</strong> - Refers to methods that return the class instance back when called.<br>This enables chained method calls like: <code>classInstance.method1().method2().etc();</code></li>
+                <li><strong>Deprecated</strong> - A class or member that is scheduled for removal in a future
+                    framework version and is provided in the current version for backwards compatibility.<br>Deprecated classes and members will have a message directing you to the preferred class /
+                    method going forward.</li>
+                <li><strong>Removed</strong> - A removed class or member that exists in documentation only as a
+                    reference for users upgrading between framework versions</li>
+                <li><strong>Template</strong> - A method defined within a base class designed to be overridden by
+                    subclasses</li>
+                <li><strong>Abstract</strong> - A class or member may be be defined as abstract.  Abstract classes and
+                    members establish a class structure and provide limited, if any, code.  Class-specific
+                    code will be furnished via overrides in subclasses.</li>
+                <li><strong>Preventable</strong> - Events marked preventable will not fire if <code>false</code> is returned from
+                    an event handler</li>
+            </ul>
+            <h3 id="class-icons">Class Icons</h3>
+            <p><span class="icon-demo class-icon fa fa-cube"></span> - Indicates a framework class  </p>
+            <p><span class="icon-demo singleton-icon fa fa-cube"></span> - A singleton framework class. *See the
+                singleton flag for more information  </p>
+            <p><span class="icon-demo component-icon fa fa-gear"></span> - A component-type framework class (any
+                class within the Ext JS framework that extends Ext.Component)  </p>
+            <p><span class="icon-demo display-new"></span> - Indicates that the class, member, or guide
+                is new in the currently viewed version</p>
+            <h3 id="member-icons">Member Icons</h3>
+            <p><span class="icon-demo fa fa-cubes"></span> - Indicates a class member of type <code>config</code>  </p>
+            <p><span class="icon-demo fa fa-book"></span> - Indicates a class member of type <code>property</code>  </p>
+            <p><span class="icon-demo fa fa-object-group"></span> - Indicates a class member of type
+                <code>method</code>  </p>
+            <p><span class="icon-demo fa fa-bolt"></span> - Indicates a class member of type <code>event</code>  </p>
+            <p><span class="icon-demo fa fa-paint-brush"></span> - Indicates a class member of type
+                <code>theme variable</code>  </p>
+            <p><span class="icon-demo fa fa-tint"></span> - Indicates a class member of type
+                <code>theme mixin</code>  </p>
+            <p><span class="icon-demo display-new"></span> - Indicates that the class, member, or guide
+                is new in the currently viewed version</p>
+            <h2 id="navigation-and-features">Navigation and Features</h2>
+            <h3 id="class-member-quick-nav-menu">Class Member Quick-Nav Menu</h3>
+            <p>Just below the class name on an API doc page is a row of buttons corresponding to the
+                types of members owned by the current class.  Each button shows a count of members by
+                type (this count is updated as filters are applied).  Clicking the button will navigate
+                you to that member section.  Hovering over the member-type button will reveal a popup
+                menu of all members of that type for quick navigation.</p>
+            <h3 id="getter-and-setter-methods">Getter and Setter Methods</h3>
+            <p>Getting and setter methods that correlate to a class config option will show up in the
+                methods section as well as in the configs section of both the API doc and the member-type
+                menus just beneath the config they work with.  The getter and setter method documentation
+                will be found in the config row for easy reference.</p>
+            <h3 id="history-bar">History Bar</h3>
+            <p>Your page history is kept in localstorage and displayed (using the available real estate)
+                just below the top title bar.  By default, the only search results shown are the pages
+                matching the product / version you're currently viewing.  You can expand what is
+                displayed by clicking on the <span class="icon-demo history-config"></span> button on the
+                right-hand side of the history bar and choosing the "All" radio option.  This will show
+                all recent pages in the history bar for all products / versions.</p>
+            <p>Within the history config menu you will also see a listing of your recent page visits.
+                The results are filtered by the "Current Product / Version" and "All" radio options.
+                Clicking on the <span class="icon-demo history-clear"></span> button will clear the history bar as
+                well as the history kept in local storage.</p>
+            <p>If "All" is selected in the history config menu the checkbox option for "Show product
+                details in the history bar" will be enabled.  When checked, the product/version for each
+                historic page will show alongside the page name in the history bar.  Hovering the cursor
+                over the page names in the history bar will also show the product/version as a tooltip.</p>
+            <h3 id="search-and-filters">Search and Filters</h3>
+            <p>Both API docs and guides can be searched for using the search field at the top of the
+                page.</p>
+            <p>On API doc pages there is also a filter input field that filters the member rows
+                using the filter string.  In addition to filtering by string you can filter the class
+                members by access level, inheritance, and read only.  This is done using the checkboxes at the top of
+                the page.</p>
+            <p>The checkbox at the bottom of the API class navigation tree filters the class list to
+                include or exclude private classes.</p>
+            <p>Clicking on an empty search field will show your last 10 searches for quick navigation.</p>
+            <h3 id="api-doc-class-metadata">API Doc Class Metadata</h3>
+            <p>Each API doc page (with the exception of Javascript primitives pages) has a menu view of
+                metadata relating to that class.  This metadata view will have one or more of the
+                following:</p>
+            <ul>
+                <li><strong>Alternate Name</strong> - One or more additional class name synonymns (in Ext JS 6.0.0 the
+                    <code>Ext.button.Button</code> class has an alternate class name of <code>Ext.Button</code>).  Alternate class
+                    names are commonly maintained for backward compatibility.</li>
+                <li><strong>Hierarchy</strong> - The hierararchy view lists the inheritance chain of the current class
+                    up through its ancestor classes up to the root base class.</li>
+                <li><strong>Mixins</strong> - A list of classes that are mixed into the current class</li>
+                <li><strong>Inherited Mixins</strong> - A list of classes that are mixed into an ancestor of the current
+                    class</li>
+                <li><strong>Requires</strong> - All classes required to be defined for the class to be instantiated</li>
+                <li><strong>Uses</strong> - A list of classes potentially used by the class at some point in its
+                    lifecycle, but not necessarily requried for the class to initially be instantiated</li>
+                <li><strong>Subclasses</strong> - Classes that extend the current class</li>
+            </ul>
+            <h3 id="expanding-and-collapsing-examples-and-class-members">Expanding and Collapsing Examples and Class Members</h3>
+            <p>Runnable examples (Fiddles) are expanded on a page by default.  You can collapse and
+                expand example code blocks individually using the arrow on the top-left of the code
+                block.  You can also toggle the collapse state of all examples using the toggle button on
+                the top-right of the page.  The toggle-all state will be remembered between page loads.</p>
+            <p>Class members are collapsed on a page by default.  You can expand and collapse members
+                using the arrow icon on the left of the member row or globally using the expand /
+                collapse all toggle button top-right.</p>
+            <h3 id="desktop-vs-mobile-view">Desktop -vs- Mobile View</h3>
+            <p>Viewing the docs on narrower screens or browsers will result in a view optimized for a
+                smaller form factor.  The primary differences between the desktop and "mobile" view are:</p>
+            <ul>
+                <li>Global navigation will be located in a menu on the left-hand side accessible via the
+                    hamburger menu icon.  The menu houses the following (on most pages):<ul>
+                        <li>The name of the current product (as a link to the product landing page)</li>
+                        <li>The Sencha icon used to navigate back to the documentation home page</li>
+                        <li>The product menu drop-down button</li>
+                        <li>Tabs of navigation trees for the API docs and guides</li>
+                    </ul>
+                </li>
+                <li>Current context navigation and tools is located on the right-hand side accessible via
+                    the gear icon.  The context menu houses teh following:<ul>
+                        <li>The global search input field</li>
+                        <li>(<em>API doc</em>) A "Filters" tab with the member filter, expand / collapse all examples
+                            button, expand / collapse all member rows button, the access level filter checkboxes,
+                            and the counts of each member</li>
+                        <li>(<em>API doc</em>) A "Related Classes" tab containing the menu of metadata related to the
+                            current class</li>
+                        <li>(<em>Guides</em>) The table of contents for the guide</li>
+                    </ul>
+                </li>
+            </ul>
+            <h3 id="viewing-the-class-source">Viewing the Class Source</h3>
+            <p>The class source can be viewed by clicking on the class name at the top of an API doc
+                page.  The source for class members can be viewed by clicking on the "view source" link
+                on the right-hand side of the member row.</p>
+    
+        </div>
+    </div>
+
+    <div id="header">
+        <div class="home-link">
+            <a href="http://docs.sencha.com"><span class="fa fa-book"></span></a>
+        </div>
+        <div class="logo">
+            <a href="https://www.sencha.com"><img height="32" src="../../../../assets/images/sencha_logo_thumb.png"/></a>
+        </div>
+        <span id="mobile-main-nav-menu-btn" class="fa fa-bars"></span>
+        <span data-tip="Product / Version Menu" class="fa fa-angle-down product-menu-btn product-menu-btn-wrap tooltip-tl-bl tooltip landing-product-menu-btn">
+            <div class="callout callout-b"></div>
+        </span>
+            <div class="page-title">Drag and Drop</div>
+
+        <span id="mobile-context-menu-btn" class="fa fa-cog"></span>
+    </div>
+
+    <div id="centerContent">
+        <div id="history-nav">
+            <span id="history-config" class="icon-btn history-config tooltip tooltip-tr-br" data-tip="Configure / Clear History">
+                <i class="fa fa-history"></i>
+                <div class="callout callout-b"></div>
+            </span>
+        </div>
+        <div id="class-tree-ct" class="class-tree">
+            <h2 class="product-header">
+                <div class="home-link">
+                    <a href="http://docs.sencha.com"><span class="fa fa-book"></span></a>
+                </div>
+                <div class="logo">
+                    <a href="https://www.sencha.com"><img src="../../../../assets/images/sencha_logo1x.png"/></a>
+                </div>
+                <a href="../../index.html">Ext JS 5.1.4 </a>
+                <span data-tip="Product / Version Menu" class="fa fa-angle-down product-menu-btn product-menu-btn-wrap tooltip tooltip-tl-bl"><div class="callout callout-b"></div></span>
+            </h2>
+            <div id="tree-header" class="pre-load">
+                <div id="hide-class-tree" class="icon-btn">
+                    <i class="fa fa-close"></i>
+                    <i class="fa fa-bars"></i>
+                </div>
+            </div>
+            <div id="tree-scroller">
+                <div id="tree" class="show-private show-protected is-tree ">
+                    <div id="tree-sub-header"></div>
+                </div>
+                    <div class="private-class-toggle-ct">
+                        <label for="private-class-toggle" class="pointer gray">Show private classes</label>
+                        <input id="private-class-toggle" type="checkbox" name="privateClassToggle" />
+                    </div>
+            </div>
+        </div>
+
+        <a href="#" id="back-to-top">
+            <div class="fa fa-angle-up"></div>
+            <br>
+            top
+        </a>
+
+        <div id="rightMembers">
+<div class="context-menu-ct">
+    <div class="context-header">
+        <div id="hide-context-menu" class="fa fa-caret-right"></div>
+    </div>
+
+    <div class="search">
+        <form autocomplete="off">
+    
+            <input type="text" type="search" placeholder="search" id="searchtext" tabindex="1">
+            <i id="filtersubmit" class="fa fa-search"></i>
+            <span id="help-btn" data-tip="Docs Help" class="icon-btn tooltip tooltip-tr-br"><div class="callout callout-b"></div>
+                <i class="fa fa-question fa-inverse"></i>
+            </span>
+        </form>
+    </div>
+
+    <div id="toc-context-ct">
+        <!-- context content added at runtime -->
+    </div>
+</div>
+<div class="guide-body-wrap">
+    <div class="body-wrap-inner">
+        <div id="toggleExamples" class="icon-btn tooltip tooltip-tr-br" data-collapse="Collapse All Examples" data-expand="Expand All Examples">
+            <i class="fa fa-code"></i>
+            <div class="callout callout-b"></div>
+        </div>
+        <div class="classText">
+                <div class="toc">
+                    <h2>Contents</h2>
+                        <a class="toc-page-h2 " href="#core_concepts-_-drag_drop_-_defining_drag_and_drop">Defining drag and drop</a>
+                        <a class="toc-page-h2 " href="#core_concepts-_-drag_drop_-_organizing_the_drag_and_drop_classes">Organizing the drag and drop classes</a>
+                        <a class="toc-page-h2 " href="#core_concepts-_-drag_drop_-_the_task_at_hand">The task at hand</a>
+                        <a class="toc-page-h2 " href="#core_concepts-_-drag_drop_-_step_1__starting_with_drag">Step 1: Starting with drag</a>
+                        <a class="toc-page-h2 " href="#core_concepts-_-drag_drop_-_peeking_at_how_drag_nodes_are_affected">Peeking at how drag nodes are affected</a>
+                        <a class="toc-page-h2 " href="#core_concepts-_-drag_drop_-_step_2__repairing_an_invalid_drop">Step 2: Repairing an invalid drop</a>
+                        <a class="toc-page-h2 " href="#core_concepts-_-drag_drop_-_step_3__configuring_the_drop_targets">Step 3: Configuring the drop targets</a>
+                        <a class="toc-page-h2 " href="#core_concepts-_-drag_drop_-_step_4__completing_the_drop">Step 4: Completing the drop</a>
+                        <a class="toc-page-h2 " href="#core_concepts-_-drag_drop_-_step_5__adding_drop_invitation">Step 5: Adding drop invitation</a>
+                        <a class="toc-page-h2 " href="#core_concepts-_-drag_drop_-_summary">Summary</a>
+                        <a class="toc-page-h2 " href="#core_concepts-_-drag_drop_-_author">Author</a>
+                </div>
+            <h1 id="core_concepts-_-drag_drop_-_drag_and_drop">Drag and Drop<a class="quick-link" href="#core_concepts-_-drag_drop_-_drag_and_drop"></a></h1>
+<p>One of the most powerful interaction design patterns available to developers is &quot;Drag and
+Drop.&quot; We utilize Drag and Drop without really giving it much thought - especially when
+its done right. Here are 5 easy steps to ensure an elegant implementation.</p>
+<h2 id="core_concepts-_-drag_drop_-_defining_drag_and_drop">Defining drag and drop<a class="quick-link" href="#core_concepts-_-drag_drop_-_defining_drag_and_drop"></a></h2>
+<p>A drag operation, essentially, is a click gesture on some UI element while the mouse
+button is held down and the mouse is moved. A drop operation occurs when the mouse button
+is released after a drag operation. From a high level, drag and drop decisions can be
+summed up by the following flow chart.</p>
+<p><img src='images/dnd_drag_logic.jpg' alt='Ext Drag and Drop'/></p>
+<p>To speed up our development, Ext JS provides us with the Ext.dd classes to manage the
+basic decisions for us. In this guide, we will cover coding for the appearance and removal
+of the drop invitation, invalid drop repair and what happens when a successful drop
+occurs.</p>
+<h2 id="core_concepts-_-drag_drop_-_organizing_the_drag_and_drop_classes">Organizing the drag and drop classes<a class="quick-link" href="#core_concepts-_-drag_drop_-_organizing_the_drag_and_drop_classes"></a></h2>
+<p>A first glance of the classes in the Ext.dd documentation might seem a bit intimidating. 
+But, if we take a quick moment to look at the classes, we see that they all stem from the
+DragDrop class and most can be categorized into Drag or Drop groups.  With a bit more time
+and digging, we can see that the classes can be further categorized into single node and
+multiple node drag or drop interactions.</p>
+<p><img src='images/diagram.jpg' alt='Ext Drag and Drop'/></p>
+<p>In order to learn about the basics of drag and drop we&#39;ll focus on applying single drag
+and drop interactions to DOM nodes.  To do this, we&#39;ll utilize the DD and DDTarget
+classes, which provide the base implementations for their respective drag and drop
+behaviors. However, we need to discuss what our objectives are before we can start
+implementing drag and drop.</p>
+<h2 id="core_concepts-_-drag_drop_-_the_task_at_hand">The task at hand<a class="quick-link" href="#core_concepts-_-drag_drop_-_the_task_at_hand"></a></h2>
+<p>Lets say we&#39;ve been asked to develop an application that will provide a rental car company
+the ability to place their cars and trucks in one of three states:  available, rented or
+in repair status.  The cars and trucks are only allowed to be placed in their respective
+&quot;available&quot; container.</p>
+<p><img src='images/dnd_story.jpg' alt='Ext Drag and Drop'/></p>
+<p>To get started, we must make the cars and trucks &quot;dragable&quot;. For this, we&#39;ll use DD. We&#39;ll
+need to make the rented, repair and vehicle containers &quot;drop targets&quot;.  For this we&#39;ll use
+DDTarget.  Lastly, we&#39;ll use different drag drop groups to help enforce the requirement
+that cars and trucks can only be dropped into their respective &quot;available&quot; containers. Now
+we can begin coding by adding drag operations to the cars and trucks.</p>
+<h2 id="core_concepts-_-drag_drop_-_step_1__starting_with_drag">Step 1: Starting with drag<a class="quick-link" href="#core_concepts-_-drag_drop_-_step_1__starting_with_drag"></a></h2>
+<p>To configure the vehicle DIVs elements as dragable, we&#39;ll need to obtain a list and loop
+through it to instantiate new instances of DD.  Here&#39;s how we do it.</p>
+<pre><code class="language-javascript">    Ext.onReady(function() {
+        // Create an object that we&#39;ll use to implement and override drag behaviors a little later
+
+        var overrides = {};
+
+        // Configure the cars to be draggable
+        var carElements = Ext.get(&#39;cars&#39;).select(&#39;div&#39;);
+        Ext.each(carElements.elements, function(el) {
+            var dd = Ext.create(&#39;Ext.dd.DD&#39;, el, &#39;carsDDGroup&#39;, {
+                isTarget  : false
+            });
+            //Apply the overrides object to the newly created instance of DD
+            Ext.apply(dd, overrides);
+        });
+
+        var truckElements = Ext.get(&#39;trucks&#39;).select(&#39;div&#39;);
+        Ext.each(truckElements.elements, function(el) {
+            var dd = Ext.create(&#39;Ext.dd.DD&#39;, el, &#39;trucksDDGroup&#39;, {
+                isTarget  : false
+            });
+            Ext.apply(dd, overrides);
+        });
+    });
+</code></pre><p>All drag and drop classes are designed to be implemented by means of overriding its
+methods. That&#39;s why in the above code segment, we have create an empty object called
+overrides, which will be filled in later with overrides specific to the action we need. We
+get of list of car and truck elements by leveraging the DomQuery select method to query
+the cars container for all the child div elements. To make the cars and truck elements
+dragable, we create a new instance of DD, passing in the car or truck element to be
+dragged and the drag drop group that it is to participate in. Notice that the vehicle
+types have their own respective drag drop group. This will be important to remember later
+when we setup the rented and repair containers as drop targets. Also notice that we&#39;re
+applying the overrides object to the newly created instances of DD using Ext.apply., which
+is a handy way to add properties or methods to an existing object. Before we can continue
+with our implementation, we need to take a quick moment to analyze what happens when you
+drag an element on screen. With this understanding, the rest of the implementation will
+fall into place.</p>
+<h2 id="core_concepts-_-drag_drop_-_peeking_at_how_drag_nodes_are_affected">Peeking at how drag nodes are affected<a class="quick-link" href="#core_concepts-_-drag_drop_-_peeking_at_how_drag_nodes_are_affected"></a></h2>
+<p>The first thing you&#39;ll notice when dragging the car or truck elements around is that they
+will stick wherever they are dropped. This is OK for now because we&#39;ve just begun our
+implementation. What is important is to understand how the drag nodes are being affected.
+This will aid us in coding for the return to their original positions when they are dropped 
+on anything that is not a valid drop target, which is known as an &quot;invalid drop&quot;. The
+below illustration uses FireBug&#39;s HTML inspection panel and highlights the changes being
+made by when a drag operation is applied to the Camaro element.</p>
+<p><img src='images/dnd_inspection.jpg' alt='Ext Drag and Drop'/></p>
+<p>While inspecting the drag element during a drag operation, we can see a style attribute
+added to the element with three CSS values populated: position, top and left. Further
+inspection reveals that the position attribute set to relative and top and left attributes
+updating while the node is being dragged around. After a the drag gesture completes, the
+style attribute remains along with the styles contained therein. This is what we have to
+clean up when we code for the repair of an invalid drop. Until we setup proper drop
+targets, all drop operations are considered invalid.</p>
+<h2 id="core_concepts-_-drag_drop_-_step_2__repairing_an_invalid_drop">Step 2: Repairing an invalid drop<a class="quick-link" href="#core_concepts-_-drag_drop_-_step_2__repairing_an_invalid_drop"></a></h2>
+<p>The path of least resistance is to repair an invalid drop by reseting the style attribute
+that is applied during the drag operation. This means that the drag element would
+disappear from under the mouse and reappear where it originated and would be quite boring.
+To make it smoother, we&#39;ll use Ext.Fx to animate this action. Remember that the drag and
+drop classes were designed to have methods overridden. To implement repair, we&#39;ll need to
+override the b4StartDrag, onInvalidDrop and endDrag methods. Lets add the following
+methods to our overrides object above and we&#39;ll discuss what they are and do.</p>
+<pre><code class="language-javascript">    var overrides = {
+        // Called the instance the element is dragged.
+        b4StartDrag : function() {
+            // Cache the drag element
+            if (!this.el) {
+                this.el = Ext.get(this.getEl());
+            }
+
+            //Cache the original XY Coordinates of the element, we&#39;ll use this later.
+            this.originalXY = this.el.getXY();
+        },
+        // Called when element is dropped in a spot without a dropzone, or in a dropzone without matching a ddgroup.
+        onInvalidDrop : function() {
+            // Set a flag to invoke the animated repair
+            this.invalidDrop = true;
+        },
+        // Called when the drag operation completes
+        endDrag : function() {
+            // Invoke the animation if the invalidDrop flag is set to true
+            if (this.invalidDrop === true) {
+                // Remove the drop invitation
+                this.el.removeCls(&#39;dropOK&#39;);
+
+                // Create the animation configuration object
+                var animCfgObj = {
+                    easing   : &#39;elasticOut&#39;,
+                    duration : 1,
+                    scope    : this,
+                    callback : function() {
+                        // Remove the position attribute
+                        this.el.dom.style.position = &#39;&#39;;
+                    }
+                };
+
+                // Apply the repair animation
+        this.el.setXY(this.originalXY, animCfgObj); 
+                delete this.invalidDrop;
+            }
+        },
+</code></pre><p>In the above code, we begin by overriding the b4StartDrag method, which is called the
+instant the drag element starts being dragged around screen and makes it an ideal place to
+cache the drag element and original XY coordinates - which we will use later on in this
+process. Next, we override onInvalidDrop, which is is called when a drag node is dropped
+on anything other than a drop target that is participating in the same drag drop group.
+This override simply sets a local invalidDrop property to true, which will be used in the
+next method. The last method we override is endDrag, which is called when the drag element
+is no longer being dragged around screen and the drag element is no longer being
+controlled by the mouse movements. This override will move the drag element back to its
+original X and Y position using animation. We configured the animation to use the
+elasticOut easing to provide a cool and fun bouncy effect at end of the animation.</p>
+<p><img src='images/dnd_camaro_repair.jpg' alt='Ext Drag and Drop'/></p>
+<p>OK, now we have the repair operation complete. In order for it to work on the drop
+invitation and valid drop operations, we need to setup the drop targets.</p>
+<h2 id="core_concepts-_-drag_drop_-_step_3__configuring_the_drop_targets">Step 3: Configuring the drop targets<a class="quick-link" href="#core_concepts-_-drag_drop_-_step_3__configuring_the_drop_targets"></a></h2>
+<p>Our requirements dictate that we will allow cars and trucks to be in be dropped in the
+rented and repair containers as well as their respective original containers. To do this,
+we&#39;ll need to instantiate instances of the DDTarget class. Here&#39;s how its done.</p>
+<pre><code class="language-javascript">// Instantiate instances of Ext.dd.DDTarget for the cars and trucks container
+var carsDDTarget = Ext.create(&#39;Ext.dd.DDTarget&#39;, &#39;cars&#39;,&#39;carsDDGroup&#39;);
+var trucksDDTarget = Ext.create(&#39;Ext.dd.DDTarget&#39;, &#39;trucks&#39;, &#39;trucksDDGroup&#39;);
+
+// Instantiate instances of DDTarget for the rented and repair drop target elements
+var rentedDDTarget = Ext.create(&#39;Ext.dd.DDTarget&#39;, &#39;rented&#39;, &#39;carsDDGroup&#39;);
+var repairDDTarget = Ext.create(&#39;Ext.dd.DDTarget&#39;, &#39;repair&#39;, &#39;carsDDGroup&#39;);
+
+// Ensure that the rented and repair DDTargets will participate in the trucksDDGroup
+rentedDDTarget.addToGroup(&#39;trucksDDGroup&#39;);
+repairDDTarget.addToGroup(&#39;trucksDDGroup&#39;);
+</code></pre><p>In the above code snippet, we have setup drop targets for the cars, trucks, rented and
+repair elements. Notice that the cars container element only participates in the
+&quot;carsDDGroup&quot; and the trucks container element participates in the &quot;trucksDDGroup&quot;. This
+helps enforce the requirement that cars and trucks can only be dropped in their
+originating container. Next, we instantiate instances DDTarget for the rented and repair
+elements. Initially, they are configured to only participate in the &quot;carsDDGroup&quot;. In
+order to allow them to participate in the &quot;trucksDDGroup&quot;, we have to add it by means of
+addToGroup. OK, now we&#39;ve configured our drop targets. Lets see what happens when we drop
+the cars or trucks on a valid drop element.</p>
+<p><img src='images/dnd_drops_no_onDragDrop.jpg' alt='Ext Drag and Drop'/></p>
+<p>In exercising the drop targets, we see that the drag element stays exactly its dropped.
+That is, images can be dropped anywhere on a drop target and stay there. This means that
+our drop implementation is not complete. To complete it, we need to actually code for the
+&quot;complete drop&quot; operation, by means of another override for the instances of DD that we
+created some time ago.</p>
+<h2 id="core_concepts-_-drag_drop_-_step_4__completing_the_drop">Step 4: Completing the drop<a class="quick-link" href="#core_concepts-_-drag_drop_-_step_4__completing_the_drop"></a></h2>
+<p>To complete the drop, we will need to actually drag the element from its parent element to
+the drop target element using DOM tools. This is accomplished by overriding the DD
+onDragDrop method. Add the following method to the overrides object.</p>
+<pre><code class="language-javascript">var overrides = {
+    ...
+    // Called upon successful drop of an element on a DDTarget with the same
+    onDragDrop : function(evtObj, targetElId) {
+        // Wrap the drop target element with Ext.Element
+        var dropEl = Ext.get(targetElId);
+
+        // Perform the node move only if the drag element&#39;s
+        // parent is not the same as the drop target
+        if (this.el.dom.parentNode.id != targetElId) {
+
+            // Move the element
+            dropEl.appendChild(this.el);
+
+            // Remove the drag invitation
+            this.onDragOut(evtObj, targetElId);
+
+            // Clear the styles
+            this.el.dom.style.position =&#39;&#39;;
+            this.el.dom.style.top = &#39;&#39;;
+            this.el.dom.style.left = &#39;&#39;;
+        }
+        else {
+            // This was an invalid drop, initiate a repair
+            this.onInvalidDrop();
+        }
+    },
+</code></pre><p>In the above override, the drag element is moved to the drop target element, but only if
+it is not the same as the drag element&#39;s parent node. After the drag element is moved, the
+styles are cleared from it. If the drop element is the same as the drag element&#39;s parent,
+we ensure a repair operation occurs by calling this.onInvalidDrop.</p>
+<p><img src='images/drag_and_drop_working_without_invitation.jpg' alt='Ext Drag and Drop'/></p>
+<p>Upon a successful drop, the drag elements will now will be moved from their parent element
+to the drop target. How does the user know if they are hovering above a valid drop target?
+We&#39;ll give the user some visual feedback by configuring the drop invitation.</p>
+<h2 id="core_concepts-_-drag_drop_-_step_5__adding_drop_invitation">Step 5: Adding drop invitation<a class="quick-link" href="#core_concepts-_-drag_drop_-_step_5__adding_drop_invitation"></a></h2>
+<p>In order to make drag and drop a bit more useful, we need to provide feedback to the user
+on whether or not a drop operation can successfully occur. This means that we&#39;ll have to
+override the onDragEnter and onDragOut methods Add these last two methods to the overrides
+object.</p>
+<pre><code class="language-javascript">    var overrides = {
+        ...
+        // Only called when the drag element is dragged over the a drop target with the
+same ddgroup
+        onDragEnter : function(evtObj, targetElId) {
+            // Colorize the drag target if the drag node&#39;s parent is not the same as the
+drop target
+            if (targetElId != this.el.dom.parentNode.id) {
+                this.el.addCls(&#39;dropOK&#39;);
+            }
+            else {
+                // Remove the invitation
+                this.onDragOut();
+            }
+        },
+        // Only called when element is dragged out of a dropzone with the same ddgroup
+        onDragOut : function(evtObj, targetElId) {
+            this.el.removeCls(&#39;dropOK&#39;);
+        }
+    };
+</code></pre><p>In the above code, we override the onDragEnter and onDragOut methods, both of which are
+only utilized when the drag element is interacting with a drop target participating in the
+same drag drop group. The onDragEnter method is only called when the mouse cursor first
+intersects the boundaries of a drop target while a drag item is in drag mode. Likewise,
+onDragOut is called when the mouse cursor is first dragged outside the boundaries of the
+drop target while in drag mode.</p>
+<p><img src='images/drag_and_drop_working_with_invitation.jpg' alt='Ext Drag and Drop'/></p>
+<p>By adding overrides to the onDragEnter and onDragOut methods we can see that the
+background of the drag element will turn green when the mouse cursor first intersects a
+valid drop target and will lose its green background when it leaves the drop target or is
+dropped. This completes our implementation of drag and drop with DOM elements.</p>
+<h2 id="core_concepts-_-drag_drop_-_summary">Summary<a class="quick-link" href="#core_concepts-_-drag_drop_-_summary"></a></h2>
+<p>Today, we learned how to implement end to end drag and drop of DOM nodes using the
+first-level drag and drop implementation classes. From a high-level, we defined and
+discussed what drag and drop is and how to think about it in terms of the framework. We
+also learned that the drag and drop classes can be grouped by drag or drop behaviors and
+whether or not they support single or multiple drag or drop operations. While implementing
+this behavior, we illustrated that the dd classes help make some of the behavioral
+decisions, and that we are responsible for coding the end-behaviors. We hope you&#39;ve
+enjoyed this thorough look at some fundamental drag and drop operations with DOM nodes. We
+look forward to bringing you more articles about this topic in the future.</p>
+<h2 id="core_concepts-_-drag_drop_-_author">Author<a class="quick-link" href="#core_concepts-_-drag_drop_-_author"></a></h2>
+<p><em>Written by Jay Garcia</em></p>
+<p>Mr. Garcia is the author of Ext JS in Action and Sencha Touch in Action.  He has been an
+evangelist of Sencha-based JavaScript frameworks since 2006. Jay is also Co-Founder and
+CTO of Modus Create, a digital agency focused on leveraging top talent to develop high
+quality Sencha-based applications. Modus Create is a Sencha Premier partner.</p>
+
+        </div>
+    </div>
+    <div id="footer">
+        <p class="di">
+            <a href="https://www.facebook.com/senchainc/" target="_blank"><img class="social" src="../../../../assets/images/fb.png"/></a>
+            <a href="https://www.linkedin.com/company/sencha-inc" target="_blank"><img class="social" src="../../../../assets/images/in.png"/></a>
+            <a href="https://twitter.com/Sencha" target="_blank"><img class="social" src="../../../../assets/images/twt.png"/></a>
+            Ext JS   | <a href='https://www.sencha.com/legal/terms-of-use/' target='_blank'>Terms of Use</a>
+        </p>
+    </div>
+</div>        </div>
+    </div>
+
+    <h2 class="product-header">
+        <a href="../../index.html">Ext JS 5.1.4 </a>
+        <span data-tip="Product / Version Menu" class="header-product-title product-menu-btn-wrap tooltip tooltip-tl-bl">
+            <span class="fa fa-angle-down product-menu-btn"></span>
+            <div class="callout callout-b"></div>
+        </span>
+        <div id="peekaboo-input" class="peekaboo-input dn">
+            <input type="text" id="mobile-input" />
+        </div>
+    </h2>
+
+    <div id="product-tree-ct" class="hide">
+        <div id="product-version-tree-ct" class="hide"></div>
+    </div>
+
+    <div id="historyConfigPanel">
+        <div class="history-type-selector">
+            <input id="historyTypeCurrent" type="radio" name="historyType" value="current" checked="true" />
+            <label for="historyTypeCurrent">Current Product / Version</label><br>
+            <input id="historyTypeAll" type="radio" name="historyType" value="all" />
+            <label for="historyTypeAll">All</label><br>
+            <div id="history-label-toggle" class="relative ml2 o-50">
+                <input id="history-all-labels" type="checkbox" checked="true" />
+                <label for="history-all-labels">Show product details in the history bar</label>
+                <div class="mask"></div>
+            </div>
+            <span id="history-clear" class="icon-btn history-clear tooltip tooltip-tr-br" data-tip="Clear History">
+                <i class="fa fa-trash"></i>
+                <div class="callout callout-b"></div>
+            </span>
+        </div>
+        <div id="history-full-list" class="overflow-y-auto"></div>
+    </div>
+
+    <div id="search-history-panel"></div>
+
+    <div id="modal-placeholder" class="modal">
+        <span id="modal-close" >&times;</span>
+        <img id="modal-content">
+        <div id="modal-caption"></div>
+    </div>
+
+
+</body>
+    <script type="text/javascript" src="../../../../assets/js/extjs-5.1.4-apiSearch.js"></script>
+    <script type="text/javascript" src="../../../../assets/js/extjs-5.1.4-guideSearch.js"></script>
+<!--[if lt IE 9 ]>
+<script type="text/javascript" src="../../../../assets/js/media-query-poly.js"></script>
+<style>
+    span.da-inline-fiddle-nav-fiddle.x-fa.fa-play-circle {
+        display: none;
+    }
+</style>
+<![endif]-->
+<script>
+    if (navigator.userAgent.indexOf("Safari") > -1) {
+        window.onpageshow = function(event) {
+            if (event.persisted) {
+                window.location.reload()
+            }
+        };
+    }
+</script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-1396058-28', 'auto');
+    ga('send', 'pageview');
+</script>
+</html>

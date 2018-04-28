@@ -2,6 +2,7 @@ package org.ithang.system.data.web;
 
 import java.util.List;
 
+import org.ithang.system.data.bean.Data;
 import org.ithang.system.data.bean.SysInfo;
 import org.ithang.system.data.bean.SysTable;
 import org.ithang.system.data.service.DataService;
@@ -24,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 @RequestMapping("system/data")
-public class DataAction extends Action{
+public class DataAction extends Action<Data>{
 
 	@Autowired
 	private DataService dataService;

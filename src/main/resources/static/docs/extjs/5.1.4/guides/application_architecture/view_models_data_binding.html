@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Models & Binding | Ext JS 5.1.4 </title>
+    <!--  Generated on March, 24 2018 at 1:45 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta property="og:image" content="../../../../assets/images/sencha-200.png" />
+    <meta property="og:title" content="View Models & Binding | Ext JS 5.1.4 " />
+    <meta property="og:description" content="Ext JS Api - API documentation from Sencha" />
+    <meta property="og:site_name" content="Sencha Documentation" />
+    <meta property="og:url" content="" />
+    <meta name="description" content="Ext JS Api - API documentation from Sencha">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/prism.css">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/create-app-html-app.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../../../../assets/css/../../../node_modules/tachyons/css/tachyons.css"> -->
+
+
+</head>
+<body class="new-docs  is-guide  has-guides   has-api tree-shown ">
+
+    <!-- SVG Sprite -->
+    <div style="height: 0; width: 0; position: absolute; visibility: hidden;" aria-hidden="true">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" focusable="false">
+            <symbol id="ripply-scott" viewBox="0 0 100 100">
+                <circle id="ripple-shape" cx="1" cy="1" r="1" />
+            </symbol>
+        </svg>
+    </div>
+    <!-- /end sprite -->
+
+    <script type="text/javascript">
+        function getOS() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            if(/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                return 'ios';
+            } else if(userAgent.match(/Android/i)) {
+                return 'android';
+            }
+        }
+
+        var isIE8 = false;
+
+        document.body.className += ' ' + getOS();
+
+        window.DocsApp = window.DocsApp || {};
+        DocsApp.meta   = {"majorVer":"5","prodObj":{"3":{"link":"http://docs.sencha.com/{prod}/{ver}/#!/api/{page}"},"4":{"link":"http://docs.sencha.com/{prod}/{ver}/#!/api/{page}"},"title":"Ext JS","currentVersion":"6.5.3","toolkit":{"6":{"toolkits":["modern","classic"],"defaultToolkit":"modern"}},"productMenu":["6.5.3","6.5.2","6.5.1","6.5.0","6.2.1","6.2.0","6.0.2","6.0.1","6.0.0","5.1.4","5.1.3","5.1.2","5.1.1","5.1.0","5.0.1","5.0.0","4.2.6","4.1.3","4.0.7","3.4.0"],"guideSearchPartners":["cmd"],"hasVersions":true,"hasApi":true,"theme":{"5.0.0":"crisp","5.0.1":"crisp","5.1.0":"crisp","5.1.1":"crisp","5.1.2":"crisp","5.1.3":"crisp","5.1.4":"crisp","6.0.0":{"classic":"triton","modern":"triton"},"6.0.1":{"classic":"triton","modern":"triton"},"6.0.2":{"classic":"triton","modern":"triton"},"6.2.0":{"classic":"triton","modern":"triton"},"6.2.1":{"classic":"triton","modern":"triton"},"6.2.2":{"classic":"triton","modern":"triton"},"6.5.0":{"classic":"triton","modern":"material"},"6.5.1":{"classic":"triton","modern":"material"},"6.5.2":{"classic":"triton","modern":"material"},"6.5.3":{"classic":"triton","modern":"material"},"6.6.0":{"classic":"triton","modern":"material"}},"repo":"SDK","remoteUrl":"git@github.com:extjs/{repo}.git","addlRepos":["package-loader"],"addlRemoteUrls":"git@github.com:sencha/{repo}.git","remotes":{"7.0.0":{"branch":"ext-7.0.x"},"6.5.3":{"branch":"ext-6.5.x"},"6.5.2":{"branch":"ext-6.5.x"},"6.5.1":{"branch":"ext-6.5.1-docs"},"6.5.0":{"branch":"ext-6.5.0-docs"},"6.2.2":{"branch":"ext-6.2.x"},"6.2.1":{"branch":"ext-6.2.1-docs"},"6.2.0":{"branch":"ext-6.2.0-docs"},"6.0.2":{"branch":"ext-6.0.x"},"6.0.1":{"branch":"ext-6.0.1-docs"},"6.0.0":{"branch":"ext-6.0.0-docs"},"5.1.4":{"branch":"ext-5.1.x"},"5.1.3":{"branch":"ext-5.1.3-docs"},"5.1.2":{"branch":"ext-5.1.2-docs"},"5.1.1":{"branch":"ext-5.1.1-docs"},"5.1.0":{"branch":"ext-5.1.0-docs"},"5.0.1":{"branch":"ext-5.0.1-docs"},"5.0.0":{"branch":"ext-5.0.0-docs"}}},"hasApi":true,"hasVersions":true,"hasToolkits":false,"toolkits":false,"toolkit":false,"hasGuides":true,"title":"Ext JS","version":"5.1.4","pageType":"guide","product":"extjs","apiProduct":"extjs","apiVersion":"5.1.4","exceptions":{"touch":["2.3.1","2.2.1","2.1.1","2.0.1"],"extjs":["3.4.0","4.0.7","4.1.3","4.2.6"]},"searchPartnerVersions":{"cmd":{"6.5.3":"6.5.3","6.5.2":"6.5.3","6.5.1":"6.5.3","6.5.0":"6.5.0","6.2.1":"6.5.0","6.2.0":"6.5.0","6.0.2":"6.5.0","6.0.1":"6.5.0","6.0.0":"6.5.0","5.1.4":"6.5.0","5.1.3":"6.5.0","5.1.2":"6.5.0","5.1.1":"6.5.0","5.1.0":"6.5.0","5.0.1":"6.5.0","5.0.0":"6.5.0","4.2.6":"6.5.0","4.1.3":"6.5.0","4.0.7":"6.5.0","3.4.0":"6.5.0"}},"navTreeName":"Guides","myId":"application_architecture/view_models_data_binding","rootPath":"../../","pageName":"View Models & Binding","docsRootPath":"../../../../"};
+    </script>
+    <!--[if IE 8]>
+    <script type='text/javascript'>
+        isIE8 = true;
+    </script>
+    <![endif]-->
+    <script type="text/javascript">
+        if (!isIE8) {
+            document.write('<script type=\"text/javascript\" src=\"../../../../assets/js/prism.js\"><\/script>');
+        }
+        if (DocsApp.meta.hasGuides) {
+            document.write('<script type=\"text/javascript\" src=\"../../../../assets/js/extjs-5.1.4-guidesTree.js\"><\/script>');
+        }
+        if (DocsApp.meta.hasApi) {
+            document.write('<script type=\"text/javascript\" src=\"../../../../assets/js/extjs-5.1.4-apiTree.js\"><\/script>');
+        }
+    </script>
+    <script type="text/javascript" src="../../../../assets/js/ace.js"></script>
+    <script type="text/javascript" src="../../../../assets/js/create-app-html-app.js"></script>
+    <script type="text/javascript" src="../../../../assets/js/productMenu.js"></script>
+
+    <div id="help-wrap">
+        <div class="help-header">
+            Docs Help
+            <div id="help-close" class="icon-btn">
+                <i class="fa fa-close"></i>
+            </div>
+        </div>
+        <div class="classText">
+            <div class="toc classMeta">
+                <h2>Contents</h2>
+                <a class="toc-page-h2" href="#terms-icons-and-labels">Terms, Icons, and Labels</a>
+                <a class="toc-page-h3" href="#access-levels">Access Levels</a>
+                <a class="toc-page-h3" href="#member-types">Member Types</a>
+                <a class="toc-page-h3" href="#member-syntax">Member Syntax</a>
+                <a class="toc-page-h3" href="#member-flags">Member Flags</a>
+                <a class="toc-page-h3" href="#class-icons">Class Icons</a>
+                <a class="toc-page-h3" href="#member-icons">Member Icons</a>
+                <a class="toc-page-h2" href="#navigation-and-features">Navigation and Features</a>
+                <a class="toc-page-h3" href="#class-member-quick-nav-menu">Class Member Quick-Nav Menu</a>
+                <a class="toc-page-h3" href="#getter-and-setter-methods">Getter and Setter Methods</a>
+                <a class="toc-page-h3" href="#history-bar">History Bar</a>
+                <a class="toc-page-h3" href="#search-and-filters">Search and Filters</a>
+                <a class="toc-page-h3" href="#api-doc-class-metadata">API Doc Class Metadata</a>
+                <a class="toc-page-h3" href="#expanding-and-collapsing-examples-and-class-members">Expanding and Collapsing Examples and Class Members</a>
+                <a class="toc-page-h3" href="#desktop-vs-mobile-view">Desktop -vs- Mobile View</a>
+                <a class="toc-page-h3" href="#viewing-the-class-source">Viewing the Class Source</a>
+            </div>
+            <h2 id="terms-icons-and-labels">Terms, Icons, and Labels</h2>
+            <p>Many classes have shortcut names used when creating (instantiating) a class with a
+                configuration object.  The shortcut name is referred to as an <code>alias</code> (or <code>xtype</code> if the
+                class extends Ext.Component).  The alias/xtype is listed next to the class name of
+                applicable classes for quick reference.</p>
+            <h3 id="access-levels">Access Levels</h3>
+            <p>Framework classes or their members may be specified as <code>private</code> or <code>protected</code>.  Else,
+                the class / member is <code>public</code>.  <code>Public</code>, <code>protected</code>, and <code>private</code> are access
+                descriptors used to convey how and when the class or class member should be used.</p>
+            <ul>
+                <li><p><strong>Public</strong> classes and class members are available for use by any other class or
+                    application code and may be relied upon as a stable and persistent within major product
+                    versions.  Public classes and members may safely be extended via a subclass.</p>
+                </li>
+                <li><p><strong>Protected</strong> class members are stable <code>public</code> members intended to be used by the
+                    owning class or its subclasses.  Protected members may safely be extended via a subclass.</p>
+                </li>
+                <li><p><strong>Private</strong> classes and class members are used internally by the framework and are not
+                    intended to be used by application developers.  Private classes and members may change or
+                    be omitted from the framework at any time without notice and should not be relied upon in
+                    application logic.</p>
+                </li>
+            </ul>
+            <h3 id="member-types">Member Types</h3>
+            <ul>
+                <li><strong>Config</strong> - The configuration options for a class.</li>
+                <li><strong>Property</strong> - Set once a class is instantiated. *See Read Only below.</li>
+                <li><strong>Method</strong> - Actions that can be performed by a class.  Methods should be read as
+                    instance methods and can only be called from a instance of a given class.  Static methods
+                    that can be called directly from the class itself will have a <code>static</code> label next to the
+                    method name.  *See Static below.</li>
+                <li><strong>Event</strong> - Events are specific to the framework event system allowing for classes to
+                    programmatically raise an event to be handled by one or more event handler methods.  DOM
+                    events, while handled by the framework event system, are not specifically described
+                    within the API documentation.  *For DOM events refer to the
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/Events">event reference</a> page from MDN.</li>
+                <li><strong>Theme Variable</strong> - Variables used by the visual theme engine employed by the
+                    framework.</li>
+                <li><strong>Theme Mixin</strong> - Functions used by the visual theme engine employed by the framework
+                    and may use values set in various Theme Variables.</li>
+            </ul>
+            <h3 id="member-syntax">Member Syntax</h3>
+            <p>Below is an example class member that we can disect to show the syntax of a class member
+                (the lookupComponent method as viewed from the Ext.button.Button class in this case).</p>
+            <div style="position: relative;" class="show-inherited show-protected members">
+                <div style="border: 1px solid #E4E4E4;" class="classmembers member-protected isNotStatic isInherited member-expanded" data-member-name="lookupComponent">
+                    <div class="collapse-toggle">
+                        <i class="fa fa-caret-right"></i>
+                        <i class="fa fa-caret-down"></i>
+                    </div>
+                    <div class="source-class"><a href="javascript:void(0);">Ext.container.Container</a><div class="viewSource"><a href="javascript:void(0);"></a><a target="_blank" href="javascript:void(0);">view source</a></div></div>
+                    <div class="member-header">
+                        <a href="javascript:void(0);" class="member-name-link"><span data-ref="method-lookupComponent" class="member-name"><strong>lookup</strong>Component</span></a>
+                        <span class="params-list"> ( item )</span> : <span class="memberType">Ext.Component</span>
+                        <div class="member-tags"><span class="protected">protected</span></div>
+                    </div>
+                    <p>Called when a raw config object is added to this container either during initialization of the <a href="javascript:void(0);">items</a> config,
+                        or when new items are <a href="javascript:void(0);">added), or {@link #insert inserted</a>.</p>
+                    <p>This method converts the passed object into an instanced child component.</p>
+                    <p>This may be overridden in subclasses when special processing needs to be applied to child creation.</p>
+                    <div class="detail-header">Parameters</div>
+                    <p><span class="params-list">item</span> :
+                        <span class="memberType">&nbsp;Object</span>
+                    </p>
+                    <div class="params-desc"><p>The config object being added.</p></div>
+                    <div class="detail-header">Returns</div>
+                    <span style="margin-left:12px;" class="memberType">Ext.Component</span>
+                    <div class="return-desc"><p>The component to be added.</p>
+                    </div>
+                </div>
+            </div>
+    
+            <p>Let's look at each part of the member row:</p>
+            <ul>
+                <li><strong>Expand/Collapse</strong> - On the left-hand size of the member row is a control used to
+                    expand and collapse each member row to show / hide member details.</li>
+                <li><strong>Member Name</strong> - The name of the class member (<code>lookupComponent</code> in this example)</li>
+                <li><strong>Method Param</strong> - Any required or optional params used by a method (or passed to an
+                    event handler method) will be listed next to the method name within parenthesis
+                    (<code>( item )</code> in this example)</li>
+                <li><strong>Return type</strong> - The class instance or javascript object returned by the method or
+                    property (<code>Ext.Component</code> in this case).  This may be omitted for methods that do not
+                    return anything other than <code>undefined</code> or may display as multiple possible values
+                    separated by a forward slash <code>/</code> signifying that what is returned may depend on the
+                    results of the method call (i.e. a method may return a Component if a get method calls is
+                    successful or <code>false</code> if unsuccessful which would be displayed as
+                    <code>Ext.Component/Boolean</code>).</li>
+                <li><strong>Flags</strong> - Any flags applicable to the member will be displayed next (<code>PROTECTED</code> in
+                    this example - see the Flags section below)</li>
+                <li><strong>Member Origin</strong> - On the right-hand side of the member row is the class where the
+                    member was initially described (<code>Ext.container.Container</code> in this example).  The source
+                    class will be displayed as a blue link if the member originates from the current class
+                    and gray if it is inherited from an ancestor or mixed-in class.</li>
+                <li><strong>Member Source</strong> - On the right-hand side below the member origin class is a link to
+                    view the member's source (<code>view source</code> in the example)</li>
+                <li><strong>Params List</strong> - Each param for a class method will be listed using the same name
+                    found above in parenthesis, the type of class or object expected, and a description of
+                    the param (<code>item : Object</code> in the example).</li>
+                <li><strong>Returns</strong> - If a class returns a value other than <code>undefined</code> a "Returns" section
+                    will note the type of class or object returned and a description (<code>Ext.Component</code> in the
+                    example)</li>
+                <li><strong>Since</strong> (<em>not shown in the example</em>) - Some members will show which version of the
+                    product the member was first introduced (i.e. <code>Available since 3.4.0</code> - <em>not pictured in
+                        the example</em>) just after the member description</li>
+                <li><strong>Default</strong> (<em>not shown in the example</em>) - Configs often show the default config value
+                    to be applied to a class instance if not overridden (i.e. <code>Defaults to: false</code>)</li>
+            </ul>
+            <h3 id="member-flags">Member Flags</h3>
+            <p>The API documentation uses a number of flags to further commnicate the class member's
+                function and intent.  The label may be represented by a text label, an abbreviation, or
+                an icon.</p>
+            <ul>
+                <li><strong>Required</strong> - Required config when instantiating a class</li>
+                <li><strong>Bindable</strong> - The config has a setter which allows this config to be set via ViewModel
+                    binding</li>
+                <li><strong>Read Only</strong> - The property may be read, but cannot be used to configure /
+                    re-configure a class instance at runtime</li>
+                <li><strong>Singleton</strong> - Singleton classes are instantiated immediately once defined and may not
+                    be instantiated manually</li>
+                <li><strong>Static</strong> - A static method or property is a method or property belonging to the class
+                    itself, not an instance of the class</li>
+                <li><strong>Chainable</strong> - Refers to methods that return the class instance back when called.<br>This enables chained method calls like: <code>classInstance.method1().method2().etc();</code></li>
+                <li><strong>Deprecated</strong> - A class or member that is scheduled for removal in a future
+                    framework version and is provided in the current version for backwards compatibility.<br>Deprecated classes and members will have a message directing you to the preferred class /
+                    method going forward.</li>
+                <li><strong>Removed</strong> - A removed class or member that exists in documentation only as a
+                    reference for users upgrading between framework versions</li>
+                <li><strong>Template</strong> - A method defined within a base class designed to be overridden by
+                    subclasses</li>
+                <li><strong>Abstract</strong> - A class or member may be be defined as abstract.  Abstract classes and
+                    members establish a class structure and provide limited, if any, code.  Class-specific
+                    code will be furnished via overrides in subclasses.</li>
+                <li><strong>Preventable</strong> - Events marked preventable will not fire if <code>false</code> is returned from
+                    an event handler</li>
+            </ul>
+            <h3 id="class-icons">Class Icons</h3>
+            <p><span class="icon-demo class-icon fa fa-cube"></span> - Indicates a framework class  </p>
+            <p><span class="icon-demo singleton-icon fa fa-cube"></span> - A singleton framework class. *See the
+                singleton flag for more information  </p>
+            <p><span class="icon-demo component-icon fa fa-gear"></span> - A component-type framework class (any
+                class within the Ext JS framework that extends Ext.Component)  </p>
+            <p><span class="icon-demo display-new"></span> - Indicates that the class, member, or guide
+                is new in the currently viewed version</p>
+            <h3 id="member-icons">Member Icons</h3>
+            <p><span class="icon-demo fa fa-cubes"></span> - Indicates a class member of type <code>config</code>  </p>
+            <p><span class="icon-demo fa fa-book"></span> - Indicates a class member of type <code>property</code>  </p>
+            <p><span class="icon-demo fa fa-object-group"></span> - Indicates a class member of type
+                <code>method</code>  </p>
+            <p><span class="icon-demo fa fa-bolt"></span> - Indicates a class member of type <code>event</code>  </p>
+            <p><span class="icon-demo fa fa-paint-brush"></span> - Indicates a class member of type
+                <code>theme variable</code>  </p>
+            <p><span class="icon-demo fa fa-tint"></span> - Indicates a class member of type
+                <code>theme mixin</code>  </p>
+            <p><span class="icon-demo display-new"></span> - Indicates that the class, member, or guide
+                is new in the currently viewed version</p>
+            <h2 id="navigation-and-features">Navigation and Features</h2>
+            <h3 id="class-member-quick-nav-menu">Class Member Quick-Nav Menu</h3>
+            <p>Just below the class name on an API doc page is a row of buttons corresponding to the
+                types of members owned by the current class.  Each button shows a count of members by
+                type (this count is updated as filters are applied).  Clicking the button will navigate
+                you to that member section.  Hovering over the member-type button will reveal a popup
+                menu of all members of that type for quick navigation.</p>
+            <h3 id="getter-and-setter-methods">Getter and Setter Methods</h3>
+            <p>Getting and setter methods that correlate to a class config option will show up in the
+                methods section as well as in the configs section of both the API doc and the member-type
+                menus just beneath the config they work with.  The getter and setter method documentation
+                will be found in the config row for easy reference.</p>
+            <h3 id="history-bar">History Bar</h3>
+            <p>Your page history is kept in localstorage and displayed (using the available real estate)
+                just below the top title bar.  By default, the only search results shown are the pages
+                matching the product / version you're currently viewing.  You can expand what is
+                displayed by clicking on the <span class="icon-demo history-config"></span> button on the
+                right-hand side of the history bar and choosing the "All" radio option.  This will show
+                all recent pages in the history bar for all products / versions.</p>
+            <p>Within the history config menu you will also see a listing of your recent page visits.
+                The results are filtered by the "Current Product / Version" and "All" radio options.
+                Clicking on the <span class="icon-demo history-clear"></span> button will clear the history bar as
+                well as the history kept in local storage.</p>
+            <p>If "All" is selected in the history config menu the checkbox option for "Show product
+                details in the history bar" will be enabled.  When checked, the product/version for each
+                historic page will show alongside the page name in the history bar.  Hovering the cursor
+                over the page names in the history bar will also show the product/version as a tooltip.</p>
+            <h3 id="search-and-filters">Search and Filters</h3>
+            <p>Both API docs and guides can be searched for using the search field at the top of the
+                page.</p>
+            <p>On API doc pages there is also a filter input field that filters the member rows
+                using the filter string.  In addition to filtering by string you can filter the class
+                members by access level, inheritance, and read only.  This is done using the checkboxes at the top of
+                the page.</p>
+            <p>The checkbox at the bottom of the API class navigation tree filters the class list to
+                include or exclude private classes.</p>
+            <p>Clicking on an empty search field will show your last 10 searches for quick navigation.</p>
+            <h3 id="api-doc-class-metadata">API Doc Class Metadata</h3>
+            <p>Each API doc page (with the exception of Javascript primitives pages) has a menu view of
+                metadata relating to that class.  This metadata view will have one or more of the
+                following:</p>
+            <ul>
+                <li><strong>Alternate Name</strong> - One or more additional class name synonymns (in Ext JS 6.0.0 the
+                    <code>Ext.button.Button</code> class has an alternate class name of <code>Ext.Button</code>).  Alternate class
+                    names are commonly maintained for backward compatibility.</li>
+                <li><strong>Hierarchy</strong> - The hierararchy view lists the inheritance chain of the current class
+                    up through its ancestor classes up to the root base class.</li>
+                <li><strong>Mixins</strong> - A list of classes that are mixed into the current class</li>
+                <li><strong>Inherited Mixins</strong> - A list of classes that are mixed into an ancestor of the current
+                    class</li>
+                <li><strong>Requires</strong> - All classes required to be defined for the class to be instantiated</li>
+                <li><strong>Uses</strong> - A list of classes potentially used by the class at some point in its
+                    lifecycle, but not necessarily requried for the class to initially be instantiated</li>
+                <li><strong>Subclasses</strong> - Classes that extend the current class</li>
+            </ul>
+            <h3 id="expanding-and-collapsing-examples-and-class-members">Expanding and Collapsing Examples and Class Members</h3>
+            <p>Runnable examples (Fiddles) are expanded on a page by default.  You can collapse and
+                expand example code blocks individually using the arrow on the top-left of the code
+                block.  You can also toggle the collapse state of all examples using the toggle button on
+                the top-right of the page.  The toggle-all state will be remembered between page loads.</p>
+            <p>Class members are collapsed on a page by default.  You can expand and collapse members
+                using the arrow icon on the left of the member row or globally using the expand /
+                collapse all toggle button top-right.</p>
+            <h3 id="desktop-vs-mobile-view">Desktop -vs- Mobile View</h3>
+            <p>Viewing the docs on narrower screens or browsers will result in a view optimized for a
+                smaller form factor.  The primary differences between the desktop and "mobile" view are:</p>
+            <ul>
+                <li>Global navigation will be located in a menu on the left-hand side accessible via the
+                    hamburger menu icon.  The menu houses the following (on most pages):<ul>
+                        <li>The name of the current product (as a link to the product landing page)</li>
+                        <li>The Sencha icon used to navigate back to the documentation home page</li>
+                        <li>The product menu drop-down button</li>
+                        <li>Tabs of navigation trees for the API docs and guides</li>
+                    </ul>
+                </li>
+                <li>Current context navigation and tools is located on the right-hand side accessible via
+                    the gear icon.  The context menu houses teh following:<ul>
+                        <li>The global search input field</li>
+                        <li>(<em>API doc</em>) A "Filters" tab with the member filter, expand / collapse all examples
+                            button, expand / collapse all member rows button, the access level filter checkboxes,
+                            and the counts of each member</li>
+                        <li>(<em>API doc</em>) A "Related Classes" tab containing the menu of metadata related to the
+                            current class</li>
+                        <li>(<em>Guides</em>) The table of contents for the guide</li>
+                    </ul>
+                </li>
+            </ul>
+            <h3 id="viewing-the-class-source">Viewing the Class Source</h3>
+            <p>The class source can be viewed by clicking on the class name at the top of an API doc
+                page.  The source for class members can be viewed by clicking on the "view source" link
+                on the right-hand side of the member row.</p>
+    
+        </div>
+    </div>
+
+    <div id="header">
+        <div class="home-link">
+            <a href="http://docs.sencha.com"><span class="fa fa-book"></span></a>
+        </div>
+        <div class="logo">
+            <a href="https://www.sencha.com"><img height="32" src="../../../../assets/images/sencha_logo_thumb.png"/></a>
+        </div>
+        <span id="mobile-main-nav-menu-btn" class="fa fa-bars"></span>
+        <span data-tip="Product / Version Menu" class="fa fa-angle-down product-menu-btn product-menu-btn-wrap tooltip-tl-bl tooltip landing-product-menu-btn">
+            <div class="callout callout-b"></div>
+        </span>
+            <div class="page-title">View Models & Binding</div>
+
+        <span id="mobile-context-menu-btn" class="fa fa-cog"></span>
+    </div>
+
+    <div id="centerContent">
+        <div id="history-nav">
+            <span id="history-config" class="icon-btn history-config tooltip tooltip-tr-br" data-tip="Configure / Clear History">
+                <i class="fa fa-history"></i>
+                <div class="callout callout-b"></div>
+            </span>
+        </div>
+        <div id="class-tree-ct" class="class-tree">
+            <h2 class="product-header">
+                <div class="home-link">
+                    <a href="http://docs.sencha.com"><span class="fa fa-book"></span></a>
+                </div>
+                <div class="logo">
+                    <a href="https://www.sencha.com"><img src="../../../../assets/images/sencha_logo1x.png"/></a>
+                </div>
+                <a href="../../index.html">Ext JS 5.1.4 </a>
+                <span data-tip="Product / Version Menu" class="fa fa-angle-down product-menu-btn product-menu-btn-wrap tooltip tooltip-tl-bl"><div class="callout callout-b"></div></span>
+            </h2>
+            <div id="tree-header" class="pre-load">
+                <div id="hide-class-tree" class="icon-btn">
+                    <i class="fa fa-close"></i>
+                    <i class="fa fa-bars"></i>
+                </div>
+            </div>
+            <div id="tree-scroller">
+                <div id="tree" class="show-private show-protected is-tree ">
+                    <div id="tree-sub-header"></div>
+                </div>
+                    <div class="private-class-toggle-ct">
+                        <label for="private-class-toggle" class="pointer gray">Show private classes</label>
+                        <input id="private-class-toggle" type="checkbox" name="privateClassToggle" />
+                    </div>
+            </div>
+        </div>
+
+        <a href="#" id="back-to-top">
+            <div class="fa fa-angle-up"></div>
+            <br>
+            top
+        </a>
+
+        <div id="rightMembers">
+<div class="context-menu-ct">
+    <div class="context-header">
+        <div id="hide-context-menu" class="fa fa-caret-right"></div>
+    </div>
+
+    <div class="search">
+        <form autocomplete="off">
+    
+            <input type="text" type="search" placeholder="search" id="searchtext" tabindex="1">
+            <i id="filtersubmit" class="fa fa-search"></i>
+            <span id="help-btn" data-tip="Docs Help" class="icon-btn tooltip tooltip-tr-br"><div class="callout callout-b"></div>
+                <i class="fa fa-question fa-inverse"></i>
+            </span>
+        </form>
+    </div>
+
+    <div id="toc-context-ct">
+        <!-- context content added at runtime -->
+    </div>
+</div>
+<div class="guide-body-wrap">
+    <div class="body-wrap-inner">
+        <div id="toggleExamples" class="icon-btn tooltip tooltip-tr-br" data-collapse="Collapse All Examples" data-expand="Expand All Examples">
+            <i class="fa fa-code"></i>
+            <div class="callout callout-b"></div>
+        </div>
+        <div class="classText">
+                <div class="toc">
+                    <h2>Contents</h2>
+                        <a class="toc-page-h2 " href="#application_architecture-_-view_models_data_binding_-_component_binding">Component Binding</a>
+                        <a class="toc-page-h3 " href="#application_architecture-_-view_models_data_binding_-_binding_and_configs">Binding and Configs</a>
+                        <a class="toc-page-h3 " href="#application_architecture-_-view_models_data_binding_-_binding_boolean_configs">Binding Boolean Configs</a>
+                        <a class="toc-page-h3 " href="#application_architecture-_-view_models_data_binding_-_binding_and_priority">Binding and Priority</a>
+                        <a class="toc-page-h3 " href="#application_architecture-_-view_models_data_binding_-_binding_and_child_components">Binding and Child Components</a>
+                        <a class="toc-page-h3 " href="#application_architecture-_-view_models_data_binding_-_two_way_binding">Two Way Binding</a>
+                        <a class="toc-page-h3 " href="#application_architecture-_-view_models_data_binding_-_binding_and_component_state">Binding and Component State</a>
+                        <a class="toc-page-h3 " href="#application_architecture-_-view_models_data_binding_-_bind_descriptors">Bind Descriptors</a>
+                        <a class="toc-page-h4 " href="#application_architecture-_-view_models_data_binding_-_multi_bind">Multi-Bind</a>
+                        <a class="toc-page-h4 " href="#application_architecture-_-view_models_data_binding_-_record_bind">Record Bind</a>
+                        <a class="toc-page-h4 " href="#application_architecture-_-view_models_data_binding_-_association_bind">Association Bind</a>
+                        <a class="toc-page-h4 " href="#application_architecture-_-view_models_data_binding_-_bind_options">Bind Options</a>
+                        <a class="toc-page-h2 " href="#application_architecture-_-view_models_data_binding_-_creating_viewmodels">Creating ViewModels</a>
+                        <a class="toc-page-h3 " href="#application_architecture-_-view_models_data_binding_-_formulas">Formulas</a>
+                        <a class="toc-page-h4 " href="#application_architecture-_-view_models_data_binding_-_formulas_with_explicit_binding">Formulas With Explicit Binding</a>
+                        <a class="toc-page-h4 " href="#application_architecture-_-view_models_data_binding_-_two_way_formulas">Two-Way Formulas</a>
+                        <a class="toc-page-h3 " href="#application_architecture-_-view_models_data_binding_-_recommendations">Recommendations</a>
+                        <a class="toc-page-h2 " href="#application_architecture-_-view_models_data_binding_-_further_reading">Further Reading</a>
+                </div>
+            <h1 id="application_architecture-_-view_models_data_binding_-_view_models__amp__data_binding">View Models &amp; Data Binding<a class="quick-link" href="#application_architecture-_-view_models_data_binding_-_view_models__amp__data_binding"></a></h1>
+<p>Data binding and the ViewModel that powers it are powerful additions to Ext JS.<br>Together they enable you to do more with less code and write in a much more declarative
+style while helping you maintain a clean separation of concerns.</p>
+<p>A ViewModel is a class that manages a data object. It then allows those interested in 
+this data to bind to it and be notified when it changes. The ViewModel, like 
+ViewController, is owned by the view that references it.  Because ViewModels are 
+associated with a view, they are also able to link to a parent ViewModel owned by 
+ancestor components in the component hierarchy. This allows child views to simply 
+&quot;inherit&quot; the data of their parent ViewModel.</p>
+<p>Components have a <code>bind</code> config that allows them to associate many of their configs to 
+data from the ViewModel. Using bind, you can be sure that the appropriate component 
+config will have its setter method called whenever the bound value changes - no custom 
+event handlers needed.</p>
+<p>In this guide, we will walk through some examples that show the power of ViewModels and
+Data Binding.</p>
+<h2 id="application_architecture-_-view_models_data_binding_-_component_binding">Component Binding<a class="quick-link" href="#application_architecture-_-view_models_data_binding_-_component_binding"></a></h2>
+<p>Probably the best way to understand binding and ViewModels is to look at the various 
+ways you can use bindings on components. This is because components are the primary 
+consumers of data binding and components are something familiar to Ext JS developers. 
+In order for binding to work, however, we do need a ViewModel so we will reference one 
+for now and define it later.</p>
+<h3 id="application_architecture-_-view_models_data_binding_-_binding_and_configs">Binding and Configs<a class="quick-link" href="#application_architecture-_-view_models_data_binding_-_binding_and_configs"></a></h3>
+<p>Binding for components is the process of connecting data from a 
+<a href="../../../../extjs/5.1.4/api/Ext.app.ViewModel.html">Ext.app.ViewModel</a> to a component&#39;s config properties. Any configuration a 
+component possesses may be bound to, so long as it has a setter method. For instance, 
+since there&#39;s a <code>setTitle()</code> method on <a href="../../../../extjs/5.1.4/api/Ext.panel.Panel.html">Ext.panel.Panel</a>, you can bind to the 
+<code>title</code> configuration.</p>
+<p>In this example, we will set the <code>width</code> of a panel based on the results of our 
+ViewModel&#39;s <code>data</code>.  We can bind our data to <code>width</code> since <code>setWidth()</code> is a method that 
+<code>Ext.panel.Panel</code> may use.</p>
+<pre><code class="language-javascript">Ext.create(&#39;Ext.panel.Panel&#39;, {
+    title: &#39;Simple Form&#39;,
+
+    viewModel: {
+        type: &#39;test&#39;  // we will define the &quot;test&quot; ViewModel soon
+    },
+
+    bind: {
+        html: &#39;&lt;p&gt;Hello {name}&lt;/p&gt;&#39;,
+        width: &#39;{someWidth}&#39;
+    }
+});
+</code></pre><p>The syntax used for bind values is very similar to <a href="../../../../extjs/5.1.4/api/Ext.Template.html">Ext.Template</a>. You can put 
+text around tokens inside braces. You can use formatters as well, as with 
+<code>Ext.Template</code>. Unlike <code>Ext.Template</code>, however, when a template is a single token (like 
+&#39;{someWidth}&#39;) then its value is passed unmodified. That is, it is not converted to a 
+string.</p>
+<p>We will see later how the data for <code>name</code> and <code>someWidth</code> are defined. The above example
+simply shows how the data is consumed by a component.</p>
+<h3 id="application_architecture-_-view_models_data_binding_-_binding_boolean_configs">Binding Boolean Configs<a class="quick-link" href="#application_architecture-_-view_models_data_binding_-_binding_boolean_configs"></a></h3>
+<p>Many configs you will want to bind are boolean values, such as visible (or <code>hidden</code>),
+<code>disabled</code>, <code>checked</code>, and <code>pressed</code>. Bind templates support boolean negation &quot;inline&quot; 
+in the template. Other forms of algebra are relegated to formulas (see below), but 
+boolean inversion is common enough there is special provision for it. For example:</p>
+<pre><code class="language-javascript">Ext.create(&#39;Ext.panel.Panel&#39;, {
+    title: &#39;Simple Form&#39;,
+
+    viewModel: {
+        type: &#39;test&#39;
+    },
+
+    items: [{
+        xtype: &#39;button&#39;,
+        bind: {
+            hidden: &#39;{!name}&#39;  // negated
+        }
+    }]
+});
+</code></pre><p>This also highlights how values in single token templates are not converted to strings. 
+In the above, while &quot;name&quot; is a string value, it is negated using &quot;!&quot; and becomes a 
+boolean value and that is passed to the <code>setHidden</code> method on the button.</p>
+<h3 id="application_architecture-_-view_models_data_binding_-_binding_and_priority">Binding and Priority<a class="quick-link" href="#application_architecture-_-view_models_data_binding_-_binding_and_priority"></a></h3>
+<p>Bound config properties will always overwrite configurations set statically on the
+component as soon as the bound result is available. In other words, bound data will 
+always take priority over static configuration values but may be delayed in order to 
+fetch that data.</p>
+<pre><code class="language-javascript">Ext.create(&#39;Ext.panel.Panel&#39;, {
+    title: &#39;Simple Form&#39;,
+
+    viewModel: {
+        type: &#39;test&#39;
+    },
+
+    bind: {
+        title: &#39;Hello {name}&#39;
+    }
+});
+</code></pre><p>Once the binding for &quot;name&quot; is delivered, the &quot;Simple Form&quot; title will be replaced.</p>
+<h3 id="application_architecture-_-view_models_data_binding_-_binding_and_child_components">Binding and Child Components<a class="quick-link" href="#application_architecture-_-view_models_data_binding_-_binding_and_child_components"></a></h3>
+<p>One of the most helpful parts of binding is that all of the children of the component 
+with a viewModel also have access to their container&#39;s data.</p>
+<p>In this example, you can see the children items of a form may be bound to their
+container&#39;s viewModel.</p>
+<pre><code class="language-javascript">Ext.create(&#39;Ext.panel.Panel&#39;, {
+    title: &#39;Simple Form&#39;,
+
+    viewModel: {
+        type: &#39;test&#39;
+    },
+
+    layout: &#39;form&#39;,
+    defaultType: &#39;textfield&#39;,
+
+    items: [{
+        fieldLabel: &#39;First Name&#39;,
+        bind: &#39;{firstName}&#39; // uses &quot;test&quot; ViewModel from parent
+    },{
+        fieldLabel: &#39;Last Name&#39;,
+        bind: &#39;{lastName}&#39;
+    }]
+});
+</code></pre><h3 id="application_architecture-_-view_models_data_binding_-_two_way_binding">Two Way Binding<a class="quick-link" href="#application_architecture-_-view_models_data_binding_-_two_way_binding"></a></h3>
+<p>The bind config also allows for two-way data binding, which translates to live
+synchronization of data between the view and the model.  Any data change made in the 
+view is automatically written back to the model.  This automatically updates any other
+components that may be bound to that same data.
+<strong>Note:</strong> Not all configs will publish their value to the ViewModel when changed.<br>Configs defined within the <code>publish</code> and <code>twoWayBindable</code> array will publish changes 
+back up to the ViewModel.  Values may also be published in Component / application logic 
+using the <code>publishState</code> method.</p>
+<p>In the above example, because the &quot;firstName&quot; and &quot;lastName&quot; properties were bound to 
+text fields, changes in the input would be written back to the ViewModel. To see how all 
+this connects, it is time to complete the example and define the ViewModel.</p>
+<pre><code class="language-javascript">Ext.define(&#39;MyApp.view.TestViewModel&#39;, {
+    extend: &#39;Ext.app.ViewModel&#39;,
+
+    alias: &#39;viewmodel.test&#39;, // connects to viewModel/type below
+
+    data: {
+        firstName: &#39;John&#39;,
+        lastName: &#39;Doe&#39;
+    },
+
+    formulas: {
+        // We&#39;ll explain formulas in more detail soon.
+        name: function (get) {
+            var fn = get(&#39;firstName&#39;), ln = get(&#39;lastName&#39;);
+            return (fn &amp;&amp; ln) ? (fn + &#39; &#39; + ln) : (fn || ln || &#39;&#39;);
+        }
+    }
+});
+
+Ext.define(&#39;MyApp.view.TestView&#39;, {
+    extend: &#39;Ext.panel.Panel&#39;,
+    layout: &#39;form&#39;,
+
+    // Always use this form when defining a view class. This
+    // allows the creator of the component to pass data without
+    // erasing the ViewModel type that we want.
+    viewModel: {
+        type: &#39;test&#39;  // references alias &quot;viewmodel.test&quot;
+    },
+
+    bind: {
+        title: &#39;Hello {name}&#39;
+    },
+
+    defaultType: &#39;textfield&#39;,
+    items: [{
+        fieldLabel: &#39;First Name&#39;,
+        bind: &#39;{firstName}&#39;
+    },{
+        fieldLabel: &#39;Last Name&#39;,
+        bind: &#39;{lastName}&#39;
+    },{
+        xtype: &#39;button&#39;,
+        text: &#39;Submit&#39;,
+        bind: {
+            hidden: &#39;{!name}&#39;
+        }
+    }]
+});
+
+Ext.onReady(function () {
+    Ext.create(&#39;MyApp.view.TestView&#39;, {
+        renderTo: Ext.getBody(),
+        width: 400
+    });
+});
+</code></pre><p>When the above panel is displayed we can see that changes in the text fields are 
+reflected in the panel <code>title</code> as well as the <code>hidden</code> state of the &quot;Submit&quot; button.</p>
+<h3 id="application_architecture-_-view_models_data_binding_-_binding_and_component_state">Binding and Component State<a class="quick-link" href="#application_architecture-_-view_models_data_binding_-_binding_and_component_state"></a></h3>
+<p>Sometimes a component&#39;s state, e.g. the <code>checked</code> state of a checkbox or the selected
+record of a grid, is interesting to other components. When a component is assigned a
+<code>reference</code> to identify it, that component will publish some of its key properties in 
+the ViewModel.</p>
+<p>In this example, we have the &quot;Admin Key&quot; textfield&#39;s disabled config bound to the the
+checked state of the checkbox. This results in the textfield being disabled until the
+checkbox is checked. This sort of behavior is well suited for dynamic forms like this:</p>
+<pre><code class="language-javascript">Ext.create(&#39;Ext.panel.Panel&#39;, {
+    title: &#39;Sign Up Form&#39;,
+
+    viewModel: {
+        type: &#39;test&#39;
+    },
+
+    items: [{
+        xtype: &#39;checkbox&#39;,
+        boxLabel: &#39;Is Admin&#39;,
+        reference: &#39;isAdmin&#39;
+    },{
+        xtype: &#39;textfield&#39;,
+        fieldLabel: &#39;Admin Key&#39;,
+        bind: {
+            disabled: &#39;{!isAdmin.checked}&#39;
+        }
+    }]
+});
+</code></pre><h3 id="application_architecture-_-view_models_data_binding_-_bind_descriptors">Bind Descriptors<a class="quick-link" href="#application_architecture-_-view_models_data_binding_-_bind_descriptors"></a></h3>
+<p>So far we&#39;ve seen three basic forms of bind descriptors:</p>
+<ul>
+<li><p><code>{firstName}</code> - A &quot;direct bind&quot; to some value in the ViewModel. This value is passed
+through unmodified and so may arrive as any type of data.</p>
+</li>
+<li><p><code>Hello {name}</code> - A &quot;bind template&quot; always produces a string by inserting the textual
+value of the various bind expressions. Bind templates can also use formatters as with a
+normal <code>Ext.Template</code>, for example: &#39;Hello {name:capitalize}&#39;.</p>
+</li>
+<li><p><code>{!isAdmin.checked}</code> - The negated form of a direct bind, useful for binding to 
+boolean config properties.</p>
+</li>
+</ul>
+<p>Beyond these basic forms, there are a few specialized forms of bind descriptors that you
+can use.</p>
+<h4 id="application_architecture-_-view_models_data_binding_-_multi_bind">Multi-Bind<a class="quick-link" href="#application_architecture-_-view_models_data_binding_-_multi_bind"></a></h4>
+<p>If an object or array is given as a bind descriptor, the ViewModel will produce an 
+object or array of the same shape but with the various properties replaced by their bind 
+result.  For example:</p>
+<pre><code class="language-javascript">Ext.create(&#39;Ext.Component&#39;, {
+    bind: {
+        data: {
+            fname: &#39;{firstName}&#39;,
+            lname: &#39;{lastName}&#39;
+        }
+    }
+});
+</code></pre><p>This sets the &quot;data&quot; config for the component to be an object with two properties whose
+values are set from the ViewModel.</p>
+<h4 id="application_architecture-_-view_models_data_binding_-_record_bind">Record Bind<a class="quick-link" href="#application_architecture-_-view_models_data_binding_-_record_bind"></a></h4>
+<p>When a particular record is desired, say &quot;User&quot; with <code>id</code> of 42, the bind descriptor is 
+an object but with a &quot;reference&quot; property. For example:</p>
+<pre><code class="language-javascript">Ext.create(&#39;Ext.Component&#39;, {
+    bind: {
+        data: {
+            reference: &#39;User&#39;,
+            id: 42
+        }
+    }
+});
+</code></pre><p>In this case, the component&#39;s <code>tpl</code> will receive the User record once it is loaded. This
+currently requires the use of an <code>Ext.data.Session</code>.</p>
+<h4 id="application_architecture-_-view_models_data_binding_-_association_bind">Association Bind<a class="quick-link" href="#application_architecture-_-view_models_data_binding_-_association_bind"></a></h4>
+<p>Similar to a record bind, one can also bind to an association, say the User&#39;s Address
+record:</p>
+<pre><code class="language-javascript">Ext.create(&#39;Ext.Component&#39;, {
+    bind: {
+        data: {
+            reference: &#39;User&#39;,
+            id: 42,
+            association: &#39;address&#39;
+        }
+    }
+});
+</code></pre><p>In this case, the component&#39;s <code>tpl</code> will receive the User&#39;s &quot;address&quot; record once it is
+loaded. This also currently requires the use of an <code>Ext.data.Session</code>.</p>
+<h4 id="application_architecture-_-view_models_data_binding_-_bind_options">Bind Options<a class="quick-link" href="#application_architecture-_-view_models_data_binding_-_bind_options"></a></h4>
+<p>The final form of bind descriptor is used when you need to describe binding options. The
+following example shows how to receive only one value for a binding and then disconnect
+automatically.</p>
+<pre><code class="language-javascript">Ext.create(&#39;Ext.Component&#39;, {
+    bind: {
+        data: {
+            bindTo: &#39;{name}&#39;,
+            single: true
+        }
+    }
+});
+</code></pre><p>The <code>bindTo</code> property is the second reserved name in a bind descriptor object (the first
+being <code>reference</code>). When present, it signifies that the value of <code>bindTo</code> is the actual
+bind descriptor and the other properties are configuration options for the binding.</p>
+<p>The other bind option currently supported is <code>deep</code>. This option is used when binding to
+an object so that the binding will be notified when any property of that object changes,
+not just the reference itself. This would be most useful when binding to the <code>data</code> 
+config of a component since these often receive objects.</p>
+<pre><code class="language-javascript">Ext.create(&#39;Ext.Component&#39;, {
+    bind: {
+        data: {
+            bindTo: &#39;{someObject}&#39;,
+            deep: true
+        }
+    }
+});
+</code></pre><h2 id="application_architecture-_-view_models_data_binding_-_creating_viewmodels">Creating ViewModels<a class="quick-link" href="#application_architecture-_-view_models_data_binding_-_creating_viewmodels"></a></h2>
+<p>Now that we&#39;ve gotten a taste for how components use ViewModels and gotten a glimpse of
+what ViewModels look like, it is time to learn more about ViewModels and what they offer.</p>
+<p>As stated previously, a ViewModel is a manager for an underlying <code>data</code> object. It is 
+the content of that object that is being consumed by bind statements. The inheritance of 
+data from a parent ViewModel to its child ViewModels leverages the JavaScript prototype 
+chain.  This is covered in more detail in the 
+<a href="./view_model_internals.html">View Model Internals</a> guide, but in a nutshell a child 
+ViewModel&#39;s <code>data</code> object has the <code>data</code> object of its parent ViewModel as its 
+prototype.</p>
+<h3 id="application_architecture-_-view_models_data_binding_-_formulas">Formulas<a class="quick-link" href="#application_architecture-_-view_models_data_binding_-_formulas"></a></h3>
+<p>In addition to holding data and providing binding, ViewModels also offer a convenient 
+way to calculate data from other data called <code>formulas</code>.  Formulas allow you to 
+encapsulate data dependencies in the ViewModel and keep your views free to focus on 
+declaring their structure. </p>
+<p>In other words, the data is not changed in the ViewModel&#39;s data, but can be displayed
+differently by transforming it using formulas. This is similar to how the <code>convert</code>
+configuration works for fields of a traditional data model.</p>
+<p>We saw a simple &quot;name&quot; formula in the previous example.  In that case, the &quot;name&quot; 
+formula was simply a function that combined two other values from the ViewModel: 
+&quot;firstName&quot; and &quot;lastName&quot;.</p>
+<p>Formulas can also use the results of other formulas as if the result were just another
+data property. For example:</p>
+<pre><code class="language-javascript">Ext.define(&#39;MyApp.view.TestViewModel2&#39;, {
+    extend: &#39;Ext.app.ViewModel&#39;,
+
+    alias: &#39;viewmodel.test2&#39;,
+
+    formulas: {
+        x2y: function (get) {
+            return get(&#39;x2&#39;) * get(&#39;y&#39;);
+        },
+
+        x2: function (get) {
+            return get(&#39;x&#39;) * 2;
+        }
+    }
+});
+</code></pre><p>The &quot;x2&quot; formulas uses an &quot;x&quot; property to define &quot;x2&quot; as &quot;x * 2&quot;. The &quot;x2y&quot; formulas 
+uses both &quot;x2&quot; and &quot;y&quot;. This definition means that if &quot;x&quot; changes, &quot;x2&quot; is recalculated 
+and then &quot;x2y&quot;. But if &quot;y&quot; changes, only &quot;x2y&quot; needs to be recalculated.</p>
+<h4 id="application_architecture-_-view_models_data_binding_-_formulas_with_explicit_binding">Formulas With Explicit Binding<a class="quick-link" href="#application_architecture-_-view_models_data_binding_-_formulas_with_explicit_binding"></a></h4>
+<p>In the above examples, the dependencies for the formula were found via inspecting the 
+function, however this isn&#39;t always the best solution. An explicit bind statement can be 
+used, which will return a simple object when all the values in the bind have presented.</p>
+<pre><code class="language-javascript">Ext.define(&#39;MyApp.view.TestViewModel2&#39;, {
+    extend: &#39;Ext.app.ViewModel&#39;,
+
+    alias: &#39;viewmodel.test2&#39;,
+
+    formulas: {
+        something: {
+            bind: {
+                x: &#39;{foo.bar.x}&#39;,
+                y: &#39;{bar.foo.thing.zip.y}&#39;
+            },
+
+            get: function (data) {
+                return data.x + data.y;
+            }
+        }
+    }
+});
+</code></pre><h4 id="application_architecture-_-view_models_data_binding_-_two_way_formulas">Two-Way Formulas<a class="quick-link" href="#application_architecture-_-view_models_data_binding_-_two_way_formulas"></a></h4>
+<p>When a formula is invertible we can also define a <code>set</code> method to be called when the 
+value is set (say via two-way binding). Since the &quot;this&quot; pointer is the ViewModel, the 
+<code>set</code> method can call <code>this.set()</code> to set the appropriate properties in the ViewModel.</p>
+<p>A revised version of the TestViewModel below shows how &quot;name&quot; can be defined as a 
+two-way formula.</p>
+<pre><code class="language-javascript">Ext.define(&#39;MyApp.view.TestViewModel&#39;, {
+    extend: &#39;Ext.app.ViewModel&#39;,
+
+    alias: &#39;viewmodel.test&#39;,
+
+    formulas: {
+        name: {
+            get: function (get) {
+                var fn = get(&#39;firstName&#39;), ln = get(&#39;lastName&#39;);
+                return (fn &amp;&amp; ln) ? (fn + &#39; &#39; + ln) : (fn || ln || &#39;&#39;);
+            },
+
+            set: function (value) {
+                var space = value.indexOf(&#39; &#39;),
+                    split = (space &lt; 0) ? value.length : space;
+
+                this.set({
+                    firstName: value.substring(0, split),
+                    lastName: value.substring(split + 1)
+                });
+            }
+        }
+    }
+});
+</code></pre><h3 id="application_architecture-_-view_models_data_binding_-_recommendations">Recommendations<a class="quick-link" href="#application_architecture-_-view_models_data_binding_-_recommendations"></a></h3>
+<p>With all the power of ViewModels, formulas, and data binding, it can be easy to overuse 
+or abuse these mechanisms and create an application that is hard to understand or debug, 
+or is slow to update or leaks memory. To help avoid these issues and still get the most 
+out of ViewModels here are some recommended techniques:</p>
+<ul>
+<li><p><strong>Always use the following form when configuring your viewModel.</strong> This is important
+because of the way the Config System merges config values. With this form, the &quot;type&quot;
+property is preserved during the merge.</p>
+<pre><code class="language-javascript">  Ext.define(&#39;MyApp.view.TestView&#39;, {
+      //...
+      viewModel: {
+          type: &#39;test&#39;
+      },
+  });
+</code></pre></li>
+<li><p><strong>Make names obvious</strong>, especially in high level ViewModels. In JavaScript we rely on
+textual searching so pick names that make finding usages possible. The more code that
+might use a property the more important it is to pick meaningful or even unique names.</p>
+</li>
+<li><p><strong>Don&#39;t nest data in objects more deeply than necessary.</strong> Multiple top-level objects 
+stored in the ViewModel will require less bookkeeping compared to one object with lots 
+of nested sub-objects. Further, this will help make dependencies on this information 
+more obvious than if many components depend on some large containing object. There are 
+reasons to share objects, but remember the ViewModel is just a managed object so you can 
+use its properties too.</p>
+</li>
+<li><p><strong>Use child ViewModels to allow data to be cleaned up</strong> with the components that 
+needed it.  If you put all data in high-level ViewModels, that data will likely never be 
+removed even when the child views that needed it have been destroyed. Instead, create 
+ViewModels for the child view and pass data into its ViewModel.</p>
+</li>
+<li><p><strong>Don&#39;t create child ViewModels unless they are actually needed.</strong> Each ViewModel
+instance takes time to create and memory to manage. If a child view does not need data
+unique to itself, it can simply use the ViewModel it inherits from its container. See 
+the previous recommendation though, because it is better to create child ViewModels when 
+they are needed than pollute a parent ViewModel and effectively leak memory.</p>
+</li>
+<li><p><strong>Use formulas instead of repeating binds.</strong> If you followed how formulas are ways to
+combine the results of several bound values you can probably see how using a formula 
+would help reduce the number of dependencies compared to directly using those same 
+values in many places. For example, one formula with 3 dependencies and 4 users make 
+<code>3 + 4 = 7</code> dependencies to track in the ViewModel. Compared to 4 users with those 3 
+dependencies on themselves we would have <code>3 * 4 = 12</code> dependencies. Fewer dependencies 
+to track means less memory used and time to process them.</p>
+</li>
+<li><p><strong>Don&#39;t chain formulas too deeply.</strong> This is not so much a run-time cost issue as a 
+code clarity issue. Chained formulas can mask the connections between data and 
+components making it hard to understand what is happening.</p>
+</li>
+<li><p><strong>Two-way formulas must be stable.</strong> Say formula &quot;foo&quot; is a calculation of value 
+&quot;bar&quot;.  When &quot;foo&quot; is set it will set &quot;bar&quot; by inverting the formula from its get 
+method. The result is stable if the get method will produce the exact same value for 
+&quot;foo&quot; that is now being set. If it does not, the process will cycle until it reaches a 
+stable point or it will continue indefinitely. Neither result is likely desirable.</p>
+</li>
+</ul>
+<h2 id="application_architecture-_-view_models_data_binding_-_further_reading">Further Reading<a class="quick-link" href="#application_architecture-_-view_models_data_binding_-_further_reading"></a></h2>
+<p>For more information about the viewModels, please take a few minutes to check out our
+<a href="./view_model_internals.html">ViewModel Internals guide</a>.</p>
+
+        </div>
+    </div>
+    <div id="footer">
+        <p class="di">
+            <a href="https://www.facebook.com/senchainc/" target="_blank"><img class="social" src="../../../../assets/images/fb.png"/></a>
+            <a href="https://www.linkedin.com/company/sencha-inc" target="_blank"><img class="social" src="../../../../assets/images/in.png"/></a>
+            <a href="https://twitter.com/Sencha" target="_blank"><img class="social" src="../../../../assets/images/twt.png"/></a>
+            Ext JS   | <a href='https://www.sencha.com/legal/terms-of-use/' target='_blank'>Terms of Use</a>
+        </p>
+    </div>
+</div>        </div>
+    </div>
+
+    <h2 class="product-header">
+        <a href="../../index.html">Ext JS 5.1.4 </a>
+        <span data-tip="Product / Version Menu" class="header-product-title product-menu-btn-wrap tooltip tooltip-tl-bl">
+            <span class="fa fa-angle-down product-menu-btn"></span>
+            <div class="callout callout-b"></div>
+        </span>
+        <div id="peekaboo-input" class="peekaboo-input dn">
+            <input type="text" id="mobile-input" />
+        </div>
+    </h2>
+
+    <div id="product-tree-ct" class="hide">
+        <div id="product-version-tree-ct" class="hide"></div>
+    </div>
+
+    <div id="historyConfigPanel">
+        <div class="history-type-selector">
+            <input id="historyTypeCurrent" type="radio" name="historyType" value="current" checked="true" />
+            <label for="historyTypeCurrent">Current Product / Version</label><br>
+            <input id="historyTypeAll" type="radio" name="historyType" value="all" />
+            <label for="historyTypeAll">All</label><br>
+            <div id="history-label-toggle" class="relative ml2 o-50">
+                <input id="history-all-labels" type="checkbox" checked="true" />
+                <label for="history-all-labels">Show product details in the history bar</label>
+                <div class="mask"></div>
+            </div>
+            <span id="history-clear" class="icon-btn history-clear tooltip tooltip-tr-br" data-tip="Clear History">
+                <i class="fa fa-trash"></i>
+                <div class="callout callout-b"></div>
+            </span>
+        </div>
+        <div id="history-full-list" class="overflow-y-auto"></div>
+    </div>
+
+    <div id="search-history-panel"></div>
+
+    <div id="modal-placeholder" class="modal">
+        <span id="modal-close" >&times;</span>
+        <img id="modal-content">
+        <div id="modal-caption"></div>
+    </div>
+
+
+</body>
+    <script type="text/javascript" src="../../../../assets/js/extjs-5.1.4-apiSearch.js"></script>
+    <script type="text/javascript" src="../../../../assets/js/extjs-5.1.4-guideSearch.js"></script>
+<!--[if lt IE 9 ]>
+<script type="text/javascript" src="../../../../assets/js/media-query-poly.js"></script>
+<style>
+    span.da-inline-fiddle-nav-fiddle.x-fa.fa-play-circle {
+        display: none;
+    }
+</style>
+<![endif]-->
+<script>
+    if (navigator.userAgent.indexOf("Safari") > -1) {
+        window.onpageshow = function(event) {
+            if (event.persisted) {
+                window.location.reload()
+            }
+        };
+    }
+</script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-1396058-28', 'auto');
+    ga('send', 'pageview');
+</script>
+</html>
