@@ -27,7 +27,7 @@ public class LogInterceptor implements HandlerInterceptor{
 	@Override
 	public void postHandle(HttpServletRequest request,HttpServletResponse response,Object obj, ModelAndView mv)throws Exception{
 		logger.info("┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳");
-		logger.info("请求："+request.getRequestURI());
+		logger.info("请求："+request.getRequestURI()+" ["+request.getMethod().toUpperCase()+"]");
 		logger.info("参数："+JsonUtils.toJsonStr(request.getParameterMap()));
 		logger.info("耗时："+(System.currentTimeMillis()-Long.parseLong(String.valueOf(request.getAttribute("startTime"))))+" ms");
 		logger.info("┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻");
