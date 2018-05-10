@@ -7,8 +7,8 @@ package org.ithang.system.auth.bean;
  */
 public class Role {
 
-	private String id;
-	private String title;
+	private String id;//英文标识
+	private String title;//中文标识
 	
 	
 	public String getId() {

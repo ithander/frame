@@ -11,7 +11,7 @@
     <script type="text/javascript">
         layui.use('layer', function(){
             var layer = layui.layer;
-            layer.alert('出错了，你找开发人员！');
+            layer.alert('出错了，请找开发人员！');
         });       
     </script>
 </html>
