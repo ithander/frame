@@ -1,47 +1,71 @@
-[#ftl]
-package com.thang.web.${pkgName};
+package ${basePkg}.${BeanName};
 
-import javax.servlet.annotation.WebServlet;
-import com.thang.tools.model.Action;
+import org.ithang.tools.model.Action;
+import org.ithang.tools.model.ActionResult;
+import org.ithang.tools.model.ActionValues;
+import org.ithang.tools.model.Page;
+import javax.servlet.http.HttpServletRequest;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import ${basePkg}.${BeanName}.bean.${BeanName};
+import ${basePkg}.${BeanName}.service.${BeanName}Service;
 
-@WebServlet(value="/${url}/*",asyncSupported=true)
-public class ${entityName?cap_first}Action extends Action{
+/**
+ * ${tabComment}
+ * @author zyt 控制器
+ *
+ */
+@Controller
+@RequestMapping("/app/${beanName}")
+public class ${BeanName}Action extends Action<${BeanName}>{
 
-    private ${entityName?cap_first}Manager ${entityName}Manager=null;
-	private static final long serialVersionUID = 7925187887163392582L;
-    
-	@Override
-	public void init() throws ServletException {
-		${entityName}Manager=new ${entityName?cap_first}Manager();
-		super.init();
+    @Autowired
+    private ${basePkg}.${BeanName}.service.${BeanName}Service ${beanName}Service; 
+
+
+    @ResponseBody
+	@RequestMapping(value="add",method=RequestMethod.POST)
+	public ActionResult add(${BeanName} ${beanName}){
+		${beanName}Service.add(${beanName});
+		return success();
+	}
+
+
+    @ResponseBody
+	@RequestMapping(value="get",method=RequestMethod.GET)
+	public ActionResult get(${priKeyType!"String"} ${priKey!"id"}){
+		${BeanName} r=${beanName}Service.get(${priKey!"id"});
+		return success(r);
 	}
 	
-	public String page()throws Exception{
-		if(values.isNotEmpty("to")){
-			return "${url}/"+values.getStr("to");
-		}
-		return null;
+	@ResponseBody
+	@RequestMapping(value="delete",method=RequestMethod.POST)
+	public ActionResult delete(${priKeyType!"String"} ${priKey!"id"}){
+		${beanName}Service.delete(${priKey!"id"});
+		return success();
 	}
 	
-	public void get()throws Exception{
-    	ResultValues r=${entityName}Manager.get(User.class, values);
-		printJSON(r);
+	@ResponseBody
+	@RequestMapping(value="list",method={RequestMethod.GET,RequestMethod.POST})
+	public ActionResult list(${priKeyType!"String"}... ids){
+		return success(${beanName}Service.list(ids));
 	}
 	
-	public void list()throws Exception{
-		List<ResultValues> rs=${entityName}Manager.list(User.class, values);
-		printJSON(rs);
+	@ResponseBody
+	@RequestMapping(value="page",method=RequestMethod.POST)
+	public ActionResult page(${BeanName} ${beanName},Page<${BeanName}> page){
+		return success(${beanName}Service.page(${beanName},page));
 	}
 	
-	public void insertOrUpdate()throws Exception{
-		${entityName}Manager.insertOrUpdate(User.class, values);
-		print(0);
+	@ResponseBody
+	@RequestMapping(value="query",method=RequestMethod.POST)
+	public ActionResult query(HttpServletRequest request){
+		ActionValues values=new ActionValues(request);
+		return success(${beanName}Service.query(values));
 	}
-	
-	public void delete()throws Exception{
-		${entityName}Manager.delete(User.class, values);
-		print(0);
-	}
-    
+     
 
 }

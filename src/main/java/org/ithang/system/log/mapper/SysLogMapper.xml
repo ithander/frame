@@ -3,12 +3,12 @@
 <mapper namespace="org.ithang.system.log.mapper.SysLogMapper">
 
     <!-- 得到系统概要信息 -->
-    <select id="get" resultType="SysLog">
+    <select id="get" resultType="org.ithang.system.log.bean.SysLog">
         select id,author,version,mobile,create_time from sys_info limit 0,1
     </select>
     
     <!-- 系统表结构数据 -->
-    <select id="list" parameterType="Page" resultType="SysLog">
+    <select id="list" parameterType="org.ithang.tools.model.Page" resultType="org.ithang.system.log.bean.SysLog">
         select id,log_type,content,operator,create_time from sys_log
         <where>
             <trim suffixOverrides="and">
@@ -31,7 +31,7 @@
         </where>
     </select>
 
-    <insert id="insert" parameterType="SysLog">
+    <insert id="insert" parameterType="org.ithang.system.log.bean.SysLog">
         insert into sys_log(log_type,content,operator,create_time)value(#{log_type},#{content},#{operator},#{create_time})
     </insert>
 

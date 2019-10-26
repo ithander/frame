@@ -20,6 +20,9 @@ public class Page<T> {
 	private List<T> data;
 	
 	private Map<String,Object> params;//请求参数
+	private T bean;
+	
+	public Page(){}
 	
 	public Page(HttpServletRequest request){
 		setPageNow(Integer.parseInt(request.getParameter("pageNow")==null?"0":request.getParameter("pageNow")));
@@ -102,4 +105,13 @@ public class Page<T> {
 		this.params = params;
 	}
 
+	public T getBean() {
+		return bean;
+	}
+
+	public void setBean(T bean) {
+		this.bean = bean;
+	}
+
+	
 }

@@ -52,6 +52,9 @@ public class PagePlugin implements Interceptor{
 		 if(obj instanceof Map&&!(obj instanceof ActionValues)){//参数为map类型,所以需在分页后同步一下数据
 			 updateData=true;
 			 values=new ActionValues(((Map<String, Object>)obj));
+			 if(values.isNotEmpty("page")){
+				 page=(Page<Object>)values.get("page");
+			 }
 		 }
 		 
 		 if(obj instanceof Page){
@@ -368,9 +371,8 @@ public class PagePlugin implements Interceptor{
 
 	@Override
 	public void setProperties(Properties p) {
-		dialect = p.getProperty("dialect");  
-        if (StrUtils.isNotBlank(dialect)) {
-        	dialect="mysql";
+        if (StrUtils.isNotBlank(p.getProperty("dialect"))) {
+        	dialect=p.getProperty("dialect");
         }  
 	}
 	

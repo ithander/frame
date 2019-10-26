@@ -25,7 +25,7 @@ public class SessionFilter implements HandlerInterceptor{
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)throws Exception {
-		HttpSession session=request.getSession(false);
+		/*HttpSession session=request.getSession(false);
 		String uri=request.getRequestURI();
 		String method=request.getMethod().toUpperCase();
 		if(null==session){//如果session不存在,则跳到登陆页面
@@ -37,7 +37,8 @@ public class SessionFilter implements HandlerInterceptor{
 			return session.getAttribute(SessionsManager.CURRENT_USER)==null?false:true;
 		}
 		
-		return false;
+		return false;*/
+		return true;
 	}
 
 	@Override

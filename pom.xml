@@ -53,9 +53,9 @@
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		    <version>5.1.46</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -84,6 +84,16 @@
             <version>2.5</version>
         </dependency>
 		<dependency>
+		    <groupId>commons-io</groupId>
+		    <artifactId>commons-io</artifactId>
+		    <version>2.6</version>
+		</dependency>
+		<!-- <dependency>
+		        <groupId>com.h2database</groupId> 
+		        <artifactId>h2</artifactId>
+		        <scope>runtime</scope> 
+		</dependency> -->
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
@@ -91,57 +101,24 @@
 	</dependencies>
 
 
-     <profiles>
-		<profile>
-			<id>test</id>
-			<properties>
-				<env>conf/test</env>
-				<profileActive>test</profileActive>
-			</properties>
-		</profile>
-		<profile>
-			<id>dev</id>
-			<properties>
-				<env>conf/dev</env>
-				<profileActive>dev</profileActive>
-			</properties>
-			<!-- <activation>
-				<activeByDefault>true</activeByDefault>
-			</activation> -->
-		</profile>
-		<profile>
-			<id>prod</id>
-			<properties>
-				<env>conf/prod</env>
-				<profileActive>prod</profileActive>
-			</properties>
-		</profile>
-	</profiles>
-
-	<build>
-	    <finalName>frame</finalName>
-	    <resources>
-	        <resource><!-- 资源根目录排除各环境的配置，使用单独的资源目录来指定 --> 
-	            <directory>src/main/resources</directory>
-	            <excludes>
-	                <exclude>application.properties</exclude>
-	                <exclude>conf/**</exclude>
-	            </excludes>
-	        </resource>
-	        <resource>
-               <directory>${basedir}/src/main/java</directory>  
+    <build>
+        <finalName>frame</finalName>
+        <resources>
+            <resource>
+                <filtering>true</filtering>
+                <directory>src/main/resources</directory>
+            </resource>
+            <resource>
+               <directory>src/main/java</directory>  
                <includes>  
                    <include>**/*.*</include>  
                </includes>
                <excludes>
                    <exclude>**/*.java</exclude>
                </excludes>
-           </resource>  
-           <resource>
-               <directory>src/main/resources/conf/${profileActive}</directory>
            </resource>
-	    </resources>
-		<plugins>
+        </resources>
+        <plugins>
 			 <plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
@@ -183,5 +160,6 @@
                </executions>
             </plugin>
 		</plugins>
-	</build>
+    </build> 
+
 </project>

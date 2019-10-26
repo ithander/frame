@@ -3,12 +3,12 @@
 <mapper namespace="org.ithang.system.menu.mapper.MenuMapper">
 
     <!-- 得到系统概要信息 -->
-    <select id="list" resultType="Menu">
+    <select id="list" resultType="org.ithang.system.menu.bean.Menu">
         select id,title,url,`comment`,parent_id from sys_menu
     </select>
     
     <!-- 系统表结构数据 -->
-    <select id="get" parameterType="Integer" resultType="Menu">
+    <select id="get" parameterType="Integer" resultType="org.ithang.system.menu.bean.Menu">
         select id,title,url,`comment`,parent_id from sys_menu where id=#id
     </select>
 
