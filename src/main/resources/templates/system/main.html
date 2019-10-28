@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>后台管理</title>
+	    <link rel="stylesheet" type="text/css" href="/easyui/themes/default/easyui.css">
+        <link rel="stylesheet" type="text/css" href="/easyui/themes/icon.css">
+        <link rel="stylesheet" type="text/css" href="/easyui/themes/color.css">
+        <script type="text/javascript" src="/easyui/jquery.min.js"></script>
+        <script type="text/javascript" src="/easyui/jquery.easyui.min.js"></script>
+        <link rel="stylesheet" href="/layui/css/layui.css" media="all">
+        <script type="text/javascript" src="/layui/layui.all.js"></script>
+    </head>
+    <body class="easyui-layout">
+        <div data-options="region:'south',split:true" style="height:50px;"></div>
+        <div data-options="region:'west',split:true,minWidth:'100'" title="控制面板" style="width:300px;">
+            <div class="easyui-accordion" data-options="fit:true,border:false">
+                <div title="开发者功能">
+                    <ul class="easyui-datalist" data-options="selected:true,fit:true,border:false">
+                        <li value="A">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" class="easyui-linkbutton" onclick="addTab('代码生成','http://www.baidu.com')" style="text-decoration: none;">代码生成</a></li>
+                        <li value="A">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" class="easyui-linkbutton" onclick="addTab('参数配置','http://www.baidu.com')" style="text-decoration: none;">参数配置</a></li>
+                        <li value="A">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" class="easyui-linkbutton" onclick="addTab('模板管理','http://www.baidu.com')" style="text-decoration: none;">模板管理</a></li>
+                        <li value="A">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" class="easyui-linkbutton" onclick="addTab('XMLMapper','http://www.baidu.com')" style="text-decoration: none;">XMLMapper</a></li>
+                    </ul>
+                </div>
+                <div title="系统功能">
+                
+                </div>
+            </div>
+        </div>
+        <div data-options="region:'center',iconCls:'icon-ok'" title="展示">
+            <div id="tabs" class="easyui-tabs" data-options="fit:true,border:false,plain:true">
+                <div title="导读" data-options="href:'/about.html'" style="padding:10px"></div>
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript">
+    
+	    function addTab(title, url){
+	        if ($('#tabs').tabs('exists', title)){
+	            $('#tabs').tabs('select', title);
+	        } else {
+	        	var tabs = $('#tabs').tabs().tabs('tabs');
+	        	if(tabs.length>=12){
+	        		layer.alert('Tab面板开启过多，请关闭其它暂时用不到的Tab面板！');
+	        	}else{
+	        		var content = '<iframe scrolling="auto" frameborder="0"  src="'+url+'" style="width:100%;height:100%;"></iframe>';
+		            
+		            $('#tabs').tabs('add',{
+		                title:title,
+		                content:content,
+		                closable:true
+		            });
+	        	}
+	        	
+	        }
+	    }
+    
+    </script>
+</html>

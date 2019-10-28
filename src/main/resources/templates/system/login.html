@@ -1,70 +1,79 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
     <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <title>登陆</title>
-        <link rel="stylesheet" href="/layui/css/layui.css" media="all">
+        <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+        <script type="text/javascript" src="/easyui/jquery.min.js"></script>
+        <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
+        
+        <style type="text/css">
+        
+             body {
+				  padding-top: 40px;
+				  padding-bottom: 40px;
+				  background-color: #eee;
+				}
+				
+				.form-signin {
+				  max-width: 330px;
+				  padding: 15px;
+				  margin: 0 auto;
+				}
+				.form-signin .form-signin-heading,
+				.form-signin .checkbox {
+				  margin-bottom: 10px;
+				}
+				.form-signin .checkbox {
+				  font-weight: normal;
+				}
+				.form-signin .form-control {
+				  position: relative;
+				  height: auto;
+				  -webkit-box-sizing: border-box;
+				     -moz-box-sizing: border-box;
+				          box-sizing: border-box;
+				  padding: 10px;
+				  font-size: 16px;
+				}
+				.form-signin .form-control:focus {
+				  z-index: 2;
+				}
+				.form-signin input[type="email"] {
+				  margin-bottom: -1px;
+				  border-bottom-right-radius: 0;
+				  border-bottom-left-radius: 0;
+				}
+				.form-signin input[type="password"] {
+				  margin-bottom: 10px;
+				  border-top-left-radius: 0;
+				  border-top-right-radius: 0;
+				}
+        
+        
+        </style>
+        
     </head>
     <body>
-        <div class="layui-container">
-            <div class="layui-row">
-                <div class="layui-col-md12">&nbsp;</div>
-            </div>
-            <div class="layui-row layui-col-space30">
-                <div class="layui-col-md5 layui-col-md-offset3">
-                    <form id="loginFm" class="layui-form" action="/sys/login" method="POST" >
-			             <div class="layui-form-item">
-			                 <label class="layui-form-label">账号:</label>
-			                 <div class="layui-input-inline">
-			                     <input name="uname" autocomplete="off" required  lay-verify="required" placeholder="请输入账号" class="layui-input" type="text">
-			                 </div>
-			             </div>
-			             <div class="layui-form-item">
-			                 <label class="layui-form-label">密码:</label>
-			                 <div class="layui-input-inline">
-			                     <input name="upass" autocomplete="off" required  lay-verify="required" placeholder="请输入密码" class="layui-input" type="password">
-			                 </div>
-			             </div>
-			             
-			             <!-- <div class="layui-form-item">
-			                 <div class="layui-inline">
-			                     <label class="layui-form-label">验证码</label>
-			                     <div class="layui-input-inline">
-			                         <input name="rcode" lay-verify="rcode" placeholder="请输入验证码" autocomplete="off" class="layui-input" type="text">
-			                     </div>
-			                 </div>
-			             </div> -->
-			             
-			             <div class="layui-form-item">
-			                 <div class="layui-input-block">
-			                     <button class="layui-btn" type="submit">登陆</button>
-			                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-			                 </div>
-			              </div>
-			             
-			         </form>
+        <div class="container">
+            <form class="form-signin" action="/sys/login" method="post">
+                <h2 class="form-signin-heading">请登陆</h2>
+                <label for="uname" class="sr-only">账号：</label>
+                <input type="text" id="uname" name="uname" class="form-control" placeholder="账号" required autofocus>
+                <br/>
+                <label for="upass" class="sr-only">密码：</label>
+                <input type="password" id="inputPassword" name="upass" class="form-control" placeholder="密码" required>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="remeber" value="1"> 记住我
+                    </label>
                 </div>
-            </div>
-        </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">登陆</button>
+           </form>
+        </div> <!-- /container -->
+
     </body>
-    <script src="/layui/layui.js"></script>
-    <script type="text/javascript">
-        layui.use(['layer','form'], function(){
-            var layer = layui.layer;
-            var form  = layui.form;
-            /* layer.open({
-            	title:'登陆',
-            	close:false,
-            	btn:[],
-            	content:document.getElementById('loginFm').innerHTML
-            }); */
-            
-            
-            /* form.on('submit(fm)',function(data){
-    			layer.msg(JSON.stringify(data.field));
-    			return false;
-    		}); */
-        });
-    </script>
 </html>
