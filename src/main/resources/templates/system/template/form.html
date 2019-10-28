@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+	    <link rel="stylesheet" type="text/css" href="/easyui/themes/default/easyui.css">
+        <script type="text/javascript" src="/easyui/jquery.min.js"></script>
+        <link rel="stylesheet" href="/layui/css/layui.css" media="all">
+        <script type="text/javascript" src="/layui/layui.all.js"></script>
+    </head>
+    <body>
+         <form class="layui-form" action="/sys/template/add" method="post" lay-filter="formFilter">
+              <div class="layui-form-item">
+			    <div class="layui-input-block">
+			      <input id="id" type="text" name="id"  placeholder="请输入模板标识" lay-verify="required" class="layui-input">
+			    </div>
+			  </div>
+			  <div class="layui-form-item">
+			    <div class="layui-input-block">
+			      <input id="title" type="text" name="title"  placeholder="请输入模板名称" lay-verify="required" class="layui-input">
+			    </div>
+			  </div>
+			  <div class="layui-form-item layui-form-text">
+			    <div class="layui-input-block">
+			      <textarea id="content" name="content" placeholder="请输入模板内容" class="layui-textarea" lay-verify="required" rows="25"></textarea>
+			    </div>
+			  </div>
+			  <div class="layui-form-item">
+                  <div class="layui-input-block">
+			          <button id="submit" type="button" class="layui-btn" lay-submit="" onclick="toSubmit()">立即提交</button>
+			          <button type="button" class="layui-btn" onclick="closeForm()">关闭</button>
+			      </div>
+			  </div>
+	    </form>
+    </body>
+    <script type="text/javascript">
+    
+        function closeForm(){
+        	var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+        	parent.layer.close(index); //再执行关闭   
+        }
+        
+        function toSubmit(){
+        	$.post('/sys/template/add',{'id':$('#id').val(),'title':$('#title').val(),'content':$('#content').text()},function(r){
+        		closeForm();
+        	});
+        }
+        
+    </script>
+</html>

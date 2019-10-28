@@ -1,14 +1,14 @@
-package ${basePkg}.${BeanName}.service;
+package ${basePkg}.${beanName}.service;
 
 import java.util.List;
 import java.util.Map;
-import ${basePkg}.${BeanName}.mapper.${BeanName}Mapper;
+import ${basePkg}.${beanName}.mapper.${BeanName}Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.apache.log4j.Logger;
 import org.ithang.tools.model.Page;
 import org.ithang.tools.database.ModelDao;
-import ${basePkg}.${BeanName}.bean.${BeanName};
+import ${basePkg}.${beanName}.bean.${BeanName};
 
 /**
  * ${tabComment} 服务

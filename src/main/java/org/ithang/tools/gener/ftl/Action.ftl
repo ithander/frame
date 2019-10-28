@@ -1,4 +1,4 @@
-package ${basePkg}.${BeanName};
+package ${basePkg}.${beanName};
 
 import org.ithang.tools.model.Action;
 import org.ithang.tools.model.ActionResult;
@@ -10,8 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import ${basePkg}.${BeanName}.bean.${BeanName};
-import ${basePkg}.${BeanName}.service.${BeanName}Service;
+import ${basePkg}.${beanName}.bean.${BeanName};
+import ${basePkg}.${beanName}.service.${BeanName}Service;
 
 /**
  * ${tabComment}
@@ -23,7 +23,7 @@ import ${basePkg}.${BeanName}.service.${BeanName}Service;
 public class ${BeanName}Action extends Action<${BeanName}>{
 
     @Autowired
-    private ${basePkg}.${BeanName}.service.${BeanName}Service ${beanName}Service; 
+    private ${BeanName}Service ${beanName}Service; 
 
 
     @ResponseBody

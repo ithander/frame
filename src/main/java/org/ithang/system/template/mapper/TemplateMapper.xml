@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.ithang.system.template.mapper.TemplateMapper">
+
+
+    <!-- 新增Template -->
+    <insert id="add" parameterType="org.ithang.system.template.bean.Template" useGeneratedKeys="true" keyProperty="id">
+    	INSERT INTO template (
+			    
+			    `id`
+			    ,
+			    `title`
+			    ,
+			    `content`
+			    ,
+			    `create_time`
+			    ,
+			    `update_time`
+		)
+		VALUES
+			(
+			       
+			         #{id}
+			       ,
+			         #{title}
+			       ,
+			         #{content}
+			       ,
+			         #{create_time}
+			       ,
+			         #{update_time}
+			)
+    </insert>
+
+    <!-- 根据ID得到指定记录 -->
+    <select id="get" resultType="org.ithang.system.template.bean.Template">
+        select * from template where id=#{id}
+    </select>
+    
+    <delete id="delete">
+        delete from template where id=#{id}
+    </delete>
+    
+    <update id="update">
+        update template
+        <set>
+            <trim prefix="" prefixOverrides="," suffixOverrides=",">
+	                    <if test="title!=null">
+	                        title=#{title} ,
+	                    </if>
+	                    <if test="content!=null">
+	                        content=#{content} ,
+	                    </if>
+	                    <if test="create_time!=null">
+	                        create_time=#{create_time} ,
+	                    </if>
+	                    <if test="update_time!=null">
+	                        update_time=#{update_time} ,
+	                    </if>
+            </trim>
+        </set>
+        where id=#{id}
+    </update>
+    
+    
+    <!-- 查询所有数据 -->
+    <select id="list" resultType="org.ithang.system.template.bean.Template">
+        select * from template
+        <trim prefix="where" prefixOverrides="and|or" suffixOverrides="and|or">
+            <if test="ids!=null">
+                <foreach collection="ids" index="index" item="id">
+                    id=#{id} or
+                </foreach>
+            </if>
+        </trim>
+    </select>
+    
+    <!-- 分页查询部分数据 -->
+    <select id="page" resultType="org.ithang.system.template.bean.Template">
+        select * from template
+        <trim prefix="where" prefixOverrides="and|or" suffixOverrides="and|or">
+                <if test="page.bean.id!=null">
+                    id=#{page.bean.id} and
+                </if>
+                <if test="page.bean.title!=null">
+                    title=#{page.bean.title} and
+                </if>
+                <if test="page.bean.content!=null">
+                    content=#{page.bean.content} and
+                </if>
+                <if test="page.bean.create_time!=null">
+                    create_time=#{page.bean.create_time} and
+                </if>
+                <if test="page.bean.update_time!=null">
+                    update_time=#{page.bean.update_time} and
+                </if>
+        </trim>
+    </select>
+    
+    <!-- 分页查询部分数据 -->
+    <select id="query" resultType="org.ithang.system.template.bean.Template">
+        select * from template
+        <trim prefix="where" prefixOverrides="and|or" suffixOverrides="and|or">
+                <if test="id!=null">
+                    id=#{id} and
+                </if>
+                <if test="title!=null">
+                    title=#{title} and
+                </if>
+                <if test="content!=null">
+                    content=#{content} and
+                </if>
+                <if test="create_time!=null">
+                    create_time=#{create_time} and
+                </if>
+                <if test="update_time!=null">
+                    update_time=#{update_time} and
+                </if>
+        </trim>
+    </select>
+
+</mapper>

@@ -1,4 +1,4 @@
-package ${basePkg}.${BeanName}.bean;
+package ${basePkg}.${beanName}.bean;
 
 /**
  * ${tabComment}

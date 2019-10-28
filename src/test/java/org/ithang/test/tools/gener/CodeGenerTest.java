@@ -12,7 +12,7 @@ public class CodeGenerTest {
 	public void generTest()throws Exception{
 		SimpleDriverDataSource ds=new SimpleDriverDataSource(new com.mysql.jdbc.Driver(), "jdbc:mysql://192.168.0.187:3306/test?useSSL=false", "root", "123456");
 		CodeGener codGener=new CodeGener(ds);
-		codGener.gener();
+		codGener.gener("template");
 	}
 	
 	//@Test

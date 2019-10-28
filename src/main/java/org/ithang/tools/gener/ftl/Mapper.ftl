@@ -1,6 +1,6 @@
-package ${basePkg}.${BeanName}.mapper;
+package ${basePkg}.${beanName}.mapper;
 import org.ithang.tools.model.Page;
-import ${basePkg}.${BeanName}.bean.${BeanName};
+import ${basePkg}.${beanName}.bean.${BeanName};
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +17,7 @@ public interface ${BeanName}Mapper{
 	 * @param ${beanName}
 	 * @return
 	 */
-    public ${BeanName} add(${BeanName} ${beanName});
+    public int add(${BeanName} ${beanName});
 
     /**
      * 获取指定记录
