@@ -1,18 +1,22 @@
 package org.ithang.system.data.web;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import org.ithang.system.data.bean.Data;
 import org.ithang.system.data.bean.SysInfo;
-import org.ithang.system.data.bean.SysTable;
 import org.ithang.system.data.service.DataService;
+import org.ithang.tools.database.Dao;
+import org.ithang.tools.gener.CodeGener;
+import org.ithang.tools.gener.TableInfo;
 import org.ithang.tools.model.Action;
 import org.ithang.tools.model.ActionResult;
-import org.ithang.tools.model.Page;
+import org.ithang.tools.model.ErrorInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * 系统数据维护功能
@@ -24,8 +28,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
  *
  */
 @Controller
-@RequestMapping("system/data")
-public class DataAction extends Action<Data>{
+@RequestMapping("sys/data")
+public class DataAction extends Action<Object>{
 
 	@Autowired
 	private DataService dataService;
@@ -37,10 +41,36 @@ public class DataAction extends Action<Data>{
 	}
 	
 	@RequestMapping(value="tables",method=RequestMethod.GET)
-	public ActionResult tables(Page<SysTable> page){
-		List<SysTable> tables=dataService.tables(page);
-		page.setData(tables);
-		return success(page);
+	public String tables(){
+		return "system/data/tables";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="tables",method=RequestMethod.POST)
+	public Map<String,Object> tables(String table){
+		List<TableInfo> tables=dataService.tables(table);
+		Map<String,Object> result=new HashMap<>();
+		result.put("total", tables.size());
+		result.put("rows", tables);
+		return result;
+	}
+	
+	/**
+	 * 根据表名生成代码
+	 * @param tables
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value="gencode",method=RequestMethod.POST)
+	public ActionResult generCode(String[] tables){
+		try{
+		    CodeGener cdGener=new CodeGener(Dao.getDataSource());
+		    cdGener.gener(tables);
+		}catch(Exception e){
+			e.printStackTrace();
+		    return error(ErrorInfo.InternalError);
+		}
+		return success();
 	}
 	
 }

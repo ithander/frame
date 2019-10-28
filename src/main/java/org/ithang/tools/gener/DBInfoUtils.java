@@ -18,15 +18,21 @@ public class DBInfoUtils {
 	 * @return
 	 */
 	public static List<ColumnInfo> columns(JdbcTemplate jdbcTemplate,String...tableNames){
-		
 		StringBuilder sber=new StringBuilder();
-		for(String tableName:tableNames){
-			if(sber.length()>0){
-				sber.append(" or ");
+		if(null!=tableNames&&tableNames.length>0){
+			for(String tableName:tableNames){
+				if(sber.length()>0){
+					sber.append(" or ");
+				}
+				sber.append(" `table_name`=").append("'").append(tableName).append("'");
 			}
-			sber.append(" `table_name`=").append("'").append(tableName).append("'");
 		}
-		sber.insert(0, "SELECT * from information_schema.columns where");
+		if(sber.length()>0){
+			sber.insert(0, "SELECT * from information_schema.columns where table_schema=DATABASE() and ( ").append(")");	
+		}else{
+			sber.append("SELECT * from information_schema.columns where table_schema=DATABASE()");
+		}
+		
 		return jdbcTemplate.query(sber.toString(), new RowMapper<ColumnInfo>(){
 
 			@Override
@@ -35,7 +41,7 @@ public class DBInfoUtils {
 				ci.setTable_name(rs.getString("table_name"));
 				ci.setColumn_name(rs.getString("column_name"));
 				ci.setColumn_default(rs.getString("column_default"));
-				ci.setCharacter_maximum_length(rs.getInt("character_maximum_length"));
+				ci.setCharacter_maximum_length(rs.getString("character_maximum_length"));
 				ci.setColumn_comment(rs.getString("column_comment"));
 				ci.setData_type(rs.getString("data_type"));
 				ci.setColumn_key(rs.getString("column_key"));
@@ -53,13 +59,21 @@ public class DBInfoUtils {
 		List<ColumnInfo> cos=columns(jdbcTemplate,tableNames);
 		
 		StringBuilder sber=new StringBuilder();
-		for(String tableName:tableNames){
-			if(sber.length()>0){
-				sber.append(" or ");
+		if(null!=tableNames&&tableNames.length>0){
+			for(String tableName:tableNames){
+				if(sber.length()>0){
+					sber.append(" or ");
+				}
+				sber.append(" `table_name`=").append("'").append(tableName).append("'");
 			}
-			sber.append(" `table_name`=").append("'").append(tableName).append("'");
 		}
-		sber.insert(0, "SELECT * from information_schema.`TABLES` where ");
+		
+		if(sber.length()>0){
+		    sber.insert(0, "SELECT * from information_schema.`TABLES` where table_schema=DATABASE() and ( ").append(")");
+		}else{
+			sber.append("SELECT * from information_schema.`TABLES`  where table_schema=DATABASE()");
+		}
+		
 		return jdbcTemplate.query(sber.toString(), new RowMapper<TableInfo>(){
 
 			@Override

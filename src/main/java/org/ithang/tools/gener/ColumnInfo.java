@@ -14,7 +14,7 @@ public class ColumnInfo {
 	private String column_key;//列索引
 	private String is_nullable;//是否可以为NULL,[NO|YES]
 	private String data_type;//字段类型:int,varchar
-	private int character_maximum_length;//最大长度
+	private String character_maximum_length;//最大长度
 	private String column_comment;//备注
 	
 	
@@ -73,10 +73,11 @@ public class ColumnInfo {
 			}
 		}
 	}
-	public int getCharacter_maximum_length() {
+	
+	public String getCharacter_maximum_length() {
 		return character_maximum_length;
 	}
-	public void setCharacter_maximum_length(int character_maximum_length) {
+	public void setCharacter_maximum_length(String character_maximum_length) {
 		this.character_maximum_length = character_maximum_length;
 	}
 	public String getColumn_comment() {

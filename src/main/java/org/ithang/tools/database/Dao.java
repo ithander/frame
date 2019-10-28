@@ -8,6 +8,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import org.apache.commons.dbcp2.BasicDataSourceFactory;
+import org.ithang.tools.lang.SpringContextHolder;
 import org.ithang.tools.model.DBConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,7 +35,9 @@ public abstract class Dao {
 	
 	private static Logger logger=LoggerFactory.getLogger(Dao.class);
 	
-	public Dao(){logger.debug("初始化默认数据源成功");}
+	public Dao(){
+		logger.debug("初始化默认数据源成功");
+	}
 	
 	
 	/**
@@ -42,6 +45,9 @@ public abstract class Dao {
 	 * @return
 	 */
 	public static DataSource getDataSource() {
+		if(null==Dao.dataSource){
+			Dao.dataSource=SpringContextHolder.getBean(DataSource.class);
+		}
 		return Dao.dataSource;
 	}
 	
@@ -50,8 +56,8 @@ public abstract class Dao {
 	 * @return
 	 */
 	public static DBOperator getDBOperator() {
-		if(null!=dataSource&&(null==dbOperator||!dbOperator.equals(dataSource))){
-			dbOperator=new DBOperator("default",dataSource);
+		if(null==dbOperator){
+			dbOperator=new DBOperator("default",getDataSource());
 		}
 		return dbOperator;
 	}
