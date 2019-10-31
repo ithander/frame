@@ -5,6 +5,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+/**
+ * 过滤器配置
+ * @author zyt
+ *
+ */
 @Configuration
 public class FilterConfig extends WebMvcConfigurerAdapter {
 

@@ -8,7 +8,6 @@ import org.ithang.system.data.mapper.DataMapper;
 import org.ithang.tools.database.BaseDao;
 import org.ithang.tools.gener.DBInfoUtils;
 import org.ithang.tools.gener.TableInfo;
-import org.ithang.tools.model.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

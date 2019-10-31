@@ -22,25 +22,38 @@ public class ShiroConfiguration {
 	        ShiroFilterFactoryBean bean=new ShiroFilterFactoryBean();
 	        bean.setSecurityManager(manager);
 	        //配置登录的url和登录成功的url
-	        bean.setLoginUrl("/auth/login");
+	        bean.setLoginUrl("/login");
 	        bean.setSuccessUrl("/home");
 	        //配置访问权限
 	        LinkedHashMap<String, String> filterChainDefinitionMap=new LinkedHashMap<>();
-	        filterChainDefinitionMap.put("/jsp/login.jsp*", "anon"); //表示可以匿名访问
-	        filterChainDefinitionMap.put("/index", "anon");
 	        filterChainDefinitionMap.put("/", "anon");
-	        filterChainDefinitionMap.put("/logout*","anon");
 	        filterChainDefinitionMap.put("/static/**","anon");
+	        filterChainDefinitionMap.put("/bootstrap/**","anon");
+	        filterChainDefinitionMap.put("/css/**","anon");
+	        filterChainDefinitionMap.put("/easyui/**","anon");
+	        filterChainDefinitionMap.put("/layui/**","anon");
+	        filterChainDefinitionMap.put("/test/**","anon");
+	        
+	        filterChainDefinitionMap.put("/index", "anon");
+	        filterChainDefinitionMap.put("/sindex", "anon");
+	        
+	        filterChainDefinitionMap.put("/login", "anon");
+	        filterChainDefinitionMap.put("/slogin", "anon");
+	        
+	        filterChainDefinitionMap.put("/home", "authc");
+	        filterChainDefinitionMap.put("/mail", "authc");
+	        filterChainDefinitionMap.put("/app/**", "authc");
+	        filterChainDefinitionMap.put("/sys/**", "authc");
+	        /*filterChainDefinitionMap.put("/static/**","anon");
 	        filterChainDefinitionMap.put("/auth/*","authc");//表示需要认证才可以访问
 	        filterChainDefinitionMap.put("/auth/**","authc");//表示需要认证才可以访问
-	        filterChainDefinitionMap.put("/auth/*.*","authc");
+	        filterChainDefinitionMap.put("/auth/*.*","authc");*/
 	        bean.setFilterChainDefinitionMap(filterChainDefinitionMap);
 	        return bean;
 	    }
 	    //配置核心安全事务管理器
 	    @Bean(name="securityManager")
 	    public SecurityManager securityManager(@Qualifier("authRealm") AuthRealm authRealm) {
-	        System.err.println("--------------shiro已经加载----------------");
 	        DefaultWebSecurityManager manager=new DefaultWebSecurityManager();
 	        manager.setRealm(authRealm);
 	        return manager;

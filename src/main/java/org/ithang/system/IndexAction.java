@@ -13,17 +13,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller("sysIndex")
 @Alias("sysIndex")
-@RequestMapping("sys")
 public class IndexAction {
 
-	@RequestMapping(value={"","login"},method=RequestMethod.GET)
+	@RequestMapping(value={"","sindex"},method=RequestMethod.GET)
 	public String index(HttpServletRequest request){
-		request.setAttribute("login", 0);
+		return "system/index";
+	}
+	
+	@RequestMapping(value="sLogin",method=RequestMethod.GET)
+	public String sLogin(){
 		return "system/login";
 	}
 	
-	@RequestMapping(value="login",method=RequestMethod.POST)
-	public String postLogin(@RequestParam("uname")String uname,@RequestParam("upass")String upass,HttpServletRequest request,HttpServletResponse response){
+	@RequestMapping(value="sLogin",method=RequestMethod.POST)
+	public String sLogin(@RequestParam("uname")String uname,@RequestParam("upass")String upass,HttpServletRequest request,HttpServletResponse response){
 		User user=new User();
 		user.setUname(uname);
 		user.setUpass(upass);
