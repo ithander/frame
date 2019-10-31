@@ -61,6 +61,16 @@
         </trim>
     </select>
     
+    <!-- 根据user_id查询所有记录 -->
+    <select id="listByUser" resultType="org.ithang.system.userRole.bean.UserRole">
+        select * from `user_role`
+        <where>
+            <if test="user_id!=null">
+                `user_id`=#{user_id}
+            </if>
+        </where>
+    </select>
+    
     <!-- 分页查询部分数据 -->
     <select id="page" resultType="org.ithang.system.userRole.bean.UserRole">
         select * from `user_role`

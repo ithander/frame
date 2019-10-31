@@ -1,5 +1,6 @@
 package org.ithang.system.userResource.mapper;
 import org.ithang.tools.model.Page;
+import org.ithang.system.roleResource.bean.RoleResource;
 import org.ithang.system.userResource.bean.UserResource;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
@@ -31,6 +32,13 @@ public interface UserResourceMapper{
      * @return
      */
     public List<UserResource> list(Integer...ids);
+    
+    
+    /**
+     * 根据user_id查询所有记录
+     * @return
+     */
+    public List<UserResource> listByUser(Integer user_id);
     
     /**
      * 分页查询

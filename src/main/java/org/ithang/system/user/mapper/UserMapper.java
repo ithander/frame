@@ -27,6 +27,13 @@ public interface UserMapper{
     public User get(Integer id);
     
     /**
+     * 获取指定记录
+     * @param id
+     * @return
+     */
+    public User getByName(String uname);
+    
+    /**
      * 查询所有记录
      * @return
      */

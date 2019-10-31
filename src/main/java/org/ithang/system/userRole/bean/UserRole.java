@@ -8,7 +8,7 @@ package org.ithang.system.userRole.bean;
 public class UserRole{
 
         private Integer id;//
-        private String user_id;//
+        private Integer user_id;//
         private String role_id;//
 
 
@@ -19,11 +19,11 @@ public class UserRole{
         public Integer getId(){
             return this.id;
         }
-        public void setUser_id(String user_id){
+        public void setUser_id(Integer user_id){
             this.user_id=user_id;
         }
         
-        public String getUser_id(){
+        public Integer getUser_id(){
             return this.user_id;
         }
         public void setRole_id(String role_id){

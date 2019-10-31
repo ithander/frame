@@ -45,6 +45,12 @@
         select * from `user` where `id`=#{id}
     </select>
     
+    
+    <!-- 根据用户名称得到指定记录 -->
+    <select id="getByName" resultType="org.ithang.system.user.bean.User">
+        select * from `user` where `uname`=#{uname}
+    </select>
+    
     <delete id="delete">
         delete from `user` where `id`=#{id}
     </delete>

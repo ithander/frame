@@ -9,7 +9,7 @@ public class UserResource{
 
         private Integer id;//
         private Integer user_id;//
-        private Integer resource_id;//
+        private String resource_id;//
 
 
         public void setId(Integer id){
@@ -26,11 +26,11 @@ public class UserResource{
         public Integer getUser_id(){
             return this.user_id;
         }
-        public void setResource_id(Integer resource_id){
+        public void setResource_id(String resource_id){
             this.resource_id=resource_id;
         }
         
-        public Integer getResource_id(){
+        public String getResource_id(){
             return this.resource_id;
         }
 

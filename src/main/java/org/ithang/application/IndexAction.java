@@ -50,7 +50,7 @@ public class IndexAction {
         //进行验证，这里可以捕获异常，然后返回对应信息
         try{
             subject.login(usernamePasswordToken);
-            return "app/main";
+            return "app/home";
         }catch(Exception e){
         	e.printStackTrace();
         }

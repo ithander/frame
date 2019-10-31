@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.apache.log4j.Logger;
 import org.ithang.tools.model.Page;
 import org.ithang.tools.database.ModelDao;
+import org.ithang.system.roleResource.bean.RoleResource;
 import org.ithang.system.userResource.bean.UserResource;
 
 /**
@@ -37,6 +38,10 @@ public class UserResourceService extends ModelDao<UserResource>{
     
     public List<UserResource> list(Integer... ids){
     	return userResourceMapper.list(ids);
+    }
+    
+    public List<UserResource> listByUser(Integer user_id){
+    	return userResourceMapper.listByUser(user_id);
     }
     
     public List<UserResource> page(UserResource userResource,Page<UserResource> page){

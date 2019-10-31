@@ -39,6 +39,10 @@ public class UserRoleService extends ModelDao<UserRole>{
     	return userRoleMapper.list(ids);
     }
     
+    public List<UserRole> listByUser(Integer user_id){
+    	return userRoleMapper.listByUser(user_id);
+    }
+    
     public List<UserRole> page(UserRole userRole,Page<UserRole> page){
         page.setBean(userRole);
     	return userRoleMapper.page(page);

@@ -51,6 +51,18 @@
         </trim>
     </select>
     
+    <!-- 查询所有数据 -->
+    <select id="listByUser" resultType="org.ithang.system.roleResource.bean.RoleResource">
+        select * from `role_resource`
+        <trim prefix="where" prefixOverrides="and|or" suffixOverrides="and|or">
+            <if test="ids!=null">
+                <foreach collection="ids" index="index" item="id">
+                    `resource_id`=#{resourceId} or
+                </foreach>
+            </if>
+        </trim>
+    </select>
+    
     <!-- 分页查询部分数据 -->
     <select id="page" resultType="org.ithang.system.roleResource.bean.RoleResource">
         select * from `role_resource`
