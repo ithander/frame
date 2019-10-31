@@ -93,11 +93,11 @@ public class CodeGener {
 			data.put("tabComment", tab.getTable_comment());
 			data.put("basePkg", "org.ithang.system");
 			data.put("fields", tab.getColumns());
-			data.put("beanFileName", projectDir+String.format("/org/ithang/application/%s/bean/%s.java",beanName,BeanName));
-			data.put("mapperFileName", projectDir+String.format("/org/ithang/application/%s/mapper/%sMapper.java",beanName,BeanName));
-			data.put("xmlmapperFileName", projectDir+String.format("/org/ithang/application/%s/mapper/%sMapper.xml",beanName,BeanName));
-			data.put("serviceFileName", projectDir+String.format("/org/ithang/application/%s/service/%sService.java",beanName,BeanName));
-			data.put("actionFileName", projectDir+String.format("/org/ithang/application/%s/%sAction.java",beanName,BeanName));
+			data.put("beanFileName", projectDir+String.format("/org/ithang/system/%s/bean/%s.java",beanName,BeanName));
+			data.put("mapperFileName", projectDir+String.format("/org/ithang/system/%s/mapper/%sMapper.java",beanName,BeanName));
+			data.put("xmlmapperFileName", projectDir+String.format("/org/ithang/system/%s/mapper/%sMapper.xml",beanName,BeanName));
+			data.put("serviceFileName", projectDir+String.format("/org/ithang/system/%s/service/%sService.java",beanName,BeanName));
+			data.put("actionFileName", projectDir+String.format("/org/ithang/system/%s/%sAction.java",beanName,BeanName));
 			generBean(data);
 			generMapper(data);
 			generXMLMapper(data);

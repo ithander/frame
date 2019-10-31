@@ -3,7 +3,7 @@ package org.ithang.tools.filter.session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.ithang.system.auth.bean.User;
+import org.ithang.system.user.bean.User;
 
 public class SessionsManager {
 	

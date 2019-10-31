@@ -18,7 +18,7 @@ public class IndexAction {
 
 	@RequestMapping(value={"/","/app"},method=RequestMethod.GET)
 	public String index(){
-		return "index";
+		return "app/index";
 	}
 	
 	@RequestMapping(value="home",method=RequestMethod.GET)
@@ -58,13 +58,13 @@ public class IndexAction {
         return "app/login";
 	}
 	
-	@RequestMapping(value="login",method={RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value="logout",method={RequestMethod.POST,RequestMethod.GET})
 	public String logout(){
 		Subject subject = SecurityUtils.getSubject();
         if(null!=subject){
         	subject.logout();
         }
-        return "index";
+        return "app/index";
 	}
 	
 }

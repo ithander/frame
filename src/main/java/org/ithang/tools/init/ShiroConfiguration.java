@@ -34,7 +34,7 @@ public class ShiroConfiguration {
 	        filterChainDefinitionMap.put("/layui/**","anon");
 	        filterChainDefinitionMap.put("/test/**","anon");
 	        
-	        filterChainDefinitionMap.put("/index", "anon");
+	        filterChainDefinitionMap.put("/app", "anon");
 	        filterChainDefinitionMap.put("/sindex", "anon");
 	        
 	        filterChainDefinitionMap.put("/login", "anon");
