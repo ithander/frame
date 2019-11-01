@@ -32,7 +32,7 @@ public interface UserRoleMapper{
      */
     public List<UserRole> list(Integer...ids);
     
-    public List<UserRole> listByUser(Integer user_id);
+    public List<UserRole> listByUser(@Param("user_id")Integer user_id);
     
     /**
      * 分页查询

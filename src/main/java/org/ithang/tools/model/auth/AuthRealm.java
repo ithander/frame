@@ -40,8 +40,7 @@ public class AuthRealm extends AuthorizingRealm{
 		//通过用户名从数据库获取角色权限集
 		SimpleAuthorizationInfo info =  new SimpleAuthorizationInfo();
 		
-		String uname = (String) getAvailablePrincipal(principalCollection);
-		User user = userService.getByName(uname);
+		User user = (User) getAvailablePrincipal(principalCollection);
         if(null!=user){
         	List<UserRole> userRoles=userRoleService.listByUser(user.getId());
             if(null!=userRoles&&!userRoles.isEmpty()){
@@ -88,7 +87,7 @@ public class AuthRealm extends AuthorizingRealm{
         }
         
         //这里验证authenticationToken和simpleAuthenticationInfo的信息
-        SimpleAuthenticationInfo simpleAuthenticationInfo = new SimpleAuthenticationInfo(token.getPrincipal(), user.getUpass(), user.getUname());
+        SimpleAuthenticationInfo simpleAuthenticationInfo = new SimpleAuthenticationInfo(user, user.getUpass(), user.getUname());
         return simpleAuthenticationInfo;
 	}
 

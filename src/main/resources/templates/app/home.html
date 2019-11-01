@@ -13,9 +13,13 @@
                 <!-- 头部区域（可配合layui已有的水平导航） -->
                 <ul class="layui-nav layui-layout-left">
                     <li class="layui-nav-item"><a href="javascript:void(0)">首页</a></li>
+                    <@shiro.hasRole name="admin">
                     <li class="layui-nav-item"><a href="javascript:void(0)">用户管理</a></li>
+                    </@shiro.hasRole>
                     <li class="layui-nav-item"><a href="javascript:void(0)">资源管理</a></li>
-                    <li class="layui-nav-item"><a href="javascript:void(0)">权限管理</a></li>
+                    <@shiro.hasPermission name="power">
+                    <li class="layui-nav-item"><a href="javascript:void(0)"><@shiro.principal property="title" />权限管理</a></li>
+                    </@shiro.hasPermission>
                     <li class="layui-nav-item">
                         <a href="javascript:;">其它系统</a>
                         <dl class="layui-nav-child">

@@ -26,7 +26,6 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public abstract class Dao {
 
-	@Autowired
 	private static DataSource dataSource;//根(root)数据源,根(root)数据源拥有项目配置数据
 	
 	private static DBOperator dbOperator;//根(root)数据源操作者
@@ -35,9 +34,7 @@ public abstract class Dao {
 	
 	private static Logger logger=LoggerFactory.getLogger(Dao.class);
 	
-	public Dao(){
-		logger.debug("初始化默认数据源成功");
-	}
+	public Dao(){}
 	
 	
 	/**
@@ -46,6 +43,7 @@ public abstract class Dao {
 	 */
 	public static DataSource getDataSource() {
 		if(null==Dao.dataSource){
+			logger.debug("初始化默认数据源成功");
 			Dao.dataSource=SpringContextHolder.getBean(DataSource.class);
 		}
 		return Dao.dataSource;

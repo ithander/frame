@@ -1,4 +1,4 @@
-package org.ithang.tools.init;
+package org.ithang.tools.shiro;
 
 import java.util.LinkedHashMap;
 

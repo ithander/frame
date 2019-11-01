@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.apache.log4j.Logger;
 import org.ithang.tools.model.Page;
 import org.ithang.tools.database.ModelDao;
-import org.ithang.system.roleResource.bean.RoleResource;
 import org.ithang.system.userResource.bean.UserResource;
 
 /**
