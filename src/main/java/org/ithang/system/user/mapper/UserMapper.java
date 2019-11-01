@@ -34,6 +34,14 @@ public interface UserMapper{
     public User getByMobile(@Param("mobile")String mobile);
     
     /**
+     * 获取指定记录
+     * @param id
+     * @return
+     */
+    public User getByName(@Param("uname")String uname);
+    
+    
+    /**
      * 查询所有记录
      * @return
      */

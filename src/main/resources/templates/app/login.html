@@ -18,13 +18,13 @@
 			             <div class="layui-form-item">
 			                 <label class="layui-form-label">账号:</label>
 			                 <div class="layui-input-inline">
-			                     <input name="username" autocomplete="off" required  lay-verify="required" placeholder="请输入账号" class="layui-input" type="text">
+			                     <input id="username" name="username" autocomplete="off" required  lay-verify="required" placeholder="请输入账号" class="layui-input" type="text">
 			                 </div>
 			             </div>
 			             <div class="layui-form-item">
 			                 <label class="layui-form-label">密码:</label>
 			                 <div class="layui-input-inline">
-			                     <input name="password" autocomplete="off" required  lay-verify="required" placeholder="请输入密码" class="layui-input" type="password">
+			                     <input id="password" name="password" autocomplete="off" required  lay-verify="required" placeholder="请输入密码" class="layui-input" type="password">
 			                 </div>
 			             </div>
 			              <div class="layui-form-item">
@@ -34,7 +34,7 @@
 			                         <table>
 			                             <tbody>
 			                                 <tr>
-			                                     <td><input name="vcode" lay-verify="vcode" placeholder="请输入验证码" autocomplete="off" class="layui-input" type="text"></td>
+			                                     <td><input id="vcode" name="vcode" lay-verify="vcode" placeholder="请输入验证码" autocomplete="off" class="layui-input" type="text"></td>
 			                                     <td><img id="validateImg" alt="点击刷新" /></td>
 			                                 </tr>
 			                             </tbody>
@@ -42,10 +42,24 @@
 			                     </div>
 			                 </div>
 			             </div>
-			             
+			             <div class="layui-form-item">
+			                 <div class="layui-inline">
+			                     <label class="layui-form-label">手机验证码</label>
+			                     <div class="layui-input-inline">
+			                         <table>
+			                             <tbody>
+			                                 <tr>
+			                                     <td><input id="smscode" name="smscode" lay-verify="smscode" placeholder="请输入手机验证码" autocomplete="off" class="layui-input" type="text"></td>
+			                                     <td><button id="sendSms" class="layui-btn" type="button">发送短信</button></td>
+			                                 </tr>
+			                             </tbody>
+			                         </table>
+			                     </div>
+			                 </div>
+			             </div>
 			             <div class="layui-form-item">
 			                 <div class="layui-input-block">
-			                     <button class="layui-btn" type="submit">登陆</button>
+			                     <button id="loginBtn" class="layui-btn" type="button">登陆</button>
 			                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
 			                 </div>
 			              </div>
@@ -55,36 +69,58 @@
             </div>
         </div>
     </body>
-    <script src="/layui/layui.js"></script>
+    <script src="/layui/layui.all.js"></script>
     <script type="text/javascript">
-        layui.use(['layer','form'], function(){
-            var layer = layui.layer;
-            var form  = layui.form;
-            /* layer.open({
-            	title:'登陆',
-            	close:false,
-            	btn:[],
-            	content:document.getElementById('loginFm').innerHTML
-            }); */
-            
-            
-            /* form.on('submit(fm)',function(data){
-    			layer.msg(JSON.stringify(data.field));
-    			return false;
-    		}); */
-        });
         
-        
+        //刷新验证码
         function freshVcode(){
         	$.get('/freshvcode',{'mobile':'13774486318'},function(r){
         		$('#validateImg').attr('src','data:image/png;base64,'+r.result);
             });
         }
         
-        $('#validateImg').click(function(){freshVcode();});
         
         $(function(){
         	freshVcode();
+        	
+        	$('#validateImg').click(function(){freshVcode();});
+        	
+        	//发短信事件
+        	$('#sendSms').click(function(){
+        		if(0==$.trim($('#username').val()).length||0==$.trim($('#vcode').val()).length){
+        			layer.alert('请填好手机号和图形验证码');
+        			return;
+        		}
+        		$.getJSON('/sendsms',{'mobile':$('#username').val(),'vcode':$('#vcode').val()},function(r){
+        			if(r.code>0){
+        				layer.alert('发送失败');
+        			}else{
+        				layer.alert('发送成功');
+        			}
+        			
+        		})
+        		
+        	});
+        	
+        	
+        	//登陆事件
+        	$('#loginBtn').click(function(){
+        		$.post('/login',{
+        			'username':$('#username').val(),
+        			'password':$('#password').val(),
+        			'vcode':$('#vcode').val(),
+        			'smscode':$('#smscode').val()
+        		},function(r){
+        			if(r.code>0){
+        				layer.alert('登陆失败');
+        			}else{
+        				layer.alert('登陆成功',function(){
+        					window.location.href='/to?page='+r.page;
+        				});
+        			}
+        		},"json");
+        	});
+        	
         })
         
     </script>

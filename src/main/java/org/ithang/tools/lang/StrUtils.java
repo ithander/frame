@@ -5,9 +5,56 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.LineNumberReader;
 import java.io.StringReader;
+import java.util.Random;
 
 public final class StrUtils {
 
+	private final static Random r = new Random(System.currentTimeMillis());
+	/**
+	 * 随机生成指定位数code
+	 * @param len
+	 * @return
+	 */
+	public static String randomCode(int len) {
+	    String str="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	    StringBuilder sb = new StringBuilder();
+	    for (int i = 0; i < len; i++) {
+	        int d =r.nextInt(62);
+	        sb.append(str.charAt(d));
+	    }
+	    return sb.toString();
+	}
+	
+	/**
+	 * 随机生成指定位数code
+	 * @param len
+	 * @return
+	 */
+	public static String randomNumberCode(int len) {
+	    String str="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	    StringBuilder sb = new StringBuilder();
+	    for (int i = 0; i < len; i++) {
+	        int d =r.nextInt(10);
+	        sb.append(str.charAt(d));
+	    }
+	    return sb.toString();
+	}
+	
+	/**
+	 * 随机生成指定位数code
+	 * @param len
+	 * @return
+	 */
+	public static String randomStrCode(int len) {
+	    String str="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	    StringBuilder sb = new StringBuilder();
+	    for (int i = 0; i < len; i++) {
+	        int d =r.nextInt(52);
+	        sb.append(str.charAt(d));
+	    }
+	    return sb.toString();
+	}
+	
 	/**
      * 是非空有效字段吗?是true,否false
      * @param value

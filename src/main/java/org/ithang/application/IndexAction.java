@@ -8,6 +8,7 @@ import org.apache.shiro.subject.Subject;
 import org.ithang.system.user.bean.User;
 import org.ithang.system.user.service.UserService;
 import org.ithang.tools.lang.MD5Util;
+import org.ithang.tools.lang.StrUtils;
 import org.ithang.tools.model.Action;
 import org.ithang.tools.model.ActionResult;
 import org.ithang.tools.model.ErrorInfo;
@@ -53,12 +54,26 @@ public class IndexAction extends Action<Object>{
 		return "app/login";
 	}
 	
+	@ResponseBody
 	@RequestMapping(value="/login",method=RequestMethod.POST)
-	public String login(@RequestParam String username,@RequestParam String password,@RequestParam(defaultValue="0",required=false) String remeber){
+	public ActionResult login(@RequestParam String username,@RequestParam String password,
+			            @RequestParam(defaultValue="0",required=false) String remeber,
+			            @RequestParam("vcode")String vcode,@RequestParam("smscode")String smscode){
+		
+		String mobile=username;
+		if(!verifyVCode(mobile, vcode)){
+			return error(ErrorInfo.VCodeNotExistError);
+		}
+		
+		if(!verifySMSCode(mobile, smscode)){
+			return error(ErrorInfo.VCodeNotExistError);
+		}
+		
+		
 		//添加用户认证信息
         Subject subject = SecurityUtils.getSubject();
         if(subject.isRemembered()||subject.isAuthenticated()){
-        	return "app/home";
+        	return page("app/home");
         }
         UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(username,password);
         if("1".equals(remeber)){
@@ -68,12 +83,12 @@ public class IndexAction extends Action<Object>{
         //进行验证，这里可以捕获异常，然后返回对应信息
         try{
             subject.login(usernamePasswordToken);
-            return "app/home";
+            return page("app/home");
         }catch(Exception e){
         	e.printStackTrace();
         }
         
-        return "app/login";
+        return page("app/login");
 	}
 	
 	@RequestMapping(value="logout",method={RequestMethod.POST,RequestMethod.GET})
@@ -112,7 +127,8 @@ public class IndexAction extends Action<Object>{
 		VCode v = ValidateCodeUtil.getRandomCode();     //直接调用静态方法，返回验证码对象
 		if(null!=v){
 			String key=Keys.format(Keys.LoginVCode, mobile);
-			JedisUtils.set(key, MD5Util.getEncryptedData(v.getValue().toLowerCase()),60);//将验证码值保存redis中
+			//JedisUtils.set(key, MD5Util.getEncryptedData(v.getValue().toLowerCase()),60);//将验证码值保存redis中
+			JedisUtils.set(key, v.getValue(),60*2);//将验证码值保存redis中
 			return success(v.getBase64Str());
 		}
         return error(ErrorInfo.UnknowError);
@@ -127,12 +143,8 @@ public class IndexAction extends Action<Object>{
 	@ResponseBody
 	@RequestMapping(value="vcode",method=RequestMethod.GET)
 	public ActionResult vcode(@RequestParam("mobile")String mobile,@RequestParam("vcode")String vcode){
-		String preVCode=JedisUtils.get(Keys.format(Keys.LoginVCode, mobile));
-		if(null!=preVCode&&preVCode.trim().length()>0){
-			vcode=MD5Util.getEncryptedData(vcode.toLowerCase());
-			if(vcode.equals(preVCode)){
-				success();
-			}
+		if(verifyVCode(mobile,vcode)){
+			return success();
 		}
         return error(ErrorInfo.UnknowError);
 	}
@@ -148,9 +160,9 @@ public class IndexAction extends Action<Object>{
 	public ActionResult sendSMS(@RequestParam("mobile")String mobile,@RequestParam("vcode")String vcode){
 		String preVCode=JedisUtils.get(Keys.format(Keys.LoginVCode, mobile));
 		if(null!=preVCode&&preVCode.trim().length()>0){
-			vcode=MD5Util.getEncryptedData(vcode.toLowerCase());
-			if(vcode.equals(preVCode)){
-				String code=ValidateCodeUtil.getRandomCode().getValue();
+			//vcode=MD5Util.getEncryptedData(vcode.toLowerCase());
+			if(vcode.equalsIgnoreCase(preVCode)){
+				String code=StrUtils.randomNumberCode(6);
 				SmsSender.sendMsg(mobile, SmsSender.getSmsTemplate(0, code));
 				JedisUtils.set(Keys.format(Keys.SmsCode,mobile), code,60*2);//将验证码值保存redis中
 			}
@@ -169,17 +181,42 @@ public class IndexAction extends Action<Object>{
 	@ResponseBody
 	@RequestMapping(value="validatesms",method=RequestMethod.GET)
 	public ActionResult validateSMS(@RequestParam("mobile")String mobile,@RequestParam("vcode")String vcode){
-		String preVCode=JedisUtils.get(Keys.format(Keys.SmsCode, mobile));
-		if(null!=preVCode&&preVCode.trim().length()>0){
-			if(vcode.equals(preVCode)){
-				return success();
-			}
-		}else{
-			return error(ErrorInfo.VCodeNotExistError);
+		if(verifySMSCode(mobile,vcode)){
+			return success();
 		}
         return error(ErrorInfo.VCodeNotExistError);
 	}
 	
+	/**
+	 * 验证登陆验证码
+	 * @param mobile
+	 * @return
+	 */
+	private boolean verifyVCode(String mobile,String vcode){
+		String preVCode=JedisUtils.get(Keys.format(Keys.LoginVCode, mobile));
+		if(null!=preVCode&&preVCode.trim().length()>0){
+			//vcode=MD5Util.getEncryptedData(vcode.toLowerCase());
+			if(vcode.equalsIgnoreCase(preVCode)){
+				return true;
+			}
+		}
+		return false;
+	}
 	
+	/**
+	 * 验证短信验证码
+	 * @param mobile
+	 * @param smscode
+	 * @return
+	 */
+	private boolean verifySMSCode(String mobile,String smscode){
+		String preSMSCode=JedisUtils.get(Keys.format(Keys.SmsCode, mobile));
+		if(null!=preSMSCode&&preSMSCode.trim().length()>0){
+			if(smscode.equalsIgnoreCase(preSMSCode)){
+				return true;
+			}
+		}
+		return false;
+	}
 	
 }

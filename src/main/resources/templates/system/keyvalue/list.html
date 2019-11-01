@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+	    <link rel="stylesheet" type="text/css" href="/easyui/themes/default/easyui.css">
+        <link rel="stylesheet" type="text/css" href="/easyui/themes/icon.css">
+        <link rel="stylesheet" type="text/css" href="/easyui/themes/color.css">
+        <script type="text/javascript" src="/easyui/jquery.min.js"></script>
+        <script type="text/javascript" src="/easyui/jquery.easyui.min.js"></script>
+        <link rel="stylesheet" href="/layui/css/layui.css" media="all">
+        <script type="text/javascript" src="/layui/layui.all.js"></script>
+    </head>
+    <body>
+         <table id="dat" class="easyui-datagrid" title="模板数据" data-options="fit:true,singleSelect:false,
+                                                                   selectOnCheck:true,ctrlSelect:true,
+                                                                   fitColumns:true,rownumbers:true,
+                                                                   collapsible:true,pagination:true,
+                                                                   url:'/sys/keyvalue/list',
+                                                                   method:'post',toolbar:toolbars">
+	        <thead>
+	            <tr>
+	                <th data-options="field:'key',width:150">Key</th>
+	                <th data-options="field:'title',width:200">名称</th>
+	                <th data-options="field:'value',width:250">值</th>
+	            </tr>
+	        </thead>
+	    </table>
+    </body>
+    <script type="text/javascript">
+		    var toolbars = [{
+		        text:'新增',
+		        iconCls:'icon-add',
+		        handler:function(){
+		        	var index = layer.open({
+		        		  type: 2,
+		        		  title:'新增模板',
+		        		  content: '/sys/template/form',
+		        		  maxmin: false
+		        		});
+		        	layer.full(index);
+		        }
+		    },{
+		        text:'修改',
+		        iconCls:'icon-edit',
+		        handler:function(){
+		        	var index = layer.open({
+		        		  type: 2,
+		        		  title:'新增模板',
+		        		  content: '/sys/template/form',
+		        		  maxmin: false
+		        		});
+		        	layer.full(index);
+		        }
+		    },{
+		        text:'删除',
+		        iconCls:'icon-remove',
+		        handler:function(){
+		        	var data=$('#dat').datagrid('getSelections');
+		        	if(data&&data.length>0){
+		        		layer.confirm('确定要删除码?',function(index){
+		        			var key='';
+		        			var ids='';
+		        			if(1==data.length){
+		        				key=data.key;
+		        			}else{
+		        				$.each(data,function(index,value){
+	                            	if(index>0){
+	                            		ids+=',';
+	                            	}
+	                            	ids+=value;
+	                            })
+		        			}
+		        			
+                            
+                            
+                            $.post('/sys/keyvalue/delete',{'key':key,'ids':ids},function(r){
+                            	if(r.code>0){
+                            		layer.alert('删除失败',function(){
+                            			layer.close(index);			
+                            		});
+                            	}else{
+                            		layer.close(index);
+                            		$('#dat').datagrid('reload');
+                            	}
+                            },"json")
+		        			
+		        		});
+		        	}
+		        }
+		    }];
+		    
+		    
+		    $('#dat').datagrid({
+		    	loadFilter: function(data){
+		    		if (data&&data.result){
+		    			return data.result;
+		    		}
+		    	}
+		    });
+		    
+		 		    
+    </script>
+</html>

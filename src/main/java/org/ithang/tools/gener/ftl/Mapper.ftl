@@ -60,4 +60,11 @@ public interface ${BeanName}Mapper{
      */
     public int delete(@Param("${priKey!"id"}")${priKeyType!"String"} ${priKey!"id"});
     
+     /**
+     * 批量删除
+     * @param ids
+     * @return
+     */
+    public int batchDelete(@Param("ids")String[] ids);
+    
 }

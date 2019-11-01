@@ -16,6 +16,12 @@ public class Action<T> {
 		return new ActionResult();
 	}
 	
+	protected ActionResult success(Object obj,String msg){
+		ActionResult ar= new ActionResult(obj);
+		ar.setDesc(msg);
+		return ar;
+	}
+	
 	protected ActionResult success(Object obj){
 		return new ActionResult(obj);
 	}

@@ -13,6 +13,7 @@ import javax.sql.DataSource;
 import org.apache.log4j.Logger;
 import org.ithang.tools.lang.StrUtils;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -32,6 +33,15 @@ public class CodeGener {
 	
 	private Logger logger=Logger.getLogger(CodeGener.class);
 	
+	
+	private String saveDir;
+	private String basePkg;
+	private boolean action;
+	private boolean service;
+	private boolean mapper;
+	private boolean xmlMapper;
+	private boolean page;
+	
 	static{
 		
 		 try {
@@ -47,6 +57,15 @@ public class CodeGener {
 	
 	public CodeGener(DataSource dataSource){
 		jdbcTemplate=new JdbcTemplate(dataSource);
+	}
+	
+	public CodeGener(String url,String uname,String upass){
+		try{
+		    SimpleDriverDataSource ds=new SimpleDriverDataSource(new com.mysql.jdbc.Driver(), url, uname, upass);
+		    jdbcTemplate=new JdbcTemplate(ds);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 	
 	
@@ -91,18 +110,39 @@ public class CodeGener {
 			data.put("BeanName", BeanName);
 			data.put("beanName", beanName);
 			data.put("tabComment", tab.getTable_comment());
-			data.put("basePkg", "org.ithang.system");
+			data.put("basePkg", null==basePkg?"org.ithang.system":basePkg);
 			data.put("fields", tab.getColumns());
-			data.put("beanFileName", projectDir+String.format("/org/ithang/system/%s/bean/%s.java",beanName,BeanName));
-			data.put("mapperFileName", projectDir+String.format("/org/ithang/system/%s/mapper/%sMapper.java",beanName,BeanName));
-			data.put("xmlmapperFileName", projectDir+String.format("/org/ithang/system/%s/mapper/%sMapper.xml",beanName,BeanName));
-			data.put("serviceFileName", projectDir+String.format("/org/ithang/system/%s/service/%sService.java",beanName,BeanName));
-			data.put("actionFileName", projectDir+String.format("/org/ithang/system/%s/%sAction.java",beanName,BeanName));
+			saveDir=(null==saveDir?projectDir:saveDir);
+			data.put("beanFileName", saveDir+String.format("/"+basePkg.replaceAll("\\.", "/")+"/%s/bean/%s.java",beanName,BeanName));
+			data.put("mapperFileName", saveDir+String.format("/"+basePkg.replaceAll("\\.", "/")+"/%s/mapper/%sMapper.java",beanName,BeanName));
+			data.put("xmlmapperFileName", saveDir+String.format("/"+basePkg.replaceAll("\\.", "/")+"/%s/mapper/%sMapper.xml",beanName,BeanName));
+			data.put("serviceFileName", saveDir+String.format("/"+basePkg.replaceAll("\\.", "/")+"/%s/service/%sService.java",beanName,BeanName));
+			data.put("actionFileName", saveDir+String.format("/"+basePkg.replaceAll("\\.", "/")+"/%s/%sAction.java",beanName,BeanName));
+			
+			if(basePkg.contains("system")){
+				data.put("path", "sys");
+			}else{
+				data.put("path", "app");
+			}
+			
 			generBean(data);
-			generMapper(data);
-			generXMLMapper(data);
-			generService(data);
-			generAction(data);
+			if(mapper){
+				generMapper(data);	
+			}
+			
+			if(xmlMapper){
+				generXMLMapper(data);	
+			}
+			if(service){
+				generService(data);	
+			}
+			if(action){
+				generAction(data);	
+			}
+			if(page){
+				generPage(data);
+			}
+			
 		}
 	}
 	
@@ -199,7 +239,66 @@ public class CodeGener {
 			e.printStackTrace();
 		}
 	}
+	
+	protected void generPage(Map<String,Object> data){
+		
+	}
 
+	public String getSaveDir() {
+		return saveDir;
+	}
+
+	public void setSaveDir(String saveDir) {
+		this.saveDir = saveDir;
+	}
+
+	public String getBasePkg() {
+		return basePkg;
+	}
+
+	public void setBasePkg(String basePkg) {
+		this.basePkg = basePkg;
+	}
+
+	public boolean isAction() {
+		return action;
+	}
+
+	public void setAction(boolean action) {
+		this.action = action;
+	}
+
+	public boolean isService() {
+		return service;
+	}
+
+	public void setService(boolean service) {
+		this.service = service;
+	}
+
+	public boolean isMapper() {
+		return mapper;
+	}
+
+	public void setMapper(boolean mapper) {
+		this.mapper = mapper;
+	}
+
+	public boolean isXmlMapper() {
+		return xmlMapper;
+	}
+
+	public void setXmlMapper(boolean xmlMapper) {
+		this.xmlMapper = xmlMapper;
+	}
+
+	public boolean isPage() {
+		return page;
+	}
+
+	public void setPage(boolean page) {
+		this.page = page;
+	}
 
 	
 }

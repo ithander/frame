@@ -67,5 +67,12 @@ public class UserAction extends Action<User>{
 		return success(userService.query(values));
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="update",method=RequestMethod.POST)
+	public ActionResult update(User user,HttpServletRequest request){
+		userService.update(user);
+		return success();
+	}
+	
 
 }

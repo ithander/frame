@@ -26,6 +26,8 @@
 			    `create_time`
 			    ,
 			    `type`
+			    ,
+			    `mycode`
 		)
 		VALUES
 			(
@@ -49,6 +51,8 @@
 			        #{create_time}
 			         ,
 			         #{type}
+			         ,
+			         #{mycode}
 			)
     </insert>
 
@@ -60,6 +64,11 @@
     <!-- 根据ID得到指定记录 -->
     <select id="getByMobile" resultType="org.ithang.system.user.bean.User">
         select * from `user` where `mobile`=#{mobile}
+    </select>
+    
+    <!-- 根据ID得到指定记录 -->
+    <select id="getByName" resultType="org.ithang.system.user.bean.User">
+        select * from `user` where `uname`=#{uname}
     </select>
     
     <delete id="delete">
@@ -96,6 +105,9 @@
 	                    </if>
 	                    <if test="create_time!=null">
 	                        `create_time`=#{create_time} ,
+	                    </if>
+	                    <if test="mycode!=null">
+	                        `mycode`=#{mycode}
 	                    </if>
             </trim>
         </set>
@@ -149,6 +161,9 @@
                 <if test="page.bean.create_time!=null">
                     `create_time`=#{page.bean.create_time} and
                 </if>
+                <if test="page.bean.mycode!=null">
+                    `mycode`=#{page.bean.mycode} and
+                </if>
         </trim>
     </select>
     
@@ -185,6 +200,9 @@
                 </if>
                 <if test="create_time!=null">
                     `create_time`=#{create_time} and
+                </if>
+                <if test="mycode!=null">
+                    `mycode`=#{mycode} and
                 </if>
         </trim>
     </select>

@@ -9,8 +9,10 @@ public class StrUtilsTest {
 
 	@Test
 	public void test() {
-		String s=StrUtils.fromFileToStr(new File("C:\\Users\\Administrator\\Desktop\\template.html"));
-		System.out.println(s);
+		//String s=StrUtils.fromFileToStr(new File("C:\\Users\\Administrator\\Desktop\\template.html"));
+		//System.out.println(s);
+		
+		System.out.println("org.ithang.system".replaceAll("\\.", "/"));
 	}
 
 }

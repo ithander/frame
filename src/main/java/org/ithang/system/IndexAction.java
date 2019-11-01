@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Alias("sysIndex")
 public class IndexAction {
 
-	@RequestMapping(value={"sys","sindex"},method=RequestMethod.GET)
+	@RequestMapping(value={"sys"},method=RequestMethod.GET)
 	public String index(HttpServletRequest request){
 		return "system/index";
 	}
@@ -55,7 +55,7 @@ public class IndexAction {
         return "system/login";
 	}
 	
-	@RequestMapping(value="loginout",method=RequestMethod.GET)
+	@RequestMapping(value="sloginout",method=RequestMethod.GET)
 	public String loginout(HttpServletRequest request){
 		Subject subject = SecurityUtils.getSubject();
         if(null!=subject){

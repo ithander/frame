@@ -15,6 +15,7 @@ public class User{
         private String email;//邮箱
         private String mobile;//手机
         private String pay_pwd;//支付密码
+        private String mycode;//邀请码
         private Integer from_user;//推荐人
         private String create_time;//创建时间
 
@@ -77,7 +78,16 @@ public class User{
         public String getPay_pwd(){
             return this.pay_pwd;
         }
-        public void setFrom_user(Integer from_user){
+        
+        public String getMycode() {
+			return mycode;
+		}
+
+		public void setMycode(String mycode) {
+			this.mycode = mycode;
+		}
+
+		public void setFrom_user(Integer from_user){
             this.from_user=from_user;
         }
         

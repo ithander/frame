@@ -76,6 +76,11 @@ public class AuthRealm extends AuthorizingRealm{
         //获取用户信息
         String mobile = token.getUsername();
         User user = userService.getByMobile(mobile);
+        
+        if(null==user){
+        	user=userService.getByName(mobile);
+        }
+        
         if(null==user){
         	throw new AccountException("用户名不正确");
         }

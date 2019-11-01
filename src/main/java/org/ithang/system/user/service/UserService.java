@@ -35,6 +35,10 @@ public class UserService extends ModelDao<User>{
     	return userMapper.getByMobile(mobile);
     }
     
+    public User getByName(String uname){
+    	return userMapper.getByName(uname);
+    }
+    
     public int delete(Integer id){
         return userMapper.delete(id);
     }
@@ -50,6 +54,10 @@ public class UserService extends ModelDao<User>{
     
     public List<User> query(Map<String,Object> conditions){
     	return userMapper.query(conditions);
+    }
+    
+    public int update(User user){
+    	return userMapper.update(user);
     }
     
     

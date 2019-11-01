@@ -35,6 +35,10 @@ public class ${BeanName}Service extends ModelDao<${BeanName}>{
         return ${beanName}Mapper.delete(${priKey!"id"});
     }
     
+    public int batchDelete(String[] ids){
+    	return ${beanName}Mapper.batchDelete(ids);
+    }
+    
     public List<${BeanName}> list(${priKeyType!"String"}... ids){
     	return ${beanName}Mapper.list(ids);
     }
@@ -46,6 +50,10 @@ public class ${BeanName}Service extends ModelDao<${BeanName}>{
     
     public List<${BeanName}> query(Map<String,Object> conditions){
     	return ${beanName}Mapper.query(conditions);
+    }
+    
+    public int update(${BeanName} ${beanName}){
+    	return ${beanName}Mapper.update(${beanName});
     }
     
     
