@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <title>登陆</title>
         <link rel="stylesheet" href="/layui/css/layui.css" media="all">
+        <script type="text/javascript" src="jquery/jquery-3.2.1.min.js"></script>
     </head>
     <body>
         <div class="layui-container">
@@ -26,15 +27,21 @@
 			                     <input name="password" autocomplete="off" required  lay-verify="required" placeholder="请输入密码" class="layui-input" type="password">
 			                 </div>
 			             </div>
-			             
-			             <!-- <div class="layui-form-item">
+			              <div class="layui-form-item">
 			                 <div class="layui-inline">
 			                     <label class="layui-form-label">验证码</label>
 			                     <div class="layui-input-inline">
-			                         <input name="rcode" lay-verify="rcode" placeholder="请输入验证码" autocomplete="off" class="layui-input" type="text">
+			                         <table>
+			                             <tbody>
+			                                 <tr>
+			                                     <td><input name="vcode" lay-verify="vcode" placeholder="请输入验证码" autocomplete="off" class="layui-input" type="text"></td>
+			                                     <td><img id="validateImg" alt="点击刷新" /></td>
+			                                 </tr>
+			                             </tbody>
+			                         </table>
 			                     </div>
 			                 </div>
-			             </div> -->
+			             </div>
 			             
 			             <div class="layui-form-item">
 			                 <div class="layui-input-block">
@@ -66,5 +73,19 @@
     			return false;
     		}); */
         });
+        
+        
+        function freshVcode(){
+        	$.get('/freshvcode',{'mobile':'13774486318'},function(r){
+        		$('#validateImg').attr('src','data:image/png;base64,'+r.result);
+            });
+        }
+        
+        $('#validateImg').click(function(){freshVcode();});
+        
+        $(function(){
+        	freshVcode();
+        })
+        
     </script>
 </html>

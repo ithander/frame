@@ -24,14 +24,14 @@ public interface UserMapper{
      * @param id
      * @return
      */
-    public User get(Integer id);
+    public User get(@Param("id")Integer id);
     
     /**
      * 获取指定记录
      * @param id
      * @return
      */
-    public User getByName(String uname);
+    public User getByMobile(@Param("mobile")String mobile);
     
     /**
      * 查询所有记录

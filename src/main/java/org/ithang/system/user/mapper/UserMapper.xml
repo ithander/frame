@@ -19,7 +19,13 @@
 			    ,
 			    `mobile`
 			    ,
+			    `pay_pwd`
+			    ,
+			    `from_user`
+			    ,
 			    `create_time`
+			    ,
+			    `type`
 		)
 		VALUES
 			(
@@ -36,7 +42,13 @@
 			       ,
 			         #{mobile}
 			       ,
-			         #{create_time}
+			         #{pay_pwd}
+			       ,
+			         #{from_user}
+			       ,
+			        #{create_time}
+			         ,
+			         #{type}
 			)
     </insert>
 
@@ -45,10 +57,9 @@
         select * from `user` where `id`=#{id}
     </select>
     
-    
-    <!-- 根据用户名称得到指定记录 -->
-    <select id="getByName" resultType="org.ithang.system.user.bean.User">
-        select * from `user` where `uname`=#{uname}
+    <!-- 根据ID得到指定记录 -->
+    <select id="getByMobile" resultType="org.ithang.system.user.bean.User">
+        select * from `user` where `mobile`=#{mobile}
     </select>
     
     <delete id="delete">
@@ -68,11 +79,20 @@
 	                    <if test="title!=null">
 	                        `title`=#{title} ,
 	                    </if>
+	                    <if test="type!=null">
+	                        `type`=#{type} ,
+	                    </if>
 	                    <if test="email!=null">
 	                        `email`=#{email} ,
 	                    </if>
 	                    <if test="mobile!=null">
 	                        `mobile`=#{mobile} ,
+	                    </if>
+	                    <if test="pay_pwd!=null">
+	                        `pay_pwd`=#{pay_pwd} ,
+	                    </if>
+	                    <if test="from_user!=null">
+	                        `from_user`=#{from_user} ,
 	                    </if>
 	                    <if test="create_time!=null">
 	                        `create_time`=#{create_time} ,
@@ -108,6 +128,9 @@
                 <if test="page.bean.upass!=null">
                     `upass`=#{page.bean.upass} and
                 </if>
+                <if test="page.bean.type!=null">
+                    `type`=#{page.bean.type} and
+                </if>
                 <if test="page.bean.title!=null">
                     `title`=#{page.bean.title} and
                 </if>
@@ -116,6 +139,12 @@
                 </if>
                 <if test="page.bean.mobile!=null">
                     `mobile`=#{page.bean.mobile} and
+                </if>
+                <if test="page.bean.pay_pwd!=null">
+                    `pay_pwd`=#{page.bean.pay_pwd} and
+                </if>
+                <if test="page.bean.from_user!=null">
+                    `from_user`=#{page.bean.from_user} and
                 </if>
                 <if test="page.bean.create_time!=null">
                     `create_time`=#{page.bean.create_time} and
@@ -136,6 +165,9 @@
                 <if test="upass!=null">
                     `upass`=#{upass} and
                 </if>
+                <if test="type!=null">
+                    `type`=#{type} and
+                </if>
                 <if test="title!=null">
                     `title`=#{title} and
                 </if>
@@ -144,6 +176,12 @@
                 </if>
                 <if test="mobile!=null">
                     `mobile`=#{mobile} and
+                </if>
+                <if test="pay_pwd!=null">
+                    `pay_pwd`=#{pay_pwd} and
+                </if>
+                <if test="from_user!=null">
+                    `from_user`=#{from_user} and
                 </if>
                 <if test="create_time!=null">
                     `create_time`=#{create_time} and

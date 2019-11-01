@@ -24,7 +24,7 @@ public interface ${BeanName}Mapper{
      * @param ${priKey!"id"}
      * @return
      */
-    public ${BeanName} get(${priKeyType!"String"} ${priKey!"id"});
+    public ${BeanName} get(@Param("${priKey!"id"}")${priKeyType!"String"} ${priKey!"id"});
     
     /**
      * 查询所有记录
@@ -58,6 +58,6 @@ public interface ${BeanName}Mapper{
      * @param ${priKey!"id"}
      * @return
      */
-    public int delete(${priKeyType!"String"} ${priKey!"id"});
+    public int delete(@Param("${priKey!"id"}")${priKeyType!"String"} ${priKey!"id"});
     
 }

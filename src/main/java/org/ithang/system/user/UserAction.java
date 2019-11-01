@@ -66,6 +66,6 @@ public class UserAction extends Action<User>{
 		ActionValues values=new ActionValues(request);
 		return success(userService.query(values));
 	}
-     
+	
 
 }

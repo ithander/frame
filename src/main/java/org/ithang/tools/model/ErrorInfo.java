@@ -8,8 +8,10 @@ package org.ithang.tools.model;
 public enum ErrorInfo {
 
 	
-	UnknowError(1,"未知错误"),
-	InternalError(2,"内部异常");
+	UnknowError(1,"失败或未知错误"),
+	InternalError(2,"内部异常"),
+	UserExistError(3,"用户己存在"),
+	VCodeNotExistError(4,"验证码己失效");
 	
 	private int code;
 	private String desc;

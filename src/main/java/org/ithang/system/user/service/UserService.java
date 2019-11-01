@@ -31,8 +31,8 @@ public class UserService extends ModelDao<User>{
         return userMapper.get(id);
     }
     
-    public User getByName(String uname){
-    	return userMapper.getByName(uname);
+    public User getByMobile(String mobile){
+    	return userMapper.getByMobile(mobile);
     }
     
     public int delete(Integer id){
