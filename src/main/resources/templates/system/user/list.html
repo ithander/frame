@@ -10,7 +10,7 @@
         <script type="text/javascript" src="/easyui/jquery.easyui.min.js"></script>
         <link rel="stylesheet" href="/layui/css/layui.css" media="all">
         <script type="text/javascript" src="/layui/layui.all.js"></script>
-        
+        <script type="text/javascript" src="/easyui/locale/easyui-lang-zh_CN.js"></script>
         <script type="text/javascript" src="/easyui/plugins/datagrid-filter.js"></script>
     </head>
     <body>
