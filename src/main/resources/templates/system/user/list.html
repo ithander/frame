@@ -11,7 +11,6 @@
         <link rel="stylesheet" href="/layui/css/layui.css" media="all">
         <script type="text/javascript" src="/layui/layui.all.js"></script>
         
-        <script type="text/javascript" src="/easyui/locale/easyui-lang-zh_CN.js"></script>
         <script type="text/javascript" src="/easyui/plugins/datagrid-filter.js"></script>
     </head>
     <body>
@@ -19,7 +18,7 @@
                                                                    selectOnCheck:true,ctrlSelect:true,
                                                                    fitColumns:true,rownumbers:true,remoteFilter: true,
                                                                    collapsible:true,pagination:true,clientPaging: false,
-                                                                   url:'/sys/keyvalue/page',collapsible:false,idField:'key',
+                                                                   url:'/sys/user/page',collapsible:false,idField:'key',
                                                                    method:'post',toolbar:toolbars,pageSize:20">
 	        <thead>
 	            <tr>
@@ -43,7 +42,7 @@
 		        	    height: 380,
 		        	    closed: false,
 		        	    cache: false,
-		        	    href: '/to?page=system/keyvalue/form',
+		        	    href: '/to?page=system/user/form',
 		        	    modal: true,
 		        	    onClose:function(){
 		        	    	$('#dat').datagrid('reload');
@@ -65,7 +64,7 @@
 			        	    height: 380,
 			        	    closed: false,
 			        	    cache: false,
-			        	    href: '/sys/keyvalue/form?key='+data.key,
+			        	    href: '/sys/user/form?id='+data.id,
 			        	    modal: true,
 			        	    onClose:function(){
 			        	    	$('#dat').datagrid('reload');
@@ -92,15 +91,15 @@
 	                            	if(index>0){
 	                            		ids+=',';
 	                            	}
-	                            	ids+=value.key;
+	                            	ids+=value.id;
 	                            })
 		        			}else{
-		        				key=data.key;
+		        				key=data.id;
 		        			}
 		        			
                             
                             
-                            $.post('/sys/keyvalue/delete',{'key':key,'ids':ids},function(r){
+                            $.post('/sys/user/delete',{'key':key,'ids':ids},function(r){
                             	if(r.code>0){
                             		layer.alert('删除失败',function(){
                             			layer.close(index);			
@@ -137,7 +136,7 @@
 		    				pm[item.field]=item.value;
 		    			})
 		    		}
-		    		$.post('/sys/keyvalue/page',pm,function(r){
+		    		$.post('/sys/user/page',pm,function(r){
 		    			success(r.result);
 		    		},"json")
 		    	},

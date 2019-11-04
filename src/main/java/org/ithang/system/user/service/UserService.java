@@ -43,6 +43,10 @@ public class UserService extends ModelDao<User>{
         return userMapper.delete(id);
     }
     
+    public int batchDelete(String[] ids){
+    	return userMapper.batchDelete(ids);
+    }
+    
     public List<User> list(Integer... ids){
     	return userMapper.list(ids);
     }

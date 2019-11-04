@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>&nbsp;</title>
+    </head>
+    <body>
+
+        <form id="fm" method="post" action="/sys/user/add">
+                <div style="margin-bottom:20px">
+                
+                    <input class="easyui-numberbox" name="id" style="width:100%" value="${id}" data-options="label:'id:',required:true">
+                
+                </div>
+                <div style="margin-bottom:20px">
+                    <input class="easyui-textbox" name="uname" style="width:100%" value="${uname}" data-options="label:'uname:',required:true">
+                
+                
+                </div>
+                <div style="margin-bottom:20px">
+                    <input class="easyui-textbox" name="upass" style="width:100%" value="${upass}" data-options="label:'upass:',required:true">
+                
+                
+                </div>
+                <div style="margin-bottom:20px">
+                
+                    <input class="easyui-numberbox" name="type" style="width:100%" value="${type}" data-options="label:'type:',required:true">
+                
+                </div>
+                <div style="margin-bottom:20px">
+                    <input class="easyui-textbox" name="title" style="width:100%" value="${title}" data-options="label:'title:',required:true">
+                
+                
+                </div>
+                <div style="margin-bottom:20px">
+                    <input class="easyui-textbox" name="email" style="width:100%" value="${email}" data-options="label:'email:',required:true">
+                
+                
+                </div>
+                <div style="margin-bottom:20px">
+                    <input class="easyui-textbox" name="mobile" style="width:100%" value="${mobile}" data-options="label:'mobile:',required:true">
+                
+                
+                </div>
+                <div style="margin-bottom:20px">
+                    <input class="easyui-textbox" name="pay_pwd" style="width:100%" value="${pay_pwd}" data-options="label:'pay_pwd:',required:true">
+                
+                
+                </div>
+                <div style="margin-bottom:20px">
+                
+                    <input class="easyui-numberbox" name="from_user" style="width:100%" value="${from_user}" data-options="label:'from_user:',required:true">
+                
+                </div>
+                <div style="margin-bottom:20px">
+                    <input class="easyui-textbox" name="mycode" style="width:100%" value="${mycode}" data-options="label:'mycode:',required:true">
+                
+                
+                </div>
+                <div style="margin-bottom:20px">
+                    <input class="easyui-textbox" name="create_time" style="width:100%" value="${create_time}" data-options="label:'create_time:',required:true">
+                
+                
+                </div>
+        </form>
+        <div style="text-align:center;padding:5px">
+            <a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()" style="width:80px">保存</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()" style="width:80px">重置</a>
+        </div>
+       
+       <script type="text/javascript">
+            function submitForm(){
+                $('#fm').form('submit',{
+                	success:function(){
+                		$('#form').dialog('close');
+                	}
+                });
+            }
+            function clearForm(){
+                $('#fm').form('clear');
+            }
+       </script>
+    </body>
+     
+</html>

@@ -33,6 +33,18 @@ public class ${BeanName}Action extends Action<${BeanName}>{
 		return success();
 	}
 	
+	 @RequestMapping("form")
+    public String form(@RequestParam(value="${priKey!"id"}",required=false)${priKeyType!"String"} ${priKey!"id"},Model m){
+    	if(null!=${priKey!"id"}){
+    		${BeanName} bean=${beanName}Service.get(${priKey!"id"});
+    		m.addAttribute(bean);
+    	}else{
+    		m.addAttribute(new ${BeanName}());
+    	}
+    	return "system/${beanName}/form";
+    }
+	
+	
 	@ResponseBody
 	@RequestMapping(value="update",method=RequestMethod.POST)
 	public ActionResult update(${BeanName} ${beanName}){

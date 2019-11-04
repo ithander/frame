@@ -75,4 +75,11 @@ public interface UserMapper{
      */
     public int delete(Integer id);
     
+    /**
+     * 批量删除
+     * @param ids
+     * @return
+     */
+    public int batchDelete(@Param("ids")String[] ids);
+    
 }

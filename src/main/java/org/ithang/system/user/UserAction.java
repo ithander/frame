@@ -4,12 +4,18 @@ import org.ithang.tools.model.Action;
 import org.ithang.tools.model.ActionResult;
 import org.ithang.tools.model.ActionValues;
 import org.ithang.tools.model.Pager;
+
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.ithang.system.keyvalue.bean.Keyvalue;
 import org.ithang.system.user.bean.User;
 import org.ithang.system.user.service.UserService;
 
@@ -19,7 +25,7 @@ import org.ithang.system.user.service.UserService;
  *
  */
 @Controller
-@RequestMapping("/app/user")
+@RequestMapping("/sys/user")
 public class UserAction extends Action<User>{
 
     @Autowired
@@ -40,11 +46,27 @@ public class UserAction extends Action<User>{
 		User r=userService.get(id);
 		return success(r);
 	}
+    
+    @RequestMapping("form")
+    public String form(@RequestParam(value="id",required=false)Integer id,Model m){
+    	if(null!=id){
+    		User bean=userService.get(id);
+    		m.addAttribute(bean);
+    	}
+    	return "system/user/form";
+    }
+    
 	
 	@ResponseBody
 	@RequestMapping(value="delete",method=RequestMethod.POST)
-	public ActionResult delete(Integer id){
-		userService.delete(id);
+	public ActionResult delete(Integer id,@RequestParam(value="ids",required=false)String ids){
+		if(null!=id){
+			userService.delete(id);	
+		}
+		if(null!=ids&&ids.length()>0){
+			userService.batchDelete(ids.split(","));
+		}
+		
 		return success();
 	}
 	
@@ -57,7 +79,9 @@ public class UserAction extends Action<User>{
 	@ResponseBody
 	@RequestMapping(value="page",method=RequestMethod.POST)
 	public ActionResult page(User user,Pager<User> page){
-		return success(userService.page(user,page));
+		List<User> rs= userService.page(user,page);
+		page.setData(rs);
+		return success(page);
 	}
 	
 	@ResponseBody

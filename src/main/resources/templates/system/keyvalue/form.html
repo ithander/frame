@@ -8,13 +8,13 @@
 
         <form id="fm" method="post" action="/sys/keyvalue/add">
             <div style="margin-bottom:20px">
-                <input class="easyui-textbox" name="key" style="width:100%" value="${keyvalue.key!""}" data-options="label:'Key:',required:true">
+                  <input class="easyui-textbox" name="key" style="width:100%" value="${(keyvalue.key)!}" data-options="label:'Key:',required:true">
             </div>
             <div style="margin-bottom:20px">
-                <input class="easyui-textbox" name="title" style="width:100%" value="${keyvalue.title!""}" data-options="label:'名称:',required:true">
+                    <input class="easyui-textbox" name="title" style="width:100%" value="${(keyvalue.title)!}" data-options="label:'名称:',required:true">
             </div>
             <div style="margin-bottom:20px">
-                <input class="easyui-textbox" name="value" style="width:100%;height:60px" value="${keyvalue.value!""}" data-options="label:'Value:',multiline:true">
+                <input class="easyui-textbox" name="value" style="width:100%;height:60px" value="${(keyvalue.value)!}" data-options="label:'Value:',multiline:true">
             </div>
         </form>
         <div style="text-align:center;padding:5px">

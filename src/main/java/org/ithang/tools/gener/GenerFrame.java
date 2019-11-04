@@ -195,6 +195,7 @@ public class GenerFrame extends javax.swing.JFrame {
         boolean isService=service.isSelected();
         boolean isMapper=mapper.isSelected();
         boolean isXMLMapper=xmlmapper.isSelected();
+        boolean isPage=page.isSelected();
         
         CodeGener cod=new CodeGener(_url,_uname,_upass);
         cod.setSaveDir(_saveDir);
@@ -203,6 +204,7 @@ public class GenerFrame extends javax.swing.JFrame {
         cod.setService(isService);
         cod.setMapper(isMapper);
         cod.setXmlMapper(isXMLMapper);
+        cod.setPage(isPage);
         if(null!=_table&&_table.trim().length()>0){
         	cod.gener(_table.split(","));	
         }else{

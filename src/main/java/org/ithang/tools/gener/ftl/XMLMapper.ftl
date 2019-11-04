@@ -29,6 +29,13 @@
         delete from `${tableName}` where `${priKeyColumn!"id"}`=<#noparse>#{</#noparse>${priKey!"id"}<#noparse>}</#noparse>
     </delete>
     
+    <delete id="batchDelete">
+        delete from `${tableName}` where `${priKeyColumn!"id"}` in
+        <foreach collection="ids" open="(" separator="," close=")" item="id">
+            #{id}
+        </foreach>
+    </delete>
+    
     <update id="update">
         update `${tableName}`
         <set>

@@ -118,6 +118,8 @@ public class CodeGener {
 			data.put("xmlmapperFileName", saveDir+String.format("/"+basePkg.replaceAll("\\.", "/")+"/%s/mapper/%sMapper.xml",beanName,BeanName));
 			data.put("serviceFileName", saveDir+String.format("/"+basePkg.replaceAll("\\.", "/")+"/%s/service/%sService.java",beanName,BeanName));
 			data.put("actionFileName", saveDir+String.format("/"+basePkg.replaceAll("\\.", "/")+"/%s/%sAction.java",beanName,BeanName));
+			data.put("formFileName", saveDir+String.format("/"+basePkg.replaceAll("\\.", "/")+"/%s/form.html",beanName));
+			data.put("listFileName", saveDir+String.format("/"+basePkg.replaceAll("\\.", "/")+"/%s/list.html",beanName));
 			
 			if(basePkg.contains("system")){
 				data.put("path", "sys");
@@ -125,7 +127,10 @@ public class CodeGener {
 				data.put("path", "app");
 			}
 			
-			generBean(data);
+			if(!mapper&&!xmlMapper&&!service&&!action&&!page){
+				generBean(data);	
+			}
+			
 			if(mapper){
 				generMapper(data);	
 			}
@@ -140,7 +145,8 @@ public class CodeGener {
 				generAction(data);	
 			}
 			if(page){
-				generPage(data);
+				generFormPage(data);
+				generListPage(data);
 			}
 			
 		}
@@ -154,12 +160,13 @@ public class CodeGener {
 	protected void generBean(Map<String,Object> data) {
 		try {
 			File f=new File(String.valueOf(data.get("beanFileName")));
-			System.out.println("file path="+f.getAbsolutePath());
 			f.getParentFile().mkdirs();
 			FileOutputStream fout=new FileOutputStream(f);
 			Template temp = configuration.getTemplate("Bean.ftl");
 			Writer out = new OutputStreamWriter(fout);
 			temp.process(data, out);
+			out.close();
+			fout.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -175,12 +182,13 @@ public class CodeGener {
 	protected void generMapper(Map<String,Object> data){
 		try {
 			File f=new File(String.valueOf(data.get("mapperFileName")));
-			System.out.println("file path="+f.getAbsolutePath());
 			f.getParentFile().mkdirs();
 			FileOutputStream fout=new FileOutputStream(f);
 			Template temp = configuration.getTemplate("Mapper.ftl");
 			Writer out = new OutputStreamWriter(fout);
 			temp.process(data, out);
+			out.close();
+			fout.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -193,12 +201,13 @@ public class CodeGener {
 	protected void generXMLMapper(Map<String,Object> data){
 		try {
 			File f=new File(String.valueOf(data.get("xmlmapperFileName")));
-			System.out.println("file path="+f.getAbsolutePath());
 			f.getParentFile().mkdirs();
 			FileOutputStream fout=new FileOutputStream(f);
 			Template temp = configuration.getTemplate("XMLMapper.ftl");
 			Writer out = new OutputStreamWriter(fout);
 			temp.process(data, out);
+			out.close();
+			fout.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -211,12 +220,13 @@ public class CodeGener {
 	protected void generService(Map<String,Object> data){
 		try {
 			File f=new File(String.valueOf(data.get("serviceFileName")));
-			System.out.println("file path="+f.getAbsolutePath());
 			f.getParentFile().mkdirs();
 			FileOutputStream fout=new FileOutputStream(f);
 			Template temp = configuration.getTemplate("Service.ftl");
 			Writer out = new OutputStreamWriter(fout);
 			temp.process(data, out);
+			out.close();
+			fout.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -235,14 +245,53 @@ public class CodeGener {
 			Template temp = configuration.getTemplate("Action.ftl");
 			Writer out = new OutputStreamWriter(fout);
 			temp.process(data, out);
+			out.close();
+			fout.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-	protected void generPage(Map<String,Object> data){
-		
+	/**
+	 * 生成form，list页面
+	 * @param data
+	 */
+	protected void generFormPage(Map<String,Object> data){
+		try {
+			File f=new File(String.valueOf(data.get("formFileName")));
+			f.getParentFile().mkdirs();
+			FileOutputStream fout=new FileOutputStream(f);
+			Template temp = configuration.getTemplate("form.ftl");
+			Writer out = new OutputStreamWriter(fout);
+			temp.process(data, out);
+			out.close();
+			fout.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
+	
+	/**
+	 * 生成form，list页面
+	 * @param data
+	 */
+	protected void generListPage(Map<String,Object> data){
+		try {
+			File f=new File(String.valueOf(data.get("listFileName")));
+			f.getParentFile().mkdirs();
+			FileOutputStream fout=new FileOutputStream(f);
+			Template temp = configuration.getTemplate("list.ftl");
+			Writer out = new OutputStreamWriter(fout);
+			temp.process(data, out);
+			out.close();
+			fout.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
 
 	public String getSaveDir() {
 		return saveDir;
@@ -302,3 +351,4 @@ public class CodeGener {
 
 	
 }
+

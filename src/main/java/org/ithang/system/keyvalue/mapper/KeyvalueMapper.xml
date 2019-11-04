@@ -35,11 +35,9 @@
     
     <delete id="batchDelete">
         delete from `keyvalue` where `key` in
-        
         <foreach collection="ids" open="(" separator="," close=")" item="id">
             #{id}
         </foreach>
-        
     </delete>
     
     <update id="update">
