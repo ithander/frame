@@ -11,7 +11,7 @@ import org.ithang.system.template.service.TemplateService;
 import org.ithang.tools.model.Action;
 import org.ithang.tools.model.ActionResult;
 import org.ithang.tools.model.ActionValues;
-import org.ithang.tools.model.Page;
+import org.ithang.tools.model.Pager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -75,7 +75,7 @@ public class TemplateAction extends Action<Template>{
 	
 	@ResponseBody
 	@RequestMapping(value="page",method=RequestMethod.POST)
-	public ActionResult page(Template template,Page<Template> page){
+	public ActionResult page(Template template,Pager<Template> page){
 		return success(templateService.page(template,page));
 	}
 	

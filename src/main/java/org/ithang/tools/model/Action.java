@@ -4,8 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 
 public class Action<T> {
 
-	protected Page<T> getPage(HttpServletRequest request){
-		return new Page<T>(request);
+	protected Pager<T> getPage(HttpServletRequest request){
+		return new Pager<T>(request);
 	}
 	
 	protected ActionValues getValues(HttpServletRequest request){

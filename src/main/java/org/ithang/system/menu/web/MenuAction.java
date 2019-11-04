@@ -8,7 +8,7 @@ import org.ithang.system.menu.bean.Menu;
 import org.ithang.system.menu.service.MenuService;
 import org.ithang.tools.model.Action;
 import org.ithang.tools.model.ActionResult;
-import org.ithang.tools.model.Page;
+import org.ithang.tools.model.Pager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,7 +35,7 @@ public class MenuAction extends Action<Menu>{
 	
 	@RequestMapping("list")
 	public ActionResult list(HttpServletRequest request){
-		Page<Menu> page=getPage(request);
+		Pager<Menu> page=getPage(request);
 		List<Menu> rs=menuService.getMapper().list(page);
 		return success(rs);
 	}

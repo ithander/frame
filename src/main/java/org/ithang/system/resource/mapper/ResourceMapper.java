@@ -1,5 +1,5 @@
 package org.ithang.system.resource.mapper;
-import org.ithang.tools.model.Page;
+import org.ithang.tools.model.Pager;
 import org.ithang.system.resource.bean.Resource;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
@@ -37,7 +37,7 @@ public interface ResourceMapper{
      * @param resource
      * @return
      */
-    public List<Resource> page(@Param("page")Page<Resource> page);
+    public List<Resource> page(@Param("page")Pager<Resource> page);
     
     /**
      * 分页查询

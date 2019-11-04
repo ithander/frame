@@ -3,7 +3,7 @@ package org.ithang.system.userRole;
 import org.ithang.tools.model.Action;
 import org.ithang.tools.model.ActionResult;
 import org.ithang.tools.model.ActionValues;
-import org.ithang.tools.model.Page;
+import org.ithang.tools.model.Pager;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -56,7 +56,7 @@ public class UserRoleAction extends Action<UserRole>{
 	
 	@ResponseBody
 	@RequestMapping(value="page",method=RequestMethod.POST)
-	public ActionResult page(UserRole userRole,Page<UserRole> page){
+	public ActionResult page(UserRole userRole,Pager<UserRole> page){
 		return success(userRoleService.page(userRole,page));
 	}
 	

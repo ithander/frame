@@ -8,7 +8,7 @@
     </select>
     
     <!-- 系统表结构数据 -->
-    <select id="list" parameterType="org.ithang.tools.model.Page" resultType="org.ithang.system.log.bean.SysLog">
+    <select id="list" parameterType="org.ithang.tools.model.Pager" resultType="org.ithang.system.log.bean.SysLog">
         select id,log_type,content,operator,create_time from sys_log
         <where>
             <trim suffixOverrides="and">

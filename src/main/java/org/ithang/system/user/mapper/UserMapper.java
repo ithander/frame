@@ -1,5 +1,5 @@
 package org.ithang.system.user.mapper;
-import org.ithang.tools.model.Page;
+import org.ithang.tools.model.Pager;
 import org.ithang.system.user.bean.User;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
@@ -52,7 +52,7 @@ public interface UserMapper{
      * @param user
      * @return
      */
-    public List<User> page(@Param("page")Page<User> page);
+    public List<User> page(@Param("bean")User bean,@Param("page")Pager<User> page);
     
     /**
      * 分页查询

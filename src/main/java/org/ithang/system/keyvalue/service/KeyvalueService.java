@@ -6,7 +6,7 @@ import org.ithang.system.keyvalue.mapper.KeyvalueMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.apache.log4j.Logger;
-import org.ithang.tools.model.Page;
+import org.ithang.tools.model.Pager;
 import org.ithang.tools.database.ModelDao;
 import org.ithang.system.keyvalue.bean.Keyvalue;
 
@@ -43,9 +43,9 @@ public class KeyvalueService extends ModelDao<Keyvalue>{
     	return keyvalueMapper.list(ids);
     }
     
-    public List<Keyvalue> page(Keyvalue keyvalue,Page<Keyvalue> page){
-        page.setBean(keyvalue);
-    	return keyvalueMapper.page(page);
+    public List<Keyvalue> page(Keyvalue keyvalue,Pager<Keyvalue> page){
+    	page.setBean(keyvalue);
+    	return keyvalueMapper.page(keyvalue,page);
     }
     
     public List<Keyvalue> query(Map<String,Object> conditions){

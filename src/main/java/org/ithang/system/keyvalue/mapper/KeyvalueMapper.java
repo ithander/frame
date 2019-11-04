@@ -1,5 +1,5 @@
 package org.ithang.system.keyvalue.mapper;
-import org.ithang.tools.model.Page;
+import org.ithang.tools.model.Pager;
 import org.ithang.system.keyvalue.bean.Keyvalue;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
@@ -37,7 +37,7 @@ public interface KeyvalueMapper{
      * @param keyvalue
      * @return
      */
-    public List<Keyvalue> page(@Param("page")Page<Keyvalue> page);
+    public List<Keyvalue> page(@Param("bean")Keyvalue keyvalue,@Param("pager")Pager<Keyvalue> pager);
     
     /**
      * 分页查询

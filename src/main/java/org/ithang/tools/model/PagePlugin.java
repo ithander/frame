@@ -40,7 +40,7 @@ public class PagePlugin implements Interceptor{
 		 MapperMethod.ParamMap<Object> paramObj=null;
 		 
 		 ActionValues values=null;
-		 Page<Object> page=null;
+		 Pager<Object> page=null;
 		 boolean updateData=false;//如果obj是map则需要在分页执行后同步一下分页数据
 		 
 		 if(obj instanceof MapperMethod.ParamMap){
@@ -53,12 +53,12 @@ public class PagePlugin implements Interceptor{
 			 updateData=true;
 			 values=new ActionValues(((Map<String, Object>)obj));
 			 if(values.isNotEmpty("page")){
-				 page=(Page<Object>)values.get("page");
+				 page=(Pager<Object>)values.get("page");
 			 }
 		 }
 		 
-		 if(obj instanceof Page){
-			 page=(Page<Object>)obj;
+		 if(obj instanceof Pager){
+			 page=(Pager<Object>)obj;
 		 }
 		 
 		 MetaObject metaStatementHandler = SystemMetaObject.forObject(statementHandler); 
@@ -215,7 +215,7 @@ public class PagePlugin implements Interceptor{
         return pageSql.toString();  
     }  
     
-    private String buildPageSqlForMysql(String sql, Page<Object> page) {  
+    private String buildPageSqlForMysql(String sql, Pager<Object> page) {  
         StringBuilder pageSql = new StringBuilder(100);  
         long pageSize=page.getPageSize();
         long fromRow=page.getFrom();
@@ -232,7 +232,7 @@ public class PagePlugin implements Interceptor{
         return pageSql.toString();  
     }
     
-    private String buildPageSqlForOracle(String sql, Page<Object> page) {  
+    private String buildPageSqlForOracle(String sql, Pager<Object> page) {  
         StringBuilder pageSql = new StringBuilder(100);  
         long pageNow=page.getPageNow();
         long pageSize=page.getPageSize();
@@ -274,7 +274,7 @@ public class PagePlugin implements Interceptor{
      * @param boundSql 
      * @param page 
      */  
-    private void setPageParameter(String sql, Connection connection, MappedStatement mappedStatement,BoundSql boundSql, Page<Object> page) {  
+    private void setPageParameter(String sql, Connection connection, MappedStatement mappedStatement,BoundSql boundSql, Pager<Object> page) {  
         // 记录总记录数  
         String countSql = "select count(0) from (" + sql + ") as total";  
         PreparedStatement countStmt = null;  

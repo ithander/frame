@@ -10,7 +10,7 @@ import org.ithang.tools.lang.DateUtils;
 import org.ithang.tools.model.Action;
 import org.ithang.tools.model.ActionResult;
 import org.ithang.tools.model.Const;
-import org.ithang.tools.model.Page;
+import org.ithang.tools.model.Pager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,7 +38,7 @@ public class SysLogAction extends Action<SysLog>{
 	@ResponseBody
 	@RequestMapping("list")
 	public ActionResult list(HttpServletRequest request){
-		Page<SysLog> page=getPage(request);
+		Pager<SysLog> page=getPage(request);
 		List<SysLog> result=sysLogService.list(page);
 		page.setData(result);
 		return success(page);

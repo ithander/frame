@@ -1,5 +1,5 @@
 package org.ithang.system.userResource.mapper;
-import org.ithang.tools.model.Page;
+import org.ithang.tools.model.Pager;
 import org.ithang.system.userResource.bean.UserResource;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
@@ -44,7 +44,7 @@ public interface UserResourceMapper{
      * @param userResource
      * @return
      */
-    public List<UserResource> page(@Param("page")Page<UserResource> page);
+    public List<UserResource> page(@Param("page")Pager<UserResource> page);
     
     /**
      * 分页查询

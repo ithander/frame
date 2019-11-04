@@ -1,5 +1,5 @@
 package org.ithang.system.role.mapper;
-import org.ithang.tools.model.Page;
+import org.ithang.tools.model.Pager;
 import org.ithang.system.role.bean.Role;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
@@ -37,7 +37,7 @@ public interface RoleMapper{
      * @param role
      * @return
      */
-    public List<Role> page(@Param("page")Page<Role> page);
+    public List<Role> page(@Param("page")Pager<Role> page);
     
     /**
      * 分页查询

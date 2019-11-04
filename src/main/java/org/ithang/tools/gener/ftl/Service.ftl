@@ -43,8 +43,7 @@ public class ${BeanName}Service extends ModelDao<${BeanName}>{
     	return ${beanName}Mapper.list(ids);
     }
     
-    public List<${BeanName}> page(${BeanName} ${beanName},Page<${BeanName}> page){
-        page.setBean(${beanName});
+    public List<${BeanName}> page(Page<${BeanName}> page){
     	return ${beanName}Mapper.page(page);
     }
     

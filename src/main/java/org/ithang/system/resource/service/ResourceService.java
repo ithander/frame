@@ -6,7 +6,7 @@ import org.ithang.system.resource.mapper.ResourceMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.apache.log4j.Logger;
-import org.ithang.tools.model.Page;
+import org.ithang.tools.model.Pager;
 import org.ithang.tools.database.ModelDao;
 import org.ithang.system.resource.bean.Resource;
 
@@ -39,7 +39,7 @@ public class ResourceService extends ModelDao<Resource>{
     	return resourceMapper.list(ids);
     }
     
-    public List<Resource> page(Resource resource,Page<Resource> page){
+    public List<Resource> page(Resource resource,Pager<Resource> page){
         page.setBean(resource);
     	return resourceMapper.page(page);
     }

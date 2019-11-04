@@ -3,7 +3,7 @@ package org.ithang.system.log.mapper;
 import java.util.List;
 
 import org.ithang.system.log.bean.SysLog;
-import org.ithang.tools.model.Page;
+import org.ithang.tools.model.Pager;
 
 public interface SysLogMapper {
 
@@ -19,7 +19,7 @@ public interface SysLogMapper {
 	 * @param page
 	 * @return
 	 */
-	public List<SysLog> list(Page<SysLog> page);
+	public List<SysLog> list(Pager<SysLog> page);
 	
 	/**
 	 * 新增系统日志

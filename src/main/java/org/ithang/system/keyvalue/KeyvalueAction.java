@@ -1,19 +1,25 @@
 package org.ithang.system.keyvalue;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.ithang.system.keyvalue.bean.Keyvalue;
+import org.ithang.system.keyvalue.service.KeyvalueService;
+import org.ithang.tools.lang.JsonUtils;
 import org.ithang.tools.lang.StrUtils;
 import org.ithang.tools.model.Action;
 import org.ithang.tools.model.ActionResult;
 import org.ithang.tools.model.ActionValues;
-import org.ithang.tools.model.Page;
-import javax.servlet.http.HttpServletRequest;
+import org.ithang.tools.model.FilterRule;
+import org.ithang.tools.model.Pager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.ithang.system.keyvalue.bean.Keyvalue;
-import org.ithang.system.keyvalue.service.KeyvalueService;
 
 /**
  * 字典表
@@ -34,6 +40,15 @@ public class KeyvalueAction extends Action<Keyvalue>{
 		keyvalueService.add(keyvalue);
 		return success();
 	}
+    
+    @RequestMapping("form")
+    public String form(@RequestParam(value="key",required=false)String key,Model m){
+    	if(null!=key&&key.trim().length()>0){
+    		Keyvalue r=keyvalueService.get(key);
+    		m.addAttribute(r);
+    	}
+    	return "system/keyvalue/form";
+    }
 	
 	@ResponseBody
 	@RequestMapping(value="update",method=RequestMethod.POST)
@@ -72,15 +87,19 @@ public class KeyvalueAction extends Action<Keyvalue>{
 	
 	@ResponseBody
 	@RequestMapping(value="page",method=RequestMethod.POST)
-	public ActionResult page(Keyvalue keyvalue,Page<Keyvalue> page){
-		return success(keyvalueService.page(keyvalue,page));
+	public ActionResult page(Keyvalue keyvalue,Pager<Keyvalue> page){
+		List<Keyvalue> rs= keyvalueService.page(keyvalue,page);
+		page.setData(rs);
+		return success(page);
 	}
 	
 	@ResponseBody
 	@RequestMapping(value="query",method=RequestMethod.POST)
 	public ActionResult query(HttpServletRequest request){
 		ActionValues values=new ActionValues(request);
-		return success(keyvalueService.query(values));
+		List<Keyvalue> rs=keyvalueService.query(values);
+		values.put("data", rs);
+		return success(values);
 	}
      
 

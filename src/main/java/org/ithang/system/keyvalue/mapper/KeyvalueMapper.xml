@@ -33,6 +33,15 @@
         delete from `keyvalue` where `key`=#{key}
     </delete>
     
+    <delete id="batchDelete">
+        delete from `keyvalue` where `key` in
+        
+        <foreach collection="ids" open="(" separator="," close=")" item="id">
+            #{id}
+        </foreach>
+        
+    </delete>
+    
     <update id="update">
         update `keyvalue`
         <set>
@@ -65,14 +74,14 @@
     <select id="page" resultType="org.ithang.system.keyvalue.bean.Keyvalue">
         select * from `keyvalue`
         <trim prefix="where" prefixOverrides="and|or" suffixOverrides="and|or">
-                <if test="page.bean.key!=null">
-                    `key`=#{page.bean.key} and
+                <if test="pager.bean.key!=null">
+                    `key` like '%${pager.bean.key}%' and
                 </if>
-                <if test="page.bean.value!=null">
-                    `value`=#{page.bean.value} and
+                <if test="bean.value!=null">
+                    `value`=#{bean.value} and
                 </if>
-                <if test="page.bean.title!=null">
-                    `title`=#{page.bean.title} and
+                <if test="bean.title!=null">
+                    `title` like '%${bean.title}%' and
                 </if>
         </trim>
     </select>
@@ -82,13 +91,13 @@
         select * from `keyvalue`
         <trim prefix="where" prefixOverrides="and|or" suffixOverrides="and|or">
                 <if test="key!=null">
-                    `key`=#{key} and
+                    `key`like '%${key}%' and
                 </if>
                 <if test="value!=null">
                     `value`=#{value} and
                 </if>
                 <if test="title!=null">
-                    `title`=#{title} and
+                    `title` like '%${title}%' and
                 </if>
         </trim>
     </select>

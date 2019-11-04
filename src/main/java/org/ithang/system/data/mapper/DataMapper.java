@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.ithang.system.data.bean.SysInfo;
 import org.ithang.system.data.bean.SysTable;
-import org.ithang.tools.model.Page;
+import org.ithang.tools.model.Pager;
 
 public interface DataMapper {
 
@@ -18,5 +18,5 @@ public interface DataMapper {
 	 * 分页得到系统表结构
 	 * @return
 	 */
-	public List<SysTable> tables(Page<SysTable> page);
+	public List<SysTable> tables(Pager<SysTable> page);
 }

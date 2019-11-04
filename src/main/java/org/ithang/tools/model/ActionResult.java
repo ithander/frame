@@ -5,7 +5,6 @@ public class ActionResult {
 	private int code;//响应码
 	private String desc;//描述
 	private Object result;//结果数据
-	
 	private String page;//响应页面
 	
 	public ActionResult(){
@@ -48,11 +47,9 @@ public class ActionResult {
 	public void setResult(Object result) {
 		this.result = result;
 	}
-
 	public String getPage() {
 		return page;
 	}
-
 	public void setPage(String page) {
 		this.page = page;
 	}

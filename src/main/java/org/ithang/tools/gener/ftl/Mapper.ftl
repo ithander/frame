@@ -1,5 +1,5 @@
 package ${basePkg}.${beanName}.mapper;
-import org.ithang.tools.model.Page;
+import org.ithang.tools.model.Pager;
 import ${basePkg}.${beanName}.bean.${BeanName};
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
@@ -37,7 +37,7 @@ public interface ${BeanName}Mapper{
      * @param ${beanName}
      * @return
      */
-    public List<${BeanName}> page(@Param("page")Page<${BeanName}> page);
+    public List<${BeanName}> page(@Param("pager")Pager<${BeanName}> pager);
     
     /**
      * 分页查询

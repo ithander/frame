@@ -6,7 +6,7 @@ import org.ithang.system.userRole.mapper.UserRoleMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.apache.log4j.Logger;
-import org.ithang.tools.model.Page;
+import org.ithang.tools.model.Pager;
 import org.ithang.tools.database.ModelDao;
 import org.ithang.system.userRole.bean.UserRole;
 
@@ -43,7 +43,7 @@ public class UserRoleService extends ModelDao<UserRole>{
     	return userRoleMapper.listByUser(user_id);
     }
     
-    public List<UserRole> page(UserRole userRole,Page<UserRole> page){
+    public List<UserRole> page(UserRole userRole,Pager<UserRole> page){
         page.setBean(userRole);
     	return userRoleMapper.page(page);
     }

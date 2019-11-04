@@ -6,7 +6,7 @@ import org.ithang.system.user.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.apache.log4j.Logger;
-import org.ithang.tools.model.Page;
+import org.ithang.tools.model.Pager;
 import org.ithang.tools.database.ModelDao;
 import org.ithang.system.user.bean.User;
 
@@ -47,9 +47,9 @@ public class UserService extends ModelDao<User>{
     	return userMapper.list(ids);
     }
     
-    public List<User> page(User user,Page<User> page){
+    public List<User> page(User user,Pager<User> page){
         page.setBean(user);
-    	return userMapper.page(page);
+    	return userMapper.page(user,page);
     }
     
     public List<User> query(Map<String,Object> conditions){

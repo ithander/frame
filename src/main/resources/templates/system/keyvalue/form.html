@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>&nbsp;</title>
+    </head>
+    <body>
+
+        <form id="fm" method="post" action="/sys/keyvalue/add">
+            <div style="margin-bottom:20px">
+                <input class="easyui-textbox" name="key" style="width:100%" value="${keyvalue.key!""}" data-options="label:'Key:',required:true">
+            </div>
+            <div style="margin-bottom:20px">
+                <input class="easyui-textbox" name="title" style="width:100%" value="${keyvalue.title!""}" data-options="label:'名称:',required:true">
+            </div>
+            <div style="margin-bottom:20px">
+                <input class="easyui-textbox" name="value" style="width:100%;height:60px" value="${keyvalue.value!""}" data-options="label:'Value:',multiline:true">
+            </div>
+        </form>
+        <div style="text-align:center;padding:5px">
+            <a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()" style="width:80px">保存</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()" style="width:80px">重置</a>
+        </div>
+       
+       <script type="text/javascript">
+            function submitForm(){
+                $('#fm').form('submit',{
+                	success:function(){
+                		$('#form').dialog('close');
+                	}
+                });
+            }
+            function clearForm(){
+                $('#fm').form('clear');
+            }
+       </script>
+    </body>
+     
+</html>

@@ -1,5 +1,5 @@
 package org.ithang.system.template.mapper;
-import org.ithang.tools.model.Page;
+import org.ithang.tools.model.Pager;
 import org.ithang.system.template.bean.Template;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
@@ -37,7 +37,7 @@ public interface TemplateMapper{
      * @param template
      * @return
      */
-    public List<Template> page(@Param("page")Page<Template> page);
+    public List<Template> page(@Param("page")Pager<Template> page);
     
     /**
      * 分页查询

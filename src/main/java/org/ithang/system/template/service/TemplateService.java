@@ -6,7 +6,7 @@ import org.ithang.system.template.mapper.TemplateMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.apache.log4j.Logger;
-import org.ithang.tools.model.Page;
+import org.ithang.tools.model.Pager;
 import org.ithang.tools.database.ModelDao;
 import org.ithang.tools.lang.DateUtils;
 import org.ithang.system.template.bean.Template;
@@ -41,7 +41,7 @@ public class TemplateService extends ModelDao<Template>{
     	return templateMapper.list(ids);
     }
     
-    public List<Template> page(Template template,Page<Template> page){
+    public List<Template> page(Template template,Pager<Template> page){
         page.setBean(template);
     	return templateMapper.page(page);
     }

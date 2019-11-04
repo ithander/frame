@@ -59,12 +59,12 @@
     </select>
     
     <!-- 分页查询部分数据 -->
-    <select id="page" resultType="${basePkg}.${beanName}.bean.${BeanName}">
+    <select id="pager" resultType="${basePkg}.${beanName}.bean.${BeanName}">
         select * from `${tableName}`
         <trim prefix="where" prefixOverrides="and|or" suffixOverrides="and|or">
             <#list fields as fd>
-                <if test="page.bean.${fd.column_name}!=null">
-                    `${fd.column_name}`=<#noparse>#{</#noparse>page.bean.${fd.column_name}<#noparse>}</#noparse> and
+                <if test="pager.bean.${fd.column_name}!=null">
+                    `${fd.column_name}`=<#noparse>#{</#noparse>pager.bean.${fd.column_name}<#noparse>}</#noparse> and
                 </if>
 			</#list>
         </trim>

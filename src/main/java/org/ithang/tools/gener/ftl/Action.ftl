@@ -71,8 +71,9 @@ public class ${BeanName}Action extends Action<${BeanName}>{
 	
 	@ResponseBody
 	@RequestMapping(value="page",method=RequestMethod.POST)
-	public ActionResult page(${BeanName} ${beanName},Page<${BeanName}> page){
-		return success(${beanName}Service.page(${beanName},page));
+	public ActionResult page(${BeanName} ${beanName},Pager<${BeanName}> page){
+	    page.setBean(${beanName});
+		return success(${beanName}Service.page(page));
 	}
 	
 	@ResponseBody

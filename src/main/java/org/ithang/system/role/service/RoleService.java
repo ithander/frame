@@ -6,7 +6,7 @@ import org.ithang.system.role.mapper.RoleMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.apache.log4j.Logger;
-import org.ithang.tools.model.Page;
+import org.ithang.tools.model.Pager;
 import org.ithang.tools.database.ModelDao;
 import org.ithang.system.role.bean.Role;
 
@@ -39,7 +39,7 @@ public class RoleService extends ModelDao<Role>{
     	return roleMapper.list(ids);
     }
     
-    public List<Role> page(Role role,Page<Role> page){
+    public List<Role> page(Role role,Pager<Role> page){
         page.setBean(role);
     	return roleMapper.page(page);
     }

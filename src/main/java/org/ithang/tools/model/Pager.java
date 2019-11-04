@@ -1,14 +1,16 @@
 package org.ithang.tools.model;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.beanutils.BeanUtils;
 import org.ithang.tools.lang.StrUtils;
 
-public class Page<T> {
+public class Pager<T> {
 
 	private long pageNow;//当前页号,分页必传，不传的话默认为0，如果传0表示不分页
 	private long pageSize=20;//每页记录数
@@ -18,13 +20,13 @@ public class Page<T> {
 	private String order;//排序字段
 	private String sort;//排序算法asc|desc
 	private List<T> data;
-	
+	private List<FilterRule> rules;
 	private Map<String,Object> params;//请求参数
 	private T bean;
 	
-	public Page(){}
+	public Pager(){}
 	
-	public Page(HttpServletRequest request){
+	public Pager(HttpServletRequest request){
 		setPageNow(Integer.parseInt(request.getParameter("pageNow")==null?"0":request.getParameter("pageNow")));
 		setPageSize(Integer.parseInt(request.getParameter("pageSize")==null?""+pageSize:request.getParameter("pageSize")));
 		Map<String,String[]> mps=request.getParameterMap();
@@ -40,7 +42,7 @@ public class Page<T> {
 		}
 	}
 	
-	public Page(long pageNow,long pageSize){
+	public Pager(long pageNow,long pageSize){
 		setPageNow(pageNow);
 		setPageSize(pageSize);
 	}
@@ -111,6 +113,14 @@ public class Page<T> {
 
 	public void setBean(T bean) {
 		this.bean = bean;
+	}
+
+	public List<FilterRule> getRules() {
+		return rules;
+	}
+
+	public void setRules(List<FilterRule> rules) {
+		this.rules = rules;
 	}
 
 	
