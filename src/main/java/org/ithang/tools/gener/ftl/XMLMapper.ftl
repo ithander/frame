@@ -31,7 +31,7 @@
     
     <delete id="batchDelete">
         delete from `${tableName}` where `${priKeyColumn!"id"}` in
-        <foreach collection="ids" open="(" separator="," close=")" item="id">
+        <foreach collection="_parameter.containsKey('ids')" open="(" separator="," close=")" item="id">
             <#noparse>#{</#noparse>id<#noparse>}</#noparse>
         </foreach>
     </delete>
