@@ -6,7 +6,7 @@ import ${basePkg}.${beanName}.mapper.${BeanName}Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.apache.log4j.Logger;
-import org.ithang.tools.model.Page;
+import org.ithang.tools.model.Pager;
 import org.ithang.tools.database.ModelDao;
 import ${basePkg}.${beanName}.bean.${BeanName};
 
@@ -43,7 +43,7 @@ public class ${BeanName}Service extends ModelDao<${BeanName}>{
     	return ${beanName}Mapper.list(ids);
     }
     
-    public List<${BeanName}> page(Page<${BeanName}> page){
+    public List<${BeanName}> page(Pager<${BeanName}> page){
     	return ${beanName}Mapper.page(page);
     }
     

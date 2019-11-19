@@ -3,10 +3,13 @@ package ${basePkg}.${beanName};
 import org.ithang.tools.model.Action;
 import org.ithang.tools.model.ActionResult;
 import org.ithang.tools.model.ActionValues;
-import org.ithang.tools.model.Page;
+import org.ithang.tools.model.Pager;
 import javax.servlet.http.HttpServletRequest;
+import org.springframework.ui.Model;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -41,7 +44,7 @@ public class ${BeanName}Action extends Action<${BeanName}>{
     	}else{
     		m.addAttribute(new ${BeanName}());
     	}
-    	return "system/${beanName}/form";
+    	return "${pathDir}/${beanName}/form";
     }
 	
 	
@@ -64,9 +67,15 @@ public class ${BeanName}Action extends Action<${BeanName}>{
 	@RequestMapping(value="delete",method=RequestMethod.POST)
 	public ActionResult delete(@RequestParam(value="${priKey!"id"}",required=false)${priKeyType!"String"} ${priKey!"id"},@RequestParam(value="ids",required=false)String ids){
 		
-		if(StrUtils.isNotBlank(${priKey!"id"})){
+		<#if priKeyType=='String'>
+		if(null!=${priKey!"id"}&&${priKey!"id"}.trim().length()>0){
 			${beanName}Service.delete(${priKey!"id"});	
 		}
+		<#else>
+		if(null!=${priKey!"id"}&&${priKey!"id"}>0){
+			${beanName}Service.delete(${priKey!"id"});	
+		}
+		</#if>
 		
 		if(null!=ids&&ids.length()>0){
 			${beanName}Service.batchDelete(ids.split(","));
@@ -85,7 +94,9 @@ public class ${BeanName}Action extends Action<${BeanName}>{
 	@RequestMapping(value="page",method=RequestMethod.POST)
 	public ActionResult page(${BeanName} ${beanName},Pager<${BeanName}> page){
 	    page.setBean(${beanName});
-		return success(${beanName}Service.page(page));
+	    List<${BeanName}> data=${beanName}Service.page(page);
+	    page.setData(data);
+		return success(page);
 	}
 	
 	@ResponseBody

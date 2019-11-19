@@ -123,13 +123,13 @@ public class CodeGener {
 			
 			if(basePkg.contains("system")){
 				data.put("path", "sys");
+				data.put("pathDir", "system");
 			}else{
 				data.put("path", "app");
+				data.put("pathDir", "app");
 			}
 			
-			if(!mapper&&!xmlMapper&&!service&&!action&&!page){
-				generBean(data);	
-			}
+			generBean(data);
 			
 			if(mapper){
 				generMapper(data);	

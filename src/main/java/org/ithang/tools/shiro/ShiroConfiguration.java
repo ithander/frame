@@ -1,8 +1,13 @@
 package org.ithang.tools.shiro;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.Map;
+
+import javax.servlet.Filter;
 
 import org.apache.shiro.mgt.SecurityManager;
+import org.apache.shiro.session.mgt.SessionManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
@@ -20,7 +25,15 @@ public class ShiroConfiguration {
 	 @Bean(name="shiroFilter")
 	 public ShiroFilterFactoryBean shiroFilter(@Qualifier("securityManager") SecurityManager manager) {
 	        ShiroFilterFactoryBean bean=new ShiroFilterFactoryBean();
+	        
+	        //自定义拦截器的配置
+	        Map<String,Filter> filter=new HashMap<>();
+	        filter.put("custom", new ShiroUserFilter());
+	        bean.setFilters(filter);
+	        
+	        // 安全管理器
 	        bean.setSecurityManager(manager);
+	        
 	        //配置登录的url和登录成功的url
 	        bean.setLoginUrl("/login");
 	        bean.setSuccessUrl("/home");
@@ -61,10 +74,13 @@ public class ShiroConfiguration {
 	    public SecurityManager securityManager(@Qualifier("authRealm") AuthRealm authRealm) {
 	        DefaultWebSecurityManager manager=new DefaultWebSecurityManager();
 	        manager.setRealm(authRealm);
+	        manager.setSessionManager(sessionManager());
 	        return manager;
 	    }
 	    //配置自定义的权限登录器
 	    @Bean(name="authRealm")
+	    
+	    
 	    public AuthRealm authRealm(@Qualifier("credentialsMatcher") CredentialsMatcher matcher) {
 	        AuthRealm authRealm=new AuthRealm();
 	        authRealm.setCredentialsMatcher(matcher);
@@ -75,6 +91,13 @@ public class ShiroConfiguration {
 	    public CredentialsMatcher credentialsMatcher() {
 	        return new CredentialsMatcher();
 	    }
+	    
+	    @Bean
+	    public SessionManager sessionManager() {
+	    	SysSessionManager sessionManager = new SysSessionManager();
+	        return sessionManager;
+	    }
+	    
 	    @Bean
 	    public LifecycleBeanPostProcessor lifecycleBeanPostProcessor(){
 	        return new LifecycleBeanPostProcessor();

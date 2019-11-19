@@ -32,7 +32,7 @@
     <delete id="batchDelete">
         delete from `${tableName}` where `${priKeyColumn!"id"}` in
         <foreach collection="ids" open="(" separator="," close=")" item="id">
-            #{id}
+            <#noparse>#{</#noparse>id<#noparse>}</#noparse>
         </foreach>
     </delete>
     
@@ -57,7 +57,7 @@
     <select id="list" resultType="${basePkg}.${beanName}.bean.${BeanName}">
         select * from `${tableName}`
         <trim prefix="where" prefixOverrides="and|or" suffixOverrides="and|or">
-            <if test="ids!=null">
+            <if test="_parameter.containsKey('ids')">
                 <foreach collection="ids" index="index" item="id">
                     `${priKeyColumn!"id"}`=<#noparse>#{</#noparse>${priKey!"id"}<#noparse>}</#noparse> or
                 </foreach>
@@ -66,12 +66,12 @@
     </select>
     
     <!-- 分页查询部分数据 -->
-    <select id="pager" resultType="${basePkg}.${beanName}.bean.${BeanName}">
+    <select id="page" resultType="${basePkg}.${beanName}.bean.${BeanName}">
         select * from `${tableName}`
         <trim prefix="where" prefixOverrides="and|or" suffixOverrides="and|or">
             <#list fields as fd>
-                <if test="pager.bean.${fd.column_name}!=null">
-                    `${fd.column_name}`=<#noparse>#{</#noparse>pager.bean.${fd.column_name}<#noparse>}</#noparse> and
+                <if test="page.bean.${fd.column_name}!=null">
+                    `${fd.column_name}`=<#noparse>#{</#noparse>page.bean.${fd.column_name}<#noparse>}</#noparse> and
                 </if>
 			</#list>
         </trim>

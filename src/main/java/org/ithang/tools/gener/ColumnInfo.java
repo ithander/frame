@@ -62,18 +62,32 @@ public class ColumnInfo {
 	public void setData_type(String data_type) {
 		this.data_type = data_type;
 		if(null!=data_type&&data_type.trim().length()>0){
-			if(data_type.startsWith("tinyint")){
+			if(data_type.equalsIgnoreCase("tinyint")){
 				setJavaType("Integer");
 			}
-			if(data_type.startsWith("int")){
+			if(data_type.equalsIgnoreCase("smallint")){
 				setJavaType("Integer");
 			}
-			if(data_type.startsWith("bigint")){
+			if(data_type.equalsIgnoreCase("int")){
+				setJavaType("Integer");
+			}
+			if(data_type.equalsIgnoreCase("bigint")){
 				setJavaType("Long");
 			}
-			if(data_type.startsWith("varchar")){
+			if(data_type.equalsIgnoreCase("double")){
+				setJavaType("Double");
+			}
+			if(data_type.equalsIgnoreCase("varchar")){
 				setJavaType("String");
 			}
+			if(data_type.equalsIgnoreCase("longtext")){
+				setJavaType("String");
+			}
+			if(null==this.javaType){
+				setJavaType("String");
+			}
+		}else{
+			setJavaType("String");
 		}
 	}
 	

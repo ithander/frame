@@ -37,7 +37,7 @@ public interface ${BeanName}Mapper{
      * @param ${beanName}
      * @return
      */
-    public List<${BeanName}> page(@Param("pager")Pager<${BeanName}> pager);
+    public List<${BeanName}> page(@Param("page")Pager<${BeanName}> page);
     
     /**
      * 分页查询

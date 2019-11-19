@@ -17,9 +17,9 @@
          <table id="dat" class="easyui-datagrid" title="" data-options="fit:true,singleSelect:false,
                                                                    selectOnCheck:true,ctrlSelect:true,
                                                                    fitColumns:true,rownumbers:true,remoteFilter: true,
-                                                                   collapsible:true,pagination:true,clientPaging: false,
-                                                                   url:'/${path}/${beanName}/page',collapsible:false,idField:'key',
-                                                                   method:'post',toolbar:toolbars,pageSize:20">
+                                                                   pagination:true,clientPaging: false,
+                                                                   collapsible:false,idField:'${priKey!"id"}',
+                                                                   toolbar:toolbars,pageSize:20">
 	        <thead>
 	            <tr>
 	                <#list fields as fd>
@@ -42,7 +42,7 @@
 		        	    height: 380,
 		        	    closed: false,
 		        	    cache: false,
-		        	    href: '/to?page=system/${beanName}/form',
+		        	    href: '/to?page=${path}/${beanName}/form',
 		        	    modal: true,
 		        	    onClose:function(){
 		        	    	$('#dat').datagrid('reload');
@@ -57,7 +57,7 @@
 		        iconCls:'icon-edit',
 		        handler:function(){
 		        	var data=$('#dat').datagrid('getSelected');
-		        	if(data&&data.key){
+		        	if(data&&data.${priKey!"id"}){
 		        		$('#form').dialog({
 			        	    title: '修改表单',
 			        	    width: 500,
@@ -99,7 +99,7 @@
 		        			
                             
                             
-                            $.post('/${path}/${beanName}/delete',{'key':key,'ids':ids},function(r){
+                            $.post('/${path}/${beanName}/delete',{'${priKey!"id"}':key,'ids':ids},function(r){
                             	if(r.code>0){
                             		layer.alert('删除失败',function(){
                             			layer.close(index);			
