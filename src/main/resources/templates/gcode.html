@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>代码生成</title>
+        <link rel="stylesheet" href="layui/css/layui.css" media="all">
+        <script type="text/javascript" src="layui/layui.all.js"></script>
+        <script type="text/javascript" src="jquery/jquery-3.2.1.min.js"></script>
+    </head>
+    <body style="padding: 15px">
+        <div class="layui-container">  
+            <div class="layui-row">
+                <div class="layui-col-md2">
+                                               &nbsp;
+                </div>
+                <div class="layui-col-md8">
+                
+                    <form class="layui-form">
+					  
+					  
+					    <div class="layui-form-item">
+					        <label class="layui-form-label">数据库URL</label>
+					        <div class="layui-input-block">
+					           <input id="url" type="text" name="url" required  lay-verify="required" placeholder="请输入URL" autocomplete="off" value="jdbc:mysql://192.168.0.186:3306/test?useSSL=false" class="layui-input">
+					        </div>
+					    </div>
+					    
+					    <div class="layui-form-item">
+					        <label class="layui-form-label">数据库账号</label>
+					        <div class="layui-input-inline">
+					           <input id="uname" type="text" name="uname" required  lay-verify="required" placeholder="请输入账号" autocomplete="off" value="root" class="layui-input">
+					        </div>
+					        <label class="layui-form-label">数据库密码</label>
+					        <div class="layui-input-inline">
+					           <input id="upass" type="password" name="upass" required  lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+					        </div>
+					    </div>
+					    
+					    <div class="layui-form-item">
+					        <label class="layui-form-label">生成到目录</label>
+					        <div class="layui-input-block">
+					           <input id="dir" type="text" name="dir" required  lay-verify="required" placeholder="请输入目录" autocomplete="off" value="C:/Users/Administrator/Desktop" class="layui-input">
+					        </div>
+					    </div>
+					    <div class="layui-form-item">
+					        <label class="layui-form-label">基础包名</label>
+					        <div class="layui-input-block">
+					           <input id="pkg" type="text" name="pkg" required  lay-verify="required" placeholder="请输入包名" autocomplete="off" value="org.ithang.application" class="layui-input">
+					        </div>
+					    </div>
+					    
+					   <div class="layui-form-item">
+					        <label class="layui-form-label">表名</label>
+					        <div class="layui-input-block">
+					           <input id="tabname" type="text" name="tabname" required  lay-verify="required" placeholder="请输入表名" autocomplete="off" class="layui-input">
+					        </div>
+					    </div>
+					    
+					    <div class="layui-form-item">
+					        <input id="subBtn" type="button" value="立即提交" class="layui-btn">
+					    </div>
+					  
+					  
+					</form>
+                
+                </div>
+                <div class="layui-col-md2">
+                                                       &nbsp;
+                </div>
+            </div>
+         </div>
+    </body>
+    <script type="text/javascript">
+    
+        $('#subBtn').click(function(){
+        	layer.alert($('#url').val());
+        });
+    
+    </script>
+</html>

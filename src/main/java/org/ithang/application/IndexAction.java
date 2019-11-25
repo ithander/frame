@@ -129,7 +129,7 @@ public class IndexAction extends Action<Object>{
 			String key=Keys.format(Keys.LoginVCode, mobile);
 			//JedisUtils.set(key, MD5Util.getEncryptedData(v.getValue().toLowerCase()),60);//将验证码值保存redis中
 			JedisUtils.set(key, v.getValue(),60*2);//将验证码值保存redis中
-			return success(v.getBase64Str());
+			return success("data:image/png;base64,"+v.getBase64Str());
 		}
         return error(ErrorInfo.UnknowError);
 	}

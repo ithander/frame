@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.ithang.application.account.mapper.AccountMapper">
+
+
+    <!-- 新增Account -->
+    <insert id="add" parameterType="org.ithang.application.account.bean.Account" useGeneratedKeys="true" keyProperty="id">
+    	INSERT INTO `account` (
+			    
+			    `id`
+			    ,
+			    `customer_id`
+			    ,
+			    `currency_id`
+			    ,
+			    `amount`
+			    ,
+			    `frozen_amount`
+			    ,
+			    `invest_amount`
+			    ,
+			    `create_time`
+			    ,`from_user`
+		)
+		VALUES
+			(
+			       
+			         #{id}
+			       ,
+			         #{customer_id}
+			       ,
+			         #{currency_id}
+			       ,
+			         #{amount}
+			       ,
+			         #{frozen_amount}
+			       ,
+			         #{invest_amount}
+			       ,
+			         #{create_time}
+			         ,#{from_user}
+			)
+    </insert>
+
+    <!-- 根据ID得到指定记录 -->
+    <select id="get" resultType="org.ithang.application.account.bean.Account">
+        select i.*,u.title,u.uname,u.mobile,c.title currency_title from `account`  i 
+        left join customer u on i.customer_id=u.id 
+        left join currency c on i.currency_id=c.id 
+        where i.`id`=#{id} 
+    </select>
+    
+     <!-- 根据ID得到指定记录 -->
+    <select id="getByCustomer" resultType="org.ithang.application.account.bean.Account">
+        select i.*,u.title,u.uname,u.mobile,c.title currency_title from `account`  i 
+        left join customer u on i.customer_id=u.id 
+        left join currency c on i.currency_id=c.id 
+        where i.`customer_id`=#{customer_id} 
+    </select>
+    
+    <delete id="delete">
+        delete from `account` where `id`=#{id}
+    </delete>
+    
+    <delete id="batchDelete">
+        delete from `account` where `id` in
+        <foreach collection="ids" open="(" separator="," close=")" item="id">
+            #{id}
+        </foreach>
+    </delete>
+    
+    <update id="update">
+        update `account`
+        <set>
+            <trim prefix="" prefixOverrides="," suffixOverrides=",">
+	                    <if test="customer_id!=null">
+	                        `customer_id`=#{customer_id} ,
+	                    </if>
+	                    <if test="currency_id!=null">
+	                        `currency_id`=#{currency_id} ,
+	                    </if>
+	                    <if test="amount!=null">
+	                        `amount`=#{amount} ,
+	                    </if>
+	                    <if test="frozen_amount!=null">
+	                        `frozen_amount`=#{frozen_amount} ,
+	                    </if>
+	                    <if test="invest_amount!=null">
+	                        `invest_amount`=#{invest_amount} ,
+	                    </if>
+	                    <if test="create_time!=null">
+	                        `create_time`=#{create_time} ,
+	                    </if>
+	                    <if test="from_user!=null">
+	                        `from_user`=#{from_user} ,
+	                    </if>
+	                    <if test="static_bonus!=null">
+	                        `static_bonus`=#{static_bonus} ,
+	                    </if>
+	                    <if test="team_bonus!=null">
+	                        `team_bonus`=#{team_bonus} ,
+	                    </if>
+	                    <if test="addteam_bonus!=null">
+	                        `addteam_bonus`=#{addteam_bonus} ,
+	                    </if>
+	                    <if test="total_bonus!=null">
+	                        `total_bonus`=#{total_bonus} ,
+	                    </if>
+	                     <if test="team_invest_amount!=null">
+	                        `team_invest_amount`=#{team_invest_amount} ,
+	                    </if>
+            </trim>
+        </set>
+        where `id`=#{id}
+    </update>
+    
+    
+    <!-- 查询所有数据 -->
+    <select id="list" resultType="org.ithang.application.account.bean.Account">
+        select i.*,u.title,u.uname,u.mobile,c.title currency_title from `account` i 
+        left join customer u on i.customer_id=u.id 
+        left join currency c on i.currency_id=c.id
+        <trim prefix="where" prefixOverrides="and|or" suffixOverrides="and|or">
+            <if test="_parameter.containsKey('ids')">
+                <foreach collection="ids" index="index" item="id">
+                    i.`id`=#{id} or
+                </foreach>
+            </if>
+        </trim>
+    </select>
+    
+    <!-- 查询所人的投资与团队投资总和记录 -->
+    <select id="teams" resultType="org.ithang.application.account.bean.Teams">
+           SELECT t.id customer_id,a.id account_id,t.from_user from_user,t.`grade`,t.uname,a.invest_amount,
+                  (select COUNT(0) from customer where from_user=t.id) team_num,
+		          (select sum(invest_amount) from account where customer_id=t.id OR from_user=t.id) team_invest_amount 
+		   FROM customer t LEFT JOIN ACCOUNT a ON a.customer_id=t.id
+    </select>
+    
+    <!-- 分页查询部分数据 -->
+    <select id="page" resultType="org.ithang.application.account.bean.Account">
+        select i.*,u.title,u.uname,u.mobile,c.title currency_title from `account` i 
+        left join customer u on i.customer_id=u.id 
+        left join currency c on i.currency_id=c.id
+        <trim prefix="where" prefixOverrides="and|or" suffixOverrides="and|or">
+                <if test="page.bean.id!=null">
+                    i.`id`=#{page.bean.id} and
+                </if>
+                <if test="page.bean.customer_id!=null">
+                    i.`customer_id`=#{page.bean.customer_id} and
+                </if>
+                <if test="page.bean.currency_id!=null">
+                    i.`currency_id`=#{page.bean.currency_id} and
+                </if>
+                <if test="page.bean.amount!=null">
+                    i.`amount`=#{page.bean.amount} and
+                </if>
+                <if test="page.bean.frozen_amount!=null">
+                    i.`frozen_amount`=#{page.bean.frozen_amount} and
+                </if>
+                <if test="page.bean.invest_amount!=null">
+                    i.`invest_amount`=#{page.bean.invest_amount} and
+                </if>
+                <if test="page.bean.create_time!=null">
+                    i.`create_time`=#{page.bean.create_time} and
+                </if>
+                <if test="page.bean.title!=null">
+                    u.`title` like '%${page.bean.title}%' and
+                </if>
+                <if test="page.bean.mobile!=null">
+                    u.`mobile` like '%${page.bean.mobile}%' and
+                </if>
+                <if test="page.bean.currency_title!=null">
+                    c.`title` like '%${page.bean.currency_title}%' and
+                </if>
+        </trim>
+    </select>
+    
+    <!-- 分页查询部分数据 -->
+    <select id="query" resultType="org.ithang.application.account.bean.Account">
+        select i.*,u.title,u.uname,u.mobile,c.title currency_title from `account` i 
+        left join customer u on i.customer_id=u.id 
+        left join currency c on i.currency_id=c.id
+        <trim prefix="where" prefixOverrides="and|or" suffixOverrides="and|or">
+                <if test="id!=null">
+                    i.`id`=#{id} and
+                </if>
+                <if test="customer_id!=null">
+                    i.`customer_id`=#{customer_id} and
+                </if>
+                <if test="currency_id!=null">
+                    i.`currency_id`=#{currency_id} and
+                </if>
+                <if test="amount!=null">
+                    i.`amount`=#{amount} and
+                </if>
+                <if test="frozen_amount!=null">
+                    i.`frozen_amount`=#{frozen_amount} and
+                </if>
+                <if test="invest_amount!=null">
+                    i.`invest_amount`=#{invest_amount} and
+                </if>
+                <if test="create_time!=null">
+                    i.`create_time`=#{create_time} and
+                </if>
+                <if test="page.bean.title!=null">
+                    u.`title` like '%${page.bean.title}%' and
+                </if>
+                <if test="page.bean.mobile!=null">
+                    u.`mobile` like '%${page.bean.mobile}%' and
+                </if>
+                <if test="page.bean.currency_title!=null">
+                    c.`title` like '%${page.bean.currency_title}%' and
+                </if>
+        </trim>
+    </select>
+
+</mapper>

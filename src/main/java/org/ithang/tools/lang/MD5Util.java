@@ -3,11 +3,17 @@ package org.ithang.tools.lang;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import org.apache.commons.codec.digest.DigestUtils;
+
 /**
  * @author zyt
  */
 public class MD5Util {
     public MD5Util() {
+    }
+    
+    public static String md5(String str){
+    	return DigestUtils.md5Hex(str);
     }
 
     public static String getEncryptedData(String str) {
@@ -58,7 +64,5 @@ public class MD5Util {
         return hs;
     }
 
-    public static void main(String[] args) throws Exception {
-        System.out.println(getEncryptedData("boss2007"));
-    }
+   
 }

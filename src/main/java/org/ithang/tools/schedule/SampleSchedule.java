@@ -23,7 +23,7 @@ public class SampleSchedule {
 	/**
 	 * 静态分润
 	 */
-	@Scheduled(cron = "0 */3 * * * ?")
+	@Scheduled(cron = "0 */5 * * * ?")
 	//@Scheduled(cron=" 0 0 9 * * ?")
      private void staticBonus() {
 		logger.info("running...");

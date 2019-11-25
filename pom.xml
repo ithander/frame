@@ -57,6 +57,10 @@
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+        <dependency>
             <groupId>net.mingsoft</groupId>
             <artifactId>shiro-freemarker-tags</artifactId>
             <version>0.1</version>
@@ -127,8 +131,8 @@
 	</dependencies>
 
 
-    <build>
-        <finalName>frame</finalName>
+   <build>
+        <finalName>bt</finalName>
         <resources>
             <resource>
                 <filtering>true</filtering>
@@ -143,48 +147,58 @@
                    <exclude>**/*.java</exclude>
                </excludes>
            </resource>
+           
+           <!-- 把src/main/lib目录下引用的本地jar打包到lib目录下（maven依赖的jar也会在该目录）-->
+		    <resource>
+				<!-- 这里是把项目中用到的本地jar放在了该目录 -->
+				<directory>${project.basedir}/src/main/lib</directory>
+				<!-- package时指定项目中src/main/lib包中的本地jar的输出目录 -->
+				<targetPath>${project.build.directory}/lib</targetPath>
+				<includes>
+					<include>**/*.jar</include>
+				</includes>
+			</resource>
+			<!-- package 时把 resources 下的资源文件打到 jar 包的一级目录 -->
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+           
         </resources>
+	
         <plugins>
-			 <plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				
-				<configuration>  
-                    <jvmArguments>-Dfile.encoding=UTF-8</jvmArguments>  
-                </configuration> 
-                <executions>  
-                    <execution>  
-                        <goals>  
-                            <goal>repackage</goal>  
-                        </goals>  
-                    </execution>  
-                </executions>  
-			</plugin> 
+			<!-- 打jar包 -->
 			<plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <configuration>
-                    <appendAssemblyId>false</appendAssemblyId>
-                    <finalName>${project.name}_${project.version}</finalName>
-                    <archive>
-                        <manifest>
-                            <mainClass>org.ithang.BootstrapApplication</mainClass>
-                        </manifest>
-                    </archive>
-                    
-                    <descriptors>
-                        <descriptor>src/assembly/src.xml</descriptor>
-                    </descriptors>
-                </configuration>
-                <executions>
-                   <execution>
-                       <id>make-assembly</id> <!-- this is used for inheritance merges -->
-                       <phase>package</phase> <!-- bind to the packaging phase -->
-                       <goals>
-                           <goal>single</goal>
-                       </goals>
-                   </execution>
-               </executions>
-            </plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<!-- MANIFEST.MF 中 Class-Path 加入前缀 -->
+							<classpathPrefix>lib/</classpathPrefix>
+							<!--指定入口类 -->
+							<mainClass>org.ithang.BootstrapApplication</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+			<!-- 复制依赖的jar包到指定的文件夹里，相当于：mvn dependency:copy-dependencies -DoutputDirectory=lib -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/lib</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
     </build> 
 
