@@ -3,77 +3,98 @@
     <head>
         <meta charset="UTF-8">
         <title>代码生成</title>
-        <link rel="stylesheet" href="layui/css/layui.css" media="all">
-        <script type="text/javascript" src="layui/layui.all.js"></script>
         <script type="text/javascript" src="jquery/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="layui/layui.all.js"></script>
+        <link rel="stylesheet" href="uikit/css/uikit.${theme}.min.css" />
+        <script src="uikit/js/uikit.min.js"></script>
     </head>
-    <body style="padding: 15px">
-        <div class="layui-container">  
-            <div class="layui-row">
-                <div class="layui-col-md2">
-                                               &nbsp;
-                </div>
-                <div class="layui-col-md8">
-                
-                    <form class="layui-form">
-					  
-					  
-					    <div class="layui-form-item">
-					        <label class="layui-form-label">数据库URL</label>
-					        <div class="layui-input-block">
-					           <input id="url" type="text" name="url" required  lay-verify="required" placeholder="请输入URL" autocomplete="off" value="jdbc:mysql://192.168.0.186:3306/test?useSSL=false" class="layui-input">
-					        </div>
-					    </div>
-					    
-					    <div class="layui-form-item">
-					        <label class="layui-form-label">数据库账号</label>
-					        <div class="layui-input-inline">
-					           <input id="uname" type="text" name="uname" required  lay-verify="required" placeholder="请输入账号" autocomplete="off" value="root" class="layui-input">
-					        </div>
-					        <label class="layui-form-label">数据库密码</label>
-					        <div class="layui-input-inline">
-					           <input id="upass" type="password" name="upass" required  lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
-					        </div>
-					    </div>
-					    
-					    <div class="layui-form-item">
-					        <label class="layui-form-label">生成到目录</label>
-					        <div class="layui-input-block">
-					           <input id="dir" type="text" name="dir" required  lay-verify="required" placeholder="请输入目录" autocomplete="off" value="C:/Users/Administrator/Desktop" class="layui-input">
-					        </div>
-					    </div>
-					    <div class="layui-form-item">
-					        <label class="layui-form-label">基础包名</label>
-					        <div class="layui-input-block">
-					           <input id="pkg" type="text" name="pkg" required  lay-verify="required" placeholder="请输入包名" autocomplete="off" value="org.ithang.application" class="layui-input">
-					        </div>
-					    </div>
-					    
-					   <div class="layui-form-item">
-					        <label class="layui-form-label">表名</label>
-					        <div class="layui-input-block">
-					           <input id="tabname" type="text" name="tabname" required  lay-verify="required" placeholder="请输入表名" autocomplete="off" class="layui-input">
-					        </div>
-					    </div>
-					    
-					    <div class="layui-form-item">
-					        <input id="subBtn" type="button" value="立即提交" class="layui-btn">
-					    </div>
-					  
-					  
-					</form>
-                
-                </div>
-                <div class="layui-col-md2">
-                                                       &nbsp;
-                </div>
-            </div>
-         </div>
+    <body>
+    
+        <div class="uk-grid">
+		    <div class="uk-width-1-3">&nbsp;</div>
+		    <div class="uk-width-1-3">
+		         <form class="uk-form" action="gen/gencode" method="post">
+		             <legend>代码自动生成</legend>
+		             <p>
+				         <label>数据库URL：</label>
+				         <input id="url" type="text" size="50" name="url" value="jdbc:mysql://192.168.0.186:3306/test?useSSL=false"/>
+				     </p>
+				     <p>
+				         <label>数据库账号：</label>
+				         <input id="uname" type="text" name="uname" value="root" placeholder="请输入账号">
+				     </p>
+				     <p>
+				         <label>数据库密码：</label>
+				         <input id="upass" type="password" name="upass" placeholder="请输入密码">
+				     </p>
+				     <p>
+				         <label>生成到目录：</label>
+				         <input id="dir" type="text" name="dir" size="50" placeholder="请输入目录" autocomplete="off" value="C:/Users/Administrator/Desktop">
+				     </p>
+				     <p>
+				         <label>基&nbsp;础&nbsp;包&nbsp;名：</label>
+				         <input id="pkg" type="text" name="pkg" placeholder="请输入包名" autocomplete="off" value="org.ithang.application">
+				     </p>
+				     <p>
+				         <label>表&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</label>
+				         <input id="tabname" type="text" name="tabname" placeholder="请输入表名" autocomplete="off"/>
+				         <label>别名：t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+				         <input id="testBtn" type="button" value="测试数据连接"/>
+				     </p>
+				     <legend>关联查询代码生成
+				         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				         <button id="addTab" class="uk-button-mini" onclick="javascript:void(0)">添加关联表字段</button>
+				     </legend>
+				     <div id="gtabs">
+					     <p>
+					         <label>关联SQL：</label>
+					         <textarea name="gsql" rows="10" cols="65"></textarea>
+					     </p>
+				     </div>
+				     <p>
+				         <button id="genBtn" type="button" class="uk-button uk-button-primary">开始生成</button>
+				     </p>
+				</form>
+		    </div>
+		    <div class="uk-width-1-3">&nbsp;</div>
+		</div>
+      
     </body>
     <script type="text/javascript">
+        var i=0;
+        var tabNames=['ta','tb','tc','te','tf','tg','tk','tm','ti','tu','tn','tm','tb'];
+        $(function(){
+        	
+        	
+        })
+        
+        function removeTabs(self){
+        	$('#'+self).remove();
+        	return false;
+        }
     
-        $('#subBtn').click(function(){
-        	layer.alert($('#url').val());
+        $('#testBtn').click(function(){
+        	$.post('gen/testdb',{url:$('#url').val(),uname:$('#uname').val(),upass:$('#upass').val()},function(r){
+        		if(0==r.code){
+        			layer.alert('连接成功！');
+        		}else{
+        			layer.alert('连接失败！');
+        		}
+        	},'json')
+        	return false;
+        });
+    
+        $('#genBtn').click(function(){
+        	$("form").submit();
+        	return false;
+        });
+        
+        $('#addTab').click(function(){
+        	$('#gtabs').append('<p id='+tabNames[i]+'><label>关联字段：</label><select name="addtype"><option value="String">字符串</opetion><option value="Integer">Integer</opetion><option value="Long">Long</opetion><option value="Double">Double</opetion></select><input type="text" name="addname" placeholder="请输入关联字段" autocomplete="off"/>&nbsp;<input type="text" size="5" name="addnamed"/>&nbsp;<button class="uk-button-mini uk-button-danger" onclick="removeTabs(\''+tabNames[i]+'\')">删除</button></p>');
+        	i++;
+        	return false;
         });
     
     </script>

@@ -1,5 +1,7 @@
 package org.ithang.system.data.web;
 
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,10 +15,12 @@ import org.ithang.tools.model.Action;
 import org.ithang.tools.model.ActionResult;
 import org.ithang.tools.model.ErrorInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 
 /**
  * 系统数据维护功能
@@ -45,6 +49,7 @@ public class DataAction extends Action<Object>{
 		return "system/data/tables";
 	}
 	
+	
 	@ResponseBody
 	@RequestMapping(value="tables",method=RequestMethod.POST)
 	public Map<String,Object> tables(String table){
@@ -55,22 +60,5 @@ public class DataAction extends Action<Object>{
 		return result;
 	}
 	
-	/**
-	 * 根据表名生成代码
-	 * @param tables
-	 * @return
-	 */
-	@ResponseBody
-	@RequestMapping(value="gencode",method=RequestMethod.POST)
-	public ActionResult generCode(String[] tables){
-		try{
-		    CodeGener cdGener=new CodeGener(Dao.getDataSource());
-		    cdGener.gener(tables);
-		}catch(Exception e){
-			e.printStackTrace();
-		    return error(ErrorInfo.InternalError);
-		}
-		return success();
-	}
 	
 }

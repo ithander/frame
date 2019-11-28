@@ -3,9 +3,11 @@ package org.ithang;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 
+import org.ithang.tools.model.Config;
 import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -54,6 +56,7 @@ public class BootstrapApplication extends SpringBootServletInitializer{
 	public static void main(String[] args) {
 		SpringApplication.run(BootstrapApplication.class, args);
 		logger.info("系统启动成功!");
+		
 	}
 	
 	
