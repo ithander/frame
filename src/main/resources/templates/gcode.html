@@ -5,7 +5,7 @@
         <title>代码生成</title>
         <script type="text/javascript" src="jquery/jquery-3.2.1.min.js"></script>
         <script type="text/javascript" src="layui/layui.all.js"></script>
-        <link rel="stylesheet" href="uikit/css/uikit.${theme}.min.css" />
+        <link rel="stylesheet" href="uikit/css/uikit.default.min.css" />
         <script src="uikit/js/uikit.min.js"></script>
     </head>
     <body>
@@ -14,48 +14,109 @@
 		    <div class="uk-width-1-3">&nbsp;</div>
 		    <div class="uk-width-1-3">
 		         <form class="uk-form" action="gen/gencode" method="post">
-		             <legend>代码自动生成</legend>
+		             <legend>代码自动生成(默认采用系统数据源)</legend>
 		             <p>
-				         <label>数据库URL：</label>
-				         <input id="url" type="text" size="50" name="url" value="jdbc:mysql://192.168.0.186:3306/test?useSSL=false"/>
-				     </p>
-				     <p>
-				         <label>数据库账号：</label>
-				         <input id="uname" type="text" name="uname" value="root" placeholder="请输入账号">
-				     </p>
-				     <p>
-				         <label>数据库密码：</label>
-				         <input id="upass" type="password" name="upass" placeholder="请输入密码">
-				     </p>
-				     <p>
-				         <label>生成到目录：</label>
-				         <input id="dir" type="text" name="dir" size="50" placeholder="请输入目录" autocomplete="off" value="C:/Users/Administrator/Desktop">
-				     </p>
-				     <p>
-				         <label>基&nbsp;础&nbsp;包&nbsp;名：</label>
-				         <input id="pkg" type="text" name="pkg" placeholder="请输入包名" autocomplete="off" value="org.ithang.application">
-				     </p>
+		                 <label>UI</label>
+		                 <select name="ui">
+		                     <option value="layui">LayUI</option>
+		                     <option value="easyui">EasyUI</option>
+		                 </select>
+		             </p>
+		             <p>
+		                 <input name="module" value="bean" type="checkbox" checked="checked"/>
+		                 <label>Bean</label>
+		                 
+		                 <input name="module" value="action" type="checkbox" />
+		                 <label>Action</label>
+		                 
+		                 <input name="module" value="service" type="checkbox" />
+		                 <label>Service</label>
+		                 
+		                 <input name="module" value="mapper" type="checkbox" />
+		                 <label>Mapper</label>
+		                 
+		                 <input name="module" value="zmapper" type="checkbox" />
+		                 <label>ZMapper</label>
+		                 
+		                 <input name="module" value="xmlmapper" type="checkbox" />
+		                 <label>XMLMapper</label>
+		                 
+		                 <input name="module" value="zxmlmapper" type="checkbox" />
+		                 <label>ZXMLMapper</label>
+		                 
+		             </p>
 				     <p>
 				         <label>表&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</label>
-				         <input id="tabname" type="text" name="tabname" placeholder="请输入表名" autocomplete="off"/>
+				         <select id="tabname" name="tabname" placeholder="请输入表名" >
+				             <option value="">请选择表名</option>
+				         </select>
 				         <label>别名：t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-				         <input id="testBtn" type="button" value="测试数据连接"/>
-				     </p>
-				     <legend>关联查询代码生成
-				         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				         <button id="addTab" class="uk-button-mini" onclick="javascript:void(0)">添加关联表字段</button>
-				     </legend>
-				     <div id="gtabs">
-					     <p>
-					         <label>关联SQL：</label>
-					         <textarea name="gsql" rows="10" cols="65"></textarea>
-					     </p>
-				     </div>
-				     <p>
 				         <button id="genBtn" type="button" class="uk-button uk-button-primary">开始生成</button>
 				     </p>
+				     <p>
+				         <ul class="uk-tab" data-uk-switcher="{connect:'#abc',animation:'slide-left'}">
+				            <li><a href="javascript:void(0)">自定义数据源</a></li>
+						    <li class="uk-active"><a href="javascript:void(0)">配置字段表达式</a></li>
+						    <li>
+						        <a href="javascript:void(0)">关联查询代码生成</a>
+						    </li>
+						 </ul>
+				     </p>
+				    
+				     <ul id="abc" class="uk-switcher">
+				          <li>
+				              <p>
+						         <label>数据库URL：</label>
+						         <input id="url" type="text" size="50" name="url" value="jdbc:mysql://192.168.0.186:3306/test?useSSL=false"/>
+						     </p>
+						     <p>
+						         <label>数据库账号：</label>
+						         <input id="uname" type="text" name="uname" value="root" placeholder="请输入账号">
+						     </p>
+						     <p>
+						         <label>数据库密码：</label>
+						         <input id="upass" type="password" name="upass" placeholder="请输入密码">
+						     </p>
+						     <p>
+						         <label>生成到目录：</label>
+						         <input id="dir" type="text" name="dir" size="50" placeholder="请输入目录" autocomplete="off" value="C:/Users/Administrator/Desktop">
+						     </p>
+						     <p>
+						         <label>基&nbsp;础&nbsp;包&nbsp;名：</label>
+						         <input id="pkg" type="text" name="pkg" placeholder="请输入包名" autocomplete="off" value="org.ithang.application">
+						     </p>
+						     <p><input id="testBtn" class="uk-button uk-button-primary" type="button" value="测试数据连接"/></p>
+				          </li>
+				          <li>
+				              <table class="uk-table" border="0">
+							    <input id="addColumn" type="button" class="uk-button uk-button-primary" value="添加表字段表达式">
+							    <thead>
+							        <tr>
+							            <th>字段名称</th>
+							            <th>表达式</th>
+							            <th>变量名称</th>
+							        </tr>
+							    </thead>
+							    <tbody id="data">
+							    </tbody>
+							    <tfoot>
+							        <td colspan="3">&nbsp;</td>
+							    </tfoot>
+							</table>
+
+				          </li>
+						  <li>
+							     <div id="gtabs">
+							         <p>
+                                         <input id="addTab" type="button" class="uk-button uk-button-primary" value="添加关联表字段">							         
+							         </p>
+								     <p>
+								         <label>关联SQL：</label>
+								         <textarea name="gsql" rows="10" cols="65"></textarea>
+								     </p>
+							     </div>
+						  </li>
+				     </ul>
 				</form>
 		    </div>
 		    <div class="uk-width-1-3">&nbsp;</div>
@@ -65,20 +126,38 @@
     <script type="text/javascript">
         var i=0;
         var tabNames=['ta','tb','tc','te','tf','tg','tk','tm','ti','tu','tn','tm','tb'];
+       
+        
         $(function(){
         	
-        	
-        })
+        	//默认获取系统数据库中的表名称
+        	$.getJSON('gen/gettabs',function(r){
+        		if(0==r.code){
+        			$.each(r.result,function(index,value){
+        				$('#tabname').append('<option value="'+value+'">'+value+'</option>');	
+        			});
+        			
+        		}else{
+        			layer.alert('获取表名失败！');
+        		}
+        	});
+        });
         
+        //删除关联表字段
         function removeTabs(self){
         	$('#'+self).remove();
         	return false;
         }
     
+        //测试数据库连接
         $('#testBtn').click(function(){
         	$.post('gen/testdb',{url:$('#url').val(),uname:$('#uname').val(),upass:$('#upass').val()},function(r){
         		if(0==r.code){
         			layer.alert('连接成功！');
+        			$.each(r.result,function(index,value){
+        				$('#tabname').append('<option value="'+value+'">'+value+'</option>');	
+        			});
+        			
         		}else{
         			layer.alert('连接失败！');
         		}
@@ -86,13 +165,62 @@
         	return false;
         });
     
+        //开始生成
         $('#genBtn').click(function(){
-        	$("form").submit();
+        	if($('#tabname').val().length>0){
+        		$("form").submit();	
+        	}else{
+        		layer.alert('请选择表');
+        	}
+        	
         	return false;
         });
         
+        //选择表时，初始化tab界面的表字段列表
+        var columns=null;
+        $('#tabname').change(function(){
+        	var val=$('#tabname').val();
+        	console.log('val='+val)
+        	if(val&&val.length>0){
+        		$.getJSON('gen/cinfo',{tabName:val},function(r){
+        			if(0==r.code){
+        				$('#data').empty();
+        				columns=r.result.columns;
+        				$.each(r.result.columns,function(index,value){
+        					$('#data').append('<tr>');
+        					$('#data').append('<td><input type="text" name="column" value="'+value.column_name+'" readonly="true"/></td>');
+        					$('#data').append('<td><select name="express"><option value="equal" selected >等于</option><option value="like">LIKE</option><option value="ge">&ge;</option><option value="le">&le;</option></select></td>');
+        					$('#data').append('<td><input name="var" value="'+value.column_name+'"/></td>');
+        					$('#data').append('</tr>');
+        				});
+        				console.log(r)
+        			}
+        		})
+        	}
+        });
+        
+        //添加表字段表达式
+        $('#addColumn').click(function(){
+        	if(columns&&columns.length>0){
+        		$('#data').append('<tr>');
+            	
+            	var cos='<select name="column">';
+            	$.each(columns,function(index,value){
+            		cos+='<option value="'+value.column_name+'">'+value.column_name+'</option>'
+            	})
+            	cos+='</select>';
+            	
+            	$('#data').append('<td>'+cos+'</td>');
+    			$('#data').append('<td name="express"><select><option value="equal" selected >等于</option><option value="like">LIKE</option><option value="ge">&ge;</option><option value="le">&le;</option></select></td>');
+    			$('#data').append('<td><input name="var" value=""/></td>');
+    			$('#data').append('</tr>');
+        	}
+			
+        });
+        
+        //添加关联表字段
         $('#addTab').click(function(){
-        	$('#gtabs').append('<p id='+tabNames[i]+'><label>关联字段：</label><select name="addtype"><option value="String">字符串</opetion><option value="Integer">Integer</opetion><option value="Long">Long</opetion><option value="Double">Double</opetion></select><input type="text" name="addname" placeholder="请输入关联字段" autocomplete="off"/>&nbsp;<input type="text" size="5" name="addnamed"/>&nbsp;<button class="uk-button-mini uk-button-danger" onclick="removeTabs(\''+tabNames[i]+'\')">删除</button></p>');
+        	$('#gtabs').append('<p id='+tabNames[i]+'><label>关联字段：</label><select name="addtype"><option value="String">字符串</opetion><option value="Integer">Integer</opetion><option value="Long">Long</opetion><option value="Double">Double</opetion></select><input type="text" name="addname" placeholder="请输入关联字段" autocomplete="off"/>&nbsp;<select name="express"><option value="equal" selected >等于</option><option value="like">LIKE</option><option value="ge">&ge;</option><option value="le">&le;</option></select>&nbsp;<input type="text" size="5" name="addnamed"/>&nbsp;<button class="uk-button-mini uk-button-danger" onclick="removeTabs(\''+tabNames[i]+'\')">删除</button></p>');
         	i++;
         	return false;
         });

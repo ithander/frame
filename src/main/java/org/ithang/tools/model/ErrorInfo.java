@@ -32,6 +32,8 @@ public enum ErrorInfo {
 	GasingError(22,"正在分发Gas！"),
 	GoveringError(23,"正在归集！"),
 	HasRechargeError(24,"充币记录己添加！"),
+	DataSourceError(25,"请配置好数据源！"),
+	ParamError(26,"无效参数！"),
 	ProcessSuccess(0,"成功");
 	
 	private int code;

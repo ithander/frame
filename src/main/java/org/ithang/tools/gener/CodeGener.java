@@ -42,6 +42,10 @@ public class CodeGener {
 	private boolean xmlMapper;
 	private boolean page;
 	
+	private String gsql;//关联SQL，用于查询数据带用left join
+	private ColumnExpress columnExpress;//字段列表达式，如  name like '%name%'
+	private GenField genField;//新增关联表的字段
+	
 	static{
 		
 		 try {
@@ -57,6 +61,10 @@ public class CodeGener {
 	
 	public CodeGener(DataSource dataSource){
 		jdbcTemplate=new JdbcTemplate(dataSource);
+	}
+	
+	public CodeGener(JdbcTemplate jdbcTemplate){
+		this.jdbcTemplate=jdbcTemplate;
 	}
 	
 	public CodeGener(String url,String uname,String upass){
@@ -109,6 +117,16 @@ public class CodeGener {
 			data.put("tableName", tab.getTable_name());
 			data.put("BeanName", BeanName);
 			data.put("beanName", beanName);
+			if(null!=getColumnExpress()){
+				data.put("columnExpress", getColumnExpress().toArray());
+			}
+			if(null!=getGenField()){
+				data.put("genField", getGenField().toArray());
+			}
+			if(null!=getGsql()){
+				data.put("gsql", getGsql());
+			}
+			
 			data.put("tabComment", tab.getTable_comment());
 			data.put("basePkg", null==basePkg?"org.ithang.system":basePkg);
 			data.put("fields", tab.getColumns());
@@ -116,6 +134,8 @@ public class CodeGener {
 			data.put("beanFileName", saveDir+String.format("/"+basePkg.replaceAll("\\.", "/")+"/%s/bean/%s.java",beanName,BeanName));
 			data.put("mapperFileName", saveDir+String.format("/"+basePkg.replaceAll("\\.", "/")+"/%s/mapper/%sMapper.java",beanName,BeanName));
 			data.put("xmlmapperFileName", saveDir+String.format("/"+basePkg.replaceAll("\\.", "/")+"/%s/mapper/%sMapper.xml",beanName,BeanName));
+			data.put("zmapperFileName", saveDir+String.format("/"+basePkg.replaceAll("\\.", "/")+"/%s/mapper/Z%sMapper.java",beanName,BeanName));
+			data.put("zxmlmapperFileName", saveDir+String.format("/"+basePkg.replaceAll("\\.", "/")+"/%s/mapper/Z%sMapper.xml",beanName,BeanName));
 			data.put("serviceFileName", saveDir+String.format("/"+basePkg.replaceAll("\\.", "/")+"/%s/service/%sService.java",beanName,BeanName));
 			data.put("actionFileName", saveDir+String.format("/"+basePkg.replaceAll("\\.", "/")+"/%s/%sAction.java",beanName,BeanName));
 			data.put("formFileName", saveDir+String.format("/"+basePkg.replaceAll("\\.", "/")+"/%s/form.html",beanName));
@@ -147,6 +167,11 @@ public class CodeGener {
 			if(page){
 				generFormPage(data);
 				generListPage(data);
+			}
+			
+			if(null!=gsql){
+				generZMapper(data);
+				generZXMLMapper(data);
 			}
 			
 		}
@@ -194,6 +219,21 @@ public class CodeGener {
 		}
 	}
 	
+	protected void generZMapper(Map<String,Object> data){
+		try {
+			File f=new File(String.valueOf(data.get("zmapperFileName")));
+			f.getParentFile().mkdirs();
+			FileOutputStream fout=new FileOutputStream(f);
+			Template temp = configuration.getTemplate("ZMapper.ftl");
+			Writer out = new OutputStreamWriter(fout);
+			temp.process(data, out);
+			out.close();
+			fout.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	/**
 	 * 生成XMLMapper
 	 * @param tab
@@ -204,6 +244,25 @@ public class CodeGener {
 			f.getParentFile().mkdirs();
 			FileOutputStream fout=new FileOutputStream(f);
 			Template temp = configuration.getTemplate("XMLMapper.ftl");
+			Writer out = new OutputStreamWriter(fout);
+			temp.process(data, out);
+			out.close();
+			fout.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * 生成XMLMapper
+	 * @param tab
+	 */
+	protected void generZXMLMapper(Map<String,Object> data){
+		try {
+			File f=new File(String.valueOf(data.get("zxmlmapperFileName")));
+			f.getParentFile().mkdirs();
+			FileOutputStream fout=new FileOutputStream(f);
+			Template temp = configuration.getTemplate("ZXMLMapper.ftl");
 			Writer out = new OutputStreamWriter(fout);
 			temp.process(data, out);
 			out.close();
@@ -349,6 +408,30 @@ public class CodeGener {
 		this.page = page;
 	}
 
+	public ColumnExpress getColumnExpress() {
+		return columnExpress;
+	}
+
+	public void setColumnExpress(ColumnExpress columnExpress) {
+		this.columnExpress = columnExpress;
+	}
+
+	public GenField getGenField() {
+		return genField;
+	}
+
+	public void setGenField(GenField genField) {
+		this.genField = genField;
+	}
+
+	public String getGsql() {
+		return gsql;
+	}
+
+	public void setGsql(String gsql) {
+		this.gsql = gsql;
+	}
+    
 	
 }
 
